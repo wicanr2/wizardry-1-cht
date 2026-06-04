@@ -51,3 +51,10 @@ assets/fonts/*.ttf
 # PCE-CD sprites (CC-BY-SA, fetched by tools/fetch_pcecd_sprites.sh)
 assets/sprites/monsters_pcecd/*.png
 assets/sprites/monsters_pcecd/LICENSE.txt
+
+
+# Reference materials (not committed — see docs/REFERENCES.md)
+release/
+*.iso
+Ultimate*Archives*.pdf
+
