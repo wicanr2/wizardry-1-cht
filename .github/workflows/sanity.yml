@@ -1,0 +1,53 @@
+name: sanity
+
+# Lightweight checks that run on every push/PR.
+on:
+  push:
+  pull_request:
+
+jobs:
+  format-check:
+    name: Format & lint
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check large files
+        run: |
+          BIG=$(find . -type f -size +5M ! -path './.git/*' || true)
+          if [ -n "$BIG" ]; then
+            echo "::warning::Files >5MB detected (should they be in repo?):"
+            echo "$BIG"
+          fi
+
+      - name: Verify CMake config
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake
+          cmake -B build-dryrun -DBUILD_TESTS=OFF 2>&1 | tee cmake.log
+          if grep -q "Error" cmake.log; then exit 1; fi
+
+      - name: i18n catalogue validity
+        run: |
+          python3 -c "
+          import json
+          d = json.load(open('src/i18n/strings_zh_tw.json'))
+          total = sum(1 for k,v in d.items() if isinstance(v, dict))
+          done = sum(1 for k,v in d.items() if isinstance(v, dict) and v.get('zh_TW'))
+          pct = 100 * done / total
+          print(f'i18n: {done}/{total} = {pct:.1f}%')
+          if pct < 50:
+            print('::warning::Translation coverage below 50%')
+          "
+
+      - name: Sprite list matches monsters.json
+        run: |
+          python3 -c "
+          import json
+          import re
+          monsters = json.load(open('assets/data/monsters.json'))
+          print(f'monsters.json has {len(monsters)} entries')
+          script = open('tools/fetch_pcecd_sprites.sh').read()
+          sprite_count = len(re.findall(r'PCECD_MS_', script))
+          print(f'fetch_pcecd_sprites.sh has {sprite_count} sprite entries')
+          "

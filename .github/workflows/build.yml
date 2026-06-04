@@ -1,0 +1,112 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  linux:
+    name: Linux / GCC
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev \
+            cmake build-essential nlohmann-json3-dev
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build -j
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Package binary
+        run: |
+          mkdir -p dist/wizardry-cht-linux
+          cp build/src/wizardry_cht dist/wizardry-cht-linux/
+          cp -r assets dist/wizardry-cht-linux/
+          cp -r src/i18n dist/wizardry-cht-linux/i18n
+          cp README.md LICENSE dist/wizardry-cht-linux/
+          tar -czf wizardry-cht-linux.tar.gz -C dist wizardry-cht-linux
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizardry-cht-linux
+          path: wizardry-cht-linux.tar.gz
+
+  windows-msvc:
+    name: Windows / MSVC
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgGitCommitId: 'f7423ee180c4b7f40d43402c2feb3859161ef625'
+
+      - name: Install dependencies (vcpkg)
+        run: |
+          vcpkg install sdl2 sdl2-ttf sdl2-image nlohmann-json --triplet x64-windows
+        shell: cmd
+
+      - name: Configure
+        run: |
+          cmake -B build ^
+            -DCMAKE_BUILD_TYPE=Release ^
+            -DCMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake ^
+            -DVCPKG_TARGET_TRIPLET=x64-windows
+        shell: cmd
+
+      - name: Build
+        run: cmake --build build --config Release -j
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure -C Release
+
+      - name: Package binary
+        shell: cmd
+        run: |
+          mkdir dist\wizardry-cht-windows
+          copy build\src\Release\wizardry_cht.exe dist\wizardry-cht-windows\
+          xcopy assets dist\wizardry-cht-windows\assets /E /I /Q
+          xcopy src\i18n dist\wizardry-cht-windows\i18n /E /I /Q
+          copy README.md dist\wizardry-cht-windows\
+          copy LICENSE dist\wizardry-cht-windows\
+          copy build\vcpkg_installed\x64-windows\bin\*.dll dist\wizardry-cht-windows\
+          powershell -Command "Compress-Archive -Path dist\wizardry-cht-windows -DestinationPath wizardry-cht-windows.zip"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizardry-cht-windows
+          path: wizardry-cht-windows.zip
+
+  release:
+    name: Release
+    needs: [linux, windows-msvc]
+    runs-on: ubuntu-22.04
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/wizardry-cht-linux/wizardry-cht-linux.tar.gz
+            artifacts/wizardry-cht-windows/wizardry-cht-windows.zip
+          generate_release_notes: true
