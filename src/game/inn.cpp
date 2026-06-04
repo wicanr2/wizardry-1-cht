@@ -22,12 +22,14 @@ struct Room {
     int weeks_per_level; // how many weeks to age per stay (1)
 };
 
+// Per Sir-tech manual p32: Stables/Barracks/Double/Private/Royal
+// HP per week: 0/1/3/7/10 (canonical values).
 constexpr std::array<Room, 5> kRooms = {{
-    {"馬廄 (免費)",        0,    1,  1},
-    {"簡易床位",         10,    3,  1},
-    {"經濟客房",         50,    7,  1},
-    {"商人套房",        200,   10,  1},
-    {"皇家套房",        500,   15,  1},
+    {"馬廄 (Stables, 免費)",       0,    0,  1},
+    {"兵營 (Barracks)",          10,    1,  1},
+    {"雙人房 (Double Occupancy)", 50,    3,  1},
+    {"私人房 (Private Room)",    200,    7,  1},
+    {"皇家套房 (Royal Suite)",   500,   10,  1},
 }};
 
 struct InnUI { int member = 0; int room = 0; };

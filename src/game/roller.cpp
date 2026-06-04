@@ -30,6 +30,27 @@ const std::array<const char*, 6> kAttrLabels = {
     "力量", "智力", "信仰", "體力", "敏捷", "幸運"
 };
 
+// Class lore from Sir-tech Manual p14-15 (Ultimate Wizardry Archives, 1998
+// Interplay edition). Used as tooltip in the class selection screen.
+const std::array<const char*, 8> kKlassLore = {
+    "戰士。基本的武人，HP 高、可用任何盔甲與武器，戰鬥的中堅。",
+    "魔法師。法術施展者，HP 低、只能用匕首與法杖，不可穿盔甲（除袍）；能施魔法系法術。",
+    "牧師。聖職者，HP 中等；不可用刀劍只能用棍棒，可施神聖法術，可驅散不死生物。",
+    "盜賊。能用匕首或短劍、皮甲與小盾；擅長解除寶箱陷阱，不可為善良陣營。",
+    "主教。法師 + 牧師複合，可施兩系法術、能鑑定物品；魔法成長較慢，不可為中立。",
+    "武士。戰士的進化版，HP 高於戰士初期；4 級開始學魔法系法術。武士守 Bushido，不可邪惡。",
+    "領主。戰士 + 牧師複合，4 級開始學神聖法術；HP 與盔甲沿用戰士。必須為善良陣營。",
+    "忍者。超人戰士，赤手空拳極強（每擊有機率秒殺！），裝備越少越強。等級越高 AC 越好。必須為邪惡陣營。",
+};
+
+const std::array<const char*, 5> kRaceLore = {
+    "人類。樣樣中等，沒有特別弱項，但信仰偏低。",
+    "精靈。智力與信仰高，但體質弱；天生的法師體質。",
+    "矮人。力量與體質強，喜歡好武器與盔甲，善戰。",
+    "侏儒。信仰與敏捷高，據說是地下祈禱練出來的；理想的牧師人選。",
+    "霍比特。敏捷高、運氣非常好；訓練得當會成為頂尖盜賊。",
+};
+
 std::uint8_t* attr_ref(core::Attributes& a, int idx) {
     switch (idx) {
         case 0: return &a.strength;
@@ -66,7 +87,8 @@ void draw_name_screen(const RollerState& r, const render::UI& ui) {
 
 void draw_pick_list(const RollerState& r, const render::UI& ui,
                     std::string_view title,
-                    const std::vector<std::string>& options) {
+                    const std::vector<std::string>& options,
+                    const std::vector<const char*>& lore = {}) {
     draw_step_header(ui, title, "↑↓ 選擇   Enter 確認   ESC 取消");
     const int x = kPadX;
     const int y = kPadY;
@@ -76,6 +98,8 @@ void draw_pick_list(const RollerState& r, const render::UI& ui,
 
     const int line = ui.body_font().line_height() + 10;
     const int pad = 30;
+    const int list_w = 380;
+
     for (std::size_t i = 0; i < options.size(); ++i) {
         int yy = y + pad + static_cast<int>(i) * line;
         if (static_cast<int>(i) == r.cursor) {
@@ -83,7 +107,7 @@ void draw_pick_list(const RollerState& r, const render::UI& ui,
                                    ui.theme().highlight.r,
                                    ui.theme().highlight.g,
                                    ui.theme().highlight.b, 220);
-            SDL_Rect hl{x + 16, yy - 4, w - 32, line};
+            SDL_Rect hl{x + 16, yy - 4, list_w, line};
             SDL_RenderFillRect(ui.renderer(), &hl);
         }
         SDL_Color c = (static_cast<int>(i) == r.cursor)
@@ -95,6 +119,50 @@ void draw_pick_list(const RollerState& r, const render::UI& ui,
         render::draw_text(ui.renderer(), ui.body_font(), label,
                           x + 24, yy, c);
     }
+
+    // Lore tooltip panel on the right
+    if (!lore.empty() && r.cursor < static_cast<int>(lore.size())) {
+        int lore_x = x + list_w + 40;
+        int lore_y = y + pad;
+        int lore_w = w - list_w - 80;
+        render::draw_text(ui.renderer(), ui.body_font(), "說明",
+                          lore_x, lore_y, ui.theme().accent);
+        lore_y += ui.body_font().line_height() + 10;
+
+        // Word-wrap lore text manually (Chinese chars are full-width)
+        std::string text = lore[r.cursor];
+        const int max_chars_per_line = (lore_w - 20) / 18;  // ~18px per CJK char
+        std::string line_buf;
+        int char_count = 0;
+        auto flush = [&]() {
+            if (!line_buf.empty()) {
+                render::draw_text(ui.renderer(), ui.body_font(), line_buf,
+                                  lore_x, lore_y, ui.theme().text);
+                lore_y += ui.body_font().line_height() + 4;
+                line_buf.clear();
+                char_count = 0;
+            }
+        };
+        std::size_t i = 0;
+        while (i < text.size()) {
+            unsigned char ch = static_cast<unsigned char>(text[i]);
+            int byte_len = 1;
+            int char_width = 1;
+            if (ch >= 0xF0) { byte_len = 4; char_width = 2; }
+            else if (ch >= 0xE0) { byte_len = 3; char_width = 2; }
+            else if (ch >= 0xC0) { byte_len = 2; char_width = 1; }
+
+            if (char_count + char_width > max_chars_per_line || ch == '\n') {
+                flush();
+                if (ch == '\n') { i += 1; continue; }
+            }
+            line_buf.append(text, i, byte_len);
+            char_count += char_width;
+            i += byte_len;
+        }
+        flush();
+    }
+
     ui.present();
 }
 
@@ -146,8 +214,8 @@ void draw_attribute_screen(const RollerState& r, const render::UI& ui) {
     ui.present();
 }
 
-void draw_class_screen(const RollerState& r, const render::UI& ui,
-                       const std::vector<int>& eligible_indices) {
+void draw_class_screen_with_lore(const RollerState& r, const render::UI& ui,
+                                 const std::vector<int>& eligible_indices) {
     draw_step_header(ui, "建立角色 — 選擇職業",
                      "↑↓ 選擇   Enter 確認   ESC 取消");
     const int x = kPadX;
@@ -161,6 +229,7 @@ void draw_class_screen(const RollerState& r, const render::UI& ui,
                       x + 24, y + 20, ui.theme().accent);
 
     const int line = ui.body_font().line_height() + 10;
+    const int list_w = 280;
     if (eligible_indices.empty()) {
         render::draw_text(ui.renderer(), ui.body_font(),
                           "** 沒有符合資格的職業，請按 ESC 重新分配屬性 **",
@@ -174,7 +243,7 @@ void draw_class_screen(const RollerState& r, const render::UI& ui,
                                        ui.theme().highlight.r,
                                        ui.theme().highlight.g,
                                        ui.theme().highlight.b, 200);
-                SDL_Rect hl{x + 16, yy - 4, w - 32, line};
+                SDL_Rect hl{x + 16, yy - 4, list_w, line};
                 SDL_RenderFillRect(ui.renderer(), &hl);
             }
             SDL_Color c = (static_cast<int>(i) == r.cursor)
@@ -185,6 +254,63 @@ void draw_class_screen(const RollerState& r, const render::UI& ui,
                           kKlassLabels[ki]);
             render::draw_text(ui.renderer(), ui.body_font(), buf,
                               x + 40, yy, c);
+        }
+
+        // Lore tooltip for currently focused class
+        if (r.cursor < static_cast<int>(eligible_indices.size())) {
+            int ki = eligible_indices[r.cursor];
+            int lore_x = x + list_w + 40;
+            int lore_y = y + 80;
+            int lore_w = w - list_w - 80;
+            render::draw_text(ui.renderer(), ui.body_font(),
+                              std::string("● ") + kKlassLabels[ki],
+                              lore_x, lore_y, ui.theme().accent);
+            lore_y += ui.body_font().line_height() + 12;
+
+            // Manual word-wrap (same algorithm as draw_pick_list)
+            std::string text = kKlassLore[ki];
+            const int max_chars = (lore_w - 20) / 18;
+            std::string line_buf;
+            int char_count = 0;
+            auto flush = [&]() {
+                if (!line_buf.empty()) {
+                    render::draw_text(ui.renderer(), ui.body_font(), line_buf,
+                                      lore_x, lore_y, ui.theme().text);
+                    lore_y += ui.body_font().line_height() + 4;
+                    line_buf.clear();
+                    char_count = 0;
+                }
+            };
+            std::size_t bi = 0;
+            while (bi < text.size()) {
+                unsigned char ch = static_cast<unsigned char>(text[bi]);
+                int byte_len = 1, cw = 1;
+                if (ch >= 0xF0) { byte_len = 4; cw = 2; }
+                else if (ch >= 0xE0) { byte_len = 3; cw = 2; }
+                else if (ch >= 0xC0) { byte_len = 2; cw = 1; }
+                if (char_count + cw > max_chars) flush();
+                line_buf.append(text, bi, byte_len);
+                char_count += cw;
+                bi += byte_len;
+            }
+            flush();
+
+            // Show requirements
+            lore_y += 8;
+            const char* req = "";
+            switch (static_cast<core::Klass>(ki)) {
+                case core::Klass::Fighter: req = "需求：力量 11+"; break;
+                case core::Klass::Mage:    req = "需求：智力 11+"; break;
+                case core::Klass::Priest:  req = "需求：信仰 11+ / 非中立"; break;
+                case core::Klass::Thief:   req = "需求：敏捷 11+ / 非善良"; break;
+                case core::Klass::Bishop:  req = "需求：智力 12+ 信仰 12+ / 非中立"; break;
+                case core::Klass::Samurai: req = "需求：力量 15 智力 11 信仰 10 體力 14 敏捷 10 / 非邪惡"; break;
+                case core::Klass::Lord:    req = "需求：力 15 智 12 信 12 體 15 敏 14 幸 15 / 必須善良"; break;
+                case core::Klass::Ninja:   req = "需求：所有屬性 15+ / 必須邪惡 (v3.2 修正)"; break;
+                default: break;
+            }
+            render::draw_text(ui.renderer(), ui.small_font(), req,
+                              lore_x, lore_y, ui.theme().dim);
         }
     }
     ui.present();
@@ -245,6 +371,7 @@ bool roller_tick(RollerState& r, State& state, const SDL_Event* event,
         case RollerStep::Race: {
             std::vector<std::string> opts;
             for (auto s : kRaceLabels) opts.emplace_back(s);
+            std::vector<const char*> lore(kRaceLore.begin(), kRaceLore.end());
             if (event && event->type == SDL_KEYDOWN) {
                 SDL_Keycode k = event->key.keysym.sym;
                 if (k == SDLK_ESCAPE) { cancel(); return false; }
@@ -256,7 +383,7 @@ bool roller_tick(RollerState& r, State& state, const SDL_Event* event,
                     r.cursor = 0;
                 }
             }
-            draw_pick_list(r, ui, "建立角色 — 選擇種族", opts);
+            draw_pick_list(r, ui, "建立角色 — 選擇種族", opts, lore);
             return true;
         }
 
@@ -335,7 +462,7 @@ bool roller_tick(RollerState& r, State& state, const SDL_Event* event,
                     r.step = RollerStep::Done;
                 }
             }
-            draw_class_screen(r, ui, eligible);
+            draw_class_screen_with_lore(r, ui, eligible);
             return true;
         }
 
