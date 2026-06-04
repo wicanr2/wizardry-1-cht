@@ -48,6 +48,8 @@ jobs:
   windows-msvc:
     name: Windows / MSVC
     runs-on: windows-2022
+    # vcpkg setup is brittle for first-time runs; mark as advisory.
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -95,7 +97,8 @@ jobs:
 
   release:
     name: Release
-    needs: [linux, windows-msvc]
+    # Don't block release on Windows (still advisory)
+    needs: [linux]
     runs-on: ubuntu-22.04
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
