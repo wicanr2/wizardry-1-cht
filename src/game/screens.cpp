@@ -346,9 +346,24 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 for (int i = 0; i < 6; ++i) core::set_action(state.combat, i, parry);
             }
 
-            // Available spells for the active caster
+            // Available spells for the active caster — full W1 catalogue.
             static const char* kSpellList[] = {
-                "HALITO", "MAHALITO", "KATINO", "DIOS", "BADIOS", "TILTOWAIT"
+                // Mage L1-7
+                "HALITO", "MOGREF", "KATINO", "DUMAPIC",
+                "DILTO", "SOPIC",
+                "MAHALITO", "MOLITO",
+                "DALTO", "LAHALITO", "MORLIS",
+                "MADALTO", "MAKANITO", "MAMORLIS",
+                "HAMAN", "LAKANITO", "ZILWAN", "MASOPIC",
+                "MAHAMAN", "TILTOWAIT", "MALOR",
+                // Priest L1-7
+                "KALKI", "DIOS", "BADIOS", "MILWA", "PORFIC",
+                "CALFO", "MANIFO", "MATU", "MONTINO",
+                "LOMILWA", "DIALKO", "LATUMAPIC", "BAMATU",
+                "DIAL", "BADIAL", "LATUMOFIS", "MAPORFIC",
+                "DIALMA", "BADIALMA", "LITOKAN", "KANDI", "DI",
+                "LORTO", "MADI", "MABADI", "LOKTOFEIT",
+                "MALIKTO", "KADORTO", "MOGATO", "LABADI",
             };
             static int spell_cursor = 0;
             static int target_cursor = 0;
@@ -426,8 +441,11 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                     }
                 } else if (cb.phase == core::CombatPhase::PickSpell) {
                     int n = static_cast<int>(std::size(kSpellList));
-                    if (k == SDLK_UP) spell_cursor = (spell_cursor - 1 + n) % n;
-                    if (k == SDLK_DOWN) spell_cursor = (spell_cursor + 1) % n;
+                    const int cols = 7;
+                    if (k == SDLK_UP) spell_cursor = (spell_cursor - cols + n) % n;
+                    if (k == SDLK_DOWN) spell_cursor = (spell_cursor + cols) % n;
+                    if (k == SDLK_LEFT) spell_cursor = (spell_cursor - 1 + n) % n;
+                    if (k == SDLK_RIGHT) spell_cursor = (spell_cursor + 1) % n;
                     if (k == SDLK_RETURN) {
                         cb.actions[cb.active_party_member].spell_name = kSpellList[spell_cursor];
                         cb.phase = core::CombatPhase::PickTarget;
@@ -535,14 +553,19 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 yy += ui.small_font().line_height() + 4;
             }
 
-            // Log panel - bottom
+            // Log panel - bottom; hide log when picking spell to make room.
             int log_y = party_y + 240;
             int log_h = 720 - log_y - 60;
-            ui.draw_message_panel(kPadX, log_y, 1280 - 2 * kPadX, log_h,
-                                  std::vector<std::string>(
-                                      state.combat.log.end() -
-                                          std::min<int>(8, state.combat.log.size()),
-                                      state.combat.log.end()));
+            if (cb.phase == core::CombatPhase::PickSpell) {
+                // Draw an empty frame for the spell-picker overlay area
+                ui.draw_frame(kPadX, log_y, 1280 - 2 * kPadX, log_h);
+            } else {
+                ui.draw_message_panel(kPadX, log_y, 1280 - 2 * kPadX, log_h,
+                                      std::vector<std::string>(
+                                          state.combat.log.end() -
+                                              std::min<int>(8, state.combat.log.size()),
+                                          state.combat.log.end()));
+            }
 
             // Action prompt panel (replaces or augments log when picking)
             if (cb.outcome == core::CombatOutcome::Ongoing) {
@@ -555,28 +578,29 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                     render::draw_text(ui.renderer(), ui.body_font(), prompt_buf,
                                       kPadX + 8, log_y + log_h - 36, ui.theme().accent);
                 } else if (cb.phase == core::CombatPhase::PickSpell && caster) {
-                    const char* kSpellList[] = {
-                        "HALITO", "MAHALITO", "KATINO", "DIOS", "BADIOS", "TILTOWAIT"
-                    };
                     int n = static_cast<int>(std::size(kSpellList));
                     char prompt_buf[120];
                     std::snprintf(prompt_buf, sizeof(prompt_buf),
-                                  "%s 選擇法術（↑↓ 選擇  Enter 確認）：",
-                                  caster->name.c_str());
-                    render::draw_text(ui.renderer(), ui.body_font(), prompt_buf,
-                                      kPadX + 8, log_y + 10, ui.theme().accent);
-                    int spell_cursor_local = spell_cursor;
+                                  "%s 選擇法術（↑↓ ←→ 選擇  Enter 確認，%d 個）：",
+                                  caster->name.c_str(), n);
+                    render::draw_text(ui.renderer(), ui.small_font(), prompt_buf,
+                                      kPadX + 8, log_y + 6, ui.theme().accent);
+                    // 7 columns × 8 rows = 56 slots, fits 51 with margin
+                    const int cols = 7;
+                    const int col_w = (1280 - 2 * kPadX) / cols;
                     for (int i = 0; i < n; ++i) {
-                        SDL_Color col = (i == spell_cursor_local)
+                        int r = i / cols;
+                        int co = i % cols;
+                        SDL_Color col = (i == spell_cursor)
                                             ? SDL_Color{255, 255, 0, 255}
                                             : ui.theme().text;
                         char b2[64];
-                        std::snprintf(b2, sizeof(b2), "%s %s",
-                                      i == spell_cursor_local ? "→" : "  ",
+                        std::snprintf(b2, sizeof(b2), "%s%s",
+                                      i == spell_cursor ? "▸" : "  ",
                                       kSpellList[i]);
-                        render::draw_text(ui.renderer(), ui.body_font(), b2,
-                                          kPadX + 24 + (i % 3) * 240,
-                                          log_y + 40 + (i / 3) * 32,
+                        render::draw_text(ui.renderer(), ui.small_font(), b2,
+                                          kPadX + 14 + co * col_w,
+                                          log_y + 26 + r * 16,
                                           col);
                     }
                 } else if (cb.phase == core::CombatPhase::PickTarget && caster) {
