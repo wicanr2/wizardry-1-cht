@@ -39,10 +39,15 @@
 | 全部里程碑 (M1~M8) | **8 / 8 完成** |
 | v0.2 城鎮系統 | 訓練場 / 商店 / 旅館 / 神殿 全部 done |
 | v0.3 進階功能 | 酒館編隊 / 戰鬥法術 / **Eye-of-Map** / Camp 存檔 done |
-| **v0.4 美術升級** | **55 個 PCE-CD 怪物立繪** (CC-BY-SA from wizardry.wiki.gg) |
+| v0.4 美術升級 | **55 個 PCE-CD 怪物立繪** (CC-BY-SA from wizardry.wiki.gg) |
+| v0.5 手冊對校 | Roller lore tooltip + Inn 房型對齊 Sir-tech 手冊 |
+| **v0.6 法術完整** | **全 51 咒語接 effect**（HALITO ~ TILTOWAIT，含 v3.2 修正） |
+| v0.7 W6 .pic 研究 | docs/W6_PIC_FORMAT.md 格式分析筆記 |
+| v0.8 Apple II LZ | LZDECOMP + HGR→PNG Python toolchain |
+| **v0.9 翻譯** | **91% 中文化**（413/454 keys） |
+| **v1.0 CI** | **GitHub Actions Linux + Windows matrix，自動 release** |
 | 法術 / 怪物 / 道具表 | 51 法術 + 30 怪物 + 30 道具，含中文名 |
-| 字串中文化 | 275 / 423 keys ＝ **65%** |
-| 單元測試 | 6 / 6 ctest 全綠 |
+| 單元測試 | 7 / 7 ctest 全綠 |
 | 平台 | Linux x86_64 / Windows 10+ |
 | 字型 | Noto Sans CJK TC（OFL 授權，可打包） |
 | GitHub | [wicanr2/wizardry-1-cht](https://github.com/wicanr2/wizardry-1-cht) |
