@@ -52,6 +52,9 @@
 <a name="quick-start"></a>
 ## ⚡ 快速開始
 
+[![build](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/build.yml/badge.svg)](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/build.yml)
+[![sanity](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/sanity.yml/badge.svg)](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/sanity.yml)
+
 ### 依賴
 
 - C++17 編譯器（gcc 11+ / clang 14+ / MSVC 19.30+）
