@@ -1,0 +1,25 @@
+{
+  "_comment": "迷宮 B1F — 教學佔位版本。實際 W1 B1F 需從 disk image 抽取。0=open,1=wall,2=door,3=hidden_door。座標 (x,y) 起點 (0,0) 左上。",
+  "level": 1,
+  "size": 20,
+  "start_x": 0,
+  "start_y": 0,
+  "start_facing": "north",
+  "stairs_up": [{"x":0,"y":0}],
+  "stairs_down": [{"x":17,"y":3}],
+  "walls": {
+    "_format": "Per cell [west, south, east, north]. Default 1 (wall) on outer edges.",
+    "default_outer": "wall"
+  },
+  "features": [
+    {"x":5,  "y":5,  "type":"message", "text":"洞穴的入口潮濕陰冷。"},
+    {"x":10, "y":2,  "type":"encounter", "monster_ids":[1,2], "min":1, "max":3},
+    {"x":17, "y":3,  "type":"stairs_down"},
+    {"x":3,  "y":17, "type":"spinner"},
+    {"x":12, "y":15, "type":"chute", "destination_level":2},
+    {"x":8,  "y":10, "type":"teleporter", "dest":{"x":1,"y":1,"level":1}}
+  ],
+  "fights_random": [
+    [1,2,3,4,5]
+  ]
+}

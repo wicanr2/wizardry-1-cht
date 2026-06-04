@@ -1,0 +1,4951 @@
+{
+  "summary": {
+    "files_scanned": 38,
+    "total_string_occurrences": 444,
+    "unique_strings": 334,
+    "total_source_chars": 6234,
+    "by_category": {
+      "border": 12,
+      "error": 8,
+      "menu_opt": 21,
+      "message": 117,
+      "prompt": 36,
+      "punct_only": 13,
+      "title": 127
+    },
+    "by_file": {
+      "SHOPS2.TEXT.txt": 21,
+      "WIZ.TEXT.txt": 3,
+      "WIZ2.TEXT.txt": 4,
+      "COMBAT.TEXT.txt": 0,
+      "COMBAT2.TEXT.txt": 0,
+      "COMBAT3.TEXT.txt": 0,
+      "COMBAT4.TEXT.txt": 0,
+      "COMBAT5.TEXT.txt": 0,
+      "SHOPS.TEXT.txt": 43,
+      "SPECIALS.TEXT.txt": 14,
+      "SPECIALS2.TEXT.txt": 2,
+      "UTILITIE2.TEXT.txt": 23,
+      "UTILITIE3.TEXT.txt": 0,
+      "CAMP.TEXT.txt": 25,
+      "CAMP2.TEXT.txt": 50,
+      "CASTLE.TEXT.txt": 29,
+      "CASTLE2.TEXT.txt": 39,
+      "REWARDS.TEXT.txt": 0,
+      "REWARDS2.TEXT.txt": 0,
+      "ROLLER.TEXT.txt": 64,
+      "RUNNER.TEXT.txt": 0,
+      "RUNNER2.TEXT.txt": 0,
+      "UTILITIE.TEXT.txt": 57,
+      "CLRPICT.TEXT.txt": 0,
+      "CLRRECT.TEXT.txt": 0,
+      "DRAWLINE.TEXT.txt": 0,
+      "KEYAVAIL.TEXT.txt": 0,
+      "MVCURSOR.TEXT.txt": 0,
+      "PRGRCHR.TEXT.txt": 0,
+      "RANDOM.TEXT.txt": 0,
+      "CHKSYNCH.TEXT.txt": 0,
+      "LZDECOMP.TEXT.txt": 0,
+      "OPTIONS.TEXT.txt": 9,
+      "SCREENPT.TEXT.txt": 0,
+      "STARTUP.TEXT.txt": 0,
+      "TITLELOA.TEXT.txt": 3,
+      "WIZUTILB.TEXT.txt": 17,
+      "WIZUTILC.TEXT.txt": 41
+    }
+  },
+  "catalogue": [
+    {
+      "key": "blank",
+      "source": " ",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "WIZ2.TEXT.txt",
+          "line": 277
+        },
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "WIZ2.TEXT.txt",
+          "line": 326
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 245
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 279
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 338
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 386
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 388
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 434
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 285
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 292
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 50
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 59
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 121
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 425
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 167
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 171
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 222
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 224
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 251
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 253
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 355
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 361
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 374
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 397
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 399
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 22
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 28
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 34
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 114
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 119
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 524
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 498
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 500
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 659
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 661
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 702
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 706
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 709
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_11",
+      "source": "           ",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 47
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_13",
+      "source": "*",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 117
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_17",
+      "source": "+",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 370
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_19",
+      "source": "+--------------------------------------+",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 64
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 76
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_23",
+      "source": "----------------------------------------",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 486
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 512
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_25",
+      "source": " - ",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 184
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_3",
+      "source": "** ",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 25
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 296
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 18
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_4",
+      "source": " **",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 25
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 296
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 18
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_6",
+      "source": ".",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 153
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_7",
+      "source": "-",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 289
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 115
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 173
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 359
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 372
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 26
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 269
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_9",
+      "source": "   ",
+      "category": "border",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 538
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 305
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "bad_alignment",
+      "source": "** BAD ALIGNMENT **",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 177
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "char_has_non_transferable_items",
+      "source": "** CHAR HAS NON-TRANSFERABLE ITEMS **",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 166
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "congratulations",
+      "source": "*** CONGRATULATIONS ***",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 278
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "no_one",
+      "source": "** NO ONE **",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 68
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "out",
+      "source": "** OUT **",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 172
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "who",
+      "source": "** WHO? **",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 168
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "write_protect_cheat",
+      "source": "** WRITE-PROTECT CHEAT! **",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 184
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_have_died_of_old_age",
+      "source": "** YOU HAVE DIED OF OLD AGE **",
+      "category": "error",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 322
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "a_dd_a_member",
+      "source": "A)DD A MEMBER",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 109
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "c_hange_class_or",
+      "source": "C)HANGE  CLASS, OR",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 671
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "c_hange_names_l_eave",
+      "source": "C)HANGE NAMES       L)EAVE ",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 547
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "d_elete_this_character",
+      "source": "D)ELETE  THIS CHARACTER,",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 669
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "f_orward_or_b_ack_go_to_the",
+      "source": "F)ORWARD OR B)ACK, GO TO THE",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 387
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "i_dentified_or_l_eave",
+      "source": "        I)DENTIFIED, OR L)EAVE",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 581
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "l_eave",
+      "source": "L)EAVE",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 181
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "l_eave_the_camp",
+      "source": "L)EAVE THE CAMP.",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 400
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "l_eave_when_ready",
+      "source": "L)EAVE WHEN READY",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 55
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 214
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 312
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "m_ake_scenario_disk_u_pdate",
+      "source": "M)AKE SCENARIO DISK U)PDATE",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 545
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "p_ick_up",
+      "source": "P)ICK UP, ",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 180
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "r_ead_spell_books_or_l_eave",
+      "source": "R)EAD SPELL BOOKS, OR L)EAVE.",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 229
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "r_ecover_t_ransfer_b_ackup",
+      "source": "R)ECOVER  T)RANSFER B)ACKUP",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 543
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "r_emove_a_member",
+      "source": "R)EMOVE A MEMBER,",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 118
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "r_eroll_this_character",
+      "source": "R)EROLL  THIS CHARACTER,",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 670
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "s_ell_an_item_have_an_item",
+      "source": "        S)ELL AN ITEM, HAVE AN ITEM",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 579
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "s_tart_game_u_tilities_t_itle_page",
+      "source": "  S)TART GAME  U)TILITIES  T)ITLE PAGE",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 53
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "s_tart_or_l_eave",
+      "source": "S)TART, OR L)EAVE",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 389
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "t_o_or_f_rom_backup",
+      "source": "T)O OR F)ROM BACKUP",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 97
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "u_ncursed_or_have_an_item",
+      "source": "        U)NCURSED,  OR HAVE AN ITEM",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 580
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "u_se_an_item_i_dentify_an_item",
+      "source": "U)SE AN ITEM, I)DENTIFY AN ITEM,",
+      "category": "menu_opt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 250
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "a_the_stables_free",
+      "source": "[A] THE STABLES (FREE!)",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 40
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "additionally_you_will_be_initiated",
+      "source": "ADDITIONALLY, YOU WILL BE INITIATED",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 289
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "amulet_is_now_back_in_the_hands_of",
+      "source": "AMULET IS NOW BACK IN THE HANDS OF",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 282
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "andrew_greenberg_inc_robert_woodhead",
+      "source": "ANDREW GREENBERG, INC & ROBERT WOODHEAD,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 36
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "are_you_sure_you_want_to",
+      "source": "ARE YOU SURE YOU WANT TO ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 555
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "as_the_scenario_the_backup_was_made",
+      "source": "AS THE SCENARIO THE BACKUP WAS MADE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 47
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "b_cots_10_gp_week",
+      "source": "[B] COTS. 10 GP/WEEK.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 41
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "be_sure_new_2_old_1_copy_2_1",
+      "source": "BE SURE : NEW=2, OLD=1; COPY 2 -> 1!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 479
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "boon_of_250_000_experience_points",
+      "source": "BOON OF 250,000 EXPERIENCE POINTS",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 286
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "c_economy_rooms_50_gp_week",
+      "source": "[C] ECONOMY ROOMS. 50 GP/WEEK.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 42
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "character_name_class_ac_hits_status",
+      "source": " # CHARACTER NAME  CLASS AC HITS STATUS",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 390
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 69
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "chevron_of_this_rank_evermore",
+      "source": "CHEVRON (>) OF THIS RANK EVERMORE.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 292
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "copyright_c_1981_all_rights_reserved_by",
+      "source": "COPYRIGHT (C)1981 ALL RIGHTS RESERVED BY",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 35
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "countries_and_illegal_distribution_may",
+      "source": "COUNTRIES,  AND ILLEGAL DISTRIBUTION MAY",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 39
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "current_party",
+      "source": "+----------- CURRENT PARTY: -----------+",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 67
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "d_merchant_suites_200_gp_week",
+      "source": "[D] MERCHANT SUITES. 200 GP/WEEK.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 43
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "drive_2_and_a_formatted_diskette_in",
+      "source": "DRIVE 2,  AND A  FORMATTED DISKETTE IN",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 338
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "dungeon_you_are_lost_forever",
+      "source": "DUNGEON - YOU ARE LOST FOREVER!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 340
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "e_royal_suites_500_gp_week",
+      "source": "[E] ROYAL SUITES. 500 GP/WEEK.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 44
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "enchantments_prevent_spell_from_working",
+      "source": "ENCHANTMENTS PREVENT SPELL FROM WORKING",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 287
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "enter_letter_of_char_to_move_or",
+      "source": "ENTER LETTER OF CHAR TO MOVE, OR",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 194
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "enter_nsewu_or_d_to_set_displacement",
+      "source": "ENTER NSEWU OR D TO  SET DISPLACEMENT,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 436
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "enter_the_current_name_of_the_char",
+      "source": "ENTER THE CURRENT NAME OF  THE CHAR",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 347
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "enter_to_alter_a_score",
+      "source": "ENTER [+,-] TO ALTER A SCORE,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 238
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "equip_cursed_unknown_unusable",
+      "source": "*=EQUIP, -=CURSED, ?=UNKNOWN, #=UNUSABLE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 79
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "equipment_and_most_of_your_money_to",
+      "source": "EQUIPMENT AND MOST OF YOUR MONEY TO",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 295
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "esc_to_go_on_when_points_used_up",
+      "source": "      [ESC] TO GO ON WHEN POINTS USED UP",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 240
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "experience_points_to_make_level",
+      "source": "EXPERIENCE POINTS TO MAKE LEVEL",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 409
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "g_pool_party_gold",
+      "source": "[G] POOL PARTY GOLD.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 46
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "gold_3",
+      "source": "               GOLD  ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 442
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "grounds_c_astle_or_l_eave_the_game",
+      "source": "GROUNDS, C)ASTLE,  OR L)EAVE THE GAME.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 220
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "hit_points",
+      "source": "         HIT POINTS (",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 435
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "however_you_must_give_up_all_your",
+      "source": "HOWEVER, YOU MUST GIVE UP ALL YOUR",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 294
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "in_drive_1_and_press_return_to_save",
+      "source": "IN DRIVE 1 AND PRESS [RETURN] TO SAVE.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 71
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "in_return_for_this_he_grants_you_a",
+      "source": "IN RETURN FOR THIS, HE GRANTS YOU A",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 285
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "inc_this_program_is_protected_under",
+      "source": "INC.  THIS PROGRAM  IS  PROTECTED  UNDER",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 37
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "into_the_overlord_s_honor_guard_and",
+      "source": "INTO THE OVERLORD'S HONOR GUARD AND",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 290
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "loaded_now_place_a_formatted_diskette",
+      "source": "LOADED! NOW PLACE A FORMATTED DISKETTE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 70
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "mage_spells_left",
+      "source": "MAGE   SPELLS LEFT = ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 115
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "master_duplicate_in_drv_1_press_ret",
+      "source": " MASTER/DUPLICATE IN DRV 1, PRESS [RET]",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 408
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "name_already_in_use",
+      "source": "NAME ALREADY IN USE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 362
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "note_chars_must_be_live_in_castle",
+      "source": "NOTE - CHARS MUST BE LIVE & IN CASTLE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 192
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "now_flip_both_diskettes_so_we_can_copy",
+      "source": "NOW FLIP BOTH DISKETTES SO WE CAN COPY",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 500
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "old_boot_side_in_drive_1",
+      "source": "      OLD BOOT SIDE IN DRIVE 1",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 477
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "or_press_ret_for_castle",
+      "source": "OR PRESS [RET] FOR CASTLE.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 712
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "or_press_return_to_exit",
+      "source": "OR PRESS [RETURN] TO EXIT",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 195
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "or_press_return_to_leave",
+      "source": "OR PRESS [RETURN] TO LEAVE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 128
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "or_q_uit_the_game",
+      "source": "OR Q)UIT THE GAME           ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "WIZ.TEXT.txt",
+          "line": 488
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "or_return_to_leave",
+      "source": "    OR [RETURN] TO LEAVE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 48
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "passwords_do_not_match",
+      "source": "PASSWORDS DO NOT MATCH",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 386
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "pay_for_your_initiation",
+      "source": "PAY FOR YOUR INITIATION.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 296
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "place_backup_diskette_in_drive_1",
+      "source": "PLACE BACKUP DISKETTE IN DRIVE 1,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 18
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "place_boot_disk_in_drive_1_press_return",
+      "source": "PLACE BOOT DISK IN DRIVE 1, PRESS RETURN",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 162
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "place_new_boot_side_in_drive_2",
+      "source": "PLACE NEW BOOT SIDE IN DRIVE 2",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 476
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "place_original_master_scenario_side_in",
+      "source": "PLACE ORIGINAL MASTER SCENARIO SIDE IN",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 337
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "place_scenario_in_drive_1_press_return",
+      "source": "PLACE SCENARIO IN DRIVE 1, PRESS RETURN",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 191
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "pool_g_old_div_ide_gold",
+      "source": "POOL G)OLD, DIV)IDE GOLD,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 223
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_any_key_to_continue",
+      "source": "PRESS ANY KEY TO CONTINUE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 442
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_letter_to_change_class",
+      "source": "PRESS [LETTER] TO CHANGE CLASS",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 597
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_ret_to_begin_or_esc_to_exit",
+      "source": " PRESS [RET] TO BEGIN OR [ESC] TO EXIT",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 282
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_ret_to_leave",
+      "source": "  PRESS [RET] TO LEAVE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 672
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_return_for_more_wizardry",
+      "source": "PRESS [RETURN] FOR MORE WIZARDRY    ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "WIZ.TEXT.txt",
+          "line": 486
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_return_honored_ones",
+      "source": "PRESS [RETURN], HONORED ONES",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 298
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_return_to_leave",
+      "source": "PRESS [RETURN] TO LEAVE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 477
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "priest_spells_left",
+      "source": "PRIEST SPELLS LEFT = ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 125
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "punch_write_protect_notch_on_boot_side",
+      "source": "PUNCH WRITE-PROTECT NOTCH ON BOOT SIDE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 473
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "remember_original_2_new_1",
+      "source": "REMEMBER : ORIGINAL=2, NEW=1",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 341
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "remember_to_put_a_write_protect_tab_on",
+      "source": "REMEMBER TO PUT A WRITE-PROTECT TAB ON",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 530
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "result_in_civil_liability_and_criminal",
+      "source": "RESULT IN CIVIL  LIABILITY  AND CRIMINAL",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 40
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "ret_to_go_to_next_score",
+      "source": "      [RET] TO GO TO NEXT SCORE,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 239
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "ret_to_not_change_class",
+      "source": "[RET] TO NOT CHANGE CLASS",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 598
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "return_to_the_c_astle_or_l_eave_the",
+      "source": "RETURN TO THE C)ASTLE, OR L)EAVE THE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 213
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "roster_to_see_roster",
+      "source": "\"*ROSTER\" TO SEE ROSTER,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 710
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "scenario_master_in_drv_1_press_ret",
+      "source": " SCENARIO MASTER IN DRV 1, PRESS [RET]",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 391
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "scenario_must_be_made_off_same_master",
+      "source": "SCENARIO MUST BE MADE OFF SAME MASTER",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 46
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "see_a_member",
+      "source": "#) SEE A MEMBER,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 120
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "squares_down",
+      "source": "# SQUARES DOWN  =",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 442
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "squares_east",
+      "source": "# SQUARES EAST  =",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 440
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "squares_north",
+      "source": "# SQUARES NORTH =",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 441
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "squares_north_of_the_stairs",
+      "source": " SQUARES NORTH OF THE STAIRS",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 306
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "tavern_b_oltac_s_trading_post_the",
+      "source": "TAVERN, B)OLTAC'S TRADING POST, THE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 529
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "temple_of_c_ant_or_the_e_dge_of_town",
+      "source": "TEMPLE OF C)ANT, OR THE E)DGE OF TOWN.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 530
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "thank_you_for_playing_wizardry",
+      "source": "THANK YOU FOR PLAYING WIZARDRY!     ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "WIZ.TEXT.txt",
+          "line": 495
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "that_character_does_not_exist_do_you",
+      "source": "THAT CHARACTER DOES NOT EXIST. DO YOU",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 464
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "the_a_dventurer_s_inn_g_ilgamesh_s",
+      "source": "THE A)DVENTURER'S INN, G)ILGAMESH'S",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 528
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "the_donation_will_be",
+      "source": "THE DONATION WILL BE ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 90
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "the_laws_of_the_united_states_and_other",
+      "source": "THE LAWS OF THE UNITED STATES  AND OTHER",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 38
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "the_notch_you_punched",
+      "source": "THE NOTCH YOU PUNCHED!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 531
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "the_party_is_facing",
+      "source": "THE PARTY IS FACING ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 294
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "then_return_to_teleport_or_esc_to",
+      "source": "THEN [RETURN] TO TELEPORT, OR [ESC] TO",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 437
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "then_the_new_name_or_press_ret",
+      "source": "& THEN THE NEW NAME. OR PRESS [RET]",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 348
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "thus_will_be_entitled_to_wear_the",
+      "source": "THUS WILL BE ENTITLED TO WEAR THE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 291
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "to_a_painful_death",
+      "source": "TO A PAINFUL DEATH!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 358
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "to_inspect_or",
+      "source": "#) TO INSPECT, OR",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 398
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "to_the_castle_and",
+      "source": "TO THE CASTLE, AND ",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 307
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "welcome_to_the_temple_of_radiant_cant",
+      "source": " WELCOME TO THE TEMPLE OF RADIANT CANT!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 35
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "welcome_to_the_trading_post",
+      "source": "       WELCOME TO THE TRADING POST",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 603
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "will_you_invoke_the_special_power_of",
+      "source": "WILL YOU INVOKE THE SPECIAL POWER OF",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 53
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_appeared_in_the_castle_moat_and",
+      "source": "YOU APPEARED IN THE CASTLE MOAT AND",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 374
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_bounced_back_to_where_you_were",
+      "source": "YOU BOUNCED BACK TO WHERE YOU WERE!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 397
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_have_6_press_ret",
+      "source": "YOU HAVE 6 - PRESS [RET]",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 79
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_have_completed_your_quest_and_the",
+      "source": "YOU HAVE COMPLETED YOUR QUEST AND THE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 281
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_landed_in_solid_rock_outside_the",
+      "source": "YOU LANDED IN SOLID ROCK OUTSIDE THE",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 339
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_learned_new_spells",
+      "source": "YOU LEARNED NEW SPELLS!!!!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 293
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_made_a_level",
+      "source": "YOU MADE A LEVEL!",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 366
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_materialized_in_mid_air_and_fell",
+      "source": "YOU MATERIALIZED IN MID-AIR AND FELL",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 357
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_e_quip_d_rop_an_item_t_rade",
+      "source": "YOU MAY E)QUIP, D)ROP AN ITEM, T)RADE,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 221
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_enter_a_character_name_to_add",
+      "source": "YOU MAY ENTER A CHARACTER NAME TO ADD,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 705
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_enter_the_m_aze_the_t_raining",
+      "source": "YOU MAY ENTER THE M)AZE, THE T)RAINING",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 219
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_go_to_the_t_raining_grounds",
+      "source": "YOU MAY GO TO THE T)RAINING GROUNDS,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 212
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_i_nspect_this_character",
+      "source": "YOU MAY I)NSPECT THIS CHARACTER,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 668
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_l_eave_when_ready",
+      "source": "YOU MAY L)EAVE WHEN READY",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 513
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_p_urchase_scroll",
+      "source": "YOU MAY P)URCHASE, SCROLL",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 385
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_pool_g_old_b_uy_an_item",
+      "source": "YOU MAY POOL G)OLD, B)UY  AN ITEM,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 578
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_r_eorder_e_quip_d_isband",
+      "source": "YOU MAY R)EORDER, E)QUIP, D)ISBAND,",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 396
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_see_m_age_or_p_riest_spell_books",
+      "source": "YOU MAY SEE M)AGE OR P)RIEST SPELL BOOKS",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 136
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "your_benificent_ruler_trebor",
+      "source": "YOUR BENIFICENT RULER, TREBOR.",
+      "category": "message",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 283
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "amt_of_gold",
+      "source": "AMT OF GOLD ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 59
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "choose_a_class",
+      "source": "CHOOSE A CLASS >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 315
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "choose_a_race",
+      "source": "CHOOSE A RACE >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 209
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "choose_an_alignment",
+      "source": "CHOOSE AN ALIGNMENT >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 349
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "confirm_y_n",
+      "source": "CONFIRM (Y/N) ?",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 412
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "drop_item_0_exit",
+      "source": "DROP ITEM (0=EXIT) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 560
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "find_who",
+      "source": "FIND WHO ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 260
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "found",
+      "source": "FOUND:",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 52
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "get_who_0_exit",
+      "source": "GET WHO (0=EXIT) >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 90
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "identify_what_item_0_exit",
+      "source": "IDENTIFY WHAT ITEM (0=EXIT) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 173
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "keep_this_character_y_n",
+      "source": "KEEP THIS CHARACTER (Y/N)? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 372
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "name_2",
+      "source": "NAME >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 716
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "names_in_use",
+      "source": "NAMES IN USE:",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 485
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "options",
+      "source": "OPTIONS: ",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 178
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "party_location",
+      "source": "PARTY LOCATION:",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 292
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "party_teleport",
+      "source": "PARTY TELEPORT:",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 434
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "password",
+      "source": "PASSWORD >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 382
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 209
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "purchase_which_item_return_exits",
+      "source": "PURCHASE WHICH ITEM ([RETURN] EXITS) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 306
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "recover_these_y_n",
+      "source": "RECOVER THESE (Y/N) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 33
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "return_exits",
+      "source": " ([RETURN] EXITS) >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "WIZ2.TEXT.txt",
+          "line": 356
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "unusable_item_confirm_buy_y_n",
+      "source": "UNUSABLE ITEM - CONFIRM BUY (Y/N) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 330
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "use_item_0_exit",
+      "source": "USE ITEM (0=EXIT) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 508
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "version_3_2_of_18_mar_2026_ser",
+      "source": " VERSION 3.2 OF 18-MAR-2026  SER:",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 48
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "want_to_create_it_y_n",
+      "source": "WANT TO CREATE IT (Y/N) ?> ",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 465
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "we_have",
+      "source": ". WE HAVE:",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 38
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "what_item_ret_exits",
+      "source": "WHAT ITEM ([RET] EXITS) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 93
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "what_spell",
+      "source": "WHAT SPELL ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 413
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "which_do_you_wish_identified",
+      "source": "WHICH DO YOU WISH IDENTIFIED ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 555
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "which_do_you_wish_to_sell",
+      "source": "WHICH DO YOU WISH TO SELL ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 545
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "which_do_you_wish_uncursed",
+      "source": "WHICH DO YOU WISH UNCURSED ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 550
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "which_one_ret_for_none",
+      "source": "WHICH ONE ([RET] FOR NONE) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 224
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "who_are_you_helping",
+      "source": "WHO ARE YOU HELPING ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 37
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "who_will_join",
+      "source": "WHO WILL JOIN ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 150
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "y_n",
+      "source": " (Y/N) ? >",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 59
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "y_n_2",
+      "source": " (Y/N) ?",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 557
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may_go_to",
+      "source": "YOU MAY GO TO:",
+      "category": "prompt",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 525
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_10",
+      "source": ">>",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 540
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_12",
+      "source": "/",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 56
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 65
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 289
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 201
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 437
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 120
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 130
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_14",
+      "source": "#",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 123
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_15",
+      "source": "\"",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 153
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_16",
+      "source": "\" ",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 157
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_18",
+      "source": " !",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 53
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_2",
+      "source": ") ",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "WIZ2.TEXT.txt",
+          "line": 348
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 43
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 551
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 569
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 204
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 294
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 344
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 593
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_20",
+      "source": ",",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 113
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_21",
+      "source": "@",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 203
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 343
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_22",
+      "source": "<--",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 259
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_24",
+      "source": " (",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 502
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 663
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_5",
+      "source": ")",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 243
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 277
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 287
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 531
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 112
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 439
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 504
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 665
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "blank_8",
+      "source": "?",
+      "category": "punct_only",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 294
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 125
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "a",
+      "source": "A",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS2.TEXT.txt",
+          "line": 356
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 293
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 592
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 219
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 317
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 183
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 200
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "ac",
+      "source": "AC",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 203
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "age",
+      "source": "AGE ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 194
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "agility",
+      "source": "AGILITY",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 197
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 313
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 183
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "alignment",
+      "source": "ALIGNMENT",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 186
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "armor",
+      "source": "ARMOR",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 259
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "at_east",
+      "source": "AT EAST ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 243
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "b",
+      "source": "B",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 400
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "bcpkodg",
+      "source": ">!$#&*<?BCPKODG@",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 156
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "below_it",
+      "source": "BELOW IT.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 310
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "camp",
+      "source": "CAMP",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 388
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "cant_find_char",
+      "source": "CANT FIND CHAR",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 378
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "cast_on_who",
+      "source": "CAST ON WHO",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 225
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "cast_s_pells",
+      "source": "CAST S)PELLS,",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 252
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "castle",
+      "source": "! CASTLE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 51
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "chant",
+      "source": "CHANT - ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 129
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "chicken_out",
+      "source": "CHICKEN OUT!",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 438
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "choose_an_option",
+      "source": "CHOOSE AN OPTION",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 541
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "class",
+      "source": "CLASS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 187
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "cured",
+      "source": "CURED ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 285
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "d",
+      "source": "D",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 464
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "drive_1",
+      "source": "DRIVE 1.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 339
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "e",
+      "source": "E",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 462
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "each",
+      "source": "EACH!",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 287
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "east",
+      "source": "EAST.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 297
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "entering",
+      "source": "ENTERING",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 172
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "exit",
+      "source": "EXIT",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 513
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "exp",
+      "source": "EXP ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 184
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "for",
+      "source": " FOR ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 265
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "for_the_ultimate",
+      "source": "FOR THE ULTIMATE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "TITLELOA.TEXT.txt",
+          "line": 92
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "from",
+      "source": "FROM.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 48
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "game",
+      "source": "GAME.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1A.DSK",
+          "file": "SHOPS2.TEXT.txt",
+          "line": 214
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "gauntlets",
+      "source": "GAUNTLETS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 262
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "gold",
+      "source": " GOLD",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 384
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 576
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "gold_2",
+      "source": "GOLD ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 179
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "helmet",
+      "source": "HELMET",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 261
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "hits",
+      "source": "HITS ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 199
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "hp_now",
+      "source": " HP - NOW ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 287
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "i_q",
+      "source": "I.Q.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 182
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 310
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 180
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "in_fantasy_games",
+      "source": "IN FANTASY GAMES",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "TITLELOA.TEXT.txt",
+          "line": 95
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "in_the_morgue",
+      "source": "IN THE MORGUE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 236
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "inn",
+      "source": "INN",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 22
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "inspect_or_edit",
+      "source": "INSPECT OR EDIT,",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 707
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "invoke",
+      "source": "INVOKE!",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 133
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "is",
+      "source": " IS..",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 265
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "is_healing_up",
+      "source": " IS HEALING UP",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 432
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "is_napping",
+      "source": " IS NAPPING",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 465
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "known_mage_spells",
+      "source": "KNOWN MAGE SPELLS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 106
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "known_priest_spells",
+      "source": "KNOWN PRIEST SPELLS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 93
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "level",
+      "source": "LEVEL ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 192
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "level_2",
+      "source": " LEVEL ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 496
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 657
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "levels",
+      "source": " LEVELS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 309
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "lo",
+      "source": "LO",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 365
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 32
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "locate_bodies",
+      "source": "LOCATE BODIES",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 258
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "looking",
+      "source": "LOOKING",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 172
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "lost_forever",
+      "source": "LOST FOREVER!",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 275
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "luck",
+      "source": "LUCK",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 206
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 314
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 184
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "mage",
+      "source": " MAGE ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 51
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "market",
+      "source": "MARKET",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 552
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "misc_item",
+      "source": "MISC. ITEM",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 263
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "more",
+      "source": " MORE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 408
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "moving",
+      "source": "MOVING ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 206
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "murmur",
+      "source": "MURMUR - ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 127
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "n",
+      "source": "N",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 460
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "name",
+      "source": "NAME ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 173
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "name_changed",
+      "source": "NAME CHANGED!",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 392
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "north",
+      "source": ", NORTH ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 245
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "north_2",
+      "source": "NORTH.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 296
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "of_level",
+      "source": " OF LEVEL ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 247
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "of_old_diskette",
+      "source": "OF OLD DISKETTE.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 474
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "or_l_eave",
+      "source": "OR L)EAVE.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 137
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "out_2",
+      "source": " OUT",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 507
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "piety",
+      "source": "PIETY",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 187
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 311
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 181
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "points",
+      "source": "POINTS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 177
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "poison",
+      "source": "POISON",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 378
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 37
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "poisoned",
+      "source": " & POISONED",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 45
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 211
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "pray",
+      "source": "PRAY - ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 131
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "prepare_yourself",
+      "source": "PREPARE YOURSELF",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "TITLELOA.TEXT.txt",
+          "line": 89
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "press_ret",
+      "source": "PRESS [RET]",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 255
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "priest",
+      "source": "PRIEST ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP.TEXT.txt",
+          "line": 60
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "probably_drowned",
+      "source": "PROBABLY DROWNED!",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 375
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "prosecution",
+      "source": "PROSECUTION.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "OPTIONS.TEXT.txt",
+          "line": 41
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "race",
+      "source": "RACE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 176
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "recovering",
+      "source": "RECOVERING",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 119
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "reordering",
+      "source": "REORDERING",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 525
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "s",
+      "source": "S",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 399
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 461
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "saved",
+      "source": " SAVED",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 130
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "scenario_data",
+      "source": "SCENARIO.DATA",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 396
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS.TEXT.txt",
+          "line": 413
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 194
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 344
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 384
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 503
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 509
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "scenario_mesgs",
+      "source": "SCENARIO.MESGS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SPECIALS2.TEXT.txt",
+          "line": 606
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "scenario_sides",
+      "source": "SCENARIO SIDES.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 501
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "select",
+      "source": "SELECT ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 256
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "shield",
+      "source": "SHIELD",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 260
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "shop",
+      "source": "SHOP",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 265
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "south",
+      "source": "SOUTH.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 298
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "squares_east_and",
+      "source": " SQUARES EAST AND",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 304
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "status",
+      "source": "STATUS ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 208
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "still_with_us",
+      "source": "STILL WITH US!",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 240
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "strength",
+      "source": "STRENGTH",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 177
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 309
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 179
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "system_pascal",
+      "source": "SYSTEM.PASCAL",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 157
+        },
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 164
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "tavern",
+      "source": "TAVERN",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 239
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "temple",
+      "source": "TEMPLE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 275
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "the_soul_of",
+      "source": "THE SOUL OF ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 263
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "to_exit",
+      "source": "TO EXIT.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 349
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "trade_with",
+      "source": "TRADE WITH",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 123
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "training_grounds",
+      "source": "TRAINING GROUNDS",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 703
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "u",
+      "source": "U",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 465
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "unusable",
+      "source": " UNUSABLE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 248
+        },
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 282
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "update_aborted",
+      "source": "UPDATE ABORTED",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILC.TEXT.txt",
+          "line": 415
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "vitality",
+      "source": "VITALITY",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 190
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 312
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "ROLLER.TEXT.txt",
+          "line": 182
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "w",
+      "source": "W",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 463
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "weapon",
+      "source": "WEAPON",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 258
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "welcome",
+      "source": "      WELCOME ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 571
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "welcome_2",
+      "source": "   WELCOME ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 36
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "west",
+      "source": "WEST.",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 299
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "who_will_enter",
+      "source": "WHO WILL ENTER",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 605
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "who_will_leave",
+      "source": "WHO WILL LEAVE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 201
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "who_will_stay",
+      "source": "WHO WILL STAY",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 25
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "who_will_tithe",
+      "source": "WHO WILL TITHE",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 93
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "x",
+      "source": "X",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1E.DSK",
+          "file": "WIZUTILB.TEXT.txt",
+          "line": 215
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_are",
+      "source": "YOU ARE ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "UTILITIE.TEXT.txt",
+          "line": 302
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_gained",
+      "source": "YOU GAINED ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 355
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_have",
+      "source": "YOU HAVE ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 382
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_have_2",
+      "source": "     YOU HAVE ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "SHOPS.TEXT.txt",
+          "line": 574
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_lost",
+      "source": "YOU LOST ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 344
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_may",
+      "source": "YOU MAY ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CAMP2.TEXT.txt",
+          "line": 264
+        },
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE.TEXT.txt",
+          "line": 106
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "you_need",
+      "source": "YOU NEED ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1C.DSK",
+          "file": "CASTLE2.TEXT.txt",
+          "line": 405
+        }
+      ],
+      "translation": ""
+    },
+    {
+      "key": "your",
+      "source": "YOUR ",
+      "category": "title",
+      "occurrences": [
+        {
+          "disk": "Wiz1B.DSK",
+          "file": "UTILITIE2.TEXT.txt",
+          "line": 54
+        }
+      ],
+      "translation": ""
+    }
+  ]
+}

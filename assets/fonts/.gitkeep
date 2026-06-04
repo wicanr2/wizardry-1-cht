@@ -1,0 +1,2 @@
+# Font files are NOT committed to the repo (Noto Sans CJK is 19MB).
+# Run `tools/fetch_assets.sh` to populate this directory.

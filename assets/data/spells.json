@@ -1,0 +1,66 @@
+[
+  {"name":"HALITO",   "school":"mage",  "level":1, "type":1, "group":1, "combat_only":true,  "description":"小型火焰，造成 1d8 傷害"},
+  {"name":"MOGREF",   "school":"mage",  "level":1, "type":0, "group":2, "combat_only":false, "description":"術者 AC -2"},
+  {"name":"KATINO",   "school":"mage",  "level":1, "type":2, "group":3, "combat_only":true,  "description":"使一群敵人陷入睡眠"},
+  {"name":"DUMAPIC",  "school":"mage",  "level":1, "type":0, "group":4, "combat_only":false, "description":"顯示目前位置與朝向"},
+
+  {"name":"DILTO",    "school":"mage",  "level":2, "type":2, "group":5, "combat_only":true,  "description":"使一群敵人 AC -2"},
+  {"name":"SOPIC",    "school":"mage",  "level":2, "type":0, "group":6, "combat_only":true,  "description":"術者半透明，AC -4"},
+
+  {"name":"MAHALITO", "school":"mage",  "level":3, "type":1, "group":1, "combat_only":true,  "description":"火球，4d6 群體傷害"},
+  {"name":"MOLITO",   "school":"mage",  "level":3, "type":1, "group":7, "combat_only":true,  "description":"魔法飛彈，3d6 對單群"},
+
+  {"name":"DALTO",    "school":"mage",  "level":4, "type":1, "group":1, "combat_only":true,  "description":"冰錐，6d6 群體傷害"},
+  {"name":"LAHALITO", "school":"mage",  "level":4, "type":1, "group":1, "combat_only":true,  "description":"巨型火焰，6d6 群體"},
+  {"name":"MORLIS",   "school":"mage",  "level":4, "type":2, "group":5, "combat_only":true,  "description":"使一群敵人恐懼，AC +2"},
+
+  {"name":"MADALTO",  "school":"mage",  "level":5, "type":1, "group":1, "combat_only":true,  "description":"暴雪，8d8 群體傷害"},
+  {"name":"MAKANITO", "school":"mage",  "level":5, "type":2, "group":8, "combat_only":true,  "description":"窒息雲，殺死 8 級以下敵人"},
+  {"name":"MAMORLIS", "school":"mage",  "level":5, "type":2, "group":5, "combat_only":true,  "description":"全體恐懼，全敵 AC +4"},
+
+  {"name":"HAMAN",    "school":"mage",  "level":6, "type":0, "group":9, "combat_only":true,  "description":"七種隨機效果，老化術者"},
+  {"name":"LAKANITO", "school":"mage",  "level":6, "type":2, "group":8, "combat_only":true,  "description":"真空，立即殺死無抗性者"},
+  {"name":"ZILWAN",   "school":"mage",  "level":6, "type":1, "group":7, "combat_only":true,  "description":"消滅單個不死生物"},
+  {"name":"MASOPIC",  "school":"mage",  "level":6, "type":0, "group":6, "combat_only":true,  "description":"全隊半透明，AC -4"},
+
+  {"name":"MAHAMAN",  "school":"mage",  "level":7, "type":0, "group":9, "combat_only":false, "description":"七種強力效果，老化一年"},
+  {"name":"TILTOWAIT","school":"mage",  "level":7, "type":1, "group":1, "combat_only":true,  "description":"核爆，10d15 群體破壞"},
+  {"name":"MALOR",    "school":"mage",  "level":7, "type":0, "group":10,"combat_only":false, "description":"瞬間移動，戰鬥外可指定座標"},
+
+  {"name":"KALKI",    "school":"priest","level":1, "type":0, "group":11,"combat_only":false, "description":"全隊 AC -1"},
+  {"name":"DIOS",     "school":"priest","level":1, "type":0, "group":12,"combat_only":false, "description":"治療 1d8 HP"},
+  {"name":"BADIOS",   "school":"priest","level":1, "type":1, "group":12,"combat_only":true,  "description":"造成 1d8 傷害"},
+  {"name":"MILWA",    "school":"priest","level":1, "type":0, "group":13,"combat_only":false, "description":"短暫照明，秘門可見"},
+  {"name":"PORFIC",   "school":"priest","level":1, "type":0, "group":11,"combat_only":true,  "description":"術者 AC -4"},
+
+  {"name":"CALFO",    "school":"priest","level":2, "type":0, "group":14,"combat_only":false, "description":"鑑定寶箱陷阱"},
+  {"name":"MANIFO",   "school":"priest","level":2, "type":2, "group":15,"combat_only":true,  "description":"使一群敵人麻痺"},
+  {"name":"MATU",     "school":"priest","level":2, "type":0, "group":11,"combat_only":true,  "description":"全隊 AC -2"},
+  {"name":"MONTINO",  "school":"priest","level":2, "type":2, "group":16,"combat_only":true,  "description":"使一群敵人靜默無法施法"},
+
+  {"name":"LOMILWA",  "school":"priest","level":3, "type":0, "group":13,"combat_only":false, "description":"長時間照明"},
+  {"name":"DIALKO",   "school":"priest","level":3, "type":0, "group":17,"combat_only":false, "description":"解除麻痺與睡眠"},
+  {"name":"LATUMAPIC","school":"priest","level":3, "type":0, "group":18,"combat_only":false, "description":"看清怪物真名 (v3.2 已修正生效)"},
+  {"name":"BAMATU",   "school":"priest","level":3, "type":0, "group":11,"combat_only":true,  "description":"全隊 AC -4"},
+
+  {"name":"DIAL",     "school":"priest","level":4, "type":0, "group":12,"combat_only":false, "description":"治療 2d8 HP"},
+  {"name":"BADIAL",   "school":"priest","level":4, "type":1, "group":12,"combat_only":true,  "description":"造成 2d8 傷害"},
+  {"name":"LATUMOFIS","school":"priest","level":4, "type":0, "group":17,"combat_only":false, "description":"解除中毒"},
+  {"name":"MAPORFIC", "school":"priest","level":4, "type":0, "group":11,"combat_only":false, "description":"全隊 AC -2 直到下次出戰"},
+
+  {"name":"DIALMA",   "school":"priest","level":5, "type":0, "group":12,"combat_only":false, "description":"治療 3d8 HP"},
+  {"name":"BADIALMA", "school":"priest","level":5, "type":1, "group":12,"combat_only":true,  "description":"造成 3d8 傷害"},
+  {"name":"LITOKAN",  "school":"priest","level":5, "type":1, "group":1, "combat_only":true,  "description":"火柱，3d8 群體"},
+  {"name":"KANDI",    "school":"priest","level":5, "type":0, "group":18,"combat_only":false, "description":"指出名字角色目前所在"},
+  {"name":"DI",       "school":"priest","level":5, "type":0, "group":19,"combat_only":false, "description":"復活屍體（會老化）"},
+
+  {"name":"LORTO",    "school":"priest","level":6, "type":1, "group":7, "combat_only":true,  "description":"飛刃，6d6 群體"},
+  {"name":"MADI",     "school":"priest","level":6, "type":0, "group":12,"combat_only":false, "description":"全治療，回滿 HP"},
+  {"name":"MABADI",   "school":"priest","level":6, "type":1, "group":12,"combat_only":true,  "description":"使單體只剩 1 HP"},
+  {"name":"LOKTOFEIT","school":"priest","level":6, "type":0, "group":10,"combat_only":false, "description":"傳送全隊回城（會掉裝備金幣）"},
+
+  {"name":"MALIKTO",  "school":"priest","level":7, "type":1, "group":1, "combat_only":true,  "description":"審判，12d6 全敵"},
+  {"name":"KADORTO",  "school":"priest","level":7, "type":0, "group":19,"combat_only":false, "description":"復活灰燼"},
+  {"name":"MOGATO",   "school":"priest","level":7, "type":0, "group":11,"combat_only":true,  "description":"全隊抵抗魔法"},
+  {"name":"LABADI",   "school":"priest","level":7, "type":1, "group":12,"combat_only":true,  "description":"奪命，造成等於目標 HP 的傷害"}
+]
