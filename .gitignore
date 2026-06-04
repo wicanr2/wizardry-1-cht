@@ -47,3 +47,7 @@ Thumbs.db
 assets/fonts/*.ttc
 assets/fonts/*.ttf
 !assets/fonts/.gitkeep
+
+# PCE-CD sprites (CC-BY-SA, fetched by tools/fetch_pcecd_sprites.sh)
+assets/sprites/monsters_pcecd/*.png
+assets/sprites/monsters_pcecd/LICENSE.txt

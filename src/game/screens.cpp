@@ -8,6 +8,7 @@
 
 #include "core/maze.h"
 #include "core/rules.h"
+#include "game/camp.h"
 #include "game/inn.h"
 #include "game/roller.h"
 #include "game/shop.h"
@@ -15,6 +16,7 @@
 #include "i18n/tr.h"
 #include "render/auto_map.h"
 #include "render/maze_view.h"
+#include "render/sprite.h"
 #include "render/ui.h"
 
 namespace wiz::game {
@@ -258,6 +260,8 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 } else if (k == SDLK_SPACE) {
                     state.push_message("** 遭遇敵人！**");
                     state.change_scene(Scene::Combat);
+                } else if (k == SDLK_c) {
+                    state.change_scene(Scene::Camp);
                 }
                 render::reveal_from(state.maze, state.camera);
                 state.dirty = true;
@@ -330,6 +334,7 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 kobold.hp_dice_n = 1;
                 kobold.hp_dice_d = 4;
                 kobold.experience = 415;
+                kobold.sprite_path = "sprites/monsters_pcecd/PCECD_MS_Kobold.png";
                 core::CombatGroup g;
                 g.prototype = kobold;
                 g.total_count = 3;
@@ -474,13 +479,24 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
             ui.clear();
             ui.draw_title_bar("戰鬥");
 
-            // Enemy panel — top
-            ui.draw_frame(kPadX, kPadY, 1280 - 2 * kPadX, 140);
-            int yy = kPadY + 14;
+            // Enemy panel — top (with sprite column)
+            const int enemy_panel_h = 140;
+            ui.draw_frame(kPadX, kPadY, 1280 - 2 * kPadX, enemy_panel_h);
+            const int sprite_w = 90;
             int xx = kPadX + 14;
+            int yy = kPadY + 14;
             render::draw_text(ui.renderer(), ui.body_font(), "敵方", xx, yy, ui.theme().accent);
             yy += ui.body_font().line_height() + 4;
             for (auto& g : state.combat.groups) {
+                // Sprite (left)
+                if (!g.prototype.sprite_path.empty()) {
+                    std::string full = std::string(WIZ_ASSETS_DIR) + "/" + g.prototype.sprite_path;
+                    SDL_Texture* tex = render::load_sprite(ui.renderer(), full);
+                    if (tex) {
+                        SDL_Rect dst{xx, yy - 4, sprite_w, enemy_panel_h - 60};
+                        render::draw_sprite_fit(ui.renderer(), tex, dst);
+                    }
+                }
                 char line[200];
                 std::snprintf(line, sizeof(line), "  %d × %s   (AC %d, HP約 %d)",
                               int(g.alive_count),
@@ -488,7 +504,8 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                                              g.prototype.name_unknown.c_str(),
                               int(g.prototype.armor_class),
                               int(g.hp_total));
-                render::draw_text(ui.renderer(), ui.body_font(), line, xx, yy,
+                render::draw_text(ui.renderer(), ui.body_font(), line,
+                                  xx + sprite_w + 16, yy,
                                   g.alive_count > 0 ? ui.theme().text : ui.theme().dim);
                 yy += ui.body_font().line_height() + 2;
             }
@@ -642,37 +659,9 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
             return temple_tick(state, event, ui);
         case Scene::Tavern:
             return tavern_tick(state, event, ui);
+        case Scene::Camp:
+            return camp_tick(state, event, ui);
 
-        case Scene::Camp: {
-            const char* key = "castle";
-            switch (state.scene) {
-                case Scene::Tavern: key = "tavern"; break;
-                case Scene::Shop:   key = "shop"; break;
-                case Scene::Temple: key = "temple"; break;
-                case Scene::Inn:    key = "inn"; break;
-                case Scene::TrainingGrounds: key = "training_grounds"; break;
-                case Scene::Camp:   key = "camp"; break;
-                case Scene::Maze:   key = "maze"; break;
-                case Scene::Combat: key = "combat"; break;
-                default: break;
-            }
-            ui.clear();
-            ui.draw_title_bar(std::string(i18n::tr(key)));
-            ui.draw_message_panel(160, 200, 960, 320,
-                                  {"此場景仍在實作中。",
-                                   "按 ESC 回到上一畫面。",
-                                   "",
-                                   "(M5/M6/M7 後續會把這裡填滿。)"});
-            ui.draw_status_bar("ESC 返回");
-            ui.present();
-            if (event && event->type == SDL_KEYDOWN &&
-                event->key.keysym.sym == SDLK_ESCAPE) {
-                state.change_scene(state.scene == Scene::Maze
-                                       ? Scene::EdgeOfTown
-                                       : Scene::Castle);
-            }
-            return true;
-        }
         case Scene::Quit:
             return false;
     }

@@ -6,12 +6,14 @@
 
 #include "core/character.h"
 #include "core/rules.h"
+#include "game/camp.h"
 #include "game/screens.h"
 #include "game/state.h"
 #include "i18n/tr.h"
 #include "render/text.h"
 #include "render/ui.h"
 #include "render/window.h"
+#include "save/gamesave.h"
 
 namespace {
 
@@ -93,9 +95,15 @@ int main(int argc, char* argv[]) {
     wiz::render::UI ui(window.renderer(), &title_font, &body_font, &small_font);
 
     wiz::game::State state;
-    seed_demo_party(state);
-    state.push_message("巫術繁中版 v0.1 開機完成。");
-    state.push_message("Tip: 按任意鍵離開標題畫面。");
+    const std::string save_path = wiz::game::default_save_path();
+    if (wiz::save::load_game(state, save_path)) {
+        state.push_message(std::string("讀取存檔：") + save_path);
+        state.push_message("巫術繁中版 v0.3 — 歡迎回來。");
+    } else {
+        seed_demo_party(state);
+        state.push_message("巫術繁中版 v0.3 開機完成（新遊戲）。");
+        state.push_message("Tip: 在迷宮按 C 進營地存檔。");
+    }
 
     bool running = true;
     while (running) {

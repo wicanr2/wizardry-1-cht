@@ -37,6 +37,9 @@ struct Monster {
     std::uint8_t unaffected_mask = 0;
     std::array<std::uint8_t, 16> weapon_vs_type3{};
     std::array<std::uint8_t, 16> special_attacks{};
+
+    // Path to a PCE-CD sprite asset, relative to assets dir, or empty.
+    std::string sprite_path;
 };
 
 }  // namespace wiz::core
