@@ -71,7 +71,11 @@
 
 ### 下載
 
-**[📦 v1.0 Release（Linux x86_64）](https://github.com/wicanr2/wizardry-1-cht/releases/tag/v1.0)**
+**[📦 最新 v1.7 Release](https://github.com/wicanr2/wizardry-1-cht/releases/tag/v1.7)**：
+- 🐧 `wizardry-cht-linux.tar.gz` (Linux x86_64, ~435 KB)
+- 🪟 `wizardry-cht-windows.zip` (Windows x64, ~425 KB)
+
+含全 30 隻 PCE-CD 怪物立繪、F1 操作說明、11 個音效、100% 中文化。背景音樂（4 軌, ~17 MB）由 `tools/fetch_music.sh` 抓。
 
 或從源碼編譯：
 
