@@ -111,10 +111,12 @@ jobs:
 
   release:
     name: Release
-    # Don't block release on Windows (still advisory)
-    needs: [linux]
+    # Wait for both build jobs so Windows artifact lands in the release.
+    # windows-msvc has continue-on-error so Release still runs if Windows fails.
+    needs: [linux, windows-msvc]
+    # Always run, even if windows-msvc was skipped/failed (continue-on-error)
+    if: always() && startsWith(github.ref, 'refs/tags/v') && needs.linux.result == 'success'
     runs-on: ubuntu-22.04
-    if: startsWith(github.ref, 'refs/tags/v')
     permissions:
       contents: write  # required for softprops/action-gh-release to create releases
     steps:
@@ -128,8 +130,9 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          # Only require Linux artifact; Windows zip is included if present.
+          # Linux required; Windows zip included if its job succeeded.
           files: |
             artifacts/wizardry-cht-linux/wizardry-cht-linux.tar.gz
+            artifacts/wizardry-cht-windows/wizardry-cht-windows.zip
           fail_on_unmatched_files: false
           generate_release_notes: true
