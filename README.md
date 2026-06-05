@@ -59,6 +59,13 @@
 
 [![build](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/build.yml/badge.svg)](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/build.yml)
 [![sanity](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/sanity.yml/badge.svg)](https://github.com/wicanr2/wizardry-1-cht/actions/workflows/sanity.yml)
+[![release](https://img.shields.io/github/v/release/wicanr2/wizardry-1-cht)](https://github.com/wicanr2/wizardry-1-cht/releases/latest)
+
+### 下載
+
+**[📦 v1.0 Release（Linux x86_64）](https://github.com/wicanr2/wizardry-1-cht/releases/tag/v1.0)**
+
+或從源碼編譯：
 
 ### 依賴
 
