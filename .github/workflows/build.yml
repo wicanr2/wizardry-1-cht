@@ -37,7 +37,13 @@ jobs:
           cp build/src/wizardry_cht dist/wizardry-cht-linux/
           cp -r assets dist/wizardry-cht-linux/
           cp -r src/i18n dist/wizardry-cht-linux/i18n
-          cp README.md LICENSE dist/wizardry-cht-linux/
+          cp README.md LICENSE RELEASE_NOTES_v1.0.md 2>/dev/null dist/wizardry-cht-linux/ || \
+            cp README.md LICENSE dist/wizardry-cht-linux/
+          # Include fetch scripts so users can pull optional assets (font, music)
+          mkdir -p dist/wizardry-cht-linux/tools
+          cp tools/fetch_assets.sh tools/fetch_music.sh tools/fetch_pcecd_sprites.sh \
+             dist/wizardry-cht-linux/tools/
+          chmod +x dist/wizardry-cht-linux/tools/*.sh
           tar -czf wizardry-cht-linux.tar.gz -C dist wizardry-cht-linux
 
       - name: Upload artifact
