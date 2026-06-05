@@ -66,6 +66,14 @@ target_compile_definitions(wizgame PRIVATE
 
 add_executable(wizardry_cht main.cpp)
 target_link_libraries(wizardry_cht PRIVATE wizgame wizcore wizrender)
+
+# Dev tool — snapshot the combat scene for a specified monster id.
+add_executable(snapshot_combat ${CMAKE_SOURCE_DIR}/tools/snapshot_combat.cpp)
+target_link_libraries(snapshot_combat PRIVATE wizgame wizcore wizrender)
+target_compile_definitions(snapshot_combat PRIVATE
+  WIZ_ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
+  WIZ_I18N_FILE="${CMAKE_SOURCE_DIR}/src/i18n/strings_zh_tw.json"
+)
 target_compile_definitions(wizardry_cht PRIVATE
   WIZ_ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
   WIZ_I18N_FILE="${CMAKE_SOURCE_DIR}/src/i18n/strings_zh_tw.json"

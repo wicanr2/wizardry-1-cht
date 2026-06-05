@@ -326,6 +326,7 @@
     "hp": "4d8",
     "exp": 42880,
     "lvl": 9,
-    "name_zh": "鬼火"
+    "name_zh": "鬼火",
+    "sprite": "sprites/monsters_pcecd/PCECD_MS_Will_o_Wisp.png"
   }
 ]
