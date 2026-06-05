@@ -11,28 +11,34 @@ else()
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-find_package(SDL2 REQUIRED)
-find_package(SDL2_ttf QUIET)
-find_package(SDL2_image QUIET)
-find_package(SDL2_mixer QUIET)
-if(NOT SDL2_MIXER_LIBRARY)
-  find_library(SDL2_MIXER_LIBRARY NAMES SDL2_mixer)
-endif()
-if(NOT SDL2_MIXER_INCLUDE_DIR)
-  find_path(SDL2_MIXER_INCLUDE_DIR NAMES SDL_mixer.h PATH_SUFFIXES SDL2)
+# vcpkg ships proper CMake Config packages; prefer those (CONFIG mode), but
+# fall back to plain find_library on systems where SDL2 is installed via
+# distro package (Ubuntu apt etc.) without Config files.
+
+find_package(SDL2 CONFIG QUIET)
+if(NOT SDL2_FOUND)
+  find_package(SDL2 REQUIRED)
 endif()
 
-# Fallback for distros that ship pkg-config only (Ubuntu 22.04 etc.)
-if(NOT TARGET SDL2_ttf::SDL2_ttf)
+find_package(SDL2_ttf CONFIG QUIET)
+if(NOT SDL2_ttf_FOUND AND NOT TARGET SDL2_ttf::SDL2_ttf)
   find_library(SDL2_TTF_LIBRARY NAMES SDL2_ttf REQUIRED)
   find_path(SDL2_TTF_INCLUDE_DIR NAMES SDL_ttf.h PATH_SUFFIXES SDL2 REQUIRED)
 endif()
-if(NOT TARGET SDL2_image::SDL2_image)
+
+find_package(SDL2_image CONFIG QUIET)
+if(NOT SDL2_image_FOUND AND NOT TARGET SDL2_image::SDL2_image)
   find_library(SDL2_IMAGE_LIBRARY NAMES SDL2_image)
   find_path(SDL2_IMAGE_INCLUDE_DIR NAMES SDL_image.h PATH_SUFFIXES SDL2)
 endif()
 
-find_package(nlohmann_json QUIET)
+find_package(SDL2_mixer CONFIG QUIET)
+if(NOT SDL2_mixer_FOUND AND NOT TARGET SDL2_mixer::SDL2_mixer)
+  find_library(SDL2_MIXER_LIBRARY NAMES SDL2_mixer)
+  find_path(SDL2_MIXER_INCLUDE_DIR NAMES SDL_mixer.h PATH_SUFFIXES SDL2)
+endif()
+
+find_package(nlohmann_json CONFIG QUIET)
 
 add_subdirectory(src)
 

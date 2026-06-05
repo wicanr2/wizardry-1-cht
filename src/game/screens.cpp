@@ -11,6 +11,7 @@
 #include "core/rules.h"
 #include "data/items_db.h"
 #include "game/camp.h"
+#include "game/help.h"
 #include "game/inn.h"
 #include "game/roller.h"
 #include "game/shop.h"
@@ -218,8 +219,31 @@ void switch_music_for_scene(Scene s) {
 
 }  // namespace
 
+static bool scene_tick_dispatch(State& state, const SDL_Event* event,
+                                const render::UI& ui);
+
 bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
     switch_music_for_scene(state.scene);
+
+    // F1 toggles help overlay; any key while overlay shown closes it.
+    if (event && event->type == SDL_KEYDOWN) {
+        if (event->key.keysym.sym == SDLK_F1) {
+            toggle_help();
+            return true;
+        }
+        if (help_active()) {
+            toggle_help();
+            return true;
+        }
+    }
+
+    bool keep = scene_tick_dispatch(state, event, ui);
+    if (help_active()) draw_help(state.scene, ui);
+    return keep;
+}
+
+static bool scene_tick_dispatch(State& state, const SDL_Event* event,
+                                const render::UI& ui) {
     switch (state.scene) {
         case Scene::Title:
             if (event && event->type == SDL_KEYDOWN) {
