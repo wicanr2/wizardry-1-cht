@@ -49,6 +49,7 @@
 | **v1.1 Sprite 對應** | **60 個 PCE-CD sprite bundled，29/30 怪物有專屬立繪** |
 | **v1.2 Camp 法術** | **11 個 out-of-combat 咒語**（DIOS/MADI/DUMAPIC/MILWA/DI...） |
 | **v1.3 BGM** | **SDL_mixer + Kevin MacLeod CC-BY 4 軌**（title/town/maze/combat） |
+| **v1.4 Sprite 全齊** | **30/30 怪物有 PCE-CD 立繪** + snapshot 視覺驗證工具 |
 | 法術 / 怪物 / 道具表 | 51 法術 + 30 怪物 + 30 道具，含中文名 |
 | 單元測試 | 9 / 9 ctest 全綠 |
 | 平台 | Linux x86_64 / Windows 10+ |
