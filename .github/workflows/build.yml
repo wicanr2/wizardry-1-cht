@@ -65,7 +65,12 @@ jobs:
         with:
           vcpkgGitCommitId: 'f7423ee180c4b7f40d43402c2feb3859161ef625'
 
+      # The default `x-gha,readwrite` binary source needs ACTIONS_RUNTIME_TOKEN
+      # which isn't exposed to shell steps. Disable binary caching so vcpkg
+      # builds from source (slower but reliable).
       - name: Install dependencies (vcpkg)
+        env:
+          VCPKG_BINARY_SOURCES: 'clear'
         run: |
           vcpkg install sdl2 sdl2-ttf sdl2-image sdl2-mixer nlohmann-json --triplet x64-windows
         shell: cmd
