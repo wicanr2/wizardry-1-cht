@@ -19,7 +19,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev \
+            libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libsdl2-mixer-dev \
             cmake build-essential nlohmann-json3-dev
 
       - name: Configure
@@ -61,7 +61,7 @@ jobs:
 
       - name: Install dependencies (vcpkg)
         run: |
-          vcpkg install sdl2 sdl2-ttf sdl2-image nlohmann-json --triplet x64-windows
+          vcpkg install sdl2 sdl2-ttf sdl2-image sdl2-mixer nlohmann-json --triplet x64-windows
         shell: cmd
 
       - name: Configure
