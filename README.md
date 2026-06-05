@@ -21,7 +21,8 @@
 9. [台灣 Apple II 老玩家的記憶](#taiwan-1985)
 10. [snafaru v3.2 — 45 年後的 100 項修正](#v32-fixes)
 11. [Technical Deep Dive](#technical-deep-dive)
-12. [License & Credits](#credits)
+12. [📚 中文百科](#knowledge-base)
+13. [License & Credits](#credits)
 
 ---
 
@@ -599,6 +600,27 @@ if (name == "TILTOWAIT") {
 - **跨平台**：Linux 預裝、Windows 可自帶、字型 hint（微調渲染指令）一致
 
 對比：Microsoft 正黑體 / 蘋方都**不可打包**（商業字型，授權限制），PMingLiU（新細明體）老舊且權利不明。
+
+---
+
+<a name="knowledge-base"></a>
+## 📚 中文百科
+
+除了程式碼本身，本專案還整理了一套**繁體中文 Wizardry I 知識庫**——
+把 45 年來分散在英文 wiki、攻略網站、訪談、Sir-tech 手冊裡的資料，
+**全部用繁中重新編寫**。每篇都是 1500–3000 字的百科文章，包含：
+
+| 文件 | 內容 | 適合誰看 |
+|------|------|----------|
+| [`docs/LORE.md`](docs/LORE.md) | 故事與起源 — Trebor 與 Werdna 的關係、護身符傳說、Sir-tech 公司歷史、Greenberg/Woodhead 訪談、為何叫 Mad Overlord | 想了解**為什麼有這個遊戲**的人 |
+| [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md) | 10 層迷宮中文攻略 — B1F〜B10F 路線、Murphy's Ghost 經驗農場、Blue Ribbon、Contra Dextra Avenue、Werdna 戰術 | **卡關**或想**少走冤枉路**的人 |
+| [`docs/MONSTERS.md`](docs/MONSTERS.md) | 30+ 怪物百科 — 中文名 + HP/AC/XP、特殊能力（吸等級、麻痺、群攻）、應對戰術、PCE-CD 立繪歷史 | 想知道**誰可以打、誰要逃跑**的人 |
+| [`docs/SPELLS.md`](docs/SPELLS.md) | 51 法術完整解說 — HA-/MA-/LA-/DA-/DI-/BA- 前綴語法、傷害公式、戰術組合、v3.2 修正 | 想搞懂**為什麼 TILTOWAIT 叫等等！**的人 |
+| [`docs/ITEMS.md`](docs/ITEMS.md) | 道具圖鑑 — 武器/防具/藥水/卷軸/戒指/護符，含 Werdna's Amulet 詛咒機制、Boltac 鑑定價格 | 想避免**穿到詛咒裝備脫不下來**的人 |
+| [`docs/DEV_HISTORY.md`](docs/DEV_HISTORY.md) | 中文化開發史 — v0.3→v1.7 各版本設計決策、踩過的坑（vcpkg pkgconf 404 / xdotool focus / Apple II HGR 詭異設計）、未來方向 | 想做**類似 retro 重寫專案**的開發者 |
+
+> **總計約 25,000 中文字**——是 Wizardry I 史上**最完整的繁體中文百科**。
+> 全部 CC-BY 4.0 授權，歡迎引用、轉載、改寫。
 
 ---
 
