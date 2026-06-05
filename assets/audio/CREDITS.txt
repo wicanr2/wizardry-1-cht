@@ -1,0 +1,12 @@
+Background music — used under Creative Commons Attribution 4.0 International:
+
+  "Mystery Bazaar" Kevin MacLeod (incompetech.com)
+  "Tavern Loop One" Kevin MacLeod (incompetech.com)
+  "Lost Time"      Kevin MacLeod (incompetech.com)
+  "Dauntless"      Kevin MacLeod (incompetech.com)
+
+  Licensed under Creative Commons: By Attribution 4.0
+  http://creativecommons.org/licenses/by/4.0/
+
+If any track fails to load at runtime, the game runs silently.
+Use tools/fetch_music.sh to repopulate the directory.
