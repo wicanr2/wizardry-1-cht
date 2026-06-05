@@ -48,6 +48,12 @@ assets/fonts/*.ttc
 assets/fonts/*.ttf
 !assets/fonts/.gitkeep
 
+# Audio (~17MB total — fetched by tools/fetch_music.sh, CC-BY)
+assets/audio/*.mp3
+assets/audio/*.ogg
+!assets/audio/.gitkeep
+!assets/audio/CREDITS.txt
+
 # PCE-CD sprites — CC-BY-SA 4.0 from wizardry.wiki.gg, OK to bundle in repo.
 # (tools/fetch_pcecd_sprites.sh still available for re-fetching upstream)
 

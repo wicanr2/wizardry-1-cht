@@ -10,6 +10,7 @@
 #include "game/screens.h"
 #include "game/state.h"
 #include "i18n/tr.h"
+#include "render/audio.h"
 #include "render/text.h"
 #include "render/ui.h"
 #include "render/window.h"
@@ -82,6 +83,7 @@ int main(int argc, char* argv[]) {
 #endif
 
     wiz::i18n::load(WIZ_I18N_FILE);
+    wiz::render::audio_init();
 
     const std::string font_path = std::string(WIZ_ASSETS_DIR) + "/fonts/NotoSansCJK-Regular.ttc";
     wiz::render::Font title_font, body_font, small_font;
@@ -118,6 +120,7 @@ int main(int argc, char* argv[]) {
 
     }  // Window + Fonts destroyed before TTF/SDL teardown
 
+    wiz::render::audio_shutdown();
     TTF_Quit();
     SDL_Quit();
     return rc;

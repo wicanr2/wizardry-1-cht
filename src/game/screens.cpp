@@ -16,6 +16,7 @@
 #include "game/shop.h"
 #include "game/tavern.h"
 #include "i18n/tr.h"
+#include "render/audio.h"
 #include "render/auto_map.h"
 #include "render/maze_view.h"
 #include "render/sprite.h"
@@ -184,7 +185,41 @@ bool handle_menu(State& state, const SDL_Event* ev, const render::UI& ui,
 
 }  // namespace
 
+namespace {
+
+const char* music_for(Scene s) {
+    switch (s) {
+        case Scene::Title:           return "audio/title.mp3";
+        case Scene::EdgeOfTown:
+        case Scene::Castle:
+        case Scene::Tavern:
+        case Scene::Shop:
+        case Scene::Temple:
+        case Scene::Inn:
+        case Scene::TrainingGrounds: return "audio/town.mp3";
+        case Scene::Maze:
+        case Scene::Camp:            return "audio/maze.mp3";
+        case Scene::Combat:          return "audio/combat.mp3";
+        default:                     return nullptr;
+    }
+}
+
+void switch_music_for_scene(Scene s) {
+    static Scene last = Scene::Title;
+    static bool first = true;
+    if (!first && last == s) return;
+    first = false;
+    last = s;
+    const char* track = music_for(s);
+    if (!track) return;
+    std::string full = std::string(WIZ_ASSETS_DIR) + "/" + track;
+    render::play_music(full);
+}
+
+}  // namespace
+
 bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
+    switch_music_for_scene(state.scene);
     switch (state.scene) {
         case Scene::Title:
             if (event && event->type == SDL_KEYDOWN) {

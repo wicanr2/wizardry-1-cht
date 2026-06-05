@@ -28,6 +28,7 @@ add_library(wizrender STATIC
   render/maze_view.cpp
   render/auto_map.cpp
   render/sprite.cpp
+  render/audio.cpp
 )
 target_include_directories(wizrender PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -41,6 +42,10 @@ target_link_libraries(wizrender PUBLIC
 )
 if(SDL2_IMAGE_LIBRARY)
   target_link_libraries(wizrender PUBLIC ${SDL2_IMAGE_LIBRARY})
+endif()
+if(SDL2_MIXER_LIBRARY)
+  target_link_libraries(wizrender PUBLIC ${SDL2_MIXER_LIBRARY})
+  target_include_directories(wizrender PUBLIC ${SDL2_MIXER_INCLUDE_DIR})
 endif()
 
 add_library(wizgame STATIC
