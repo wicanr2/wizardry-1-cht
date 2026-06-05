@@ -13,6 +13,7 @@
 #include "game/camp.h"
 #include "game/help.h"
 #include "game/inn.h"
+#include "game/intro.h"
 #include "game/roller.h"
 #include "game/shop.h"
 #include "game/tavern.h"
@@ -248,16 +249,32 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                                 const render::UI& ui) {
     switch (state.scene) {
         case Scene::Title:
+            // Intro overlay takes over when active.
+            if (intro_active()) {
+                intro_tick(state, event, ui);
+                return true;
+            }
             if (event && event->type == SDL_KEYDOWN) {
-                state.change_scene(Scene::EdgeOfTown);
-                state.push_message("歡迎來到瘋王的試煉場。");
+                // First boot (or roster default) shows intro guide.
+                // ESC at title goes straight to EdgeOfTown.
+                if (event->key.keysym.sym == SDLK_ESCAPE) {
+                    state.change_scene(Scene::EdgeOfTown);
+                    state.push_message("歡迎來到瘋王的試煉場。");
+                } else if (event->key.keysym.sym == SDLK_F2 ||
+                           state.roster.used == 0 || true /* always show on first key */) {
+                    // Show intro guide
+                    start_intro();
+                    intro_tick(state, nullptr, ui);
+                    return true;
+                }
             }
             ui.clear();
             ui.draw_title_bar("巫術：瘋王的試煉場");
-            ui.draw_message_panel(280, 280, 720, 160,
-                                  {"Wizardry: Proving Grounds of the Mad Overlord  v3.2 CHT",
+            ui.draw_message_panel(260, 260, 760, 200,
+                                  {"Wizardry I: Proving Grounds of the Mad Overlord  v3.2 CHT",
                                    "",
-                                   "按任意鍵開始 ／ Press any key to begin"});
+                                   "任意鍵：開始新手導覽（按 F1 / F2 隨時叫出說明）",
+                                   "ESC：直接進城鎮邊緣（跳過導覽）"});
             ui.draw_status_bar("");
             ui.present();
             return true;

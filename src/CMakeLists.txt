@@ -89,6 +89,7 @@ add_library(wizgame STATIC
   game/tavern.cpp
   game/camp.cpp
   game/help.cpp
+  game/intro.cpp
   save/gamesave.cpp
 )
 target_include_directories(wizgame PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
@@ -120,6 +121,14 @@ target_compile_definitions(snapshot_help PRIVATE
 add_executable(snapshot_party ${CMAKE_SOURCE_DIR}/tools/snapshot_party.cpp)
 target_link_libraries(snapshot_party PRIVATE wizgame wizcore wizrender)
 target_compile_definitions(snapshot_party PRIVATE
+  WIZ_ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
+  WIZ_I18N_FILE="${CMAKE_SOURCE_DIR}/src/i18n/strings_zh_tw.json"
+)
+
+# Dev tool — snapshot one slide of the new-player intro guide.
+add_executable(snapshot_intro ${CMAKE_SOURCE_DIR}/tools/snapshot_intro.cpp)
+target_link_libraries(snapshot_intro PRIVATE wizgame wizcore wizrender)
+target_compile_definitions(snapshot_intro PRIVATE
   WIZ_ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
   WIZ_I18N_FILE="${CMAKE_SOURCE_DIR}/src/i18n/strings_zh_tw.json"
 )
