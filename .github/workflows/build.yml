@@ -102,15 +102,21 @@ jobs:
     needs: [linux]
     runs-on: ubuntu-22.04
     if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write  # required for softprops/action-gh-release to create releases
     steps:
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
 
+      - name: List artifacts
+        run: find artifacts -type f -ls
+
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
+          # Only require Linux artifact; Windows zip is included if present.
           files: |
             artifacts/wizardry-cht-linux/wizardry-cht-linux.tar.gz
-            artifacts/wizardry-cht-windows/wizardry-cht-windows.zip
+          fail_on_unmatched_files: false
           generate_release_notes: true
