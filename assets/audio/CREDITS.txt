@@ -1,12 +1,18 @@
-Background music — used under Creative Commons Attribution 4.0 International:
+Background music — Kevin MacLeod (incompetech.com),
+licensed under Creative Commons Attribution 4.0 International.
 
-  "Mystery Bazaar" Kevin MacLeod (incompetech.com)
-  "Tavern Loop One" Kevin MacLeod (incompetech.com)
-  "Lost Time"      Kevin MacLeod (incompetech.com)
-  "Dauntless"      Kevin MacLeod (incompetech.com)
+  title.mp3   "Mystery Bazaar" by Kevin MacLeod
+  town.mp3    "Bumbly March"   by Kevin MacLeod
+  maze.mp3    "Lost Time"      by Kevin MacLeod
+  combat.mp3  alternate uplifting track (see tools/fetch_music.sh)
 
-  Licensed under Creative Commons: By Attribution 4.0
-  http://creativecommons.org/licenses/by/4.0/
+  License terms: http://creativecommons.org/licenses/by/4.0/
 
 If any track fails to load at runtime, the game runs silently.
-Use tools/fetch_music.sh to repopulate the directory.
+Use `tools/fetch_music.sh` to repopulate the directory.
+
+---
+
+Sound effects (assets/audio/sfx/*.wav) — procedurally generated with
+ffmpeg lavfi (sine wave + volume envelope). No external attribution
+required. Regenerate with `tools/fetch_sfx.sh`.
