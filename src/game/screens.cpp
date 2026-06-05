@@ -92,11 +92,13 @@ void draw_party_panel(const State& state, const render::UI& ui, int x, int y, in
             int idx = state.party.roster_index[i];
             if (idx < 0 || static_cast<std::size_t>(idx) >= state.roster.used) continue;
             const auto& c = state.roster.chars[idx];
-            char line[128];
-            std::snprintf(line, sizeof(line), "%d  %-16s  %-4s  %2d  %d/%d",
+            // Translate class via i18n catalogue (fighter/mage/priest/... → 戰士/魔法師/牧師/...).
+            std::string_view klass_zh = i18n::tr(core::klass_name(c.klass));
+            char line[160];
+            std::snprintf(line, sizeof(line), "%d  %-16s  %-6.*s  %2d  %d/%d",
                           i + 1,
                           c.name.c_str(),
-                          core::klass_name(c.klass),
+                          static_cast<int>(klass_zh.size()), klass_zh.data(),
                           int(c.armor_class),
                           int(c.hp_left), int(c.hp_max));
             render::draw_text(ui.renderer(), body, line,

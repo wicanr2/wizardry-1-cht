@@ -42,12 +42,12 @@ void seed_demo_party(wiz::game::State& state) {
         ++r.used;
     };
 
-    add("ALOZAR",  Race::Human,  Klass::Fighter, Alignment::Good,    {16,9,10,15,11,10}, 5);
-    add("ARYNN",   Race::Elf,    Klass::Mage,    Alignment::Neutral, {8,18,10,9,12,10},  4);
-    add("BRENDA",  Race::Hobbit, Klass::Thief,   Alignment::Neutral, {9,10,8,11,17,12},  4);
-    add("CYRIL",   Race::Dwarf,  Klass::Priest,  Alignment::Good,    {12,9,17,14,9,11},  4);
-    add("DRAEDA",  Race::Human,  Klass::Bishop,  Alignment::Good,    {11,14,14,12,10,9}, 3);
-    add("ELOWEN",  Race::Elf,    Klass::Samurai, Alignment::Good,    {15,12,11,14,12,10},5);
+    add("阿洛札",  Race::Human,  Klass::Fighter, Alignment::Good,    {16,9,10,15,11,10}, 5);
+    add("艾琳",    Race::Elf,    Klass::Mage,    Alignment::Neutral, {8,18,10,9,12,10},  4);
+    add("布蘭達",  Race::Hobbit, Klass::Thief,   Alignment::Neutral, {9,10,8,11,17,12},  4);
+    add("西里爾",  Race::Dwarf,  Klass::Priest,  Alignment::Good,    {12,9,17,14,9,11},  4);
+    add("德蕾達",  Race::Human,  Klass::Bishop,  Alignment::Good,    {11,14,14,12,10,9}, 3);
+    add("艾蘿溫",  Race::Elf,    Klass::Samurai, Alignment::Good,    {15,12,11,14,12,10},5);
 
     state.party.count = 6;
     for (int i = 0; i < 6; ++i) state.party.roster_index[i] = i;
@@ -71,7 +71,9 @@ int main(int argc, char* argv[]) {
     int rc = 0;
     {
     wiz::render::Window window;
-    if (!window.create({kWidth, kHeight, "Wizardry CHT — 巫術繁中"})) {
+    // Note: SDL window title is rendered by the host window manager which
+    // often doesn't handle UTF-8 well. Keep ASCII to avoid garbled titlebars.
+    if (!window.create({kWidth, kHeight, "Wizardry I CHT (Proving Grounds of the Mad Overlord)"})) {
         TTF_Quit(); SDL_Quit(); return 1;
     }
 
