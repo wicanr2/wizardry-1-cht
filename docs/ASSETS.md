@@ -12,25 +12,27 @@ Wizardry.Code/
 ├── resources/
 │   ├── boot-splash-01.png          # v3.2 啟動畫面
 │   ├── boot-splash-v3.2.png
-│   ├── castle-market-party-03.png  # Apple II HGR 截圖
+│   ├── castle-market-party-03.png  # Apple II HGR (High-Resolution Graphics, 高解析繪圖) 截圖
 │   ├── character-stats-02.png
 │   └── maze-entrance-party-03.png
 ├── latest-disk-images-Wizardry.Code/
-│   ├── Wiz1A.03-Aug-2023.DSK       # ProDOS disk images
-│   ├── Wiz1B.23-Mar-2024.DSK       # 內含原 LZ 壓縮的 title art + maze art
+│   ├── Wiz1A.03-Aug-2023.DSK       # ProDOS disk images (蘋果專業作業系統磁碟映像)
+│   ├── Wiz1B.23-Mar-2024.DSK       # 內含原 LZ (Lempel-Ziv) 壓縮的 title art + maze art
 │   ├── Wiz1C.12-Feb-2026.DSK
 │   └── Wiz1D.17-Mar-2026.DSK
 └── latest-disk-images-System.Startup/
     └── Wiz1E.18-Mar-2026.DSK       # LZDECOMP.TEXT + title screen LZ data
 ```
 
-這些 disk image 含 1981 年 Apple II 原版的所有資料：280×192 HGR title screen、
-迷宮 vector lines、字型 ROM。但格式是 ProDOS block + LZ 壓縮，需要工具抽出。
+這些 disk image（磁碟映像）含 1981 年 Apple II（蘋果二號電腦）原版的所有資料：
+280×192 HGR title screen（高解析開機畫面）、
+迷宮 vector lines（向量線段）、字型 ROM（內建字型唯讀記憶體）。
+但格式是 ProDOS（Apple Professional DOS，蘋果專業作業系統）block + LZ 壓縮，需要工具抽出。
 
 **抽取工具候選**：
-- [CiderPress II](https://ciderpress2.com/) — ProDOS disk reader (Windows/Mac)
-- [ApplePy](https://github.com/jasonpepas/ApplePy) — Python ProDOS lib
-- 自己寫 LZ decompressor（LZDECOMP.TEXT 已有 Pascal/Assembly 原碼可對照）
+- [CiderPress II](https://ciderpress2.com/) — ProDOS disk reader（磁碟讀取器，Windows/Mac）
+- [ApplePy](https://github.com/jasonpepas/ApplePy) — Python 寫的 ProDOS library
+- 自己寫 LZ decompressor（解壓器；LZDECOMP.TEXT 已有 Pascal/Assembly 原碼可對照）
 
 ---
 
@@ -39,14 +41,15 @@ Wizardry.Code/
 **🎯 推薦首選**：[wizardry.wiki.gg](https://wizardry.wiki.gg)
 
 - URL: https://wizardry.wiki.gg/wiki/Category:Proving_Grounds_of_the_Mad_Overlord_PCECD_monster_sprites
-- **94 個怪物 sprite**，全部 64×96 像素 PNG
-- **License: CC-BY-SA 4.0**（可商用、可修改、要署名+同樣授權）
+- **94 個怪物 sprite（角色立繪）**，全部 64×96 像素 PNG
+- **License: CC-BY-SA 4.0**（Creative Commons 創用 CC「姓名標示-相同方式分享 4.0 國際」：可商用、可修改、需署名 + 衍生作須以相同授權釋出）
 - 1-5KB 每張，可直接點擊下載
-- 包含：龍類（Fire/Gas Dragon）、人形（各等級的 Fighter/Mage/Priest/Thief）、
-  不死類（Vampire, Zombie, Ghost）、巨人、惡魔、稀有怪（Vorpal Bunny, Werdna）
+- 包含：龍類（Fire / Gas Dragon，火龍 / 毒氣龍）、人形（各等級的 Fighter / Mage / Priest / Thief，戰士 / 魔法師 / 牧師 / 盜賊）、
+  不死類（Vampire / Zombie / Ghost，吸血鬼 / 殭屍 / 幽靈）、巨人、惡魔、稀有怪（Vorpal Bunny 致命兔、Werdna 沃登納）
 
-這套 sprite 是 1991 年 PC-Engine CD 版本的官方美術，
-比 NES 版精細很多，又有 CC-BY-SA 授權，是最適合 fan project 用的素材。
+這套 sprite 是 1991 年 PC-Engine CD（NEC HuCard 主機 1988 上市，1991 推出 CD-ROM² 增訂版）版本的官方美術，
+比 NES（任天堂 8 位元紅白機，日本稱 Famicom）版精細很多，
+又有 CC-BY-SA 授權，是最適合 fan project（同人 / 粉絲開發專案）用的素材。
 
 整合計畫：
 ```
@@ -76,20 +79,21 @@ assets/sprites/monsters/
 
 ### [davemoore22/sorcery](https://github.com/davemoore22/sorcery)
 
-- 開源 C++ remake，目標就是 W1 Proving Grounds
+- 開源 C++ remake（重製），目標就是 W1 Proving Grounds（瘋王試煉場）
 - 美術來源：
   - **Torio**（pixiv 藝術家 ID 5887541）— 怪物立繪
   - **game-icons.net** — 通用 UI 圖示
-- 音樂：**Kevin MacLeod** (incompetech.com, CC-BY)
-- License: **GPL**（程式碼），美術另計
+- 音樂：**Kevin MacLeod**（凱文・麥克勞德，獨立配樂家；incompetech.com，CC-BY 4.0 創用 CC 姓名標示授權）
+- License: **GPL**（GNU General Public License，GNU 通用公眾授權；屬 copyleft 授權，衍生作須沿用同授權）（程式碼），美術另計
 - 結構：`/gfx`（圖）、`/sfx`（音效）、`/vfx`（視覺特效）
 
-> 注意：sorcery 是 GPL，本專案是 MIT。若要直接引用其資產要評估授權衝突。
+> 注意：sorcery 是 GPL，本專案是 MIT。GPL 的 copyleft 條款會「感染」整個衍生作品，
+> 若要直接引用其資產要評估授權衝突。
 
-### Wizardry I OVA（動畫，1991）
+### Wizardry I OVA（Original Video Animation，原創影像動畫，1991）
 
-- 50:43 分鐘官方動畫，TMS Entertainment 製作
-- archive.org: https://archive.org/details/wizardry-1-ova
+- 50:43 分鐘官方動畫，TMS Entertainment（東京電影新社）製作
+- archive.org（網際網路檔案館）: https://archive.org/details/wizardry-1-ova
 - 330MB，MP4 480p
 - 可截圖當參考素材或片頭/結尾用
 
@@ -99,13 +103,13 @@ assets/sprites/monsters/
 
 | 作品 | 平台 | 特色 |
 |------|------|------|
-| **Digital Eclipse 2024 Remaster** | Steam/Switch/PS/Xbox | 2024 年新美術，**保留原版 byte-level 邏輯**，內建 automap |
-| **Wizardry: The Five Ordeals HD Sprites DLC** | Steam | 150MB 高解析度 sprite pack |
-| **PC-98 / FM Towns 日版** (1985–) | 日本電腦平台 | 日本風格美術重繪，已絕版 |
-| **NES (1987 JP / 1990 NA)** | NES | 8-bit sprite，可從 NES ROM 抽 |
-| **SFC (1999)** | Super Famicom | 16-bit sprite |
-| **GBC (1999)** | Game Boy Color | 簡化版美術 |
-| **PS1 New Generation** | PS1 (2001) | 偽 3D，日版獨佔 |
+| **Digital Eclipse 2024 Remaster**（數位日蝕公司重製版） | Steam / Switch / PS / Xbox | 2024 年新美術，**保留原版 byte-level（位元組級別）邏輯**，內建 automap（自動繪圖） |
+| **Wizardry: The Five Ordeals HD Sprites DLC**（五試煉 HD 立繪追加下載內容） | Steam | 150MB 高解析度 sprite pack（立繪包） |
+| **PC-98 / FM Towns 日版**（NEC 個人電腦 9801 系列 / 富士通 FM Towns，1985–） | 日本電腦平台 | 日本風格美術重繪，已絕版 |
+| **NES (1987 JP / 1990 NA)** | NES（任天堂紅白機 / Family Computer） | 8-bit sprite，可從 NES ROM 抽 |
+| **SFC (1999)** | Super Famicom（任天堂超級紅白機） | 16-bit sprite |
+| **GBC (1999)** | Game Boy Color（任天堂彩色掌機） | 簡化版美術 |
+| **PS1 New Generation**（PlayStation 新世代） | PS1 (2001) | 偽 3D，日版獨佔 |
 
 > **靈感參考**：Spriters Resource 有 [Wizardry V FM-Towns sprites](https://www.spriters-resource.com/fm_towns/wizardryvheartofthemaelstrom/) — 同系列風格延續。
 

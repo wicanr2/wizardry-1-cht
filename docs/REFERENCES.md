@@ -5,10 +5,10 @@
 
 ---
 
-## 1. Sir-tech《Ultimate Wizardry Archives》官方手冊 PDF
+## 1. Sir-tech（賽爾科技）《Ultimate Wizardry Archives》（巫術終極典藏集）官方手冊 PDF
 
 **檔案**: `Ultimate Wizardry Archives_ Game Manuals - Sir-Tech.pdf` (6.8 MB)
-**版本**: Interplay 1998 年再版的合集手冊，內含 W1〜W7 全套
+**版本**: Interplay（卬特普雷遊戲公司）1998 年再版的合集手冊，內含 W1〜W7 全套
 **頁數**: 259 頁
 
 ### 對本專案直接相關章節（W1: Proving Grounds, p5–58）
@@ -29,17 +29,32 @@
 | 33–36 | Edge of Town / Camp | Camp 系統機制 |
 | 52+ | Spells (完整 51 法術) | 法術參考 |
 
-### 重要 lore 摘錄（用於翻譯校對）
+### 重要 lore（背景設定）摘錄（用於翻譯校對）
+
+英文原文後附中譯：
 
 > **Humans** excel at nothing, but have no particular weaknesses, except for a decided lack of piety.
+> **人類**沒有特長，但也沒有明顯的弱點，只是出名地缺乏信仰心。
+
 > **Elves** are intelligent and pious, but not very robust. They excel at intellectual pursuits, and are excellent spell-casters.
+> **精靈**聰明且虔誠，但體格不甚強健。擅長智識追求，是優秀的施法者。
+
 > **Dwarves** are strong and hardy. They love fine weapons and armor and delight in a good fight.
+> **矮人**強壯而堅韌，喜愛精良的武器與盔甲，樂於戰鬥。
+
 > **Gnomes** are pious and agile, probably from praying underground during earthquakes.
+> **地侏**虔誠且敏捷，大概是從地震中於地下祈禱而練出來的。
+
 > **Hobbits** are agile and very, very lucky.
+> **哈比人**敏捷，而且非常、非常幸運。
 
 > **Trebor**, the Mad Overlord, was not always mad, merely power crazed... He had obtained a fabled amulet, whose awesome powers were the subject of many legends... Werdna had used the amulet to carve out of the ground below the Castle a ten level fortress maze...
+>
+> **瘋王特雷波**並非一開始就瘋，只是熱衷權勢……他取得了一只傳說中的護身符，其力量是諸多傳說的源頭……沃登納用這護身符在城堡下方挖鑿出一座 10 層的要塞迷宮……
 
-> **Note**: "Wizardry is a non-sexist game, however, English is a sexist language."（1981 年作者的自我吐槽，可作為譯註保留原意。）
+> **Note**: "Wizardry is a non-sexist game, however, English is a sexist language."
+> **註**：「Wizardry 不是個性別歧視的遊戲，只不過英語是有性別歧視的語言。」
+> （1981 年作者的自我吐槽，可作為譯註保留原意。）
 
 ### 翻譯方針確認
 
@@ -60,14 +75,14 @@
 
 ---
 
-## 2. Apple II 原版磁碟（1981）
+## 2. Apple II（蘋果二號電腦）原版磁碟（1981）
 
 **檔案**: `release/wiz1.zip` (131 KB)
 **內含**:
-- `wizardry_i_boot.dsk` (143360 bytes / 35 track × 16 sector × 256 byte)
+- `wizardry_i_boot.dsk` (143360 bytes / 35 track × 16 sector × 256 byte，即 35 軌 × 16 磁區 × 256 位元組)
 - `wizardry_i_scenario.dsk` (143360 bytes)
-**格式**: Apple DOS 3.3 但實際是 **UCSD Pascal P-System** 格式（與 snafaru repo 的 Wiz1A〜E.DSK 同源但更早）
-**版本**: 推估 2012 年從 1981 原版 mastered 的 archival rip
+**格式**: Apple DOS 3.3（蘋果 3.3 版磁碟作業系統）但實際是 **UCSD Pascal P-System**（加州大學聖地牙哥分校 Pascal 虛擬機）格式（與 snafaru repo 的 Wiz1A〜E.DSK 同源但更早）
+**版本**: 推估 2012 年從 1981 原版 mastered（母片製作）的 archival rip（典藏抽取版）
 
 ### 用途
 
@@ -87,11 +102,11 @@ a2tools ls wizardry_i_scenario.dsk
 
 ---
 
-## 3. Interplay《Ultimate Wizardry Archives》CD ISO
+## 3. Interplay（卬特普雷遊戲公司）《Ultimate Wizardry Archives》（巫術終極典藏集）CD ISO
 
 **檔案**: `release/Wizardry.iso` (662 MB)
 **版本**: 1998-11-02 Interplay 出版的 6 合 1 合集
-**格式**: ISO 9660，磁區 2048 bytes
+**格式**: ISO 9660（國際標準的光碟檔案系統），磁區 2048 bytes
 
 ### 目錄結構
 
@@ -119,13 +134,14 @@ $ xxd wiz1.dsk | head -2
                                                     SDD..(C) 1987 RWI
 ```
 
-- `eb 38 90` = 8086 jump instruction (boot sector)
-- OEM string: "System bootstrap v2.0 DSDD (C) 1987 RWI, Inc" = Sir-tech 1987 自製 boot loader
-- 320 KB（雙面雙密 5.25"）
-- **不是 FAT12** — 是 UCSD Pascal P-System 格式（與 Apple II 共用 codebase）
-- mtools 無法直接讀，需要 P-System aware 工具
+- `eb 38 90` = 8086 jump instruction（Intel 8086 處理器的跳躍指令，標誌開機磁區起點）
+- OEM string（OEM 字串，Original Equipment Manufacturer 廠商識別字串）：
+  "System bootstrap v2.0 DSDD (C) 1987 RWI, Inc" = Sir-tech 1987 自製 boot loader（開機載入器）
+- 320 KB（雙面雙密 5.25 吋磁片，DSDD = Double-Sided Double-Density）
+- **不是 FAT12**（DOS/Windows 標準的 12 位元檔案配置表）— 是 UCSD Pascal P-System 格式（與 Apple II 共用 codebase 原始碼基底）
+- mtools（Linux 上讀寫 FAT 磁片的工具集）無法直接讀，需要 P-System aware（識得 P-System 的）工具
 
-### Wizardry VI Bane 怪物 PIC 格式
+### Wizardry VI Bane（巫術 VI：宇宙鍛爐之災）怪物 PIC 格式
 
 ```
 $ ls bane/mon*.pic | wc -l
@@ -134,18 +150,18 @@ $ file bane/mon00.pic
 mon00.pic: data
 ```
 
-- 1990 年 EGA 320×200 16 色格式（自製壓縮）
+- 1990 年 EGA（Enhanced Graphics Adapter，IBM 增強型顯示卡）320×200 16 色格式（自製壓縮）
 - 對應 PC EGA 顯示卡
 - 大小 1-23 KB 不等（依複雜度）
-- **未鑑定的解壓格式**（社群 RHDN 可能有 ripper）
+- **未鑑定的解壓格式**（社群 RHDN [ROM Hacking dot Net，老遊戲改造社群] 可能有 ripper [抽取工具]）
 
 ### 法律提醒
 
-⚠️ 整片 ISO 屬於 **Interplay / Sir-tech / Drecom IP**：
+⚠️ 整片 ISO 屬於 **Interplay / Sir-tech / Drecom IP**（智慧財產權）：
 - 自用研究 OK
 - **不可重新打包** 進本專案 release
 - 抽出的素材**不可進 git repo**
-- 可在 docs 中**引用 manual 文字** 做翻譯比對（fair use）
+- 可在 docs 中**引用 manual 文字** 做翻譯比對（屬於 fair use，合理使用原則）
 
 ---
 
@@ -172,10 +188,10 @@ mon00.pic: data
 
 ## 5. 引用授權說明
 
-引用 Sir-tech 手冊文字進入本專案 README / docs / 翻譯註解 → 屬 **Fair Use**：
+引用 Sir-tech 手冊文字進入本專案 README / docs / 翻譯註解 → 屬 **Fair Use（合理使用）**：
 - 教育性質（重寫研究 + 在地化）
 - 引用比例有限（不是整段抄入）
 - 不損及商業利益（原版不販售繁中）
-- 附明確 attribution（"來源：Sir-tech《Ultimate Wizardry Archives》Manual, 1998 Interplay 再版"）
+- 附明確 attribution（資料來源標示，例：「來源：Sir-tech《Ultimate Wizardry Archives》Manual, 1998 Interplay 再版」）
 
-引用具體機制數據（屬性閾值、HP 公式、XP 表）→ **不受版權保護**（事實 / 算法）。
+引用具體機制數據（屬性閾值、HP 公式、XP 表）→ **不受版權保護**（屬於事實 / 算法，不在著作權保護範圍）。
