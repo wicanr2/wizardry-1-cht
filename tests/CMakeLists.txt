@@ -10,10 +10,14 @@ function(wiz_add_test name)
 endfunction()
 
 # Tests that need the full game module (state, camp, etc.)
+# wizgame transitively links wizrender → SDL2main. On Windows SDL2main wraps
+# main() into WinMain by #defining main. We don't open a window in tests so
+# we tell SDL to skip that wrapping via SDL_MAIN_HANDLED.
 function(wiz_add_game_test name)
   add_executable(${name} ${ARGN})
   target_link_libraries(${name} PRIVATE wizgame wizcore)
   target_include_directories(${name} PRIVATE ${CMAKE_SOURCE_DIR}/src)
+  target_compile_definitions(${name} PRIVATE SDL_MAIN_HANDLED)
   add_test(NAME ${name} COMMAND ${name})
 endfunction()
 
