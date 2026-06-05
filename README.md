@@ -46,8 +46,11 @@
 | v0.8 Apple II LZ | LZDECOMP + HGR→PNG Python toolchain |
 | **v0.9 翻譯** | **91% 中文化**（413/454 keys） |
 | **v1.0 CI** | **GitHub Actions Linux + Windows matrix，自動 release** |
+| **v1.1 Sprite 對應** | **60 個 PCE-CD sprite bundled，29/30 怪物有專屬立繪** |
+| **v1.2 Camp 法術** | **11 個 out-of-combat 咒語**（DIOS/MADI/DUMAPIC/MILWA/DI...） |
+| **v1.3 BGM** | **SDL_mixer + Kevin MacLeod CC-BY 4 軌**（title/town/maze/combat） |
 | 法術 / 怪物 / 道具表 | 51 法術 + 30 怪物 + 30 道具，含中文名 |
-| 單元測試 | 7 / 7 ctest 全綠 |
+| 單元測試 | 9 / 9 ctest 全綠 |
 | 平台 | Linux x86_64 / Windows 10+ |
 | 字型 | Noto Sans CJK TC（OFL 授權，可打包） |
 | GitHub | [wicanr2/wizardry-1-cht](https://github.com/wicanr2/wizardry-1-cht) |
