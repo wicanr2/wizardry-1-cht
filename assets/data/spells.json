@@ -24,7 +24,7 @@
   {"name":"MASOPIC",  "school":"mage",  "level":6, "type":0, "group":6, "combat_only":true,  "description":"全隊半透明，AC -4"},
 
   {"name":"MAHAMAN",  "school":"mage",  "level":7, "type":0, "group":9, "combat_only":false, "description":"七種強力效果，老化一年"},
-  {"name":"TILTOWAIT","school":"mage",  "level":7, "type":1, "group":1, "combat_only":true,  "description":"核爆，10d15 群體破壞"},
+  {"name":"TILTOWAIT","school":"mage",  "level":7, "type":1, "group":1, "combat_only":true,  "description":"滅世，10d15 群體破壞（原意「等等！」，史上最強巫師咒語）"},
   {"name":"MALOR",    "school":"mage",  "level":7, "type":0, "group":10,"combat_only":false, "description":"瞬間移動，戰鬥外可指定座標"},
 
   {"name":"KALKI",    "school":"priest","level":1, "type":0, "group":11,"combat_only":false, "description":"全隊 AC -1"},

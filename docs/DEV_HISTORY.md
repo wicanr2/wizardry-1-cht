@@ -202,7 +202,7 @@ https://wizardry.wiki.gg/images/0/0a/PCECD_MS_Bubbly_Slime.png
   "type": 1,
   "group": 1,
   "combat_only": true,
-  "description": "核爆，10d15 群體破壞"
+  "description": "滅世，10d15 群體破壞"
 }
 ```
 

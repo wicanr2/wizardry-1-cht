@@ -296,7 +296,7 @@ void cast_spell(CombatState& s, int caster_idx, Character& caster,
     else if (n == "ZILWAN")   dmg_spell(s, caster, a, "ZILWAN",   3, 8,  "聖光（vs 不死）");
 
     // === Mage damage (all groups) ===
-    else if (n == "TILTOWAIT") all_dmg_spell(s, caster, "TILTOWAIT", 10, 15, "核爆");
+    else if (n == "TILTOWAIT") all_dmg_spell(s, caster, "TILTOWAIT", 10, 15, "滅世");
     else if (n == "MALIKTO")   all_dmg_spell(s, caster, "MALIKTO",   12,  6, "審判");
 
     // === Priest damage ===
