@@ -285,17 +285,24 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                     auto wall = front_wall(state.maze, state.camera.x, state.camera.y, facing);
                     if (wall != core::Wall::Wall) {
                         step_forward(state.camera);
+                        render::play(render::Sfx::Footstep);
                     } else {
                         state.push_message("** 撞牆 ** WALL!");
+                        render::play(render::Sfx::SwordMiss);
                     }
+                    if (wall == core::Wall::Door) render::play(render::Sfx::DoorOpen);
                 } else if (k == SDLK_DOWN || k == SDLK_s) {
                     step_back(state.camera);
+                    render::play(render::Sfx::Footstep);
                 } else if (k == SDLK_LEFT || k == SDLK_a) {
                     turn_left(state.camera);
+                    render::play(render::Sfx::Footstep);
                 } else if (k == SDLK_RIGHT || k == SDLK_d) {
                     turn_right(state.camera);
+                    render::play(render::Sfx::Footstep);
                 } else if (k == SDLK_SPACE) {
                     state.push_message("** 遭遇敵人！**");
+                    render::play(render::Sfx::SwordHit);
                     state.change_scene(Scene::Combat);
                 } else if (k == SDLK_c) {
                     state.change_scene(Scene::Camp);
@@ -452,6 +459,7 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                         cb.actions[cb.active_party_member].target_group = 0;
                         cb.phase = core::CombatPhase::PickTarget;
                         target_cursor = 0;
+                        render::play(render::Sfx::MenuPick);
                     } else if (k == SDLK_s) {
                         cb.actions[cb.active_party_member].kind = core::PlayerAction::Spell;
                         cb.phase = core::CombatPhase::PickSpell;

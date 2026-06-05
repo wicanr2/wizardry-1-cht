@@ -48,11 +48,13 @@ assets/fonts/*.ttc
 assets/fonts/*.ttf
 !assets/fonts/.gitkeep
 
-# Audio (~17MB total — fetched by tools/fetch_music.sh, CC-BY)
+# BGM (~17MB MP3 — fetched by tools/fetch_music.sh, CC-BY)
 assets/audio/*.mp3
 assets/audio/*.ogg
 !assets/audio/.gitkeep
 !assets/audio/CREDITS.txt
+# SFX is tiny (~140KB total, procedurally generated) — bundled in repo.
+# Regenerate with tools/fetch_sfx.sh if missing.
 
 # PCE-CD sprites — CC-BY-SA 4.0 from wizardry.wiki.gg, OK to bundle in repo.
 # (tools/fetch_pcecd_sprites.sh still available for re-fetching upstream)

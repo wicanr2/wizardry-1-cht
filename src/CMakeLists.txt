@@ -47,6 +47,9 @@ if(SDL2_MIXER_LIBRARY)
   target_link_libraries(wizrender PUBLIC ${SDL2_MIXER_LIBRARY})
   target_include_directories(wizrender PUBLIC ${SDL2_MIXER_INCLUDE_DIR})
 endif()
+target_compile_definitions(wizrender PRIVATE
+  WIZ_ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets"
+)
 
 add_library(wizgame STATIC
   game/state.cpp

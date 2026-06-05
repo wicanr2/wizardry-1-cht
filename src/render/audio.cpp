@@ -5,6 +5,7 @@
 
 #include <cstdio>
 #include <string>
+#include <unordered_map>
 
 namespace wiz::render {
 
@@ -13,6 +14,7 @@ Mix_Music* g_current = nullptr;
 std::string g_current_path;
 bool g_ready = false;
 int g_volume = 64;  // 0..128, half by default
+std::unordered_map<std::string, Mix_Chunk*> g_sfx_cache;
 }  // namespace
 
 bool audio_init() {
@@ -45,9 +47,58 @@ void audio_shutdown() {
         Mix_FreeMusic(g_current);
         g_current = nullptr;
     }
+    clear_sfx_cache();
     Mix_CloseAudio();
     Mix_Quit();
     g_ready = false;
+}
+
+void clear_sfx_cache() {
+    for (auto& [k, c] : g_sfx_cache) if (c) Mix_FreeChunk(c);
+    g_sfx_cache.clear();
+}
+
+void play_sfx(const std::string& path) {
+    if (!g_ready || path.empty()) return;
+    auto it = g_sfx_cache.find(path);
+    Mix_Chunk* chunk = nullptr;
+    if (it == g_sfx_cache.end()) {
+        chunk = Mix_LoadWAV(path.c_str());
+        g_sfx_cache[path] = chunk;  // cache even nullptr to avoid re-trying
+        if (!chunk) {
+            std::fprintf(stderr, "[sfx] cannot load %s: %s\n",
+                         path.c_str(), Mix_GetError());
+            return;
+        }
+    } else {
+        chunk = it->second;
+        if (!chunk) return;
+    }
+    // Channel -1 = any free, 0 = no loop
+    Mix_PlayChannel(-1, chunk, 0);
+}
+
+void play(Sfx s) {
+    const char* file = nullptr;
+    switch (s) {
+        case Sfx::SwordHit:    file = "audio/sfx/sword_hit.wav"; break;
+        case Sfx::SwordMiss:   file = "audio/sfx/sword_miss.wav"; break;
+        case Sfx::SpellCast:   file = "audio/sfx/spell_cast.wav"; break;
+        case Sfx::SpellFire:   file = "audio/sfx/spell_fire.wav"; break;
+        case Sfx::SpellHeal:   file = "audio/sfx/spell_heal.wav"; break;
+        case Sfx::MonsterDie:  file = "audio/sfx/monster_die.wav"; break;
+        case Sfx::PartyDamage: file = "audio/sfx/party_damage.wav"; break;
+        case Sfx::Footstep:    file = "audio/sfx/footstep.wav"; break;
+        case Sfx::DoorOpen:    file = "audio/sfx/door_open.wav"; break;
+        case Sfx::MenuMove:    file = "audio/sfx/menu_move.wav"; break;
+        case Sfx::MenuPick:    file = "audio/sfx/menu_pick.wav"; break;
+    }
+    if (!file) return;
+#ifdef WIZ_ASSETS_DIR
+    play_sfx(std::string(WIZ_ASSETS_DIR) + "/" + file);
+#else
+    play_sfx(std::string("assets/") + file);
+#endif
 }
 
 void play_music(const std::string& path, int loops) {

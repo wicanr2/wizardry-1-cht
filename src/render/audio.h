@@ -22,4 +22,25 @@ void set_music_volume(int v);
 
 [[nodiscard]] bool audio_available();
 
+// Short sound effects (Mix_Chunk). Loaded lazily, cached by path.
+// Pass empty string to clear the cache.
+void play_sfx(const std::string& path);
+void clear_sfx_cache();
+
+// Helper enums to keep call sites short.
+enum class Sfx {
+    SwordHit,    // melee connects
+    SwordMiss,   // melee misses
+    SpellCast,   // any spell start
+    SpellFire,   // HALITO/MAHALITO etc.
+    SpellHeal,   // DIOS/DIAL/MADI
+    MonsterDie,
+    PartyDamage,
+    Footstep,
+    DoorOpen,
+    MenuMove,    // ↑↓ tick
+    MenuPick,    // Enter
+};
+void play(Sfx s);  // resolves enum → path automatically
+
 }  // namespace wiz::render
