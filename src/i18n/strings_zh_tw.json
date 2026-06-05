@@ -436,7 +436,7 @@
   },
   "chevron_of_this_rank_evermore": {
     "en": "CHEVRON (>) OF THIS RANK EVERMORE.",
-    "zh_TW": "",
+    "zh_TW": "此等級永久標記符號 (>)。",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:292"
@@ -444,7 +444,7 @@
   },
   "copyright_c_1981_all_rights_reserved_by": {
     "en": "COPYRIGHT (C)1981 ALL RIGHTS RESERVED BY",
-    "zh_TW": "",
+    "zh_TW": "版權所有 (C) 1981 保留所有權利 by",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:35"
@@ -452,7 +452,7 @@
   },
   "countries_and_illegal_distribution_may": {
     "en": "COUNTRIES,  AND ILLEGAL DISTRIBUTION MAY",
-    "zh_TW": "",
+    "zh_TW": "其他國家，非法散布可能",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:39"
@@ -476,7 +476,7 @@
   },
   "drive_2_and_a_formatted_diskette_in": {
     "en": "DRIVE 2,  AND A  FORMATTED DISKETTE IN",
-    "zh_TW": "",
+    "zh_TW": "至磁碟機 2，並將格式化磁片放入",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:338"
@@ -540,7 +540,7 @@
   },
   "equip_cursed_unknown_unusable": {
     "en": "*=EQUIP, -=CURSED, ?=UNKNOWN, #=UNUSABLE",
-    "zh_TW": "",
+    "zh_TW": "*=已裝備, -=詛咒, ?=未識別, #=無法使用",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:79"
@@ -644,7 +644,7 @@
   },
   "loaded_now_place_a_formatted_diskette": {
     "en": "LOADED! NOW PLACE A FORMATTED DISKETTE",
-    "zh_TW": "",
+    "zh_TW": "載入完成！請放入一片格式化磁片",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:70"
@@ -724,7 +724,7 @@
   },
   "or_q_uit_the_game": {
     "en": "OR Q)UIT THE GAME           ",
-    "zh_TW": "",
+    "zh_TW": "或按 Q 離開遊戲",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/WIZ.TEXT.txt:488"
@@ -740,7 +740,7 @@
   },
   "passwords_do_not_match": {
     "en": "PASSWORDS DO NOT MATCH",
-    "zh_TW": "",
+    "zh_TW": "密碼不符",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:386"
@@ -748,7 +748,7 @@
   },
   "pay_for_your_initiation": {
     "en": "PAY FOR YOUR INITIATION.",
-    "zh_TW": "",
+    "zh_TW": "支付入會費。",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:296"
@@ -780,7 +780,7 @@
   },
   "place_original_master_scenario_side_in": {
     "en": "PLACE ORIGINAL MASTER SCENARIO SIDE IN",
-    "zh_TW": "",
+    "zh_TW": "請將原版正本場景面放入",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:337"
@@ -868,7 +868,7 @@
   },
   "punch_write_protect_notch_on_boot_side": {
     "en": "PUNCH WRITE-PROTECT NOTCH ON BOOT SIDE",
-    "zh_TW": "",
+    "zh_TW": "在開機面打防寫缺口",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:473"
@@ -892,7 +892,7 @@
   },
   "result_in_civil_liability_and_criminal": {
     "en": "RESULT IN CIVIL  LIABILITY  AND CRIMINAL",
-    "zh_TW": "",
+    "zh_TW": "將承擔民事與刑事責任",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:40"
@@ -940,7 +940,7 @@
   },
   "scenario_must_be_made_off_same_master": {
     "en": "SCENARIO MUST BE MADE OFF SAME MASTER",
-    "zh_TW": "",
+    "zh_TW": "場景必須以同一份正本製作",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:46"
@@ -964,7 +964,7 @@
   },
   "squares_east": {
     "en": "# SQUARES EAST  =",
-    "zh_TW": "",
+    "zh_TW": "東方格數  =",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:440"
@@ -972,7 +972,7 @@
   },
   "squares_north": {
     "en": "# SQUARES NORTH =",
-    "zh_TW": "",
+    "zh_TW": "北方格數 =",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:441"
@@ -1028,7 +1028,7 @@
   },
   "the_donation_will_be": {
     "en": "THE DONATION WILL BE ",
-    "zh_TW": "",
+    "zh_TW": "捐獻金額為 ",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:90"
@@ -1036,7 +1036,7 @@
   },
   "the_laws_of_the_united_states_and_other": {
     "en": "THE LAWS OF THE UNITED STATES  AND OTHER",
-    "zh_TW": "",
+    "zh_TW": "依美國及其他",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:38"
@@ -1276,7 +1276,7 @@
   },
   "your_benificent_ruler_trebor": {
     "en": "YOUR BENIFICENT RULER, TREBOR.",
-    "zh_TW": "",
+    "zh_TW": "您的仁慈統治者，特雷波。",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:283"
@@ -1364,7 +1364,7 @@
   },
   "keep_this_character_y_n": {
     "en": "KEEP THIS CHARACTER (Y/N)? >",
-    "zh_TW": "",
+    "zh_TW": "保留此角色嗎 (Y/N)? >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:372"
@@ -1396,7 +1396,7 @@
   },
   "party_location": {
     "en": "PARTY LOCATION:",
-    "zh_TW": "",
+    "zh_TW": "隊伍位置：",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:292"
@@ -1404,7 +1404,7 @@
   },
   "party_teleport": {
     "en": "PARTY TELEPORT:",
-    "zh_TW": "",
+    "zh_TW": "隊伍傳送：",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:434"
@@ -1429,7 +1429,7 @@
   },
   "recover_these_y_n": {
     "en": "RECOVER THESE (Y/N) ? >",
-    "zh_TW": "",
+    "zh_TW": "要回收這些嗎 (Y/N) ? >",
     "category": "prompt",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:33"
@@ -1437,7 +1437,7 @@
   },
   "return_exits": {
     "en": " ([RETURN] EXITS) >",
-    "zh_TW": "",
+    "zh_TW": " ([RETURN] 離開) >",
     "category": "prompt",
     "refs": [
       "Wiz1A.DSK/WIZ2.TEXT.txt:356"
@@ -1461,7 +1461,7 @@
   },
   "version_3_2_of_18_mar_2026_ser": {
     "en": " VERSION 3.2 OF 18-MAR-2026  SER:",
-    "zh_TW": "",
+    "zh_TW": " 版本 3.2 2026-03-18  序號：",
     "category": "prompt",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:48"
@@ -1525,7 +1525,7 @@
   },
   "which_one_ret_for_none": {
     "en": "WHICH ONE ([RET] FOR NONE) ? >",
-    "zh_TW": "",
+    "zh_TW": "選擇哪一個 ([RET] 為無) ? >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:224"
@@ -1778,7 +1778,7 @@
   },
   "cant_find_char": {
     "en": "CANT FIND CHAR",
-    "zh_TW": "",
+    "zh_TW": "找不到角色",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:378"
@@ -1826,7 +1826,7 @@
   },
   "choose_an_option": {
     "en": "CHOOSE AN OPTION",
-    "zh_TW": "",
+    "zh_TW": "請選擇一個選項",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:541"
@@ -1922,7 +1922,7 @@
   },
   "for_the_ultimate": {
     "en": "FOR THE ULTIMATE",
-    "zh_TW": "",
+    "zh_TW": "最終極的",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/TITLELOA.TEXT.txt:92"
@@ -2005,7 +2005,7 @@
   },
   "in_fantasy_games": {
     "en": "IN FANTASY GAMES",
-    "zh_TW": "",
+    "zh_TW": "奇幻遊戲體驗",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/TITLELOA.TEXT.txt:95"
@@ -2029,7 +2029,7 @@
   },
   "inspect_or_edit": {
     "en": "INSPECT OR EDIT,",
-    "zh_TW": "",
+    "zh_TW": "檢視或編輯，",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:707"
@@ -2317,7 +2317,7 @@
   },
   "prepare_yourself": {
     "en": "PREPARE YOURSELF",
-    "zh_TW": "",
+    "zh_TW": "請準備好",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/TITLELOA.TEXT.txt:89"
@@ -2341,7 +2341,7 @@
   },
   "probably_drowned": {
     "en": "PROBABLY DROWNED!",
-    "zh_TW": "",
+    "zh_TW": "可能溺斃了！",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:375"
@@ -2398,7 +2398,7 @@
   },
   "scenario_data": {
     "en": "SCENARIO.DATA",
-    "zh_TW": "",
+    "zh_TW": "SCENARIO.DATA",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:396",
@@ -2408,7 +2408,7 @@
   },
   "scenario_mesgs": {
     "en": "SCENARIO.MESGS",
-    "zh_TW": "",
+    "zh_TW": "SCENARIO.MESGS",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SPECIALS2.TEXT.txt:606"
@@ -2416,7 +2416,7 @@
   },
   "scenario_sides": {
     "en": "SCENARIO SIDES.",
-    "zh_TW": "",
+    "zh_TW": "場景磁碟面。",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:501"
@@ -2456,7 +2456,7 @@
   },
   "squares_east_and": {
     "en": " SQUARES EAST AND",
-    "zh_TW": "",
+    "zh_TW": " 東方格與",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:304"
@@ -2472,7 +2472,7 @@
   },
   "still_with_us": {
     "en": "STILL WITH US!",
-    "zh_TW": "",
+    "zh_TW": "仍與我們同在！",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:240"
@@ -2490,7 +2490,7 @@
   },
   "system_pascal": {
     "en": "SYSTEM.PASCAL",
-    "zh_TW": "",
+    "zh_TW": "SYSTEM.PASCAL",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:157",
@@ -2598,7 +2598,7 @@
   },
   "welcome": {
     "en": "      WELCOME ",
-    "zh_TW": "",
+    "zh_TW": "      歡迎 ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:571"
@@ -2686,7 +2686,7 @@
   },
   "you_have_2": {
     "en": "     YOU HAVE ",
-    "zh_TW": "",
+    "zh_TW": "     您擁有 ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:574"
