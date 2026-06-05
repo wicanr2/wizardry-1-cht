@@ -43,6 +43,13 @@ docs/combat3_*.png
 # OS
 Thumbs.db
 
+# CTest scratch
+Testing/
+
+# Python tools cache
+__pycache__/
+*.pyc
+
 # Fonts (19MB Noto CJK — fetched by tools/fetch_assets.sh)
 assets/fonts/*.ttc
 assets/fonts/*.ttf
