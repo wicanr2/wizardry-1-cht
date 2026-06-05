@@ -63,7 +63,9 @@ jobs:
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
-          vcpkgGitCommitId: 'f7423ee180c4b7f40d43402c2feb3859161ef625'
+          # 2026.06.01 release — newer than the previous pin which had a
+          # broken pkgconf MSYS2 download URL.
+          vcpkgGitCommitId: 'f3e10653cc27d62a37a3763cd84b38bca07c6075'
 
       # The default `x-gha,readwrite` binary source needs ACTIONS_RUNTIME_TOKEN
       # which isn't exposed to shell steps. Disable binary caching so vcpkg

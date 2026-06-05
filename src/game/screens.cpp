@@ -482,6 +482,20 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                         for (auto& g : cb.groups) alive_before += g.alive_count;
                         std::array<int, 6> hp_before;
                         for (int i = 0; i < 6; ++i) hp_before[i] = party[i].hp_left;
+                        // Pre-cast SFX based on queued action
+                        for (int i = 0; i < 6; ++i) {
+                            const auto& a = cb.actions[i];
+                            if (a.kind != core::PlayerAction::Spell) continue;
+                            const std::string& n = a.spell_name;
+                            if (n == "DIOS" || n == "DIAL" || n == "DIALMA" || n == "MADI")
+                                render::play(render::Sfx::SpellHeal);
+                            else if (n.find("HALITO") != std::string::npos ||
+                                     n.find("DALTO") != std::string::npos ||
+                                     n == "TILTOWAIT" || n == "LITOKAN")
+                                render::play(render::Sfx::SpellFire);
+                            else
+                                render::play(render::Sfx::SpellCast);
+                        }
 
                         core::resolve_round(cb, party);
 
@@ -522,6 +536,20 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                         for (auto& g : cb.groups) alive_before += g.alive_count;
                         std::array<int, 6> hp_before;
                         for (int i = 0; i < 6; ++i) hp_before[i] = party[i].hp_left;
+                        // Pre-cast SFX based on queued action
+                        for (int i = 0; i < 6; ++i) {
+                            const auto& a = cb.actions[i];
+                            if (a.kind != core::PlayerAction::Spell) continue;
+                            const std::string& n = a.spell_name;
+                            if (n == "DIOS" || n == "DIAL" || n == "DIALMA" || n == "MADI")
+                                render::play(render::Sfx::SpellHeal);
+                            else if (n.find("HALITO") != std::string::npos ||
+                                     n.find("DALTO") != std::string::npos ||
+                                     n == "TILTOWAIT" || n == "LITOKAN")
+                                render::play(render::Sfx::SpellFire);
+                            else
+                                render::play(render::Sfx::SpellCast);
+                        }
 
                         core::resolve_round(cb, party);
 
