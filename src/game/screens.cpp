@@ -464,9 +464,11 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                         cb.actions[cb.active_party_member].kind = core::PlayerAction::Spell;
                         cb.phase = core::CombatPhase::PickSpell;
                         spell_cursor = 0;
+                        render::play(render::Sfx::MenuPick);
                     } else if (k == SDLK_p) {
                         cb.actions[cb.active_party_member].kind = core::PlayerAction::Parry;
                         ++cb.active_party_member;
+                        render::play(render::Sfx::MenuMove);
                     } else if (k == SDLK_r) {
                         for (int i = 0; i < 6; ++i)
                             cb.actions[i].kind = core::PlayerAction::Run;
@@ -476,7 +478,23 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                             int ri = state.party.roster_index[i];
                             if (ri >= 0) party[i] = state.roster.chars[ri];
                         }
+                        int alive_before = 0;
+                        for (auto& g : cb.groups) alive_before += g.alive_count;
+                        std::array<int, 6> hp_before;
+                        for (int i = 0; i < 6; ++i) hp_before[i] = party[i].hp_left;
+
                         core::resolve_round(cb, party);
+
+                        int alive_after = 0;
+                        for (auto& g : cb.groups) alive_after += g.alive_count;
+                        if (alive_after < alive_before) render::play(render::Sfx::MonsterDie);
+                        for (int i = 0; i < 6; ++i) {
+                            if (party[i].hp_left < hp_before[i]) {
+                                render::play(render::Sfx::PartyDamage);
+                                break;
+                            }
+                        }
+
                         for (int i = 0; i < state.party.count; ++i) {
                             int ri = state.party.roster_index[i];
                             if (ri >= 0) state.roster.chars[ri] = party[i];
@@ -500,7 +518,23 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
                             int ri = state.party.roster_index[i];
                             if (ri >= 0) party[i] = state.roster.chars[ri];
                         }
+                        int alive_before = 0;
+                        for (auto& g : cb.groups) alive_before += g.alive_count;
+                        std::array<int, 6> hp_before;
+                        for (int i = 0; i < 6; ++i) hp_before[i] = party[i].hp_left;
+
                         core::resolve_round(cb, party);
+
+                        int alive_after = 0;
+                        for (auto& g : cb.groups) alive_after += g.alive_count;
+                        if (alive_after < alive_before) render::play(render::Sfx::MonsterDie);
+                        for (int i = 0; i < 6; ++i) {
+                            if (party[i].hp_left < hp_before[i]) {
+                                render::play(render::Sfx::PartyDamage);
+                                break;
+                            }
+                        }
+
                         for (int i = 0; i < state.party.count; ++i) {
                             int ri = state.party.roster_index[i];
                             if (ri >= 0) state.roster.chars[ri] = party[i];
