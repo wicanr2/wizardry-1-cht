@@ -48,9 +48,8 @@ assets/fonts/*.ttc
 assets/fonts/*.ttf
 !assets/fonts/.gitkeep
 
-# PCE-CD sprites (CC-BY-SA, fetched by tools/fetch_pcecd_sprites.sh)
-assets/sprites/monsters_pcecd/*.png
-assets/sprites/monsters_pcecd/LICENSE.txt
+# PCE-CD sprites — CC-BY-SA 4.0 from wizardry.wiki.gg, OK to bundle in repo.
+# (tools/fetch_pcecd_sprites.sh still available for re-fetching upstream)
 
 
 # Reference materials (not committed — see docs/REFERENCES.md)

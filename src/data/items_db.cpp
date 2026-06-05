@@ -11,6 +11,8 @@ namespace {
 
 std::vector<ItemEntry> g_items;
 bool g_loaded = false;
+std::vector<MonsterEntry> g_monsters;
+bool g_monsters_loaded = false;
 
 std::string str_field(const std::string& obj, const std::string& key) {
     auto pos = obj.find("\"" + key + "\"");
@@ -32,14 +34,14 @@ std::string str_field(const std::string& obj, const std::string& key) {
     return out;
 }
 
-long long int_field(const std::string& obj, const std::string& key) {
+long long int_field(const std::string& obj, const std::string& key, long long def = 0) {
     auto pos = obj.find("\"" + key + "\"");
-    if (pos == std::string::npos) return 0;
+    if (pos == std::string::npos) return def;
     pos = obj.find(':', pos);
     auto first = obj.find_first_not_of(" \t\n", pos + 1);
     auto end = obj.find_first_of(",}\n", first);
     try { return std::stoll(obj.substr(first, end - first)); }
-    catch (...) { return 0; }
+    catch (...) { return def; }
 }
 
 std::string parse_use_array(const std::string& obj) {
@@ -118,6 +120,64 @@ const ItemEntry* find_by_id(int id) {
 
 bool item_usable_by(const ItemEntry& it, char class_letter) {
     return it.use_classes.find(class_letter) != std::string::npos;
+}
+
+namespace {
+bool load_monsters_from_file(const std::string& path) {
+    std::ifstream in(path);
+    if (!in) {
+        std::fprintf(stderr, "[monsters] cannot open %s\n", path.c_str());
+        return false;
+    }
+    std::stringstream buf; buf << in.rdbuf();
+    std::string text = buf.str();
+
+    std::size_t pos = 0;
+    while (pos < text.size()) {
+        auto start = text.find('{', pos);
+        if (start == std::string::npos) break;
+        int depth = 1;
+        auto end = start + 1;
+        while (end < text.size() && depth > 0) {
+            if (text[end] == '{') ++depth;
+            else if (text[end] == '}') --depth;
+            ++end;
+        }
+        std::string obj = text.substr(start, end - start);
+        pos = end;
+
+        MonsterEntry m;
+        m.id = static_cast<int>(int_field(obj, "id"));
+        m.name_en = str_field(obj, "name");
+        m.name_zh = str_field(obj, "name_zh");
+        m.name_unknown = str_field(obj, "name_unk");
+        m.ac = static_cast<int>(int_field(obj, "ac"));
+        m.level = static_cast<int>(int_field(obj, "lvl", 1));
+        m.exp = int_field(obj, "exp");
+        m.hp_dice = str_field(obj, "hp");
+        m.sprite_path = str_field(obj, "sprite");
+        if (!m.name_en.empty()) g_monsters.push_back(std::move(m));
+    }
+    return !g_monsters.empty();
+}
+}  // namespace
+
+const std::vector<MonsterEntry>& monsters() {
+    if (!g_monsters_loaded) {
+        g_monsters_loaded = true;
+#ifdef WIZ_ASSETS_DIR
+        load_monsters_from_file(std::string(WIZ_ASSETS_DIR) + "/data/monsters.json");
+#else
+        load_monsters_from_file("assets/data/monsters.json");
+#endif
+        std::fprintf(stderr, "[monsters] loaded %zu monsters\n", g_monsters.size());
+    }
+    return g_monsters;
+}
+
+const MonsterEntry* find_monster_by_id(int id) {
+    for (const auto& m : monsters()) if (m.id == id) return &m;
+    return nullptr;
 }
 
 }  // namespace wiz::data

@@ -5,6 +5,21 @@
 
 namespace wiz::data {
 
+struct MonsterEntry {
+    int id = 0;
+    std::string name_en;
+    std::string name_zh;
+    std::string name_unknown;
+    int ac = 10;
+    int level = 1;
+    long long exp = 0;
+    std::string hp_dice;     // e.g. "2d6"
+    std::string sprite_path; // relative path under assets/
+};
+
+const std::vector<MonsterEntry>& monsters();
+const MonsterEntry* find_monster_by_id(int id);
+
 struct ItemEntry {
     int id = 0;
     std::string name_en;

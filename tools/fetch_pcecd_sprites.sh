@@ -18,6 +18,13 @@ cd "$OUT_DIR"
 # the wiki.gg category page. Stored canonical names so this script doesn't
 # need to re-scrape the category index on every run.
 SPRITES=(
+    # Mapped to monsters.json IDs (corrected filenames after manual verify)
+    "PCECD_MS_Bushwhacker.png"
+    "PCECD_MS_Lvl1_Mage.png"
+    "PCECD_MS_Lvl1_Ninja.png"
+    "PCECD_MS_Lvl1_Priest.png"
+    "PCECD_MS_Master_Ninja_A.png"
+
     "PCECD_MS_Arch_Mage.png"
     "PCECD_MS_Attack_Dog.png"
     "PCECD_MS_Bishop.png"

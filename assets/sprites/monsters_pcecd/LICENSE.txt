@@ -1,0 +1,10 @@
+These sprites are sourced from wizardry.wiki.gg and licensed under
+Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA 4.0):
+  https://creativecommons.org/licenses/by-sa/4.0/
+
+Original assets are from the PC-Engine CD release of Wizardry: Proving
+Grounds of the Mad Overlord (1991, ASCII Entertainment / Sir-tech).
+Wizardry is a trademark of Sir-tech Software / Drecom.
+
+This directory is excluded from the main repo (.gitignore). Run this
+script (tools/fetch_pcecd_sprites.sh) to repopulate it.

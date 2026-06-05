@@ -7,7 +7,9 @@
 #include <vector>
 
 #include "core/maze.h"
+#include "core/rng.h"
 #include "core/rules.h"
+#include "data/items_db.h"
 #include "game/camp.h"
 #include "game/inn.h"
 #include "game/roller.h"
@@ -326,18 +328,41 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
 
         case Scene::Combat: {
             if (state.combat.groups.empty()) {
-                // Seed a demo encounter — 3 kobolds
-                core::Monster kobold;
-                kobold.name = "狗頭人";
-                kobold.name_unknown = "狗頭怪物";
-                kobold.armor_class = 7;
-                kobold.hp_dice_n = 1;
-                kobold.hp_dice_d = 4;
-                kobold.experience = 415;
-                kobold.sprite_path = "sprites/monsters_pcecd/PCECD_MS_Kobold.png";
+                // Seed a demo encounter — random monster from data/monsters.json
+                core::Monster proto;
+                // Pick a monster based on maze depth: lower levels = lower index
+                int max_id = std::min<int>(11, static_cast<int>(data::monsters().size()));
+                int picked = core::global_rng().range(0, std::max(1, max_id) - 1);
+                const auto* entry = data::find_monster_by_id(picked);
+                if (entry) {
+                    proto.name = entry->name_zh.empty() ? entry->name_en : entry->name_zh;
+                    proto.name_unknown = entry->name_unknown.empty()
+                                             ? entry->name_en : entry->name_unknown;
+                    proto.armor_class = static_cast<std::int8_t>(entry->ac);
+                    proto.experience = entry->exp;
+                    proto.sprite_path = entry->sprite_path;
+                    proto.data_id = entry->id;
+                    // Parse hp dice "XdY"
+                    auto pos = entry->hp_dice.find('d');
+                    if (pos != std::string::npos) {
+                        proto.hp_dice_n = static_cast<std::uint8_t>(
+                            std::stoi(entry->hp_dice.substr(0, pos)));
+                        proto.hp_dice_d = static_cast<std::uint8_t>(
+                            std::stoi(entry->hp_dice.substr(pos + 1)));
+                    } else {
+                        proto.hp_dice_n = 1; proto.hp_dice_d = 8;
+                    }
+                } else {
+                    proto.name = "狗頭人";
+                    proto.name_unknown = "狗頭怪物";
+                    proto.armor_class = 7;
+                    proto.hp_dice_n = 1; proto.hp_dice_d = 4;
+                    proto.experience = 415;
+                    proto.sprite_path = "sprites/monsters_pcecd/PCECD_MS_Kobold.png";
+                }
                 core::CombatGroup g;
-                g.prototype = kobold;
-                g.total_count = 3;
+                g.prototype = proto;
+                g.total_count = static_cast<std::int16_t>(core::global_rng().range(1, 4));
                 core::begin_combat(state.combat, {g});
                 state.combat.active_party_member = 0;
                 // Default each character to Parry; user will override.

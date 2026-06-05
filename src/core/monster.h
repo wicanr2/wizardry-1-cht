@@ -40,6 +40,9 @@ struct Monster {
 
     // Path to a PCE-CD sprite asset, relative to assets dir, or empty.
     std::string sprite_path;
+
+    // Index back into data::monsters() for sprite lookup.
+    int data_id = -1;
 };
 
 }  // namespace wiz::core

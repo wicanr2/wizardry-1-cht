@@ -22,5 +22,6 @@ class Rng {
 };
 
 Rng& global_rng() noexcept;
+inline int range(int lo, int hi) noexcept { return global_rng().range(lo, hi); }
 
 }  // namespace wiz::core
