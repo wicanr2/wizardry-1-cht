@@ -1,8 +1,23 @@
 #include <cstdio>
+#include <cstdlib>
 #include <string>
 
 #include "save/roster.h"
 #include "wiz_test.h"
+
+// Platform-portable temp path: prefer TMPDIR/TEMP/TMP env vars, fall back to
+// the current working directory (CTest's BINARY_DIR is writable).
+static std::string temp_save_path() {
+    for (const char* var : {"TMPDIR", "TEMP", "TMP"}) {
+        const char* v = std::getenv(var);
+        if (v && *v) return std::string(v) + "/wiz_roster_test.json";
+    }
+#ifdef _WIN32
+    return std::string("C:\\Windows\\Temp\\wiz_roster_test.json");
+#else
+    return std::string("/tmp/wiz_roster_test.json");
+#endif
+}
 
 int main() {
     using namespace wiz;
@@ -28,7 +43,7 @@ int main() {
     r.chars[1].hp_max = 88;
     r.chars[1].hp_left = 88;
 
-    const std::string path = "/tmp/wiz_roster_test.json";
+    const std::string path = temp_save_path();
     WIZ_CHECK(save::save(r, path));
 
     save::Roster r2;
