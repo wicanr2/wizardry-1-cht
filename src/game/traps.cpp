@@ -67,9 +67,21 @@ static void teleporter(State& state) {
 }
 
 static void chute(State& state) {
-    // Multi-level dungeon not yet wired; for now this just messages.
-    state.push_message("** 滑梯！你掉到下一層的暗處… **");
-    (void)state;
+    int cur = state.camera.level;
+    if (cur >= kMaxFloors) {
+        state.push_message("** 滑梯! 但這已是最深層,卡在原地。**");
+        return;
+    }
+    // Random cell on the destination floor.
+    auto& rng = core::global_rng();
+    int nx = rng.range(0, core::MazeLevel::kSize - 1);
+    int ny = rng.range(0, core::MazeLevel::kSize - 1);
+    switch_floor(state, cur + 1, nx, ny);
+    char buf[120];
+    std::snprintf(buf, sizeof(buf),
+                  "** 滑梯! 跌落 B%dF 的暗處 (%d, %d)。**",
+                  cur + 1, nx, ny);
+    state.push_message(buf);
 }
 
 bool apply_trap(State& state, SquareFeature f) {
@@ -79,6 +91,69 @@ bool apply_trap(State& state, SquareFeature f) {
         case SquareFeature::Teleporter: teleporter(state); return true;
         case SquareFeature::Chute:      chute(state);      return true;
         default: return false;
+    }
+}
+
+void build_floor(core::MazeLevel& m, int level_number) {
+    using core::Wall;
+    using core::MazeLevel;
+    m = MazeLevel{};
+    m.level_number = static_cast<std::uint8_t>(level_number);
+    // All cells open inside, walls on the outer rim.
+    for (int y = 0; y < MazeLevel::kSize; ++y) {
+        for (int x = 0; x < MazeLevel::kSize; ++x) {
+            m.west[y][x]  = (x == 0) ? Wall::Wall : Wall::Open;
+            m.east[y][x]  = (x == MazeLevel::kSize - 1) ? Wall::Wall : Wall::Open;
+            m.north[y][x] = (y == 0) ? Wall::Wall : Wall::Open;
+            m.south[y][x] = (y == MazeLevel::kSize - 1) ? Wall::Wall : Wall::Open;
+        }
+    }
+    // Carve a few level-dependent interior walls so each floor differs.
+    // Pattern shifts with the level number; deeper floors get more walls.
+    int seed = level_number * 7;
+    int walls = level_number + 2;
+    for (int i = 0; i < walls; ++i) {
+        int x = (seed + i * 3) % (MazeLevel::kSize - 1);
+        int y = (seed * 2 + i * 5) % (MazeLevel::kSize - 1);
+        m.east[y][x] = Wall::Wall;
+        m.west[y][x + 1] = Wall::Wall;
+    }
+    // Traps: slot 1=Pit, 2=Spinner, 3=Teleporter, 4=Chute, 5=Stairs(down).
+    m.sqre_type[1] = core::SquareFeature::Pit;
+    m.sqre_type[2] = core::SquareFeature::Spinner;
+    m.sqre_type[3] = core::SquareFeature::Teleporter;
+    m.sqre_type[4] = core::SquareFeature::Chute;
+    m.sqre_type[5] = core::SquareFeature::Stairs;
+    // Sprinkle one of each on this floor (positions vary by level).
+    int base = (level_number * 11) % (MazeLevel::kSize - 2);
+    m.sqr_extra[base + 0][1] = 1;             // pit near west wall
+    m.sqr_extra[1][base + 1] = 2;             // spinner near north wall
+    m.sqr_extra[base + 2][base + 2] = 3;      // teleporter diagonal
+    m.sqr_extra[base + 3][2] = 4;             // chute
+    if (level_number < kMaxFloors) {
+        m.sqr_extra[MazeLevel::kSize - 2][MazeLevel::kSize - 2] = 5;  // stairs down
+    }
+}
+
+void switch_floor(State& state, int new_level, int spawn_x, int spawn_y) {
+    if (new_level < 1) new_level = 1;
+    if (new_level > kMaxFloors) new_level = kMaxFloors;
+    int old_level = state.camera.level;
+    // Save current floor back to backing store.
+    if (old_level >= 1 && old_level <= kMaxFloors) {
+        state.mazes[old_level - 1] = state.maze;
+        state.floor_built[old_level - 1] = true;
+    }
+    // Load destination (build lazily on first visit).
+    if (!state.floor_built[new_level - 1]) {
+        build_floor(state.mazes[new_level - 1], new_level);
+        state.floor_built[new_level - 1] = true;
+    }
+    state.maze = state.mazes[new_level - 1];
+    state.camera.level = new_level;
+    if (spawn_x >= 0 && spawn_y >= 0) {
+        state.camera.x = spawn_x;
+        state.camera.y = spawn_y;
     }
 }
 

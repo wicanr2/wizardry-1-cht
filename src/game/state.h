@@ -33,6 +33,17 @@ struct Party {
     int count = 0;
 };
 
+// A character who died in the maze; their body stays where they fell
+// until a new party walks onto that cell and picks them up.
+struct DeadBody {
+    int roster_idx = -1;   // index into Roster::chars
+    int level = 1;
+    int x = 0;
+    int y = 0;
+};
+
+constexpr int kMaxFloors = 10;
+
 struct State {
     save::Roster roster;
     Party party;
@@ -42,9 +53,17 @@ struct State {
     std::string status_hint;
     bool dirty = true;
 
+    // `maze` is the live view of the current floor — every call site reads
+    // through this. On Chute / Stairs we copy it back to `mazes[level-1]`
+    // and swap in the destination floor.
     core::MazeLevel maze;
+    std::array<core::MazeLevel, kMaxFloors> mazes{};
+    std::array<bool, kMaxFloors> floor_built{};
     render::Camera camera;
     bool maze_loaded = false;
+
+    // Bodies waiting to be retrieved.
+    std::vector<DeadBody> dead_bodies;
 
     core::CombatState combat;
 

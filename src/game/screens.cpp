@@ -221,6 +221,48 @@ bool poison_tick_party(State& state) {
     return any;
 }
 
+// Record any newly-dead party members as bodies at the current maze
+// cell. Idempotent: dead members already recorded are skipped.
+void record_dead_bodies(State& state) {
+    for (int i = 0; i < state.party.count; ++i) {
+        int ri = state.party.roster_index[i];
+        if (ri < 0) continue;
+        const auto& c = state.roster.chars[ri];
+        if (c.status != core::Status::Dead) continue;
+        bool already = false;
+        for (const auto& b : state.dead_bodies) {
+            if (b.roster_idx == ri) { already = true; break; }
+        }
+        if (already) continue;
+        DeadBody b;
+        b.roster_idx = ri;
+        b.level = state.camera.level;
+        b.x = state.camera.x;
+        b.y = state.camera.y;
+        state.dead_bodies.push_back(b);
+        state.push_message(std::string("✝ ") + c.name +
+                           " 的屍體留在原地，請日後回來拾取或委託神殿。");
+    }
+}
+
+// Check if any DeadBody sits on the party's current cell. If so, surface
+// a prompt and pick them up (remove from dead_bodies). The character is
+// still Status::Dead; take them to Temple for DI / KADORTO.
+void check_body_pickup(State& state) {
+    auto it = state.dead_bodies.begin();
+    while (it != state.dead_bodies.end()) {
+        if (it->level == state.camera.level &&
+            it->x == state.camera.x && it->y == state.camera.y) {
+            const auto& c = state.roster.chars[it->roster_idx];
+            state.push_message(std::string("✦ 拾起 ") + c.name +
+                               " 的屍體。請帶回神殿復活。");
+            it = state.dead_bodies.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
 // Castle entry auto-cures Poisoned (per Sir-Tech rule: poison stops on
 // return to town because the healers' aura cleanses it).
 void auto_cure_poison_at_castle(State& state) {
@@ -409,30 +451,15 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                                std::string(i18n::tr("castle")), kCastleMenu);
 
         case Scene::Maze: {
-            // Lazy-load a demo maze on first entry
+            // Lazy-load all-floor backing store on first entry.
             if (!state.maze_loaded) {
-                using core::Wall;
-                // Build a small playable corridor in the top-left corner
-                auto& m = state.maze;
-                m.level_number = 1;
-                for (int y = 0; y < core::MazeLevel::kSize; ++y) {
-                    for (int x = 0; x < core::MazeLevel::kSize; ++x) {
-                        m.west[y][x]  = (x == 0) ? Wall::Wall : Wall::Open;
-                        m.east[y][x]  = (x == core::MazeLevel::kSize - 1) ? Wall::Wall : Wall::Open;
-                        m.north[y][x] = (y == 0) ? Wall::Wall : Wall::Open;
-                        m.south[y][x] = (y == core::MazeLevel::kSize - 1) ? Wall::Wall : Wall::Open;
-                    }
-                }
-                // Carve a few internal walls to make the view interesting
-                m.east[0][0] = Wall::Wall; m.west[0][1] = Wall::Wall;
-                m.east[1][2] = Wall::Door; m.west[1][3] = Wall::Door;
-                m.south[2][3] = Wall::Wall; m.north[3][3] = Wall::Wall;
-                m.east[3][5] = Wall::Wall; m.west[3][6] = Wall::Wall;
-                seed_demo_traps(m);
+                build_floor(state.mazes[0], 1);
+                state.floor_built[0] = true;
+                state.maze = state.mazes[0];
                 state.camera = {0, 5, 1, render::Facing::North};
                 state.maze_loaded = true;
                 state.push_message("進入迷宮 B1F。");
-                state.push_message("（迷宮中藏有陷阱：坑/旋轉/傳送/滑梯）");
+                state.push_message("（藏有陷阱：坑/旋轉/傳送/滑梯/樓梯下）");
                 render::reveal_from(state.maze, state.camera);
             }
 
@@ -452,6 +479,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                         render::play(render::Sfx::Footstep);
                         poison_tick_party(state);
                         apply_trap(state, feature_at_party(state));
+                        check_body_pickup(state);
                     } else {
                         state.push_message("** 撞牆 ** WALL!");
                         render::play(render::Sfx::SwordMiss);
@@ -474,13 +502,29 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     state.change_scene(Scene::Combat);
                 } else if (k == SDLK_c) {
                     state.change_scene(Scene::Camp);
+                } else if (k == SDLK_RETURN) {
+                    // Use stairs if standing on them.
+                    if (feature_at_party(state) == core::SquareFeature::Stairs) {
+                        int next = state.camera.level + 1;
+                        if (next > kMaxFloors) {
+                            state.push_message("** 已在最深層 (B10F)。**");
+                        } else {
+                            switch_floor(state, next, 0, 0);
+                            char buf[80];
+                            std::snprintf(buf, sizeof(buf), "下樓 → B%dF。", next);
+                            state.push_message(buf);
+                            render::reveal_from(state.maze, state.camera);
+                        }
+                    }
                 }
                 render::reveal_from(state.maze, state.camera);
                 state.dirty = true;
             }
 
             ui.clear();
-            ui.draw_title_bar("迷宮 B1F");
+            char title_buf[40];
+            std::snprintf(title_buf, sizeof(title_buf), "迷宮 B%dF", state.camera.level);
+            ui.draw_title_bar(title_buf);
 
             // 3D viewport (slightly narrower to make room for auto-map)
             SDL_Rect view_rect{kPadX, kPadY, 540, 480};

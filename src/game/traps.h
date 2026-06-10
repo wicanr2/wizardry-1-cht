@@ -21,4 +21,13 @@ bool apply_trap(State& state, core::SquareFeature f);
 // can see the system in action. Idempotent: safe to call twice.
 void seed_demo_traps(core::MazeLevel& m);
 
+// Generate a procedurally-distinct floor (kSize x kSize). Seeded by
+// floor number so each level looks different. Adds a few walls, traps
+// and a stairs-down feature.
+void build_floor(core::MazeLevel& m, int level_number);
+
+// Save state.maze back to the backing store and swap in `new_level`.
+// Places the party at the requested cell (or a default spawn if -1, -1).
+void switch_floor(State& state, int new_level, int spawn_x = -1, int spawn_y = -1);
+
 }  // namespace wiz::game
