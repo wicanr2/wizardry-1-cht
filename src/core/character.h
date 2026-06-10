@@ -14,7 +14,7 @@ enum class Klass : std::uint8_t {
 };
 enum class Alignment : std::uint8_t { Good = 0, Neutral, Evil, Count };
 enum class Status : std::uint8_t {
-    Ok = 0, Afraid, Asleep, Paralyzed, Stoned, Dead, Ashes, Lost, Count
+    Ok = 0, Afraid, Asleep, Paralyzed, Poisoned, Stoned, Dead, Ashes, Lost, Count
 };
 
 struct Attributes {
@@ -53,6 +53,10 @@ struct Character {
     std::int16_t hp_left = 0;
     std::int16_t hp_max = 0;
     std::uint8_t armor_class = 10;
+    // Per-tick poison damage (0 = not poisoned). Set together with
+    // status = Poisoned. Cleared by LATUMOFIS, Temple, or auto-cure on
+    // entering the Castle (matches manual).
+    std::uint8_t poison_strength = 0;
 
     std::array<bool, 51> spells_known{};
     std::array<std::uint8_t, 7> mage_spell_slots{};

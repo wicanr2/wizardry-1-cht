@@ -329,8 +329,15 @@ std::string cast_camp_spell(State& state, std::string_view spell_name,
     if (spell_name == "LATUMOFIS") {
         auto* c = target_char();
         if (!c) return "** 目標無效 **";
-        // No poison status modeled yet; just success message
-        std::snprintf(buf, sizeof(buf), "LATUMOFIS：%s 中毒已解除", c->name.c_str());
+        if (c->status == Status::Poisoned) {
+            c->status = Status::Ok;
+            c->poison_strength = 0;
+            std::snprintf(buf, sizeof(buf),
+                          "LATUMOFIS：%s 中毒已解除", c->name.c_str());
+        } else {
+            std::snprintf(buf, sizeof(buf),
+                          "LATUMOFIS：%s 並未中毒", c->name.c_str());
+        }
         return buf;
     }
     if (spell_name == "DIALKO") {

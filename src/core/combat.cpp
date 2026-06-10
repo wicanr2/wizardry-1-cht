@@ -426,10 +426,11 @@ void cast_spell(CombatState& s, int caster_idx, Character& caster,
         log_cast(s, caster, "LATUMAPIC", "看穿全敵真身。");
     }
     else if (n == "LATUMOFIS") {
-        if (caster.status == Status::Ok) {
-            // Cure poison handled by status; placeholder
+        if (caster.status == Status::Poisoned) {
+            caster.status = Status::Ok;
+            caster.poison_strength = 0;
         }
-        log_cast(s, caster, "LATUMOFIS", "解除中毒。");
+        log_cast(s, caster, "LATUMOFIS", "解除自身中毒。");
     }
     else if (n == "DIALKO") {
         if (caster.status == Status::Asleep || caster.status == Status::Paralyzed) {
@@ -481,6 +482,15 @@ bool set_action(CombatState& s, int idx, PlayerAction a) {
     return true;
 }
 
+// Can the character take an action this round? Asleep / Paralyzed /
+// Dead / Ashes / Lost / Stoned all block actions. Poisoned / Afraid
+// still let the character act (Afraid only modifies hit-rate elsewhere).
+static bool can_act(const Character& c) {
+    return c.status == Status::Ok ||
+           c.status == Status::Poisoned ||
+           c.status == Status::Afraid;
+}
+
 void resolve_round(CombatState& s, std::array<Character, 6>& party) {
     s.phase = CombatPhase::Resolve;
     char buf[160];
@@ -489,7 +499,7 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
     for (int i = 0; i < 6; ++i) {
         auto& a = s.actions[i];
         auto& c = party[i];
-        if (c.name.empty() || c.status != Status::Ok) continue;
+        if (c.name.empty() || !can_act(c)) continue;
         if (a.kind == PlayerAction::Run) {
             // 50% chance to flee
             if (global_rng().range(1, 100) <= 50) {
@@ -502,6 +512,13 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
             std::snprintf(buf, sizeof(buf), "%s 採取防禦姿態。", c.name.c_str());
             s.log.emplace_back(buf);
         } else if (a.kind == PlayerAction::Fight) {
+            // Front row only (party slots 0..2). Back row can't reach.
+            if (i >= 3) {
+                std::snprintf(buf, sizeof(buf),
+                              "%s 在後排，武器搆不到敵人。", c.name.c_str());
+                s.log.emplace_back(buf);
+                continue;
+            }
             if (a.target_group < 0 || static_cast<std::size_t>(a.target_group) >= s.groups.size()) continue;
             auto& g = s.groups[a.target_group];
             if (g.alive_count <= 0) continue;
@@ -512,6 +529,11 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
                               c.name.c_str(),
                               g.prototype.name_unknown.c_str(), dmg);
                 s.log.emplace_back(buf);
+                // Damage wakes a sleeping group (paralysis lingers).
+                if (g.asleep) {
+                    g.asleep = false;
+                    s.log.emplace_back("  -> 敵群被打醒。");
+                }
                 int avg_hp = std::max(1, (g.prototype.hp_dice_n * (g.prototype.hp_dice_d + 1)) / 2);
                 int dead = g.alive_count - std::max(0, g.hp_total / avg_hp + 1);
                 if (dead > 0) {
@@ -548,7 +570,7 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
 
     // Monster phase
     int alive_party = 0;
-    for (auto& c : party) if (!c.name.empty() && c.status == Status::Ok) ++alive_party;
+    for (auto& c : party) if (!c.name.empty() && can_act(c)) ++alive_party;
     if (alive_party == 0) {
         s.outcome = CombatOutcome::Defeat;
         s.phase = CombatPhase::End;
@@ -558,13 +580,36 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
 
     for (auto& g : s.groups) {
         if (g.alive_count <= 0) continue;
+        // Sleeping or paralyzed groups skip their action this round.
+        if (g.asleep) {
+            std::snprintf(buf, sizeof(buf), "%s 仍在沉睡。",
+                          g.prototype.name_unknown.c_str());
+            s.log.emplace_back(buf);
+            continue;
+        }
+        if (g.paralyzed) {
+            std::snprintf(buf, sizeof(buf), "%s 仍被麻痺，無法行動。",
+                          g.prototype.name_unknown.c_str());
+            s.log.emplace_back(buf);
+            continue;
+        }
         int swings = std::max(1, int(g.alive_count) / 2);
         for (int sw = 0; sw < swings; ++sw) {
-            // pick a random alive party member
+            // Bias attacks to the front row (75/25 split).
             int target = -1;
+            int bias_roll = global_rng().range(1, 100);
+            int min_idx = (bias_roll <= 75) ? 0 : 3;
+            int max_idx = (bias_roll <= 75) ? 2 : 5;
             for (int t = 0; t < 100 && target < 0; ++t) {
-                int idx = global_rng().range(0, 5);
-                if (!party[idx].name.empty() && party[idx].status == Status::Ok) target = idx;
+                int idx = global_rng().range(min_idx, max_idx);
+                if (!party[idx].name.empty() && can_act(party[idx])) target = idx;
+            }
+            // Fall back to any alive member if the chosen row is empty.
+            if (target < 0) {
+                for (int t = 0; t < 100 && target < 0; ++t) {
+                    int idx = global_rng().range(0, 5);
+                    if (!party[idx].name.empty() && can_act(party[idx])) target = idx;
+                }
             }
             if (target < 0) break;
             auto& victim = party[target];
@@ -581,6 +626,24 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
                     s.log.emplace_back(buf);
                 }
             }
+        }
+    }
+
+    // End-of-round poison tick. Drops to 0 transition to Dead.
+    for (auto& c : party) {
+        if (c.name.empty()) continue;
+        if (c.status != Status::Poisoned || c.poison_strength == 0) continue;
+        c.hp_left = static_cast<std::int16_t>(c.hp_left - c.poison_strength);
+        std::snprintf(buf, sizeof(buf),
+                      "%s 因中毒受 %d 傷害。",
+                      c.name.c_str(), int(c.poison_strength));
+        s.log.emplace_back(buf);
+        if (c.hp_left <= 0) {
+            c.status = Status::Dead;
+            c.poison_strength = 0;
+            std::snprintf(buf, sizeof(buf),
+                          "  -> %s 毒發身亡！", c.name.c_str());
+            s.log.emplace_back(buf);
         }
     }
 

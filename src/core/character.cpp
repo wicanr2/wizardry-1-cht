@@ -42,6 +42,7 @@ const char* status_name(Status s) {
         case Status::Afraid:    return "afraid";
         case Status::Asleep:    return "asleep";
         case Status::Paralyzed: return "paralyzed";
+        case Status::Poisoned:  return "poisoned";
         case Status::Stoned:    return "stoned";
         case Status::Dead:      return "dead";
         case Status::Ashes:     return "ashes";

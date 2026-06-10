@@ -195,6 +195,49 @@ bool handle_menu(State& state, const SDL_Event* ev, const render::UI& ui,
 
 namespace {
 
+// Apply per-step poison damage to every Poisoned party member. Returns
+// true if any HP change happened (so the caller can refresh the panel).
+bool poison_tick_party(State& state) {
+    bool any = false;
+    for (int i = 0; i < state.party.count; ++i) {
+        int ri = state.party.roster_index[i];
+        if (ri < 0 || ri >= static_cast<int>(state.roster.chars.size())) continue;
+        auto& c = state.roster.chars[ri];
+        if (c.status != core::Status::Poisoned || c.poison_strength == 0) continue;
+        c.hp_left = static_cast<std::int16_t>(c.hp_left - c.poison_strength);
+        any = true;
+        if (c.hp_left <= 0) {
+            c.status = core::Status::Dead;
+            c.poison_strength = 0;
+            state.push_message(c.name + " 因中毒身亡。");
+        } else {
+            char buf[120];
+            std::snprintf(buf, sizeof(buf), "%s 因中毒受 %d 傷害(HP %d)。",
+                          c.name.c_str(), int(c.poison_strength), int(c.hp_left));
+            state.push_message(buf);
+        }
+    }
+    return any;
+}
+
+// Castle entry auto-cures Poisoned (per Sir-Tech rule: poison stops on
+// return to town because the healers' aura cleanses it).
+void auto_cure_poison_at_castle(State& state) {
+    int cured = 0;
+    for (auto& c : state.roster.chars) {
+        if (c.status == core::Status::Poisoned) {
+            c.status = core::Status::Ok;
+            c.poison_strength = 0;
+            ++cured;
+        }
+    }
+    if (cured > 0) {
+        char buf[80];
+        std::snprintf(buf, sizeof(buf), "✦ 城堡治癒了 %d 名中毒者。", cured);
+        state.push_message(buf);
+    }
+}
+
 const char* music_key_for(Scene s) {
     switch (s) {
         case Scene::Title:           return "title";
@@ -349,6 +392,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                                std::string(i18n::tr("edge_of_town")), kEdgeMenu);
 
         case Scene::Castle:
+            if (state.prev_scene != Scene::Castle) auto_cure_poison_at_castle(state);
             state.status_hint = "↑↓ 選擇   Enter 確認   ESC 回到城鎮邊緣";
             return handle_menu(state, event, ui,
                                std::string(i18n::tr("castle")), kCastleMenu);
@@ -393,6 +437,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     if (wall != core::Wall::Wall) {
                         step_forward(state.camera);
                         render::play(render::Sfx::Footstep);
+                        poison_tick_party(state);
                     } else {
                         state.push_message("** 撞牆 ** WALL!");
                         render::play(render::Sfx::SwordMiss);
@@ -401,6 +446,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 } else if (k == SDLK_DOWN || k == SDLK_s) {
                     step_back(state.camera);
                     render::play(render::Sfx::Footstep);
+                    poison_tick_party(state);
                 } else if (k == SDLK_LEFT || k == SDLK_a) {
                     turn_left(state.camera);
                     render::play(render::Sfx::Footstep);
