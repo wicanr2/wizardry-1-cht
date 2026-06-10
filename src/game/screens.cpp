@@ -407,7 +407,22 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 }
             }
             ui.clear();
-            ui.draw_title_bar("巫術：瘋王的試煉場");
+            // Theme-aware title background: pcecd theme has a custom
+            // 1280x720 splash; otherwise fall through to the text title bar.
+            {
+                std::string bg_path = std::string(WIZ_ASSETS_DIR) +
+                                      "/themes/pcecd/title/background.png";
+                if (render::theme::current() == render::theme::Theme::PCECD) {
+                    if (SDL_Texture* tex = render::load_sprite(ui.renderer(), bg_path)) {
+                        SDL_Rect dst{0, 0, 1280, 720};
+                        SDL_RenderCopy(ui.renderer(), tex, nullptr, &dst);
+                    } else {
+                        ui.draw_title_bar("巫術：瘋王的試煉場");
+                    }
+                } else {
+                    ui.draw_title_bar("巫術：瘋王的試煉場");
+                }
+            }
             {
                 std::vector<std::string> lines = {
                     "Wizardry I: Proving Grounds of the Mad Overlord  v3.2 CHT",
