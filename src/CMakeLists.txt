@@ -29,6 +29,7 @@ add_library(wizrender STATIC
   render/auto_map.cpp
   render/sprite.cpp
   render/audio.cpp
+  render/theme.cpp
 )
 target_include_directories(wizrender PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(wizrender PUBLIC wizcore)

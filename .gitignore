@@ -66,6 +66,21 @@ assets/audio/*.ogg
 # PCE-CD sprites — CC-BY-SA 4.0 from wizardry.wiki.gg, OK to bundle in repo.
 # (tools/fetch_pcecd_sprites.sh still available for re-fetching upstream)
 
+# Derived themes (mono/outline/sepia) — regenerated locally by
+# tools/generate_themes.py from the bundled PCE-CD master sprites.
+# Same CC-BY-SA licence, but kept out of the repo to keep the tree light.
+assets/themes/mono/
+assets/themes/outline/
+assets/themes/sepia/
+
+# Local-only theme dirs populated by tools/extract_*.sh from ROMs the
+# user owns (PC-98, WonderSwan Color, Macintosh, PCE-CD audio).
+# NEVER committed — copyrighted material.
+assets/themes/pc98/
+assets/themes/wsc/
+assets/themes/mac/
+assets/themes/pcecd_local/
+
 
 # Reference materials (not committed — see docs/REFERENCES.md)
 release/

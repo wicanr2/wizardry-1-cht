@@ -24,6 +24,7 @@
 #include "render/auto_map.h"
 #include "render/maze_view.h"
 #include "render/sprite.h"
+#include "render/theme.h"
 #include "render/ui.h"
 #include "save/gamesave.h"
 
@@ -237,6 +238,19 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
             toggle_help();
             return true;
         }
+        // F3 cycles visual theme (PCE-CD → Mono → Outline → Sepia → ...).
+        // Skips themes whose asset dir is missing.
+        if (event->key.keysym.sym == SDLK_F3) {
+            render::theme::cycle();
+            // Drop the sprite cache so subsequent loads pick up the new
+            // theme's PNGs even when keys (resolved paths) overlap.
+            render::clear_sprite_cache();
+            std::string msg = std::string("✦ 切換主題：") +
+                              std::string(render::theme::display_name(
+                                              render::theme::current()));
+            state.push_message(msg);
+            return true;
+        }
         if (help_active()) {
             toggle_help();
             return true;
@@ -297,7 +311,9 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     "Wizardry I: Proving Grounds of the Mad Overlord  v3.2 CHT",
                     "",
                     "1-5：讀取對應存檔槽    ESC：直接進城鎮邊緣",
-                    "其他鍵：開始新手導覽（F1 / F2 隨時叫出說明）",
+                    "F3：切換視覺主題    其他鍵：開始新手導覽（F1 / F2 隨時叫出說明）",
+                    std::string("目前主題：") +
+                        std::string(render::theme::display_name(render::theme::current())),
                     "",
                 };
                 for (int i = 1; i <= kNumSlots; ++i) {
@@ -721,7 +737,8 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
             for (auto& g : state.combat.groups) {
                 // Sprite (left)
                 if (!g.prototype.sprite_path.empty()) {
-                    std::string full = std::string(WIZ_ASSETS_DIR) + "/" + g.prototype.sprite_path;
+                    std::string themed = render::theme::resolve(g.prototype.sprite_path);
+                    std::string full = std::string(WIZ_ASSETS_DIR) + "/" + themed;
                     SDL_Texture* tex = render::load_sprite(ui.renderer(), full);
                     if (tex) {
                         SDL_Rect dst{xx, yy - 4, sprite_w, enemy_panel_h - 60};
