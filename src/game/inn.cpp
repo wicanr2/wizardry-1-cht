@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <string>
 
+#include "core/rng.h"
 #include "core/rules.h"
 
 namespace wiz::game {
@@ -37,7 +38,12 @@ InnUI& inn_state() { static InnUI s; return s; }
 
 struct TempleUI {
     int member = 0;
-    enum Action { Heal, CurePoison, CureParalysis, CureStone, Resurrect, Count } action = Heal;
+    enum Action {
+        Heal, CurePoison, CureParalysis, CureStone,
+        Resurrect,   // DI: Dead -> Ok (chance), failure -> Ashes
+        Kadorto,     // KADORTO: Ashes -> Ok (chance), failure -> Lost
+        Count
+    } action = Heal;
 };
 TempleUI& temple_state() { static TempleUI s; return s; }
 
@@ -159,11 +165,12 @@ void draw_temple(State& state, const render::UI& ui, const TempleUI& s) {
                       right_x + 14, kPadY + 14, ui.theme().accent);
 
     const char* labels[] = {
-        "[A] 治療 HP        50 金 / 等級",
-        "[B] 解毒           75 金 / 等級",
-        "[C] 治癒麻痺      100 金 / 等級",
-        "[D] 解石化        500 金 / 等級",
-        "[E] 復活        1000 金 / 等級",
+        "[A] 治療 HP             50 金 / 等級",
+        "[B] 解毒                75 金 / 等級",
+        "[C] 治癒麻痺           100 金 / 等級",
+        "[D] 解石化             500 金 / 等級",
+        "[E] DI 復活 (亡→生)     250 金 / 等級（可能變灰燼）",
+        "[F] KADORTO (灰燼→生)  1000 金 / 等級（可能永失）",
     };
     const int line_h = ui.body_font().line_height() + 12;
     for (int i = 0; i < TempleUI::Count; ++i) {
@@ -259,7 +266,8 @@ bool temple_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                     case TempleUI::CurePoison:     cost = 75LL * c.char_level; break;
                     case TempleUI::CureParalysis:  cost = 100LL * c.char_level; break;
                     case TempleUI::CureStone:      cost = 500LL * c.char_level; break;
-                    case TempleUI::Resurrect:      cost = 1000LL * c.char_level; break;
+                    case TempleUI::Resurrect:      cost = 250LL * c.char_level; break;
+                    case TempleUI::Kadorto:        cost = 1000LL * c.char_level; break;
                     default: break;
                 }
                 if (c.gold < cost) {
@@ -272,7 +280,13 @@ bool temple_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                             state.push_message(c.name + " 已完全治癒。");
                             break;
                         case TempleUI::CurePoison:
-                            state.push_message(c.name + " 已解除中毒。");
+                            if (c.status == core::Status::Poisoned) {
+                                c.status = core::Status::Ok;
+                                c.poison_strength = 0;
+                                state.push_message(c.name + " 已解除中毒。");
+                            } else {
+                                state.push_message(c.name + " 並未中毒。");
+                            }
                             break;
                         case TempleUI::CureParalysis:
                             if (c.status == core::Status::Paralyzed) c.status = core::Status::Ok;
@@ -282,17 +296,52 @@ bool temple_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                             if (c.status == core::Status::Stoned) c.status = core::Status::Ok;
                             state.push_message(c.name + " 已解除石化。");
                             break;
-                        case TempleUI::Resurrect:
-                            if (c.status == core::Status::Dead ||
-                                c.status == core::Status::Ashes) {
+                        case TempleUI::Resurrect: {
+                            // DI: revive Dead. Success = 50 + 3*piety per
+                            // sec-snafaru-v3 rules (we use vitality + age penalty).
+                            if (c.status != core::Status::Dead) {
+                                state.push_message(c.name + " 並非死亡狀態，DI 不能施用。");
+                                break;
+                            }
+                            int chance = 50 + 3 * int(c.attr.vitality)
+                                       - int(c.age / 52);  // age years
+                            if (chance < 5)  chance = 5;
+                            if (chance > 95) chance = 95;
+                            int roll = core::global_rng().range(1, 100);
+                            c.age = static_cast<std::uint16_t>(c.age + 52);
+                            if (roll <= chance) {
                                 c.status = core::Status::Ok;
                                 c.hp_left = 1;
-                                c.age += 52;  // age one year per resurrect
-                                state.push_message(c.name + " 已復活（年齡 +1 歲）。");
+                                state.push_message(c.name + " 復活成功（HP=1，年齡 +1 歲）。");
                             } else {
-                                state.push_message(c.name + " 並未死亡。");
+                                c.status = core::Status::Ashes;
+                                state.push_message(c.name + " 復活失敗，化為灰燼。");
                             }
                             break;
+                        }
+                        case TempleUI::Kadorto: {
+                            // KADORTO: revive Ashes. Harder roll; failure ->
+                            // permanently Lost (no more attempts).
+                            if (c.status != core::Status::Ashes) {
+                                state.push_message(c.name + " 並非灰燼狀態，KADORTO 不能施用。");
+                                break;
+                            }
+                            int chance = 40 + 3 * int(c.attr.vitality)
+                                       - int(c.age / 52);
+                            if (chance < 5)  chance = 5;
+                            if (chance > 95) chance = 95;
+                            int roll = core::global_rng().range(1, 100);
+                            c.age = static_cast<std::uint16_t>(c.age + 52);
+                            if (roll <= chance) {
+                                c.status = core::Status::Ok;
+                                c.hp_left = 1;
+                                state.push_message(c.name + " 從灰燼中復活（HP=1，年齡 +1 歲）。");
+                            } else {
+                                c.status = core::Status::Lost;
+                                state.push_message(c.name + " 灰燼飄散，永遠消逝。");
+                            }
+                            break;
+                        }
                         default: break;
                     }
                 }
