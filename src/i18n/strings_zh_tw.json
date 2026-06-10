@@ -7,6 +7,7 @@
   "blank": {
     "en": " ",
     "zh_TW": " ",
+    "ja_JP": " ",
     "category": "border",
     "refs": [
       "Wiz1A.DSK/WIZ2.TEXT.txt:277",
@@ -17,6 +18,7 @@
   "blank_11": {
     "en": "           ",
     "zh_TW": "           ",
+    "ja_JP": "           ",
     "category": "border",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:47"
@@ -25,6 +27,7 @@
   "blank_13": {
     "en": "*",
     "zh_TW": "*",
+    "ja_JP": "*",
     "category": "border",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:117"
@@ -33,6 +36,7 @@
   "blank_17": {
     "en": "+",
     "zh_TW": "+",
+    "ja_JP": "+",
     "category": "border",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:370"
@@ -41,6 +45,7 @@
   "blank_19": {
     "en": "+--------------------------------------+",
     "zh_TW": "+--------------------------------------+",
+    "ja_JP": "+--------------------------------------+",
     "category": "border",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:64",
@@ -50,6 +55,7 @@
   "blank_23": {
     "en": "----------------------------------------",
     "zh_TW": "----------------------------------------",
+    "ja_JP": "----------------------------------------",
     "category": "border",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:486",
@@ -59,6 +65,7 @@
   "blank_25": {
     "en": " - ",
     "zh_TW": " - ",
+    "ja_JP": " - ",
     "category": "border",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:184"
@@ -67,6 +74,7 @@
   "blank_3": {
     "en": "** ",
     "zh_TW": "** ",
+    "ja_JP": "** ",
     "category": "border",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:25",
@@ -77,6 +85,7 @@
   "blank_4": {
     "en": " **",
     "zh_TW": " **",
+    "ja_JP": " **",
     "category": "border",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:25",
@@ -87,6 +96,7 @@
   "blank_6": {
     "en": ".",
     "zh_TW": ".",
+    "ja_JP": ".",
     "category": "border",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:153"
@@ -95,6 +105,7 @@
   "blank_7": {
     "en": "-",
     "zh_TW": "-",
+    "ja_JP": "-",
     "category": "border",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:289",
@@ -105,6 +116,7 @@
   "blank_9": {
     "en": "   ",
     "zh_TW": "   ",
+    "ja_JP": "   ",
     "category": "border",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:538",
@@ -114,6 +126,7 @@
   "bad_alignment": {
     "en": "** BAD ALIGNMENT **",
     "zh_TW": "**陣營不合**",
+    "ja_JP": "**アライメント不一致**",
     "category": "error",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:177"
@@ -122,6 +135,7 @@
   "char_has_non_transferable_items": {
     "en": "** CHAR HAS NON-TRANSFERABLE ITEMS **",
     "zh_TW": "** 角色有不可轉移物品 **",
+    "ja_JP": "** 譲渡不可のアイテムを所持 **",
     "category": "error",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:166"
@@ -130,6 +144,7 @@
   "congratulations": {
     "en": "*** CONGRATULATIONS ***",
     "zh_TW": "*** 恭喜 ***",
+    "ja_JP": "*** おめでとう ***",
     "category": "error",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:278"
@@ -138,6 +153,7 @@
   "no_one": {
     "en": "** NO ONE **",
     "zh_TW": "** 沒人 **",
+    "ja_JP": "** だれもいない **",
     "category": "error",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:68"
@@ -146,6 +162,7 @@
   "out": {
     "en": "** OUT **",
     "zh_TW": "**外出中**",
+    "ja_JP": "**ふざい**",
     "category": "error",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:172"
@@ -154,6 +171,7 @@
   "who": {
     "en": "** WHO? **",
     "zh_TW": "**誰？**",
+    "ja_JP": "**だれ？**",
     "category": "error",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:168"
@@ -162,6 +180,7 @@
   "write_protect_cheat": {
     "en": "** WRITE-PROTECT CHEAT! **",
     "zh_TW": "**寫保護作弊！**",
+    "ja_JP": "**ライトプロテクト不正！**",
     "category": "error",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:184"
@@ -170,6 +189,7 @@
   "you_have_died_of_old_age": {
     "en": "** YOU HAVE DIED OF OLD AGE **",
     "zh_TW": "** 你年老而逝 **",
+    "ja_JP": "** ろうしによりしぼう **",
     "category": "error",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:322"
@@ -178,6 +198,7 @@
   "a_dd_a_member": {
     "en": "A)DD A MEMBER",
     "zh_TW": "[A] 加入隊員",
+    "ja_JP": "A)メンバー追加",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:109"
@@ -186,6 +207,7 @@
   "c_hange_class_or": {
     "en": "C)HANGE  CLASS, OR",
     "zh_TW": "C) 轉職",
+    "ja_JP": "C)クラス変更、または",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:671"
@@ -194,6 +216,7 @@
   "c_hange_names_l_eave": {
     "en": "C)HANGE NAMES       L)EAVE ",
     "zh_TW": "C) 改名      L) 離開",
+    "ja_JP": "C)名前変更       L)もどる ",
     "category": "menu_opt",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:547"
@@ -202,6 +225,7 @@
   "d_elete_this_character": {
     "en": "D)ELETE  THIS CHARACTER,",
     "zh_TW": "D) 刪除此角色",
+    "ja_JP": "D)このキャラクターを削除、",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:669"
@@ -210,6 +234,7 @@
   "f_orward_or_b_ack_go_to_the": {
     "en": "F)ORWARD OR B)ACK, GO TO THE",
     "zh_TW": "F) 前進  B) 後退",
+    "ja_JP": "F)前へ、B)後ろへ進む",
     "category": "menu_opt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:387"
@@ -218,6 +243,7 @@
   "i_dentified_or_l_eave": {
     "en": "        I)DENTIFIED, OR L)EAVE",
     "zh_TW": "       I) 鑑定    L) 離開",
+    "ja_JP": "        I)鑑定する、L)もどる",
     "category": "menu_opt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:581"
@@ -226,6 +252,7 @@
   "l_eave": {
     "en": "L)EAVE",
     "zh_TW": "L)EAVE",
+    "ja_JP": "L)もどる",
     "category": "menu_opt",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:181"
@@ -234,6 +261,7 @@
   "l_eave_the_camp": {
     "en": "L)EAVE THE CAMP.",
     "zh_TW": "L)EAVE THE CAMP.",
+    "ja_JP": "L)キャンプをはなれる。",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:400"
@@ -242,6 +270,7 @@
   "l_eave_when_ready": {
     "en": "L)EAVE WHEN READY",
     "zh_TW": "L)EAVE WHEN READY",
+    "ja_JP": "L)じゅんびできたらもどる",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:55",
@@ -252,6 +281,7 @@
   "m_ake_scenario_disk_u_pdate": {
     "en": "M)AKE SCENARIO DISK U)PDATE",
     "zh_TW": "M)AKE SCENARIO DISK U)PDATE",
+    "ja_JP": "M)シナリオディスク作成 U)アップデート",
     "category": "menu_opt",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:545"
@@ -260,6 +290,7 @@
   "p_ick_up": {
     "en": "P)ICK UP, ",
     "zh_TW": "P)ICK UP, ",
+    "ja_JP": "P)拾う、 ",
     "category": "menu_opt",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:180"
@@ -268,6 +299,7 @@
   "r_ead_spell_books_or_l_eave": {
     "en": "R)EAD SPELL BOOKS, OR L)EAVE.",
     "zh_TW": "R)EAD SPELL BOOKS, OR L)EAVE.",
+    "ja_JP": "R)魔法書を読む、L)もどる。",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:229"
@@ -276,6 +308,7 @@
   "r_ecover_t_ransfer_b_ackup": {
     "en": "R)ECOVER  T)RANSFER B)ACKUP",
     "zh_TW": "R)ECOVER  T)RANSFER B)ACKUP",
+    "ja_JP": "R)回復  T)転送 B)バックアップ",
     "category": "menu_opt",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:543"
@@ -284,6 +317,7 @@
   "r_emove_a_member": {
     "en": "R)EMOVE A MEMBER,",
     "zh_TW": "[R] 移除隊員",
+    "ja_JP": "R)メンバーをはずす、",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:118"
@@ -292,6 +326,7 @@
   "r_eroll_this_character": {
     "en": "R)EROLL  THIS CHARACTER,",
     "zh_TW": "R)EROLL  THIS CHARACTER,",
+    "ja_JP": "R)このキャラクターを振り直す、",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:670"
@@ -300,6 +335,7 @@
   "s_ell_an_item_have_an_item": {
     "en": "        S)ELL AN ITEM, HAVE AN ITEM",
     "zh_TW": "        S)ELL AN 物品, HAVE AN 物品",
+    "ja_JP": "        S)アイテムを売る、所持品から",
     "category": "menu_opt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:579"
@@ -308,6 +344,7 @@
   "s_tart_game_u_tilities_t_itle_page": {
     "en": "  S)TART GAME  U)TILITIES  T)ITLE PAGE",
     "zh_TW": "  S)TART 遊戲  U)TILITIES  T)ITLE PAGE",
+    "ja_JP": "  S)ゲーム開始 U)ユーティリティ T)タイトル",
     "category": "menu_opt",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:53"
@@ -316,6 +353,7 @@
   "s_tart_or_l_eave": {
     "en": "S)TART, OR L)EAVE",
     "zh_TW": "S)TART, OR L)EAVE",
+    "ja_JP": "S)開始、L)もどる",
     "category": "menu_opt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:389"
@@ -324,6 +362,7 @@
   "t_o_or_f_rom_backup": {
     "en": "T)O OR F)ROM BACKUP",
     "zh_TW": "T)O OR F)ROM BACKUP",
+    "ja_JP": "T)バックアップへ、F)バックアップから",
     "category": "menu_opt",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:97"
@@ -332,6 +371,7 @@
   "u_ncursed_or_have_an_item": {
     "en": "        U)NCURSED,  OR HAVE AN ITEM",
     "zh_TW": "        U)NCURSED,  OR HAVE AN 物品",
+    "ja_JP": "        U)呪い解除、所持品から",
     "category": "menu_opt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:580"
@@ -340,6 +380,7 @@
   "u_se_an_item_i_dentify_an_item": {
     "en": "U)SE AN ITEM, I)DENTIFY AN ITEM,",
     "zh_TW": "U)SE AN ITEM, I)DENTIFY AN ITEM,",
+    "ja_JP": "U)アイテム使用、I)アイテム鑑定、",
     "category": "menu_opt",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:250"
@@ -348,6 +389,7 @@
   "a_the_stables_free": {
     "en": "[A] THE STABLES (FREE!)",
     "zh_TW": "[A] 馬廄 (免費！)",
+    "ja_JP": "[A] 馬小屋 (無料！)",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:40"
@@ -356,6 +398,7 @@
   "additionally_you_will_be_initiated": {
     "en": "ADDITIONALLY, YOU WILL BE INITIATED",
     "zh_TW": "此外，你將被授予",
+    "ja_JP": "さらに、貴公は叙任され",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:289"
@@ -364,6 +407,7 @@
   "amulet_is_now_back_in_the_hands_of": {
     "en": "AMULET IS NOW BACK IN THE HANDS OF",
     "zh_TW": "護身符已回到",
+    "ja_JP": "アミュレットは再び戻った",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:282"
@@ -372,6 +416,7 @@
   "andrew_greenberg_inc_robert_woodhead": {
     "en": "ANDREW GREENBERG, INC & ROBERT WOODHEAD,",
     "zh_TW": "Andrew Greenberg, Inc. & Robert Woodhead",
+    "ja_JP": "ANDREW GREENBERG, INC & ROBERT WOODHEAD,",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:36"
@@ -380,6 +425,7 @@
   "are_you_sure_you_want_to": {
     "en": "ARE YOU SURE YOU WANT TO ",
     "zh_TW": "你確定要",
+    "ja_JP": "本当によろしいですか ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:555"
@@ -388,6 +434,7 @@
   "as_the_scenario_the_backup_was_made": {
     "en": "AS THE SCENARIO THE BACKUP WAS MADE",
     "zh_TW": "為備份所製作的場景",
+    "ja_JP": "バックアップが作成されたシナリオとして",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:47"
@@ -396,6 +443,7 @@
   "b_cots_10_gp_week": {
     "en": "[B] COTS. 10 GP/WEEK.",
     "zh_TW": "[B] 簡易床位  10 金 / 週",
+    "ja_JP": "[B] 簡易ベッド  10 GP/週",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:41"
@@ -404,6 +452,7 @@
   "be_sure_new_2_old_1_copy_2_1": {
     "en": "BE SURE : NEW=2, OLD=1; COPY 2 -> 1!",
     "zh_TW": "請確認：新片=2, 舊片=1；複製 2 → 1！",
+    "ja_JP": "確認：新=2、旧=1；2→1へコピー！",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:479"
@@ -412,6 +461,7 @@
   "boon_of_250_000_experience_points": {
     "en": "BOON OF 250,000 EXPERIENCE POINTS",
     "zh_TW": "250,000 經驗值的恩賜",
+    "ja_JP": "250,000経験値の恩恵",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:286"
@@ -420,6 +470,7 @@
   "c_economy_rooms_50_gp_week": {
     "en": "[C] ECONOMY ROOMS. 50 GP/WEEK.",
     "zh_TW": "[C] 經濟房  50 金 / 週",
+    "ja_JP": "[C] エコノミールーム  50 GP/週",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:42"
@@ -428,6 +479,7 @@
   "character_name_class_ac_hits_status": {
     "en": " # CHARACTER NAME  CLASS AC HITS STATUS",
     "zh_TW": "# 角色名稱  職業 AC 生命 狀態",
+    "ja_JP": " # キャラクター名  クラス AC HP 状態",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:390",
@@ -437,6 +489,7 @@
   "chevron_of_this_rank_evermore": {
     "en": "CHEVRON (>) OF THIS RANK EVERMORE.",
     "zh_TW": "此等級永久標記符號 (>)。",
+    "ja_JP": "この階級の山形章(>)を永久に。",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:292"
@@ -445,6 +498,7 @@
   "copyright_c_1981_all_rights_reserved_by": {
     "en": "COPYRIGHT (C)1981 ALL RIGHTS RESERVED BY",
     "zh_TW": "版權所有 (C) 1981 保留所有權利 by",
+    "ja_JP": "COPYRIGHT (C)1981 ALL RIGHTS RESERVED BY",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:35"
@@ -453,6 +507,7 @@
   "countries_and_illegal_distribution_may": {
     "en": "COUNTRIES,  AND ILLEGAL DISTRIBUTION MAY",
     "zh_TW": "其他國家，非法散布可能",
+    "ja_JP": "諸国の法律により、不法な頒布は",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:39"
@@ -461,6 +516,7 @@
   "current_party": {
     "en": "+----------- CURRENT PARTY: -----------+",
     "zh_TW": "當前隊伍：",
+    "ja_JP": "+----------- 現在のパーティ: -----------+",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:67"
@@ -469,6 +525,7 @@
   "d_merchant_suites_200_gp_week": {
     "en": "[D] MERCHANT SUITES. 200 GP/WEEK.",
     "zh_TW": "[D] 商人套房  200 金 / 週",
+    "ja_JP": "[D] 商人スイート  200 GP/週",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:43"
@@ -477,6 +534,7 @@
   "drive_2_and_a_formatted_diskette_in": {
     "en": "DRIVE 2,  AND A  FORMATTED DISKETTE IN",
     "zh_TW": "至磁碟機 2，並將格式化磁片放入",
+    "ja_JP": "ドライブ2、フォーマット済みディスクを",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:338"
@@ -485,6 +543,7 @@
   "dungeon_you_are_lost_forever": {
     "en": "DUNGEON - YOU ARE LOST FOREVER!",
     "zh_TW": "DUNGEON - YOU ARE 失去 FOREVER!",
+    "ja_JP": "ダンジョン - 永遠に迷い続けるだろう！",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:340"
@@ -493,6 +552,7 @@
   "e_royal_suites_500_gp_week": {
     "en": "[E] ROYAL SUITES. 500 GP/WEEK.",
     "zh_TW": "[E] 皇家套房  500 金 / 週",
+    "ja_JP": "[E] 王室スイート  500 GP/週",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:44"
@@ -501,6 +561,7 @@
   "enchantments_prevent_spell_from_working": {
     "en": "ENCHANTMENTS PREVENT SPELL FROM WORKING",
     "zh_TW": "ENCHANTMENTS PREVENT 法術 FROM WORKING",
+    "ja_JP": "魔力によって呪文が効かない",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:287"
@@ -509,6 +570,7 @@
   "enter_letter_of_char_to_move_or": {
     "en": "ENTER LETTER OF CHAR TO MOVE, OR",
     "zh_TW": "ENTER LETTER OF CHAR 至 MOVE, OR",
+    "ja_JP": "移動するキャラの文字を入力、または",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:194"
@@ -517,6 +579,7 @@
   "enter_nsewu_or_d_to_set_displacement": {
     "en": "ENTER NSEWU OR D TO  SET DISPLACEMENT,",
     "zh_TW": "ENTER NSEWU OR D 至  SET DISPLACEMENT,",
+    "ja_JP": "NSEWU または D を入力して変位を設定、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:436"
@@ -525,6 +588,7 @@
   "enter_the_current_name_of_the_char": {
     "en": "ENTER THE CURRENT NAME OF  THE CHAR",
     "zh_TW": "ENTER THE CURRENT 名字 OF  THE CHAR",
+    "ja_JP": "そのキャラクターの現在の名前を入力",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:347"
@@ -533,6 +597,7 @@
   "enter_to_alter_a_score": {
     "en": "ENTER [+,-] TO ALTER A SCORE,",
     "zh_TW": "ENTER [+,-] 至 ALTER A SCORE,",
+    "ja_JP": "[+,-] でスコアを変更、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:238"
@@ -541,6 +606,7 @@
   "equip_cursed_unknown_unusable": {
     "en": "*=EQUIP, -=CURSED, ?=UNKNOWN, #=UNUSABLE",
     "zh_TW": "*=已裝備, -=詛咒, ?=未識別, #=無法使用",
+    "ja_JP": "*=装備中, -=呪い, ?=未鑑定, #=装備不可",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:79"
@@ -549,6 +615,7 @@
   "equipment_and_most_of_your_money_to": {
     "en": "EQUIPMENT AND MOST OF YOUR MONEY TO",
     "zh_TW": "EQUIPMENT AND MOST OF YOUR MONEY 至",
+    "ja_JP": "装備と所持金の大半を捧げよ",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:295"
@@ -557,6 +624,7 @@
   "esc_to_go_on_when_points_used_up": {
     "en": "      [ESC] TO GO ON WHEN POINTS USED UP",
     "zh_TW": "      [ESC] TO GO ON WHEN 點 USED 上",
+    "ja_JP": "      [ESC] ポイントを使い切ったら次へ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:240"
@@ -565,6 +633,7 @@
   "experience_points_to_make_level": {
     "en": "EXPERIENCE POINTS TO MAKE LEVEL",
     "zh_TW": "經驗值 點 TO MAKE 等級",
+    "ja_JP": "次のレベルまでの経験値",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:409"
@@ -573,6 +642,7 @@
   "g_pool_party_gold": {
     "en": "[G] POOL PARTY GOLD.",
     "zh_TW": "[G] POOL 隊伍 金幣.",
+    "ja_JP": "[G] パーティの金をまとめる。",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:46"
@@ -581,6 +651,7 @@
   "gold_3": {
     "en": "               GOLD  ",
     "zh_TW": "金幣",
+    "ja_JP": "               金幣  ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:442"
@@ -589,6 +660,7 @@
   "grounds_c_astle_or_l_eave_the_game": {
     "en": "GROUNDS, C)ASTLE,  OR L)EAVE THE GAME.",
     "zh_TW": "GROUNDS, C)ASTLE,  OR L)EAVE THE 遊戲.",
+    "ja_JP": "GROUNDS, C)城へ, または L)ゲームを終える。",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:220"
@@ -597,6 +669,7 @@
   "hit_points": {
     "en": "         HIT POINTS (",
     "zh_TW": "         命中 點 (",
+    "ja_JP": "         ヒットポイント (",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:435"
@@ -605,6 +678,7 @@
   "however_you_must_give_up_all_your": {
     "en": "HOWEVER, YOU MUST GIVE UP ALL YOUR",
     "zh_TW": "HOWEVER, YOU MUST GIVE 上 ALL YOUR",
+    "ja_JP": "ただし、すべての",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:294"
@@ -613,6 +687,7 @@
   "in_drive_1_and_press_return_to_save": {
     "en": "IN DRIVE 1 AND PRESS [RETURN] TO SAVE.",
     "zh_TW": "IN DRIVE 1 AND 按 [Enter] TO SAVE.",
+    "ja_JP": "ドライブ1に入れて [RETURN] で保存。",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:71"
@@ -621,6 +696,7 @@
   "in_return_for_this_he_grants_you_a": {
     "en": "IN RETURN FOR THIS, HE GRANTS YOU A",
     "zh_TW": "IN Enter FOR THIS, HE GRANTS 你 A",
+    "ja_JP": "その代わりに、彼は汝に授ける",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:285"
@@ -629,6 +705,7 @@
   "inc_this_program_is_protected_under": {
     "en": "INC.  THIS PROGRAM  IS  PROTECTED  UNDER",
     "zh_TW": "INC.  THIS PROGRAM  是  PROTECTED  UNDER",
+    "ja_JP": "INC.  本プログラムは法律により保護されている",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:37"
@@ -637,6 +714,7 @@
   "into_the_overlord_s_honor_guard_and": {
     "en": "INTO THE OVERLORD'S HONOR GUARD AND",
     "zh_TW": "進入 THE OVERLORD'S HONOR GUARD AND",
+    "ja_JP": "オーバーロードの近衛兵に列せられ",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:290"
@@ -645,6 +723,7 @@
   "loaded_now_place_a_formatted_diskette": {
     "en": "LOADED! NOW PLACE A FORMATTED DISKETTE",
     "zh_TW": "載入完成！請放入一片格式化磁片",
+    "ja_JP": "読み込み完了！フォーマット済みディスクを",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:70"
@@ -653,6 +732,7 @@
   "mage_spells_left": {
     "en": "MAGE   SPELLS LEFT = ",
     "zh_TW": "MAGE   法術S LEFT = ",
+    "ja_JP": "メイジ  残り呪文 = ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:115"
@@ -661,6 +741,7 @@
   "master_duplicate_in_drv_1_press_ret": {
     "en": " MASTER/DUPLICATE IN DRV 1, PRESS [RET]",
     "zh_TW": " MASTER/D上LICATE IN DRV 1, 按 [RET]",
+    "ja_JP": " マスター/複製をドライブ1に、[RET]を押す",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:408"
@@ -669,6 +750,7 @@
   "name_already_in_use": {
     "en": "NAME ALREADY IN USE",
     "zh_TW": "名字 ALREADY IN USE",
+    "ja_JP": "その名前は既に使われている",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:362"
@@ -677,6 +759,7 @@
   "note_chars_must_be_live_in_castle": {
     "en": "NOTE - CHARS MUST BE LIVE & IN CASTLE",
     "zh_TW": "注意 - 角色必須存活且在城堡內",
+    "ja_JP": "注意：キャラは生存し城内にいること",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:192"
@@ -685,6 +768,7 @@
   "now_flip_both_diskettes_so_we_can_copy": {
     "en": "NOW FLIP BOTH DISKETTES SO WE CAN COPY",
     "zh_TW": "NOW FLIP BOTH DISKETTES SO 我們 可以 COPY",
+    "ja_JP": "ディスクを両方裏返してコピーを続けよう",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:500"
@@ -693,6 +777,7 @@
   "old_boot_side_in_drive_1": {
     "en": "      OLD BOOT SIDE IN DRIVE 1",
     "zh_TW": "      舊 BOOT SIDE IN DRIVE 1",
+    "ja_JP": "      旧ブート面をドライブ1へ",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:477"
@@ -701,6 +786,7 @@
   "or_press_ret_for_castle": {
     "en": "OR PRESS [RET] FOR CASTLE.",
     "zh_TW": "或按 [RET] 回到城堡",
+    "ja_JP": "あるいは [RET] で城へ。",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:712"
@@ -709,6 +795,7 @@
   "or_press_return_to_exit": {
     "en": "OR PRESS [RETURN] TO EXIT",
     "zh_TW": "OR 按 [Enter] TO EXIT",
+    "ja_JP": "または [RETURN] で終了",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:195"
@@ -717,6 +804,7 @@
   "or_press_return_to_leave": {
     "en": "OR PRESS [RETURN] TO LEAVE",
     "zh_TW": "或按 [RETURN] 離開",
+    "ja_JP": "または [RETURN] で退出",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:128"
@@ -725,6 +813,7 @@
   "or_q_uit_the_game": {
     "en": "OR Q)UIT THE GAME           ",
     "zh_TW": "或按 Q 離開遊戲",
+    "ja_JP": "あるいは Q)ゲーム終了           ",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/WIZ.TEXT.txt:488"
@@ -733,6 +822,7 @@
   "or_return_to_leave": {
     "en": "    OR [RETURN] TO LEAVE",
     "zh_TW": "    OR [Enter] 至 LEAVE",
+    "ja_JP": "    または [RETURN] で退出",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:48"
@@ -741,6 +831,7 @@
   "passwords_do_not_match": {
     "en": "PASSWORDS DO NOT MATCH",
     "zh_TW": "密碼不符",
+    "ja_JP": "パスワードが一致しない",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:386"
@@ -749,6 +840,7 @@
   "pay_for_your_initiation": {
     "en": "PAY FOR YOUR INITIATION.",
     "zh_TW": "支付入會費。",
+    "ja_JP": "叙任料を支払え。",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:296"
@@ -757,6 +849,7 @@
   "place_backup_diskette_in_drive_1": {
     "en": "PLACE BACKUP DISKETTE IN DRIVE 1,",
     "zh_TW": "PLACE BACK上 DISKETTE IN DRIVE 1,",
+    "ja_JP": "バックアップディスクをドライブ1へ、",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:18"
@@ -765,6 +858,7 @@
   "place_boot_disk_in_drive_1_press_return": {
     "en": "PLACE BOOT DISK IN DRIVE 1, PRESS RETURN",
     "zh_TW": "PLACE BOOT DISK IN DRIVE 1, 按 Enter",
+    "ja_JP": "ブートディスクをドライブ1へ、[RETURN]を押す",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:162"
@@ -773,6 +867,7 @@
   "place_new_boot_side_in_drive_2": {
     "en": "PLACE NEW BOOT SIDE IN DRIVE 2",
     "zh_TW": "PLACE 新 BOOT SIDE IN DRIVE 2",
+    "ja_JP": "新ブート面をドライブ2へ",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:476"
@@ -781,6 +876,7 @@
   "place_original_master_scenario_side_in": {
     "en": "PLACE ORIGINAL MASTER SCENARIO SIDE IN",
     "zh_TW": "請將原版正本場景面放入",
+    "ja_JP": "オリジナルのマスターシナリオ面を",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:337"
@@ -789,6 +885,7 @@
   "place_scenario_in_drive_1_press_return": {
     "en": "PLACE SCENARIO IN DRIVE 1, PRESS RETURN",
     "zh_TW": "PLACE SCENARIO IN DRIVE 1, 按 Enter",
+    "ja_JP": "シナリオをドライブ1へ、[RETURN]を押す",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:191"
@@ -797,6 +894,7 @@
   "pool_g_old_div_ide_gold": {
     "en": "POOL G)OLD, DIV)IDE GOLD,",
     "zh_TW": "POOL G)OLD, DIV)IDE 金幣,",
+    "ja_JP": "G)金をまとめる, DIV)金を分ける,",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:223"
@@ -805,6 +903,7 @@
   "press_any_key_to_continue": {
     "en": "PRESS ANY KEY TO CONTINUE",
     "zh_TW": "按 ANY KEY TO 繼續",
+    "ja_JP": "なにかキーを押して続ける",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:442"
@@ -813,6 +912,7 @@
   "press_letter_to_change_class": {
     "en": "PRESS [LETTER] TO CHANGE CLASS",
     "zh_TW": "按 [LETTER] TO CHANGE CLASS",
+    "ja_JP": "[文字キー] でクラス変更",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:597"
@@ -821,6 +921,7 @@
   "press_ret_to_begin_or_esc_to_exit": {
     "en": " PRESS [RET] TO BEGIN OR [ESC] TO EXIT",
     "zh_TW": " 按 [RET] TO BEGIN OR [ESC] TO EXIT",
+    "ja_JP": " [RET] で開始、[ESC] で終了",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:282"
@@ -829,6 +930,7 @@
   "press_ret_to_leave": {
     "en": "  PRESS [RET] TO LEAVE",
     "zh_TW": "  按 [RET] TO LEAVE",
+    "ja_JP": "  [RET] で退出",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:672"
@@ -837,6 +939,7 @@
   "press_return_for_more_wizardry": {
     "en": "PRESS [RETURN] FOR MORE WIZARDRY    ",
     "zh_TW": "按 [Enter] FOR MORE WIZARDRY    ",
+    "ja_JP": "[RETURN] でウィザードリィを続ける    ",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/WIZ.TEXT.txt:486"
@@ -845,6 +948,7 @@
   "press_return_honored_ones": {
     "en": "PRESS [RETURN], HONORED ONES",
     "zh_TW": "按 [Enter], HONORED ONES",
+    "ja_JP": "[RETURN] を押せ、誉れ高き者よ",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:298"
@@ -853,6 +957,7 @@
   "press_return_to_leave": {
     "en": "PRESS [RETURN] TO LEAVE",
     "zh_TW": "按 [Enter] TO LEAVE",
+    "ja_JP": "[RETURN] で退出",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:477"
@@ -861,6 +966,7 @@
   "priest_spells_left": {
     "en": "PRIEST SPELLS LEFT = ",
     "zh_TW": "PRIEST 法術S LEFT = ",
+    "ja_JP": "プリースト 残り呪文 = ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:125"
@@ -869,6 +975,7 @@
   "punch_write_protect_notch_on_boot_side": {
     "en": "PUNCH WRITE-PROTECT NOTCH ON BOOT SIDE",
     "zh_TW": "在開機面打防寫缺口",
+    "ja_JP": "ブート面のライトプロテクトに穴を開けよ",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:473"
@@ -877,6 +984,7 @@
   "remember_original_2_new_1": {
     "en": "REMEMBER : ORIGINAL=2, NEW=1",
     "zh_TW": "REMEMBER : ORIGINAL=2, 新=1",
+    "ja_JP": "注意：オリジナル=2、新=1",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:341"
@@ -885,6 +993,7 @@
   "remember_to_put_a_write_protect_tab_on": {
     "en": "REMEMBER TO PUT A WRITE-PROTECT TAB ON",
     "zh_TW": "REMEMBER 至 PUT A WRITE-PROTECT TAB ON",
+    "ja_JP": "ライトプロテクトタブを必ず貼ること",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:530"
@@ -893,6 +1002,7 @@
   "result_in_civil_liability_and_criminal": {
     "en": "RESULT IN CIVIL  LIABILITY  AND CRIMINAL",
     "zh_TW": "將承擔民事與刑事責任",
+    "ja_JP": "民事・刑事責任を問われる",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:40"
@@ -901,6 +1011,7 @@
   "ret_to_go_to_next_score": {
     "en": "      [RET] TO GO TO NEXT SCORE,",
     "zh_TW": "      [RET] 至 GO 至 NEXT SCORE,",
+    "ja_JP": "      [RET] で次のスコアへ、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:239"
@@ -909,6 +1020,7 @@
   "ret_to_not_change_class": {
     "en": "[RET] TO NOT CHANGE CLASS",
     "zh_TW": "[RET] 至 NOT CHANGE 職業",
+    "ja_JP": "[RET] でクラス変更を取消",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:598"
@@ -917,6 +1029,7 @@
   "return_to_the_c_astle_or_l_eave_the": {
     "en": "RETURN TO THE C)ASTLE, OR L)EAVE THE",
     "zh_TW": "Enter 至 THE C)ASTLE, OR L)EAVE THE",
+    "ja_JP": "C)城へもどる、または L)その場を",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:213"
@@ -925,6 +1038,7 @@
   "roster_to_see_roster": {
     "en": "\"*ROSTER\" TO SEE ROSTER,",
     "zh_TW": "\"*ROSTER\" 至 SEE ROSTER,",
+    "ja_JP": "\"*ROSTER\" でロスター表示、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:710"
@@ -933,6 +1047,7 @@
   "scenario_master_in_drv_1_press_ret": {
     "en": " SCENARIO MASTER IN DRV 1, PRESS [RET]",
     "zh_TW": " SCENARIO MASTER IN DRV 1, 按 [RET]",
+    "ja_JP": " シナリオマスターをドライブ1へ、[RET]を押す",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:391"
@@ -941,6 +1056,7 @@
   "scenario_must_be_made_off_same_master": {
     "en": "SCENARIO MUST BE MADE OFF SAME MASTER",
     "zh_TW": "場景必須以同一份正本製作",
+    "ja_JP": "シナリオは同じマスターから作られねばならない",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:46"
@@ -949,6 +1065,7 @@
   "see_a_member": {
     "en": "#) SEE A MEMBER,",
     "zh_TW": "#) 查看隊員",
+    "ja_JP": "#) メンバーを見る、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:120"
@@ -957,6 +1074,7 @@
   "squares_down": {
     "en": "# SQUARES DOWN  =",
     "zh_TW": "# SQUARES 下  =",
+    "ja_JP": "# 下方マス数  =",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:442"
@@ -965,6 +1083,7 @@
   "squares_east": {
     "en": "# SQUARES EAST  =",
     "zh_TW": "東方格數  =",
+    "ja_JP": "東方マス数  =",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:440"
@@ -973,6 +1092,7 @@
   "squares_north": {
     "en": "# SQUARES NORTH =",
     "zh_TW": "北方格數 =",
+    "ja_JP": "北方マス数 =",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:441"
@@ -981,6 +1101,7 @@
   "squares_north_of_the_stairs": {
     "en": " SQUARES NORTH OF THE STAIRS",
     "zh_TW": " SQUARES NORTH OF THE 樓梯",
+    "ja_JP": " 階段から北方マス数",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:306"
@@ -989,6 +1110,7 @@
   "tavern_b_oltac_s_trading_post_the": {
     "en": "TAVERN, B)OLTAC'S TRADING POST, THE",
     "zh_TW": "酒館, B)OLTAC'S TRADING POST, THE",
+    "ja_JP": "酒場, B)ボルタックの店, 寺院",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:529"
@@ -997,6 +1119,7 @@
   "temple_of_c_ant_or_the_e_dge_of_town": {
     "en": "TEMPLE OF C)ANT, OR THE E)DGE OF TOWN.",
     "zh_TW": "坎特神殿 (C) 或城鎮邊緣 (E)",
+    "ja_JP": "C)カントの寺院、または E)街はずれ。",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:530"
@@ -1005,6 +1128,7 @@
   "thank_you_for_playing_wizardry": {
     "en": "THANK YOU FOR PLAYING WIZARDRY!     ",
     "zh_TW": "THANK 你 FOR PLAYING WIZARDRY!     ",
+    "ja_JP": "ウィザードリィをプレイしてくれて感謝！     ",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/WIZ.TEXT.txt:495"
@@ -1013,6 +1137,7 @@
   "that_character_does_not_exist_do_you": {
     "en": "THAT CHARACTER DOES NOT EXIST. DO YOU",
     "zh_TW": "THAT 角色 DOES NOT EXIST. DO YOU",
+    "ja_JP": "そのキャラクターは存在しない。作るか",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:464"
@@ -1021,6 +1146,7 @@
   "the_a_dventurer_s_inn_g_ilgamesh_s": {
     "en": "THE A)DVENTURER'S INN, G)ILGAMESH'S",
     "zh_TW": "THE A)DVENTURER'S 旅館, G)ILGAMESH'S",
+    "ja_JP": "A)冒険者の宿、G)ギルガメッシュの",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:528"
@@ -1029,6 +1155,7 @@
   "the_donation_will_be": {
     "en": "THE DONATION WILL BE ",
     "zh_TW": "捐獻金額為 ",
+    "ja_JP": "寄進額は ",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:90"
@@ -1037,6 +1164,7 @@
   "the_laws_of_the_united_states_and_other": {
     "en": "THE LAWS OF THE UNITED STATES  AND OTHER",
     "zh_TW": "依美國及其他",
+    "ja_JP": "合衆国およびその他",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:38"
@@ -1045,6 +1173,7 @@
   "the_notch_you_punched": {
     "en": "THE NOTCH YOU PUNCHED!",
     "zh_TW": "THE NOTCH 你 PUNCHED!",
+    "ja_JP": "開けたライトプロテクト穴！",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:531"
@@ -1053,6 +1182,7 @@
   "the_party_is_facing": {
     "en": "THE PARTY IS FACING ",
     "zh_TW": "THE 隊伍 IS FACING ",
+    "ja_JP": "パーティの向きは ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:294"
@@ -1061,6 +1191,7 @@
   "then_return_to_teleport_or_esc_to": {
     "en": "THEN [RETURN] TO TELEPORT, OR [ESC] TO",
     "zh_TW": "THEN [Enter] 至 TELEPORT, OR [ESC] 至",
+    "ja_JP": "[RETURN] でテレポート、[ESC] で",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:437"
@@ -1069,6 +1200,7 @@
   "then_the_new_name_or_press_ret": {
     "en": "& THEN THE NEW NAME. OR PRESS [RET]",
     "zh_TW": "& THEN THE NEW NAME. OR 按 [RET]",
+    "ja_JP": "& その後、新しい名前を入力。[RET]で",
     "category": "message",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:348"
@@ -1077,6 +1209,7 @@
   "thus_will_be_entitled_to_wear_the": {
     "en": "THUS WILL BE ENTITLED TO WEAR THE",
     "zh_TW": "THUS WILL BE ENTITLED 至 WEAR THE",
+    "ja_JP": "従って、身に付けることが許される",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:291"
@@ -1085,6 +1218,7 @@
   "to_a_painful_death": {
     "en": "TO A PAINFUL DEATH!",
     "zh_TW": "至 A PAINFUL DEATH!",
+    "ja_JP": "苦しい死へ！",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:358"
@@ -1093,6 +1227,7 @@
   "to_inspect_or": {
     "en": "#) TO INSPECT, OR",
     "zh_TW": "#) 至 INSPECT, OR",
+    "ja_JP": "#) 調べる、または",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:398"
@@ -1101,6 +1236,7 @@
   "to_the_castle_and": {
     "en": "TO THE CASTLE, AND ",
     "zh_TW": "到城堡，且",
+    "ja_JP": "城へ向かい、そして ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:307"
@@ -1109,6 +1245,7 @@
   "welcome_to_the_temple_of_radiant_cant": {
     "en": " WELCOME TO THE TEMPLE OF RADIANT CANT!",
     "zh_TW": " WELCOME TO THE 神殿 OF RADIANT CANT!",
+    "ja_JP": " 光輝のカント寺院へようこそ！",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:35"
@@ -1117,6 +1254,7 @@
   "welcome_to_the_trading_post": {
     "en": "       WELCOME TO THE TRADING POST",
     "zh_TW": "       WELCOME 至 THE TRADING POST",
+    "ja_JP": "       商店へようこそ",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:603"
@@ -1125,6 +1263,7 @@
   "will_you_invoke_the_special_power_of": {
     "en": "WILL YOU INVOKE THE SPECIAL POWER OF",
     "zh_TW": "WILL 你 INVOKE THE SPECIAL POWER OF",
+    "ja_JP": "特殊能力を発動するか",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:53"
@@ -1133,6 +1272,7 @@
   "you_appeared_in_the_castle_moat_and": {
     "en": "YOU APPEARED IN THE CASTLE MOAT AND",
     "zh_TW": "你出現在城堡護城河，且",
+    "ja_JP": "城の堀に出現してしまった、そして",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:374"
@@ -1141,6 +1281,7 @@
   "you_bounced_back_to_where_you_were": {
     "en": "YOU BOUNCED BACK TO WHERE YOU WERE!",
     "zh_TW": "你 BOUNCED BACK 至 哪裡 你 WERE!",
+    "ja_JP": "元の場所に弾き戻された！",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:397"
@@ -1149,6 +1290,7 @@
   "you_have_6_press_ret": {
     "en": "YOU HAVE 6 - PRESS [RET]",
     "zh_TW": "YOU HAVE 6 - 按 [RET]",
+    "ja_JP": "残り 6 - [RET] を押せ",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:79"
@@ -1157,6 +1299,7 @@
   "you_have_completed_your_quest_and_the": {
     "en": "YOU HAVE COMPLETED YOUR QUEST AND THE",
     "zh_TW": "你 HAVE COMPLETED YOUR QUEST AND THE",
+    "ja_JP": "汝はクエストを成し遂げた、そして",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:281"
@@ -1165,6 +1308,7 @@
   "you_landed_in_solid_rock_outside_the": {
     "en": "YOU LANDED IN SOLID ROCK OUTSIDE THE",
     "zh_TW": "你 LANDED IN SOLID ROCK 外面 THE",
+    "ja_JP": "城の外の固い岩盤に落ちてしまった",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:339"
@@ -1173,6 +1317,7 @@
   "you_learned_new_spells": {
     "en": "YOU LEARNED NEW SPELLS!!!!",
     "zh_TW": "YOU LEARNED NEW 法術S!!!!",
+    "ja_JP": "新しい呪文を覚えた！！！！",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:293"
@@ -1181,6 +1326,7 @@
   "you_made_a_level": {
     "en": "YOU MADE A LEVEL!",
     "zh_TW": "YOU MADE A 等級!",
+    "ja_JP": "レベルが上がった！",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:366"
@@ -1189,6 +1335,7 @@
   "you_materialized_in_mid_air_and_fell": {
     "en": "YOU MATERIALIZED IN MID-AIR AND FELL",
     "zh_TW": "你 MATERIALIZED IN MID-AIR AND FELL",
+    "ja_JP": "空中に出現し、落下した",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:357"
@@ -1197,6 +1344,7 @@
   "you_may_e_quip_d_rop_an_item_t_rade": {
     "en": "YOU MAY E)QUIP, D)ROP AN ITEM, T)RADE,",
     "zh_TW": "你 MAY E)QUIP, D)ROP AN 物品, T)RADE,",
+    "ja_JP": "E)装備、D)アイテムを捨てる、T)取引、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:221"
@@ -1205,6 +1353,7 @@
   "you_may_enter_a_character_name_to_add": {
     "en": "YOU MAY ENTER A CHARACTER NAME TO ADD,",
     "zh_TW": "YOU MAY ENTER A 角色 NAME TO ADD,",
+    "ja_JP": "キャラクター名を入力して追加、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:705"
@@ -1213,6 +1362,7 @@
   "you_may_enter_the_m_aze_the_t_raining": {
     "en": "YOU MAY ENTER THE M)AZE, THE T)RAINING",
     "zh_TW": "你 MAY ENTER THE M)AZE, THE T)RAINING",
+    "ja_JP": "M)迷宮、T)訓練場へ進む",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:219"
@@ -1221,6 +1371,7 @@
   "you_may_go_to_the_t_raining_grounds": {
     "en": "YOU MAY GO TO THE T)RAINING GROUNDS,",
     "zh_TW": "你 MAY GO 至 THE T)RAINING GROUNDS,",
+    "ja_JP": "T)訓練場へ向かう、",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:212"
@@ -1229,6 +1380,7 @@
   "you_may_i_nspect_this_character": {
     "en": "YOU MAY I)NSPECT THIS CHARACTER,",
     "zh_TW": "YOU MAY I)NSPECT THIS 角色,",
+    "ja_JP": "I)このキャラクターを調べる、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:668"
@@ -1237,6 +1389,7 @@
   "you_may_l_eave_when_ready": {
     "en": "YOU MAY L)EAVE WHEN READY",
     "zh_TW": "你 MAY L)EAVE 何時 READY",
+    "ja_JP": "L)準備ができ次第もどる",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:513"
@@ -1245,6 +1398,7 @@
   "you_may_p_urchase_scroll": {
     "en": "YOU MAY P)URCHASE, SCROLL",
     "zh_TW": "你 MAY P)URCHASE, SCROLL",
+    "ja_JP": "P)購入、スクロール",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:385"
@@ -1253,6 +1407,7 @@
   "you_may_pool_g_old_b_uy_an_item": {
     "en": "YOU MAY POOL G)OLD, B)UY  AN ITEM,",
     "zh_TW": "你 MAY 集中 G)舊, B)UY  AN 物品,",
+    "ja_JP": "G)金をまとめる、B)アイテムを買う、",
     "category": "message",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:578"
@@ -1261,6 +1416,7 @@
   "you_may_r_eorder_e_quip_d_isband": {
     "en": "YOU MAY R)EORDER, E)QUIP, D)ISBAND,",
     "zh_TW": "你 MAY R)EORDER, E)QUIP, D)ISBAND,",
+    "ja_JP": "R)並べ替え、E)装備、D)解散、",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:396"
@@ -1269,6 +1425,7 @@
   "you_may_see_m_age_or_p_riest_spell_books": {
     "en": "YOU MAY SEE M)AGE OR P)RIEST SPELL BOOKS",
     "zh_TW": "YOU MAY SEE M)AGE OR P)RIEST 法術 BOOKS",
+    "ja_JP": "M)メイジまたは P)プリーストの魔法書を見る",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:136"
@@ -1277,6 +1434,7 @@
   "your_benificent_ruler_trebor": {
     "en": "YOUR BENIFICENT RULER, TREBOR.",
     "zh_TW": "您的仁慈統治者，特雷波。",
+    "ja_JP": "汝の慈悲深き王、トレボー。",
     "category": "message",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:283"
@@ -1285,6 +1443,7 @@
   "amt_of_gold": {
     "en": "AMT OF GOLD ? >",
     "zh_TW": "金額？>",
+    "ja_JP": "金額？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:59"
@@ -1293,6 +1452,7 @@
   "choose_a_class": {
     "en": "CHOOSE A CLASS >",
     "zh_TW": "選擇職業 >",
+    "ja_JP": "クラスを選択 >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:315"
@@ -1301,6 +1461,7 @@
   "choose_a_race": {
     "en": "CHOOSE A RACE >",
     "zh_TW": "選擇種族 >",
+    "ja_JP": "種族を選択 >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:209"
@@ -1309,6 +1470,7 @@
   "choose_an_alignment": {
     "en": "CHOOSE AN ALIGNMENT >",
     "zh_TW": "選擇陣營 >",
+    "ja_JP": "アライメントを選択 >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:349"
@@ -1317,6 +1479,7 @@
   "confirm_y_n": {
     "en": "CONFIRM (Y/N) ?",
     "zh_TW": "確認 (Y/N)？",
+    "ja_JP": "確認 (Y/N)？",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:412"
@@ -1325,6 +1488,7 @@
   "drop_item_0_exit": {
     "en": "DROP ITEM (0=EXIT) ? >",
     "zh_TW": "丟棄物品 (0=離開)？>",
+    "ja_JP": "捨てるアイテム (0=もどる)？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:560"
@@ -1333,6 +1497,7 @@
   "find_who": {
     "en": "FIND WHO ? >",
     "zh_TW": "找誰？>",
+    "ja_JP": "だれを探す？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:260"
@@ -1341,6 +1506,7 @@
   "found": {
     "en": "FOUND:",
     "zh_TW": "發現：",
+    "ja_JP": "発見：",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:52"
@@ -1349,6 +1515,7 @@
   "get_who_0_exit": {
     "en": "GET WHO (0=EXIT) >",
     "zh_TW": "拿給誰 (0=離開)？>",
+    "ja_JP": "だれに渡す (0=もどる) >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:90"
@@ -1357,6 +1524,7 @@
   "identify_what_item_0_exit": {
     "en": "IDENTIFY WHAT ITEM (0=EXIT) ? >",
     "zh_TW": "鑑定哪個物品 (0=離開)？>",
+    "ja_JP": "どのアイテムを鑑定 (0=もどる)？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:173"
@@ -1365,6 +1533,7 @@
   "keep_this_character_y_n": {
     "en": "KEEP THIS CHARACTER (Y/N)? >",
     "zh_TW": "保留此角色嗎 (Y/N)? >",
+    "ja_JP": "このキャラクターを残す (Y/N)？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:372"
@@ -1373,6 +1542,7 @@
   "name_2": {
     "en": "NAME >",
     "zh_TW": "名字 >",
+    "ja_JP": "名前 >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:716"
@@ -1381,6 +1551,7 @@
   "names_in_use": {
     "en": "NAMES IN USE:",
     "zh_TW": "已使用的名字：",
+    "ja_JP": "使用中の名前：",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:485"
@@ -1389,6 +1560,7 @@
   "options": {
     "en": "OPTIONS: ",
     "zh_TW": "選項：",
+    "ja_JP": "選択肢： ",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:178"
@@ -1397,6 +1569,7 @@
   "party_location": {
     "en": "PARTY LOCATION:",
     "zh_TW": "隊伍位置：",
+    "ja_JP": "パーティの位置：",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:292"
@@ -1405,6 +1578,7 @@
   "party_teleport": {
     "en": "PARTY TELEPORT:",
     "zh_TW": "隊伍傳送：",
+    "ja_JP": "パーティ・テレポート：",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:434"
@@ -1413,6 +1587,7 @@
   "password": {
     "en": "PASSWORD >",
     "zh_TW": "密碼 >",
+    "ja_JP": "パスワード >",
     "category": "prompt",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:382",
@@ -1422,6 +1597,7 @@
   "purchase_which_item_return_exits": {
     "en": "PURCHASE WHICH ITEM ([RETURN] EXITS) ? >",
     "zh_TW": "PURCHASE WHICH 物品 ([Enter] EXITS) ? >",
+    "ja_JP": "どのアイテムを買う ([RETURN] で退出) ？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:306"
@@ -1430,6 +1606,7 @@
   "recover_these_y_n": {
     "en": "RECOVER THESE (Y/N) ? >",
     "zh_TW": "要回收這些嗎 (Y/N) ? >",
+    "ja_JP": "これらを回収する (Y/N) ？ >",
     "category": "prompt",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:33"
@@ -1438,6 +1615,7 @@
   "return_exits": {
     "en": " ([RETURN] EXITS) >",
     "zh_TW": " ([RETURN] 離開) >",
+    "ja_JP": " ([RETURN] で退出) >",
     "category": "prompt",
     "refs": [
       "Wiz1A.DSK/WIZ2.TEXT.txt:356"
@@ -1446,6 +1624,7 @@
   "unusable_item_confirm_buy_y_n": {
     "en": "UNUSABLE ITEM - CONFIRM BUY (Y/N) ? >",
     "zh_TW": "UNUSABLE 物品 - CONFIRM 買 (Y/N) ? >",
+    "ja_JP": "装備不可アイテム - 購入確認 (Y/N) ？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:330"
@@ -1454,6 +1633,7 @@
   "use_item_0_exit": {
     "en": "USE ITEM (0=EXIT) ? >",
     "zh_TW": "USE 物品 (0=EXIT) ? >",
+    "ja_JP": "使うアイテム (0=もどる) ？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:508"
@@ -1462,6 +1642,7 @@
   "version_3_2_of_18_mar_2026_ser": {
     "en": " VERSION 3.2 OF 18-MAR-2026  SER:",
     "zh_TW": " 版本 3.2 2026-03-18  序號：",
+    "ja_JP": " バージョン 3.2 / 2026-03-18  SER:",
     "category": "prompt",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:48"
@@ -1470,6 +1651,7 @@
   "want_to_create_it_y_n": {
     "en": "WANT TO CREATE IT (Y/N) ?> ",
     "zh_TW": "WANT 至 CREATE IT (Y/N) ?> ",
+    "ja_JP": "作成しますか (Y/N) ？> ",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:465"
@@ -1478,6 +1660,7 @@
   "we_have": {
     "en": ". WE HAVE:",
     "zh_TW": "。我們有：",
+    "ja_JP": "。当店の在庫：",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:38"
@@ -1486,6 +1669,7 @@
   "what_item_ret_exits": {
     "en": "WHAT ITEM ([RET] EXITS) ? >",
     "zh_TW": "什麼 物品 ([RET] EXITS) ? >",
+    "ja_JP": "どのアイテム ([RET] で退出) ？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:93"
@@ -1494,6 +1678,7 @@
   "what_spell": {
     "en": "WHAT SPELL ? >",
     "zh_TW": "什麼 法術 ? >",
+    "ja_JP": "どの呪文？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:413"
@@ -1502,6 +1687,7 @@
   "which_do_you_wish_identified": {
     "en": "WHICH DO YOU WISH IDENTIFIED ? >",
     "zh_TW": "WHICH DO 你 WISH IDENTIFIED ? >",
+    "ja_JP": "どれを鑑定しますか？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:555"
@@ -1510,6 +1696,7 @@
   "which_do_you_wish_to_sell": {
     "en": "WHICH DO YOU WISH TO SELL ? >",
     "zh_TW": "WHICH DO 你 WISH 至 賣 ? >",
+    "ja_JP": "どれを売りますか？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:545"
@@ -1518,6 +1705,7 @@
   "which_do_you_wish_uncursed": {
     "en": "WHICH DO YOU WISH UNCURSED ? >",
     "zh_TW": "WHICH DO 你 WISH UNCURSED ? >",
+    "ja_JP": "どれの呪いを解きますか？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:550"
@@ -1526,6 +1714,7 @@
   "which_one_ret_for_none": {
     "en": "WHICH ONE ([RET] FOR NONE) ? >",
     "zh_TW": "選擇哪一個 ([RET] 為無) ? >",
+    "ja_JP": "どれにしますか ([RET] でなし)？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:224"
@@ -1534,6 +1723,7 @@
   "who_are_you_helping": {
     "en": "WHO ARE YOU HELPING ? >",
     "zh_TW": "誰 是 你 HELPING ? >",
+    "ja_JP": "だれを助ける？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:37"
@@ -1542,6 +1732,7 @@
   "who_will_join": {
     "en": "WHO WILL JOIN ? >",
     "zh_TW": "誰要加入？>",
+    "ja_JP": "だれが加わる？ >",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:150"
@@ -1550,6 +1741,7 @@
   "y_n": {
     "en": " (Y/N) ? >",
     "zh_TW": " (是/否)？>",
+    "ja_JP": " (Y/N) ？ >",
     "category": "prompt",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:59"
@@ -1558,6 +1750,7 @@
   "y_n_2": {
     "en": " (Y/N) ?",
     "zh_TW": " (是/否)？",
+    "ja_JP": " (Y/N) ？",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:557"
@@ -1566,6 +1759,7 @@
   "you_may_go_to": {
     "en": "YOU MAY GO TO:",
     "zh_TW": "你 MAY GO 至:",
+    "ja_JP": "進める場所：",
     "category": "prompt",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:525"
@@ -1574,6 +1768,7 @@
   "blank_10": {
     "en": ">>",
     "zh_TW": ">>",
+    "ja_JP": ">>",
     "category": "punct_only",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:540"
@@ -1582,6 +1777,7 @@
   "blank_12": {
     "en": "/",
     "zh_TW": "/",
+    "ja_JP": "/",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:56",
@@ -1592,6 +1788,7 @@
   "blank_14": {
     "en": "#",
     "zh_TW": "#",
+    "ja_JP": "#",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:123"
@@ -1600,6 +1797,7 @@
   "blank_15": {
     "en": "\"",
     "zh_TW": "\"",
+    "ja_JP": "\"",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:153"
@@ -1608,6 +1806,7 @@
   "blank_16": {
     "en": "\" ",
     "zh_TW": "\" ",
+    "ja_JP": "\" ",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:157"
@@ -1616,6 +1815,7 @@
   "blank_18": {
     "en": " !",
     "zh_TW": " !",
+    "ja_JP": " !",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:53"
@@ -1624,6 +1824,7 @@
   "blank_2": {
     "en": ") ",
     "zh_TW": ") ",
+    "ja_JP": ") ",
     "category": "punct_only",
     "refs": [
       "Wiz1A.DSK/WIZ2.TEXT.txt:348",
@@ -1634,6 +1835,7 @@
   "blank_20": {
     "en": ",",
     "zh_TW": ",",
+    "ja_JP": ",",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:113"
@@ -1642,6 +1844,7 @@
   "blank_21": {
     "en": "@",
     "zh_TW": "@",
+    "ja_JP": "@",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:203",
@@ -1651,6 +1854,7 @@
   "blank_22": {
     "en": "<--",
     "zh_TW": "<--",
+    "ja_JP": "<--",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:259"
@@ -1659,6 +1863,7 @@
   "blank_24": {
     "en": " (",
     "zh_TW": " (",
+    "ja_JP": " (",
     "category": "punct_only",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:502",
@@ -1668,6 +1873,7 @@
   "blank_5": {
     "en": ")",
     "zh_TW": ")",
+    "ja_JP": ")",
     "category": "punct_only",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:243",
@@ -1678,6 +1884,7 @@
   "blank_8": {
     "en": "?",
     "zh_TW": "?",
+    "ja_JP": "?",
     "category": "punct_only",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:294",
@@ -1687,6 +1894,7 @@
   "a": {
     "en": "A",
     "zh_TW": "A",
+    "ja_JP": "A",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SPECIALS2.TEXT.txt:356",
@@ -1706,6 +1914,7 @@
   "age": {
     "en": "AGE ",
     "zh_TW": "年齡",
+    "ja_JP": "ねんれい ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:194"
@@ -1714,6 +1923,7 @@
   "agility": {
     "en": "AGILITY",
     "zh_TW": "敏捷",
+    "ja_JP": "すばやさ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:197",
@@ -1733,6 +1943,7 @@
   "armor": {
     "en": "ARMOR",
     "zh_TW": "盔甲",
+    "ja_JP": "ヨロイ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:259"
@@ -1741,6 +1952,7 @@
   "at_east": {
     "en": "AT EAST ",
     "zh_TW": "位於東",
+    "ja_JP": "東に ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:243"
@@ -1749,6 +1961,7 @@
   "b": {
     "en": "B",
     "zh_TW": "B",
+    "ja_JP": "B",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:400"
@@ -1757,6 +1970,7 @@
   "bcpkodg": {
     "en": ">!$#&*<?BCPKODG@",
     "zh_TW": ">!$#&*<?BCPKODG@",
+    "ja_JP": ">!$#&*<?BCPKODG@",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:156"
@@ -1765,6 +1979,7 @@
   "below_it": {
     "en": "BELOW IT.",
     "zh_TW": "下方。",
+    "ja_JP": "その下方。",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:310"
@@ -1773,6 +1988,7 @@
   "camp": {
     "en": "CAMP",
     "zh_TW": "營地",
+    "ja_JP": "キャンプ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:388"
@@ -1781,6 +1997,7 @@
   "cant_find_char": {
     "en": "CANT FIND CHAR",
     "zh_TW": "找不到角色",
+    "ja_JP": "キャラが見つからない",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:378"
@@ -1789,6 +2006,7 @@
   "cast_on_who": {
     "en": "CAST ON WHO",
     "zh_TW": "對誰施法",
+    "ja_JP": "だれに呪文をかける",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:225"
@@ -1797,6 +2015,7 @@
   "cast_s_pells": {
     "en": "CAST S)PELLS,",
     "zh_TW": "S) 施法，",
+    "ja_JP": "S)呪文を唱える、",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:252"
@@ -1814,6 +2033,7 @@
   "chant": {
     "en": "CHANT - ",
     "zh_TW": "唱誦 - ",
+    "ja_JP": "チャント - ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:129"
@@ -1822,6 +2042,7 @@
   "chicken_out": {
     "en": "CHICKEN OUT!",
     "zh_TW": "臨陣脫逃！",
+    "ja_JP": "逃げ出した！",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:438"
@@ -1830,6 +2051,7 @@
   "choose_an_option": {
     "en": "CHOOSE AN OPTION",
     "zh_TW": "請選擇一個選項",
+    "ja_JP": "選択肢を選べ",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:541"
@@ -1838,6 +2060,7 @@
   "class": {
     "en": "CLASS",
     "zh_TW": "職業",
+    "ja_JP": "クラス",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:187"
@@ -1846,6 +2069,7 @@
   "cured": {
     "en": "CURED ",
     "zh_TW": "已治癒 ",
+    "ja_JP": "治癒した ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:285"
@@ -1854,6 +2078,7 @@
   "d": {
     "en": "D",
     "zh_TW": "D",
+    "ja_JP": "D",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:464"
@@ -1862,6 +2087,7 @@
   "drive_1": {
     "en": "DRIVE 1.",
     "zh_TW": "磁碟機 1。",
+    "ja_JP": "ドライブ 1。",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:339"
@@ -1870,6 +2096,7 @@
   "e": {
     "en": "E",
     "zh_TW": "E",
+    "ja_JP": "E",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:462"
@@ -1878,6 +2105,7 @@
   "each": {
     "en": "EACH!",
     "zh_TW": "每個！",
+    "ja_JP": "各々！",
     "category": "title",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:287"
@@ -1886,6 +2114,7 @@
   "east": {
     "en": "EAST.",
     "zh_TW": "東",
+    "ja_JP": "東。",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:297"
@@ -1894,6 +2123,7 @@
   "entering": {
     "en": "ENTERING",
     "zh_TW": "進入",
+    "ja_JP": "進入中",
     "category": "title",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:172"
@@ -1902,6 +2132,7 @@
   "exit": {
     "en": "EXIT",
     "zh_TW": "離開",
+    "ja_JP": "退出",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:513"
@@ -1910,6 +2141,7 @@
   "exp": {
     "en": "EXP ",
     "zh_TW": "經驗",
+    "ja_JP": "EXP ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:184"
@@ -1918,6 +2150,7 @@
   "for": {
     "en": " FOR ",
     "zh_TW": " 為 ",
+    "ja_JP": " のため ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:265"
@@ -1926,6 +2159,7 @@
   "for_the_ultimate": {
     "en": "FOR THE ULTIMATE",
     "zh_TW": "最終極的",
+    "ja_JP": "究極の",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/TITLELOA.TEXT.txt:92"
@@ -1934,6 +2168,7 @@
   "from": {
     "en": "FROM.",
     "zh_TW": "從。",
+    "ja_JP": "より。",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:48"
@@ -1942,6 +2177,7 @@
   "game": {
     "en": "GAME.",
     "zh_TW": "遊戲。",
+    "ja_JP": "ゲーム。",
     "category": "title",
     "refs": [
       "Wiz1A.DSK/SHOPS2.TEXT.txt:214"
@@ -1950,6 +2186,7 @@
   "gauntlets": {
     "en": "GAUNTLETS",
     "zh_TW": "護手",
+    "ja_JP": "ガントレット",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:262"
@@ -1968,6 +2205,7 @@
   "gold_2": {
     "en": "GOLD ",
     "zh_TW": "金幣",
+    "ja_JP": "ゴールド ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:179"
@@ -1976,6 +2214,7 @@
   "helmet": {
     "en": "HELMET",
     "zh_TW": "頭盔",
+    "ja_JP": "ヘルメット",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:261"
@@ -1984,6 +2223,7 @@
   "hits": {
     "en": "HITS ",
     "zh_TW": "生命",
+    "ja_JP": "HP ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:199"
@@ -1992,6 +2232,7 @@
   "hp_now": {
     "en": " HP - NOW ",
     "zh_TW": " HP - 現在 ",
+    "ja_JP": " HP - 現在 ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:287"
@@ -2000,6 +2241,7 @@
   "i_q": {
     "en": "I.Q.",
     "zh_TW": "智力",
+    "ja_JP": "I.Q.",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:182",
@@ -2010,6 +2252,7 @@
   "in_fantasy_games": {
     "en": "IN FANTASY GAMES",
     "zh_TW": "奇幻遊戲體驗",
+    "ja_JP": "ファンタジーゲームにて",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/TITLELOA.TEXT.txt:95"
@@ -2018,6 +2261,7 @@
   "in_the_morgue": {
     "en": "IN THE MORGUE",
     "zh_TW": "在停屍間",
+    "ja_JP": "死体安置所にて",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:236"
@@ -2035,6 +2279,7 @@
   "inspect_or_edit": {
     "en": "INSPECT OR EDIT,",
     "zh_TW": "檢視或編輯，",
+    "ja_JP": "調べる/編集する、",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:707"
@@ -2043,6 +2288,7 @@
   "invoke": {
     "en": "INVOKE!",
     "zh_TW": "施法！",
+    "ja_JP": "呼び出す！",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:133"
@@ -2051,6 +2297,7 @@
   "is": {
     "en": " IS..",
     "zh_TW": " 是‥",
+    "ja_JP": " は‥",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:265"
@@ -2059,6 +2306,7 @@
   "is_healing_up": {
     "en": " IS HEALING UP",
     "zh_TW": " IS HEALING 上",
+    "ja_JP": " は回復中",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:432"
@@ -2067,6 +2315,7 @@
   "is_napping": {
     "en": " IS NAPPING",
     "zh_TW": " 在打瞌睡",
+    "ja_JP": " は仮眠中",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:465"
@@ -2075,6 +2324,7 @@
   "known_mage_spells": {
     "en": "KNOWN MAGE SPELLS",
     "zh_TW": "KNOWN MAGE 法術S",
+    "ja_JP": "習得済メイジ呪文",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:106"
@@ -2083,6 +2333,7 @@
   "known_priest_spells": {
     "en": "KNOWN PRIEST SPELLS",
     "zh_TW": "KNOWN PRIEST 法術S",
+    "ja_JP": "習得済プリースト呪文",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:93"
@@ -2100,6 +2351,7 @@
   "level_2": {
     "en": " LEVEL ",
     "zh_TW": "等級",
+    "ja_JP": " レベル ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:496",
@@ -2109,6 +2361,7 @@
   "levels": {
     "en": " LEVELS",
     "zh_TW": " 等級S",
+    "ja_JP": " レベル",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:309"
@@ -2117,6 +2370,7 @@
   "lo": {
     "en": "LO",
     "zh_TW": "LO",
+    "ja_JP": "LO",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:365",
@@ -2126,6 +2380,7 @@
   "locate_bodies": {
     "en": "LOCATE BODIES",
     "zh_TW": "尋找屍體",
+    "ja_JP": "遺体を捜す",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:258"
@@ -2134,6 +2389,7 @@
   "looking": {
     "en": "LOOKING",
     "zh_TW": "正在尋找",
+    "ja_JP": "捜索中",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:172"
@@ -2142,6 +2398,7 @@
   "lost_forever": {
     "en": "LOST FOREVER!",
     "zh_TW": "失去 FOREVER!",
+    "ja_JP": "永遠に失われた！",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:275"
@@ -2150,6 +2407,7 @@
   "luck": {
     "en": "LUCK",
     "zh_TW": "幸運",
+    "ja_JP": "うん",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:206",
@@ -2160,6 +2418,7 @@
   "mage": {
     "en": " MAGE ",
     "zh_TW": "魔法師",
+    "ja_JP": " メイジ ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:51"
@@ -2168,6 +2427,7 @@
   "market": {
     "en": "MARKET",
     "zh_TW": "市場",
+    "ja_JP": "市場",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:552"
@@ -2176,6 +2436,7 @@
   "misc_item": {
     "en": "MISC. ITEM",
     "zh_TW": "雜項物品",
+    "ja_JP": "雑貨アイテム",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:263"
@@ -2184,6 +2445,7 @@
   "more": {
     "en": " MORE",
     "zh_TW": " 更多",
+    "ja_JP": " もっと",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:408"
@@ -2192,6 +2454,7 @@
   "moving": {
     "en": "MOVING ",
     "zh_TW": "移動中 ",
+    "ja_JP": "移動中 ",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:206"
@@ -2200,6 +2463,7 @@
   "murmur": {
     "en": "MURMUR - ",
     "zh_TW": "低語 - ",
+    "ja_JP": "ささやき - ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:127"
@@ -2208,6 +2472,7 @@
   "n": {
     "en": "N",
     "zh_TW": "N",
+    "ja_JP": "N",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:460"
@@ -2216,6 +2481,7 @@
   "name": {
     "en": "NAME ",
     "zh_TW": "名字",
+    "ja_JP": "なまえ ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:173"
@@ -2224,6 +2490,7 @@
   "name_changed": {
     "en": "NAME CHANGED!",
     "zh_TW": "名字 CHANGED!",
+    "ja_JP": "名前を変えた！",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:392"
@@ -2232,6 +2499,7 @@
   "north": {
     "en": ", NORTH ",
     "zh_TW": "北",
+    "ja_JP": "、北 ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:245"
@@ -2240,6 +2508,7 @@
   "north_2": {
     "en": "NORTH.",
     "zh_TW": "北",
+    "ja_JP": "北。",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:296"
@@ -2248,6 +2517,7 @@
   "of_level": {
     "en": " OF LEVEL ",
     "zh_TW": " OF 等級 ",
+    "ja_JP": " レベル ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:247"
@@ -2256,6 +2526,7 @@
   "of_old_diskette": {
     "en": "OF OLD DISKETTE.",
     "zh_TW": "OF 舊 DISKETTE.",
+    "ja_JP": "旧ディスクの。",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:474"
@@ -2264,6 +2535,7 @@
   "or_l_eave": {
     "en": "OR L)EAVE.",
     "zh_TW": "L) 離開。",
+    "ja_JP": "L)もどる。",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:137"
@@ -2272,6 +2544,7 @@
   "out_2": {
     "en": " OUT",
     "zh_TW": "外出",
+    "ja_JP": " 不在",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:507"
@@ -2280,6 +2553,7 @@
   "piety": {
     "en": "PIETY",
     "zh_TW": "信仰",
+    "ja_JP": "しんこうしん",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:187",
@@ -2290,6 +2564,7 @@
   "points": {
     "en": "POINTS",
     "zh_TW": "點",
+    "ja_JP": "ポイント",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:177"
@@ -2298,6 +2573,7 @@
   "poison": {
     "en": "POISON",
     "zh_TW": "中毒",
+    "ja_JP": "どく",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:378",
@@ -2307,6 +2583,7 @@
   "poisoned": {
     "en": " & POISONED",
     "zh_TW": " 並中毒",
+    "ja_JP": " ＆ 毒",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:45",
@@ -2316,6 +2593,7 @@
   "pray": {
     "en": "PRAY - ",
     "zh_TW": "祈禱 - ",
+    "ja_JP": "祈り - ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:131"
@@ -2324,6 +2602,7 @@
   "prepare_yourself": {
     "en": "PREPARE YOURSELF",
     "zh_TW": "請準備好",
+    "ja_JP": "覚悟せよ",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/TITLELOA.TEXT.txt:89"
@@ -2332,6 +2611,7 @@
   "press_ret": {
     "en": "PRESS [RET]",
     "zh_TW": "按 [RET]",
+    "ja_JP": "[RET] を押せ",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:255"
@@ -2340,6 +2620,7 @@
   "priest": {
     "en": "PRIEST ",
     "zh_TW": "牧師",
+    "ja_JP": "プリースト ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP.TEXT.txt:60"
@@ -2348,6 +2629,7 @@
   "probably_drowned": {
     "en": "PROBABLY DROWNED!",
     "zh_TW": "可能溺斃了！",
+    "ja_JP": "おそらく溺死した！",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:375"
@@ -2356,6 +2638,7 @@
   "prosecution": {
     "en": "PROSECUTION.",
     "zh_TW": "起訴。",
+    "ja_JP": "起訴される。",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/OPTIONS.TEXT.txt:41"
@@ -2373,6 +2656,7 @@
   "recovering": {
     "en": "RECOVERING",
     "zh_TW": "恢復中",
+    "ja_JP": "回復中",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:119"
@@ -2381,6 +2665,7 @@
   "reordering": {
     "en": "REORDERING",
     "zh_TW": "重排隊伍",
+    "ja_JP": "並べ替え中",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:525"
@@ -2389,6 +2674,7 @@
   "s": {
     "en": "S",
     "zh_TW": "S",
+    "ja_JP": "S",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:399",
@@ -2398,6 +2684,7 @@
   "saved": {
     "en": " SAVED",
     "zh_TW": " 已存檔",
+    "ja_JP": " 保存済",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:130"
@@ -2406,6 +2693,7 @@
   "scenario_data": {
     "en": "SCENARIO.DATA",
     "zh_TW": "SCENARIO.DATA",
+    "ja_JP": "SCENARIO.DATA",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SPECIALS.TEXT.txt:396",
@@ -2416,6 +2704,7 @@
   "scenario_mesgs": {
     "en": "SCENARIO.MESGS",
     "zh_TW": "SCENARIO.MESGS",
+    "ja_JP": "SCENARIO.MESGS",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SPECIALS2.TEXT.txt:606"
@@ -2424,6 +2713,7 @@
   "scenario_sides": {
     "en": "SCENARIO SIDES.",
     "zh_TW": "場景磁碟面。",
+    "ja_JP": "シナリオ面。",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:501"
@@ -2432,6 +2722,7 @@
   "select": {
     "en": "SELECT ",
     "zh_TW": "選擇 ",
+    "ja_JP": "選択 ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:256"
@@ -2440,6 +2731,7 @@
   "shield": {
     "en": "SHIELD",
     "zh_TW": "盾牌",
+    "ja_JP": "盾",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:260"
@@ -2457,6 +2749,7 @@
   "south": {
     "en": "SOUTH.",
     "zh_TW": "南",
+    "ja_JP": "南。",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:298"
@@ -2465,6 +2758,7 @@
   "squares_east_and": {
     "en": " SQUARES EAST AND",
     "zh_TW": " 東方格與",
+    "ja_JP": " 東方マスおよび",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:304"
@@ -2473,6 +2767,7 @@
   "status": {
     "en": "STATUS ",
     "zh_TW": "狀態",
+    "ja_JP": "じょうたい ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:208"
@@ -2481,6 +2776,7 @@
   "still_with_us": {
     "en": "STILL WITH US!",
     "zh_TW": "仍與我們同在！",
+    "ja_JP": "まだ我らと共にあり！",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:240"
@@ -2489,6 +2785,7 @@
   "strength": {
     "en": "STRENGTH",
     "zh_TW": "力量",
+    "ja_JP": "ちから",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:177",
@@ -2499,6 +2796,7 @@
   "system_pascal": {
     "en": "SYSTEM.PASCAL",
     "zh_TW": "SYSTEM.PASCAL",
+    "ja_JP": "SYSTEM.PASCAL",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:157",
@@ -2526,6 +2824,7 @@
   "the_soul_of": {
     "en": "THE SOUL OF ",
     "zh_TW": "某人之魂 ",
+    "ja_JP": "の魂 ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:263"
@@ -2534,6 +2833,7 @@
   "to_exit": {
     "en": "TO EXIT.",
     "zh_TW": "離開。",
+    "ja_JP": "退出。",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:349"
@@ -2542,6 +2842,7 @@
   "trade_with": {
     "en": "TRADE WITH",
     "zh_TW": "與誰交易",
+    "ja_JP": "だれと取引する",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:123"
@@ -2559,6 +2860,7 @@
   "u": {
     "en": "U",
     "zh_TW": "U",
+    "ja_JP": "U",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:465"
@@ -2567,6 +2869,7 @@
   "unusable": {
     "en": " UNUSABLE",
     "zh_TW": " 不可用",
+    "ja_JP": " 装備不可",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:248",
@@ -2576,6 +2879,7 @@
   "update_aborted": {
     "en": "UPDATE ABORTED",
     "zh_TW": "上DATE ABORTED",
+    "ja_JP": "アップデート中止",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILC.TEXT.txt:415"
@@ -2584,6 +2888,7 @@
   "vitality": {
     "en": "VITALITY",
     "zh_TW": "體力",
+    "ja_JP": "せいめいりょく",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:190",
@@ -2594,6 +2899,7 @@
   "w": {
     "en": "W",
     "zh_TW": "W",
+    "ja_JP": "W",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:463"
@@ -2602,6 +2908,7 @@
   "weapon": {
     "en": "WEAPON",
     "zh_TW": "武器",
+    "ja_JP": "ぶき",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:258"
@@ -2610,6 +2917,7 @@
   "welcome": {
     "en": "      WELCOME ",
     "zh_TW": "      歡迎 ",
+    "ja_JP": "      ようこそ ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:571"
@@ -2618,6 +2926,7 @@
   "welcome_2": {
     "en": "   WELCOME ",
     "zh_TW": "   歡迎 ",
+    "ja_JP": "   ようこそ ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:36"
@@ -2626,6 +2935,7 @@
   "west": {
     "en": "WEST.",
     "zh_TW": "西",
+    "ja_JP": "西。",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:299"
@@ -2634,6 +2944,7 @@
   "who_will_enter": {
     "en": "WHO WILL ENTER",
     "zh_TW": "誰 WILL ENTER",
+    "ja_JP": "だれが入る",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:605"
@@ -2642,6 +2953,7 @@
   "who_will_leave": {
     "en": "WHO WILL LEAVE",
     "zh_TW": "誰要離開",
+    "ja_JP": "だれが去る",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:201"
@@ -2650,6 +2962,7 @@
   "who_will_stay": {
     "en": "WHO WILL STAY",
     "zh_TW": "誰 WILL STAY",
+    "ja_JP": "だれが残る",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:25"
@@ -2658,6 +2971,7 @@
   "who_will_tithe": {
     "en": "WHO WILL TITHE",
     "zh_TW": "誰 WILL TITHE",
+    "ja_JP": "だれが寄進する",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:93"
@@ -2666,6 +2980,7 @@
   "x": {
     "en": "X",
     "zh_TW": "X",
+    "ja_JP": "X",
     "category": "title",
     "refs": [
       "Wiz1E.DSK/WIZUTILB.TEXT.txt:215"
@@ -2674,6 +2989,7 @@
   "you_are": {
     "en": "YOU ARE ",
     "zh_TW": "你是 ",
+    "ja_JP": "あなたは ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/UTILITIE.TEXT.txt:302"
@@ -2682,6 +2998,7 @@
   "you_gained": {
     "en": "YOU GAINED ",
     "zh_TW": "YOU 獲得 ",
+    "ja_JP": "獲得した ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:355"
@@ -2690,6 +3007,7 @@
   "you_have": {
     "en": "YOU HAVE ",
     "zh_TW": "你已 ",
+    "ja_JP": "あなたは ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:382"
@@ -2698,6 +3016,7 @@
   "you_have_2": {
     "en": "     YOU HAVE ",
     "zh_TW": "     您擁有 ",
+    "ja_JP": "     あなたは ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:574"
@@ -2706,6 +3025,7 @@
   "you_lost": {
     "en": "YOU LOST ",
     "zh_TW": "YOU 失去 ",
+    "ja_JP": "失った ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:344"
@@ -2714,6 +3034,7 @@
   "you_may": {
     "en": "YOU MAY ",
     "zh_TW": "你可以 ",
+    "ja_JP": "可能 ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:264",
@@ -2723,6 +3044,7 @@
   "you_need": {
     "en": "YOU NEED ",
     "zh_TW": "你需要 ",
+    "ja_JP": "必要 ",
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:405"
@@ -2731,6 +3053,7 @@
   "your": {
     "en": "YOUR ",
     "zh_TW": "你的 ",
+    "ja_JP": "あなたの ",
     "category": "title",
     "refs": [
       "Wiz1B.DSK/UTILITIE2.TEXT.txt:54"
@@ -2739,30 +3062,35 @@
   "leave_game": {
     "en": "離開遊戲",
     "zh_TW": "離開遊戲",
+    "ja_JP": "ゲームを終える",
     "category": "title",
     "refs": []
   },
   "gilgamesh_s_tavern": {
     "en": "吉爾伽美什酒館",
     "zh_TW": "吉爾伽美什酒館",
+    "ja_JP": "ギルガメッシュの酒場",
     "category": "title",
     "refs": []
   },
   "adventurer_s_inn": {
     "en": "冒險者旅館",
     "zh_TW": "冒險者旅館",
+    "ja_JP": "冒険者の宿",
     "category": "title",
     "refs": []
   },
   "boltac_s_trading_post": {
     "en": "波塔克貿易站",
     "zh_TW": "波塔克貿易站",
+    "ja_JP": "ボルタックの商店",
     "category": "title",
     "refs": []
   },
   "cant_s_temple": {
     "en": "坎特神殿",
     "zh_TW": "坎特神殿",
+    "ja_JP": "カントの寺院",
     "category": "title",
     "refs": []
   },
@@ -2776,6 +3104,7 @@
   "welcome_to_proving_grounds": {
     "en": "歡迎來到瘋王的試煉場。",
     "zh_TW": "歡迎來到瘋王的試煉場。",
+    "ja_JP": "狂王の試練場へようこそ。",
     "category": "title",
     "refs": []
   },
@@ -2796,66 +3125,77 @@
   "tavern_title": {
     "en": "酒館",
     "zh_TW": "酒館",
+    "ja_JP": "酒場",
     "category": "title",
     "refs": []
   },
   "not_here": {
     "en": "**不在這裡**",
     "zh_TW": "**不在這裡**",
+    "ja_JP": "**ここにいない**",
     "category": "message",
     "refs": []
   },
   "lost": {
     "en": "迷失",
     "zh_TW": "迷失",
+    "ja_JP": "ロスト",
     "category": "message",
     "refs": []
   },
   "dead": {
     "en": "死亡",
     "zh_TW": "死亡",
+    "ja_JP": "死亡",
     "category": "message",
     "refs": []
   },
   "ashes": {
     "en": "化灰",
     "zh_TW": "化灰",
+    "ja_JP": "灰",
     "category": "message",
     "refs": []
   },
   "cheap_apostates_out": {
     "en": "叛教者廉物！滾出去！",
     "zh_TW": "叛教者廉物！滾出去！",
+    "ja_JP": "安物の背教者め！出ていけ！",
     "category": "message",
     "refs": []
   },
   "unlucky": {
     "en": "運氣不佳",
     "zh_TW": "運氣不佳",
+    "ja_JP": "運がない",
     "category": "message",
     "refs": []
   },
   "must_pay_first": {
     "en": "必須先付款",
     "zh_TW": "必須先付款",
+    "ja_JP": "先に支払え",
     "category": "message",
     "refs": []
   },
   "available_chars": {
     "en": "可用角色：",
     "zh_TW": "可用角色：",
+    "ja_JP": "選択可能なキャラ：",
     "category": "message",
     "refs": []
   },
   "no_party_to_disband": {
     "en": "沒有隊伍可以解散",
     "zh_TW": "沒有隊伍可以解散",
+    "ja_JP": "解散できるパーティがない",
     "category": "message",
     "refs": []
   },
   "attack": {
     "en": "攻擊",
     "zh_TW": "攻擊",
+    "ja_JP": "こうげき",
     "category": "message",
     "refs": []
   },
@@ -2890,270 +3230,315 @@
   "use_item": {
     "en": "使用物品",
     "zh_TW": "使用物品",
+    "ja_JP": "アイテム使用",
     "category": "message",
     "refs": []
   },
   "who_will_fight": {
     "en": "誰要戰鬥？",
     "zh_TW": "誰要戰鬥？",
+    "ja_JP": "だれが戦う？",
     "category": "message",
     "refs": []
   },
   "monsters_appear": {
     "en": "怪物出現！",
     "zh_TW": "怪物出現！",
+    "ja_JP": "モンスターが現れた！",
     "category": "message",
     "refs": []
   },
   "flee": {
     "en": "逃離",
     "zh_TW": "逃離",
+    "ja_JP": "逃げる",
     "category": "message",
     "refs": []
   },
   "choose_a_name": {
     "en": "輸入角色名字 >",
     "zh_TW": "輸入角色名字 >",
+    "ja_JP": "キャラクター名を入力 >",
     "category": "message",
     "refs": []
   },
   "bonus_points": {
     "en": "紅利點數：",
     "zh_TW": "紅利點數：",
+    "ja_JP": "ボーナスポイント：",
     "category": "message",
     "refs": []
   },
   "distribute_to": {
     "en": "分配到：",
     "zh_TW": "分配到：",
+    "ja_JP": "割り振る項目：",
     "category": "message",
     "refs": []
   },
   "human": {
     "en": "人類",
     "zh_TW": "人類",
+    "ja_JP": "人間",
     "category": "message",
     "refs": []
   },
   "elf": {
     "en": "精靈",
     "zh_TW": "精靈",
+    "ja_JP": "エルフ",
     "category": "message",
     "refs": []
   },
   "dwarf": {
     "en": "矮人",
     "zh_TW": "矮人",
+    "ja_JP": "ドワーフ",
     "category": "message",
     "refs": []
   },
   "gnome": {
     "en": "侏儒",
     "zh_TW": "侏儒",
+    "ja_JP": "ノーム",
     "category": "message",
     "refs": []
   },
   "hobbit": {
     "en": "霍比特",
     "zh_TW": "霍比特",
+    "ja_JP": "ホビット",
     "category": "message",
     "refs": []
   },
   "fighter": {
     "en": "戰士",
     "zh_TW": "戰士",
+    "ja_JP": "ファイター",
     "category": "message",
     "refs": []
   },
   "thief": {
     "en": "盜賊",
     "zh_TW": "盜賊",
+    "ja_JP": "シーフ",
     "category": "message",
     "refs": []
   },
   "bishop": {
     "en": "主教",
     "zh_TW": "主教",
+    "ja_JP": "ビショップ",
     "category": "message",
     "refs": []
   },
   "samurai": {
     "en": "武士",
     "zh_TW": "武士",
+    "ja_JP": "サムライ",
     "category": "message",
     "refs": []
   },
   "lord": {
     "en": "領主",
     "zh_TW": "領主",
+    "ja_JP": "ロード",
     "category": "message",
     "refs": []
   },
   "ninja": {
     "en": "忍者",
     "zh_TW": "忍者",
+    "ja_JP": "ニンジャ",
     "category": "message",
     "refs": []
   },
   "good": {
     "en": "善良",
     "zh_TW": "善良",
+    "ja_JP": "善",
     "category": "message",
     "refs": []
   },
   "neutral": {
     "en": "中立",
     "zh_TW": "中立",
+    "ja_JP": "中立",
     "category": "message",
     "refs": []
   },
   "evil": {
     "en": "邪惡",
     "zh_TW": "邪惡",
+    "ja_JP": "悪",
     "category": "message",
     "refs": []
   },
   "stables_free": {
     "en": "[A] 馬廄 (免費！)",
     "zh_TW": "[A] 馬廄 (免費！)",
+    "ja_JP": "[A] 馬小屋 (無料！)",
     "category": "message",
     "refs": []
   },
   "cots_10_gp_week": {
     "en": "[B] 簡易床 10 金/週",
     "zh_TW": "[B] 簡易床 10 金/週",
+    "ja_JP": "[B] 簡易ベッド 10 GP/週",
     "category": "message",
     "refs": []
   },
   "economy_rooms_50_gp_week": {
     "en": "[C] 經濟房 50 金/週",
     "zh_TW": "[C] 經濟房 50 金/週",
+    "ja_JP": "[C] エコノミールーム 50 GP/週",
     "category": "message",
     "refs": []
   },
   "merchant_suites_200_gp_week": {
     "en": "[D] 商人套房 200 金/週",
     "zh_TW": "[D] 商人套房 200 金/週",
+    "ja_JP": "[D] 商人スイート 200 GP/週",
     "category": "message",
     "refs": []
   },
   "royal_suites_500_gp_week": {
     "en": "[E] 皇家套房 500 金/週",
     "zh_TW": "[E] 皇家套房 500 金/週",
+    "ja_JP": "[E] 王室スイート 500 GP/週",
     "category": "message",
     "refs": []
   },
   "whose_choice": {
     "en": "誰要入住？",
     "zh_TW": "誰要入住？",
+    "ja_JP": "だれが入る？",
     "category": "message",
     "refs": []
   },
   "purchase_which_item": {
     "en": "購買哪個物品（[RETURN] 離開）？>",
     "zh_TW": "購買哪個物品（[RETURN] 離開）？>",
+    "ja_JP": "どのアイテムを買う ([RETURN] で退出)？ >",
     "category": "message",
     "refs": []
   },
   "p_urchase": {
     "en": "[P] 購買",
     "zh_TW": "[P] 購買",
+    "ja_JP": "[P] 購入",
     "category": "message",
     "refs": []
   },
   "sell": {
     "en": "[S] 出售",
     "zh_TW": "[S] 出售",
+    "ja_JP": "[S] 売却",
     "category": "message",
     "refs": []
   },
   "i_dentify": {
     "en": "[I] 鑑定",
     "zh_TW": "[I] 鑑定",
+    "ja_JP": "[I] 鑑定",
     "category": "message",
     "refs": []
   },
   "u_n_curse": {
     "en": "[U] 解咒",
     "zh_TW": "[U] 解咒",
+    "ja_JP": "[U] 呪い解除",
     "category": "message",
     "refs": []
   },
   "pool_gold": {
     "en": "[P] 集中金幣",
     "zh_TW": "[P] 集中金幣",
+    "ja_JP": "[P] 金をまとめる",
     "category": "message",
     "refs": []
   },
   "divide_gold": {
     "en": "[D] 平分金幣",
     "zh_TW": "[D] 平分金幣",
+    "ja_JP": "[D] 金を分ける",
     "category": "message",
     "refs": []
   },
   "you_can_t_afford_it": {
     "en": "你買不起",
     "zh_TW": "你買不起",
+    "ja_JP": "金が足りない",
     "category": "message",
     "refs": []
   },
   "inventory_full": {
     "en": "物品已滿",
     "zh_TW": "物品已滿",
+    "ja_JP": "持ち物がいっぱい",
     "category": "message",
     "refs": []
   },
   "tithe_amount": {
     "en": "奉獻金額？",
     "zh_TW": "奉獻金額？",
+    "ja_JP": "寄進額は？",
     "category": "message",
     "refs": []
   },
   "cure_poison": {
     "en": "解毒",
     "zh_TW": "解毒",
+    "ja_JP": "毒を治す",
     "category": "message",
     "refs": []
   },
   "cure_paralysis": {
     "en": "治癒麻痺",
     "zh_TW": "治癒麻痺",
+    "ja_JP": "麻痺を治す",
     "category": "message",
     "refs": []
   },
   "cure_stoned": {
     "en": "解石化",
     "zh_TW": "解石化",
+    "ja_JP": "石化を解く",
     "category": "message",
     "refs": []
   },
   "resurrect": {
     "en": "復活",
     "zh_TW": "復活",
+    "ja_JP": "蘇生",
     "category": "message",
     "refs": []
   },
   "who_to_revive": {
     "en": "復活誰？",
     "zh_TW": "復活誰？",
+    "ja_JP": "だれを蘇生する？",
     "category": "message",
     "refs": []
   },
   "group_of": {
     "en": "一群",
     "zh_TW": "一群",
+    "ja_JP": "の群れ",
     "category": "message",
     "refs": []
   },
   "and": {
     "en": "與",
     "zh_TW": "與",
+    "ja_JP": "と",
     "category": "message",
     "refs": []
   },
   "is_silenced": {
     "en": "已被靜默",
     "zh_TW": "已被靜默",
+    "ja_JP": "は沈黙させられた",
     "category": "message",
     "refs": []
   },
@@ -3174,288 +3559,336 @@
   "is_stoned": {
     "en": "已石化",
     "zh_TW": "已石化",
+    "ja_JP": "は石化した",
     "category": "message",
     "refs": []
   },
   "spell_fizzles": {
     "en": "法術失效",
     "zh_TW": "法術失效",
+    "ja_JP": "呪文は不発に終わった",
     "category": "message",
     "refs": []
   },
   "hit_for": {
     "en": "命中造成",
     "zh_TW": "命中造成",
+    "ja_JP": "命中、与えたダメージ",
     "category": "message",
     "refs": []
   },
   "damage": {
     "en": "傷害",
     "zh_TW": "傷害",
+    "ja_JP": "ダメージ",
     "category": "message",
     "refs": []
   },
   "misses": {
     "en": "攻擊落空",
     "zh_TW": "攻擊落空",
+    "ja_JP": "攻撃を外した",
     "category": "message",
     "refs": []
   },
   "critical_hit": {
     "en": "致命一擊！",
     "zh_TW": "致命一擊！",
+    "ja_JP": "クリティカルヒット！",
     "category": "message",
     "refs": []
   },
   "killed": {
     "en": "已被擊倒",
     "zh_TW": "已被擊倒",
+    "ja_JP": "は倒された",
     "category": "message",
     "refs": []
   },
   "flees": {
     "en": "逃跑了",
     "zh_TW": "逃跑了",
+    "ja_JP": "は逃げ去った",
     "category": "message",
     "refs": []
   },
   "press_return_to_continue": {
     "en": "按 [RETURN] 繼續",
     "zh_TW": "按 [RETURN] 繼續",
+    "ja_JP": "[RETURN] を押して続ける",
     "category": "message",
     "refs": []
   },
   "you_appeared_in_the_maze": {
     "en": "你出現在迷宮裡",
     "zh_TW": "你出現在迷宮裡",
+    "ja_JP": "迷宮に出現した",
     "category": "message",
     "refs": []
   },
   "the_message": {
     "en": "訊息：",
     "zh_TW": "訊息：",
+    "ja_JP": "メッセージ：",
     "category": "message",
     "refs": []
   },
   "a_trap": {
     "en": "陷阱！",
     "zh_TW": "陷阱！",
+    "ja_JP": "罠だ！",
     "category": "message",
     "refs": []
   },
   "you_step_into_a_chute": {
     "en": "你踩進了滑道",
     "zh_TW": "你踩進了滑道",
+    "ja_JP": "シュートに踏み込んだ",
     "category": "message",
     "refs": []
   },
   "spinning": {
     "en": "旋轉中...",
     "zh_TW": "旋轉中...",
+    "ja_JP": "回転中...",
     "category": "message",
     "refs": []
   },
   "press_any_key": {
     "en": "按任意鍵",
     "zh_TW": "按任意鍵",
+    "ja_JP": "なにかキーを押せ",
     "category": "message",
     "refs": []
   },
   "invalid": {
     "en": "無效",
     "zh_TW": "無效",
+    "ja_JP": "無効",
     "category": "message",
     "refs": []
   },
   "press_return_to_continue_2": {
     "en": "按 [RETURN] 繼續",
     "zh_TW": "按 [RETURN] 繼續",
+    "ja_JP": "[RETURN] を押して続ける",
     "category": "message",
     "refs": []
   },
   "castle_4": {
     "en": "城堡",
     "zh_TW": "城堡",
+    "ja_JP": "城",
     "category": "message",
     "refs": []
   },
   "tavern_2": {
     "en": "酒館",
     "zh_TW": "酒館",
+    "ja_JP": "酒場",
     "category": "message",
     "refs": []
   },
   "character_creation": {
     "en": "角色建立",
     "zh_TW": "角色建立",
+    "ja_JP": "キャラクター作成",
     "category": "message",
     "refs": []
   },
   "who_to_remove": {
     "en": "移除誰？",
     "zh_TW": "移除誰？",
+    "ja_JP": "だれを外す？",
     "category": "message",
     "refs": []
   },
   "no_room_left_in_party": {
     "en": "隊伍已滿",
     "zh_TW": "隊伍已滿",
+    "ja_JP": "パーティに空きがない",
     "category": "message",
     "refs": []
   },
   "sleep_well": {
     "en": "祝您安眠",
     "zh_TW": "祝您安眠",
+    "ja_JP": "ぐっすりおやすみ",
     "category": "message",
     "refs": []
   },
   "you_grow_a_week_older": {
     "en": "你年長了一週",
     "zh_TW": "你年長了一週",
+    "ja_JP": "一週間年を取った",
     "category": "message",
     "refs": []
   },
   "innkeeper_smiles_warmly": {
     "en": "旅館老闆笑著迎接",
     "zh_TW": "旅館老闆笑著迎接",
+    "ja_JP": "宿の主人が温かく迎えた",
     "category": "message",
     "refs": []
   },
   "the_door_is_locked": {
     "en": "門被鎖住了",
     "zh_TW": "門被鎖住了",
+    "ja_JP": "扉に鍵がかかっている",
     "category": "message",
     "refs": []
   },
   "the_door_is_open": {
     "en": "門打開了",
     "zh_TW": "門打開了",
+    "ja_JP": "扉が開いた",
     "category": "message",
     "refs": []
   },
   "you_appeared_in_the_maze_at": {
     "en": "你出現在迷宮的",
     "zh_TW": "你出現在迷宮的",
+    "ja_JP": "迷宮に出現した位置は",
     "category": "message",
     "refs": []
   },
   "gp": {
     "en": "金幣",
     "zh_TW": "金幣",
+    "ja_JP": "金",
     "category": "message",
     "refs": []
   },
   "goodbye": {
     "en": "再會",
     "zh_TW": "再會",
+    "ja_JP": "さらば",
     "category": "message",
     "refs": []
   },
   "thank_you": {
     "en": "謝謝",
     "zh_TW": "謝謝",
+    "ja_JP": "感謝する",
     "category": "message",
     "refs": []
   },
   "enter": {
     "en": "進入",
     "zh_TW": "進入",
+    "ja_JP": "入る",
     "category": "message",
     "refs": []
   },
   "leave_2": {
     "en": "離開",
     "zh_TW": "離開",
+    "ja_JP": "もどる",
     "category": "message",
     "refs": []
   },
   "leaving": {
     "en": "離開中",
     "zh_TW": "離開中",
+    "ja_JP": "退出中",
     "category": "message",
     "refs": []
   },
   "cursed_item": {
     "en": "受詛咒物品",
     "zh_TW": "受詛咒物品",
+    "ja_JP": "呪われたアイテム",
     "category": "message",
     "refs": []
   },
   "unidentified_item": {
     "en": "未鑑定物品",
     "zh_TW": "未鑑定物品",
+    "ja_JP": "未鑑定アイテム",
     "category": "message",
     "refs": []
   },
   "identified_item": {
     "en": "已鑑定物品",
     "zh_TW": "已鑑定物品",
+    "ja_JP": "鑑定済アイテム",
     "category": "message",
     "refs": []
   },
   "equipped_item": {
     "en": "已裝備",
     "zh_TW": "已裝備",
+    "ja_JP": "装備中",
     "category": "message",
     "refs": []
   },
   "are_you_sure": {
     "en": "你確定嗎？",
     "zh_TW": "你確定嗎？",
+    "ja_JP": "本当によろしいですか？",
     "category": "message",
     "refs": []
   },
   "a_camp_with_party": {
     "en": "隊伍營地",
     "zh_TW": "隊伍營地",
+    "ja_JP": "パーティの野営",
     "category": "message",
     "refs": []
   },
   "no_one_here_by_that_name": {
     "en": "這裡沒有叫這個名字的人",
     "zh_TW": "這裡沒有叫這個名字的人",
+    "ja_JP": "その名の者はいない",
     "category": "message",
     "refs": []
   },
   "enter_initial": {
     "en": "輸入首字母",
     "zh_TW": "輸入首字母",
+    "ja_JP": "イニシャルを入力",
     "category": "message",
     "refs": []
   },
   "choose_name": {
     "en": "選擇名字",
     "zh_TW": "選擇名字",
+    "ja_JP": "名前を選ぶ",
     "category": "message",
     "refs": []
   },
   "has_been_killed": {
     "en": "已被擊倒",
     "zh_TW": "已被擊倒",
+    "ja_JP": "は倒された",
     "category": "message",
     "refs": []
   },
   "has_critically_hit": {
     "en": "造成致命一擊",
     "zh_TW": "造成致命一擊",
+    "ja_JP": "クリティカルヒットを与えた",
     "category": "message",
     "refs": []
   },
   "has_recovered": {
     "en": "已復原",
     "zh_TW": "已復原",
+    "ja_JP": "は回復した",
     "category": "message",
     "refs": []
   },
   "has_become_a_higher_level": {
     "en": "升級了",
     "zh_TW": "升級了",
+    "ja_JP": "レベルが上がった",
     "category": "message",
     "refs": []
   },
   "has_lost_a_level": {
     "en": "掉了一級",
     "zh_TW": "掉了一級",
+    "ja_JP": "レベルが下がった",
     "category": "message",
     "refs": []
   }
