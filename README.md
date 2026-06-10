@@ -55,8 +55,18 @@
 | **v1.4 Sprite 全齊** | **30/30 怪物有 PCE-CD 立繪** + snapshot 視覺驗證工具 |
 | v1.5 視覺驗證 | docs/v15_all_30_sprites.png — 全 30 隻 in-game 拼貼 |
 | **v1.6 SFX** | **11 個程序生成音效**（攻擊/法術/腳步/選單/開門...） |
+| **v1.11 多 slot 存檔** | **5 槽位**，標題畫面 1–5 鍵直接讀檔 + Camp 槽位選擇器 |
+| **v1.11 GitHub Pages** | [文件站上線](https://wicanr2.github.io/wizardry-1-cht/)，Cayman theme |
+| **v1.12 F3 主題切換** | **PCE-CD / Mono / Outline / Sepia** + 各 theme 可獨立 BGM |
+| **v1.13 規則 gap fix** | Poisoned 狀態（tick 扣血/Castle 解毒）+ 沉睡/麻痺 gating + 前/後排陣型 |
+| **v1.14 迷宮陷阱** | **4 種陷阱**：Pit / Spinner / Teleporter / Chute 全部生效 |
+| **v1.14 轉職系統** | Camp [X] 鍵 — 8 職業屬性 + 陣營雙重檢核 |
+| **v1.15 F4 多語** | **繁中 / English / 日本語** 全局即時切換 |
+| **v1.16 多層迷宮** | **10 層 B1F-B10F**，[原版地圖](https://wicanr2.github.io/wizardry-1-cht/MAPS.html)轉錄完成 |
+| **v1.16 永久死亡** | 戰死屍體留在迷宮，需新隊伍走回原格拾取 |
+| **v1.17 神殿復活** | DI（亡→生）+ KADORTO（灰→生）含失敗風險與 Status::Lost 終局 |
 | 法術 / 怪物 / 道具表 | 51 法術 + 30 怪物 + 30 道具，含中文名 |
-| 單元測試 | 9 / 9 ctest 全綠 |
+| 單元測試 | **11 / 11 ctest 全綠**（含 v13 mechanics + class_change） |
 | 平台 | Linux x86_64 / Windows 10+ |
 | 字型 | Noto Sans CJK TC（思源黑體繁中，OFL 1.1 開源字型授權 / SIL Open Font License，可打包） |
 | GitHub | [wicanr2/wizardry-1-cht](https://github.com/wicanr2/wizardry-1-cht) |
@@ -73,7 +83,7 @@
 
 ### 下載
 
-**[📦 最新 v1.7 Release](https://github.com/wicanr2/wizardry-1-cht/releases/tag/v1.7)**：
+**[📦 最新 Release](https://github.com/wicanr2/wizardry-1-cht/releases/latest)** 包含完整 v1.17 功能集（10 層原版迷宮 + 神殿復活 + F3/F4 切換）；舊版 v1.7：
 - 🐧 `wizardry-cht-linux.tar.gz` (Linux x86_64, ~435 KB)
 - 🪟 `wizardry-cht-windows.zip` (Windows x64, ~425 KB)
 
