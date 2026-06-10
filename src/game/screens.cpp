@@ -16,6 +16,7 @@
 #include "game/help.h"
 #include "game/inn.h"
 #include "game/intro.h"
+#include "game/traps.h"
 #include "game/roller.h"
 #include "game/shop.h"
 #include "game/tavern.h"
@@ -417,9 +418,11 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 m.east[1][2] = Wall::Door; m.west[1][3] = Wall::Door;
                 m.south[2][3] = Wall::Wall; m.north[3][3] = Wall::Wall;
                 m.east[3][5] = Wall::Wall; m.west[3][6] = Wall::Wall;
+                seed_demo_traps(m);
                 state.camera = {0, 5, 1, render::Facing::North};
                 state.maze_loaded = true;
                 state.push_message("進入迷宮 B1F。");
+                state.push_message("（迷宮中藏有陷阱：坑/旋轉/傳送/滑梯）");
                 render::reveal_from(state.maze, state.camera);
             }
 
@@ -438,6 +441,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                         step_forward(state.camera);
                         render::play(render::Sfx::Footstep);
                         poison_tick_party(state);
+                        apply_trap(state, feature_at_party(state));
                     } else {
                         state.push_message("** 撞牆 ** WALL!");
                         render::play(render::Sfx::SwordMiss);
@@ -447,6 +451,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     step_back(state.camera);
                     render::play(render::Sfx::Footstep);
                     poison_tick_party(state);
+                    apply_trap(state, feature_at_party(state));
                 } else if (k == SDLK_LEFT || k == SDLK_a) {
                     turn_left(state.camera);
                     render::play(render::Sfx::Footstep);

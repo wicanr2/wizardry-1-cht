@@ -91,6 +91,8 @@ add_library(wizgame STATIC
   game/camp.cpp
   game/help.cpp
   game/intro.cpp
+  game/traps.cpp
+  game/class_change.cpp
   save/gamesave.cpp
 )
 target_include_directories(wizgame PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
