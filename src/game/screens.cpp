@@ -195,33 +195,38 @@ bool handle_menu(State& state, const SDL_Event* ev, const render::UI& ui,
 
 namespace {
 
-const char* music_for(Scene s) {
+const char* music_key_for(Scene s) {
     switch (s) {
-        case Scene::Title:           return "audio/title.mp3";
+        case Scene::Title:           return "title";
         case Scene::EdgeOfTown:
         case Scene::Castle:
         case Scene::Tavern:
         case Scene::Shop:
         case Scene::Temple:
         case Scene::Inn:
-        case Scene::TrainingGrounds: return "audio/town.mp3";
+        case Scene::TrainingGrounds: return "town";
         case Scene::Maze:
-        case Scene::Camp:            return "audio/maze.mp3";
-        case Scene::Combat:          return "audio/combat.mp3";
+        case Scene::Camp:            return "maze";
+        case Scene::Combat:          return "combat";
         default:                     return nullptr;
     }
 }
 
+// Re-evaluated whenever theme changes (so theme cycle restarts music).
+int g_music_theme_epoch = 0;
+int g_music_last_theme_epoch = -1;
+
 void switch_music_for_scene(Scene s) {
     static Scene last = Scene::Title;
     static bool first = true;
-    if (!first && last == s) return;
+    bool theme_changed = (g_music_theme_epoch != g_music_last_theme_epoch);
+    if (!first && last == s && !theme_changed) return;
     first = false;
     last = s;
-    const char* track = music_for(s);
-    if (!track) return;
-    std::string full = std::string(WIZ_ASSETS_DIR) + "/" + track;
-    render::play_music(full);
+    g_music_last_theme_epoch = g_music_theme_epoch;
+    const char* key = music_key_for(s);
+    if (!key) return;
+    render::play_music(render::theme::resolve_bgm(key));
 }
 
 }  // namespace
@@ -245,6 +250,9 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
             // Drop the sprite cache so subsequent loads pick up the new
             // theme's PNGs even when keys (resolved paths) overlap.
             render::clear_sprite_cache();
+            // Bump the music epoch so the next switch_music_for_scene()
+            // call re-evaluates the theme-resolved BGM path.
+            ++g_music_theme_epoch;
             std::string msg = std::string("✦ 切換主題：") +
                               std::string(render::theme::display_name(
                                               render::theme::current()));

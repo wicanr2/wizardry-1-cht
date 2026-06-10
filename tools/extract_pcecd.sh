@@ -83,10 +83,26 @@ cat <<EOF
 
 == PCE-CD extraction (best-effort) complete ==
   Output: $OUT_DIR
-  BGM    : $wav_count tracks
+  BGM    : $wav_count tracks dumped as track_NN.ogg
   Title  : (TODO — visual heuristic not yet implemented)
   Monster: (TODO — needs per-ROM sprite-bank offset table)
 
-Once the BGM ogg files are populated, set theme to PCECD and the game
-will play those tracks instead of the Kevin MacLeod fallbacks.
+== Hooking BGM into the game ==
+The runtime looks for these four exact filenames under
+  $OUT_DIR/bgm/
+    title.ogg    — main-menu music
+    town.ogg     — castle / shop / temple / tavern / training
+    maze.ogg     — maze + camp
+    combat.ogg   — combat encounter
+
+Preview each track, then rename or symlink the ones you want.
+Example:
+  cd $OUT_DIR/bgm
+  ln -sf track_2.ogg title.ogg
+  ln -sf track_3.ogg town.ogg
+  ln -sf track_5.ogg maze.ogg
+  ln -sf track_7.ogg combat.ogg
+
+Then in the game press F3 until "PCE-CD" theme is active. The game
+will pick up the PCE-CD BGM automatically; no rebuild needed.
 EOF

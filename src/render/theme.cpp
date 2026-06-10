@@ -77,6 +77,29 @@ std::string_view dir_name(Theme t) {
     return kInfo[static_cast<size_t>(t)].dir;
 }
 
+std::string resolve_bgm(std::string_view scene_key) {
+    std::string assets = WIZ_ASSETS_DIR;
+    if (g_current != Theme::PCECD) {
+        const auto& info = kInfo[static_cast<size_t>(g_current)];
+        if (info.dir[0]) {
+            for (const char* ext : {"ogg", "mp3"}) {
+                std::string p = assets + "/themes/" + info.dir + "/bgm/" +
+                                std::string(scene_key) + "." + ext;
+                if (file_exists(p)) return p;
+            }
+        }
+    }
+    // PCE-CD theme: prefer pcecd_local/bgm if user extracted it.
+    if (g_current == Theme::PCECD) {
+        for (const char* ext : {"ogg", "mp3"}) {
+            std::string p = assets + "/themes/pcecd_local/bgm/" +
+                            std::string(scene_key) + "." + ext;
+            if (file_exists(p)) return p;
+        }
+    }
+    return assets + "/audio/" + std::string(scene_key) + ".mp3";
+}
+
 std::string resolve(std::string_view rel_path) {
     // PCECD = passthrough.
     if (g_current == Theme::PCECD) return std::string(rel_path);

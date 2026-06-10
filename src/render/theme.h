@@ -30,4 +30,9 @@ std::string_view dir_name(Theme t);
 // path unchanged so the PCE-CD original is loaded.
 std::string resolve(std::string_view rel_path);
 
+// Return the full BGM path for a given scene key ("title", "town", "maze",
+// "combat"). Prefers <assets>/themes/<theme>/bgm/<key>.{ogg,mp3} if present,
+// else falls back to <assets>/audio/<key>.mp3.
+std::string resolve_bgm(std::string_view scene_key);
+
 }  // namespace wiz::render::theme
