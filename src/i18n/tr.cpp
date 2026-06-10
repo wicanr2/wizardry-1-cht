@@ -13,9 +13,11 @@ namespace {
 struct Entry {
     std::string zh_tw;
     std::string en;
+    std::string ja_jp;
 };
 
 std::unordered_map<std::string, Entry> g_table;
+Lang g_lang = Lang::ZhTW;
 
 // Tiny JSON value extractor for the catalogue shape:
 //   { "key": { "en": "...", "zh_TW": "...", "category": "...", "refs": [...] }, ... }
@@ -110,19 +112,62 @@ bool load(const std::string& path) {
         if (key == "_meta") continue;
 
         Entry e;
-        e.en = read_string_field(obj, "en");
+        e.en    = read_string_field(obj, "en");
         e.zh_tw = read_string_field(obj, "zh_TW");
+        e.ja_jp = read_string_field(obj, "ja_JP");
         g_table.emplace(std::move(key), std::move(e));
     }
     std::fprintf(stderr, "[i18n] loaded %zu entries from %s\n", g_table.size(), path.c_str());
     return !g_table.empty();
 }
 
+Lang current_lang() { return g_lang; }
+void set_lang(Lang l) {
+    if (static_cast<int>(l) >= 0 &&
+        static_cast<int>(l) < static_cast<int>(Lang::Count)) {
+        g_lang = l;
+    }
+}
+void cycle_lang() {
+    int n = static_cast<int>(Lang::Count);
+    g_lang = static_cast<Lang>((static_cast<int>(g_lang) + 1) % n);
+}
+std::string_view lang_display_name(Lang l) {
+    switch (l) {
+        case Lang::ZhTW: return "繁體中文";
+        case Lang::En:   return "English";
+        case Lang::JaJP: return "日本語";
+        default:         return "?";
+    }
+}
+
 std::string_view tr(std::string_view key) {
     auto it = g_table.find(std::string{key});
     if (it == g_table.end()) return key;
-    return it->second.zh_tw.empty() ? std::string_view{it->second.en}
-                                    : std::string_view{it->second.zh_tw};
+    // Fallback chain: requested → en → zh_TW → key
+    auto try_field = [&](const std::string& s) -> std::string_view {
+        return s.empty() ? std::string_view{} : std::string_view{s};
+    };
+    switch (g_lang) {
+        case Lang::JaJP: {
+            auto v = try_field(it->second.ja_jp);
+            if (!v.empty()) return v;
+            v = try_field(it->second.en);
+            if (!v.empty()) return v;
+            return try_field(it->second.zh_tw);
+        }
+        case Lang::En: {
+            auto v = try_field(it->second.en);
+            if (!v.empty()) return v;
+            return try_field(it->second.zh_tw);
+        }
+        case Lang::ZhTW:
+        default: {
+            auto v = try_field(it->second.zh_tw);
+            if (!v.empty()) return v;
+            return try_field(it->second.en);
+        }
+    }
 }
 
 std::string_view tr_en(std::string_view key) {

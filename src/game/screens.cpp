@@ -287,6 +287,14 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
             toggle_help();
             return true;
         }
+        // F4 cycles UI language (繁中 → English → 日本語).
+        if (event->key.keysym.sym == SDLK_F4) {
+            i18n::cycle_lang();
+            std::string msg = std::string("✦ 語言：") +
+                              std::string(i18n::lang_display_name(i18n::current_lang()));
+            state.push_message(msg);
+            return true;
+        }
         // F3 cycles visual theme (PCE-CD → Mono → Outline → Sepia → ...).
         // Skips themes whose asset dir is missing.
         if (event->key.keysym.sym == SDLK_F3) {
@@ -363,9 +371,11 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     "Wizardry I: Proving Grounds of the Mad Overlord  v3.2 CHT",
                     "",
                     "1-5：讀取對應存檔槽    ESC：直接進城鎮邊緣",
-                    "F3：切換視覺主題    其他鍵：開始新手導覽（F1 / F2 隨時叫出說明）",
+                    "F3：切換視覺主題    F4：切換語言    其他鍵：開始新手導覽",
                     std::string("目前主題：") +
-                        std::string(render::theme::display_name(render::theme::current())),
+                        std::string(render::theme::display_name(render::theme::current())) +
+                        "    語言：" +
+                        std::string(i18n::lang_display_name(i18n::current_lang())),
                     "",
                 };
                 for (int i = 1; i <= kNumSlots; ++i) {

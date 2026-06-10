@@ -1700,7 +1700,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:203"
-    ]
+    ],
+    "ja_JP": "AC"
   },
   "age": {
     "en": "AGE ",
@@ -1726,7 +1727,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:186"
-    ]
+    ],
+    "ja_JP": "属性"
   },
   "armor": {
     "en": "ARMOR",
@@ -1806,7 +1808,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:51"
-    ]
+    ],
+    "ja_JP": "城"
   },
   "chant": {
     "en": "CHANT - ",
@@ -1959,7 +1962,8 @@
     "refs": [
       "Wiz1B.DSK/SHOPS.TEXT.txt:384",
       "Wiz1B.DSK/SHOPS.TEXT.txt:576"
-    ]
+    ],
+    "ja_JP": "G"
   },
   "gold_2": {
     "en": "GOLD ",
@@ -2025,7 +2029,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:22"
-    ]
+    ],
+    "ja_JP": "宿屋"
   },
   "inspect_or_edit": {
     "en": "INSPECT OR EDIT,",
@@ -2089,7 +2094,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CAMP2.TEXT.txt:192"
-    ]
+    ],
+    "ja_JP": "レベル"
   },
   "level_2": {
     "en": " LEVEL ",
@@ -2361,7 +2367,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:176"
-    ]
+    ],
+    "ja_JP": "種族"
   },
   "recovering": {
     "en": "RECOVERING",
@@ -2444,7 +2451,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:265"
-    ]
+    ],
+    "ja_JP": "店"
   },
   "south": {
     "en": "SOUTH.",
@@ -2503,7 +2511,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:239"
-    ]
+    ],
+    "ja_JP": "酒場"
   },
   "temple": {
     "en": "TEMPLE",
@@ -2511,7 +2520,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/CASTLE.TEXT.txt:275"
-    ]
+    ],
+    "ja_JP": "寺院"
   },
   "the_soul_of": {
     "en": "THE SOUL OF ",
@@ -2543,7 +2553,8 @@
     "category": "title",
     "refs": [
       "Wiz1C.DSK/ROLLER.TEXT.txt:703"
-    ]
+    ],
+    "ja_JP": "訓練場"
   },
   "u": {
     "en": "U",
@@ -2759,7 +2770,8 @@
     "en": "戰鬥",
     "zh_TW": "戰鬥",
     "category": "title",
-    "refs": []
+    "refs": [],
+    "ja_JP": "戦闘"
   },
   "welcome_to_proving_grounds": {
     "en": "歡迎來到瘋王的試煉場。",
@@ -2771,13 +2783,15 @@
     "en": "迷宮",
     "zh_TW": "迷宮",
     "category": "title",
-    "refs": []
+    "refs": [],
+    "ja_JP": "迷宮"
   },
   "edge_of_town": {
     "en": "城鎮邊緣",
     "zh_TW": "城鎮邊緣",
     "category": "title",
-    "refs": []
+    "refs": [],
+    "ja_JP": "町外れ"
   },
   "tavern_title": {
     "en": "酒館",
@@ -2849,25 +2863,29 @@
     "en": "戰鬥",
     "zh_TW": "戰鬥",
     "category": "message",
-    "refs": []
+    "refs": [],
+    "ja_JP": "戦う"
   },
   "parry": {
     "en": "防禦",
     "zh_TW": "防禦",
     "category": "message",
-    "refs": []
+    "refs": [],
+    "ja_JP": "防御"
   },
   "spell": {
     "en": "法術",
     "zh_TW": "法術",
     "category": "message",
-    "refs": []
+    "refs": [],
+    "ja_JP": "呪文"
   },
   "run": {
     "en": "逃跑",
     "zh_TW": "逃跑",
     "category": "message",
-    "refs": []
+    "refs": [],
+    "ja_JP": "逃げる"
   },
   "use_item": {
     "en": "使用物品",
@@ -3143,13 +3161,15 @@
     "en": "正在沉睡",
     "zh_TW": "正在沉睡",
     "category": "message",
-    "refs": []
+    "refs": [],
+    "ja_JP": "眠っている"
   },
   "is_paralyzed": {
     "en": "已麻痺",
     "zh_TW": "已麻痺",
     "category": "message",
-    "refs": []
+    "refs": [],
+    "ja_JP": "麻痺中"
   },
   "is_stoned": {
     "en": "已石化",
