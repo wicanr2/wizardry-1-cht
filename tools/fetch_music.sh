@@ -20,7 +20,7 @@ declare -A TRACKS=(
     ["title"]="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Mystery%20Bazaar.mp3"
     ["town"]="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Bumbly%20March.mp3"
     ["maze"]="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Lost%20Time.mp3"
-    ["combat"]="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Bumbly%20March.mp3"
+    ["combat"]="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Anguish.mp3"
 )
 
 UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"

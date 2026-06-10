@@ -4,15 +4,15 @@ licensed under Creative Commons Attribution 4.0 International.
   title.mp3   "Mystery Bazaar" by Kevin MacLeod
   town.mp3    "Bumbly March"   by Kevin MacLeod
   maze.mp3    "Lost Time"      by Kevin MacLeod
-  combat.mp3  alternate uplifting track (see tools/fetch_music.sh)
+  combat.mp3  "Anguish"        by Kevin MacLeod
 
   License terms: http://creativecommons.org/licenses/by/4.0/
 
+All 4 tracks are distinct and can be redownloaded via tools/fetch_music.sh.
 If any track fails to load at runtime, the game runs silently.
-Use `tools/fetch_music.sh` to repopulate the directory.
 
 ---
 
 Sound effects (assets/audio/sfx/*.wav) — procedurally generated with
 ffmpeg lavfi (sine wave + volume envelope). No external attribution
-required. Regenerate with `tools/fetch_sfx.sh`.
+required. Regenerate with tools/fetch_sfx.sh.

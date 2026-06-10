@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 
+#include <sys/stat.h>
+
 #include <algorithm>
 #include <cstdio>
 #include <cstdlib>
@@ -18,6 +20,7 @@ constexpr int kPadX = 80;
 constexpr int kPadY = 110;
 
 enum CampOption { Save, Inspect, Reorder, CastSpell, Back, ToTitle, Count };
+enum class SaveSlot { None = 0, Picking };  // sub-mode markers
 
 struct CampUI {
     int cursor = 0;
@@ -28,6 +31,10 @@ struct CampUI {
     bool picking_spell = false;
     int spell_cursor = 0;
     int spell_target = 0;
+
+    // Save slot picker
+    bool picking_save_slot = false;
+    int save_slot_cursor = 0;  // 0..kNumSlots-1 → slot 1..kNumSlots
 };
 
 // Camp-castable spells (subset of all 51, only ones meaningful outside combat).
@@ -91,7 +98,30 @@ void draw_camp(State& state, const render::UI& ui, const CampUI& s) {
     const int right_h = 360;
     ui.draw_frame(right_x, kPadY, right_w, right_h);
 
-    if (s.picking_spell) {
+    if (s.picking_save_slot) {
+        const int rx = right_x + 14;
+        int ry = kPadY + 14;
+        render::draw_text(ui.renderer(), ui.body_font(),
+                          "選擇存檔槽（↑↓ 或 1-5 鍵，Enter 確認，ESC 取消）",
+                          rx, ry, ui.theme().accent);
+        ry += ui.body_font().line_height() + 16;
+        for (int i = 0; i < kNumSlots; ++i) {
+            std::string p = save_path_for_slot(i + 1);
+            const char* status = "（空）";
+            // Quick stat check
+            struct stat st;
+            if (stat(p.c_str(), &st) == 0) status = "（已用）";
+            char line[200];
+            std::snprintf(line, sizeof(line), "%s Slot %d  %s",
+                          i == s.save_slot_cursor ? "▸" : "  ",
+                          i + 1, status);
+            SDL_Color col = (i == s.save_slot_cursor)
+                              ? SDL_Color{255, 255, 0, 255}
+                              : ui.theme().text;
+            render::draw_text(ui.renderer(), ui.body_font(), line,
+                              rx, ry + i * (ui.body_font().line_height() + 8), col);
+        }
+    } else if (s.picking_spell) {
         const int rx = right_x + 14;
         int ry = kPadY + 14;
         render::draw_text(ui.renderer(), ui.body_font(), "施法（↑↓ 法術 / ←→ 對象 / Enter 施 / ESC 取消）",
@@ -340,11 +370,17 @@ std::string cast_camp_spell(State& state, std::string_view spell_name,
     return "** 法術尚未實作 **";
 }
 
-std::string default_save_path() {
+std::string save_path_for_slot(int slot) {
+    if (slot < 1) slot = 1;
+    if (slot > kNumSlots) slot = kNumSlots;
+    char fname[64];
+    std::snprintf(fname, sizeof(fname), "/save_%d.json", slot);
     const char* home = std::getenv("HOME");
-    if (home && *home) return std::string(home) + "/.config/wizardry-cht/save.json";
-    return "save.json";
+    if (home && *home) return std::string(home) + "/.config/wizardry-cht" + fname;
+    return std::string(".") + fname;
 }
+
+std::string default_save_path() { return save_path_for_slot(1); }
 
 bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
     auto& s = ui_state();
@@ -352,7 +388,35 @@ bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
     if (event && event->type == SDL_KEYDOWN) {
         SDL_Keycode k = event->key.keysym.sym;
 
-        if (s.picking_spell) {
+        if (s.picking_save_slot) {
+            if (k == SDLK_ESCAPE) { s.picking_save_slot = false; }
+            else if (k == SDLK_UP) {
+                s.save_slot_cursor = (s.save_slot_cursor - 1 + kNumSlots) % kNumSlots;
+            } else if (k == SDLK_DOWN) {
+                s.save_slot_cursor = (s.save_slot_cursor + 1) % kNumSlots;
+            } else if (k >= SDLK_1 && k <= SDLK_5) {
+                s.save_slot_cursor = k - SDLK_1;
+            }
+            if (k == SDLK_RETURN || k == SDLK_SPACE ||
+                (k >= SDLK_1 && k <= SDLK_5)) {
+                std::string p = save_path_for_slot(s.save_slot_cursor + 1);
+                auto slash = p.find_last_of('/');
+                if (slash != std::string::npos) {
+                    std::string cmd = "mkdir -p '" + p.substr(0, slash) + "'";
+                    (void)std::system(cmd.c_str());
+                }
+                if (save::save_game(state, p)) {
+                    char buf[200];
+                    std::snprintf(buf, sizeof(buf),
+                                  "✦ 已存到 Slot %d：%s",
+                                  s.save_slot_cursor + 1, p.c_str());
+                    state.push_message(buf);
+                } else {
+                    state.push_message("** 存檔失敗 **");
+                }
+                s.picking_save_slot = false;
+            }
+        } else if (s.picking_spell) {
             int n = static_cast<int>(kCampSpells.size());
             int pc = static_cast<int>(state.party.count);
             if (k == SDLK_ESCAPE) {
@@ -388,22 +452,10 @@ bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
 
             auto run = [&](int opt) {
                 switch (opt) {
-                    case Save: {
-                        std::string p = default_save_path();
-                        // mkdir parent
-                        auto slash = p.find_last_of('/');
-                        if (slash != std::string::npos) {
-                            std::string dir = p.substr(0, slash);
-                            std::string cmd = "mkdir -p '" + dir + "'";
-                            (void)std::system(cmd.c_str());
-                        }
-                        if (save::save_game(state, p)) {
-                            state.push_message(std::string("✦ 已存檔：") + p);
-                        } else {
-                            state.push_message("** 存檔失敗 **");
-                        }
+                    case Save:
+                        s.picking_save_slot = true;
+                        s.save_slot_cursor = 0;
                         break;
-                    }
                     case Inspect:
                         s.inspecting = true;
                         s.inspect_idx = 0;

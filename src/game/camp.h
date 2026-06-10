@@ -11,8 +11,10 @@ namespace wiz::game {
 // rearrange party, cast utility spells, return to maze, or quit to title.
 bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui);
 
-// Path of the default save slot. Per-platform appropriate.
-std::string default_save_path();
+// Path of save slot N (1..kNumSlots). Per-platform appropriate.
+constexpr int kNumSlots = 5;
+std::string save_path_for_slot(int slot);  // slot in 1..kNumSlots
+std::string default_save_path();           // returns save_path_for_slot(1)
 
 // Cast a utility spell (DIOS/DIAL/DIALMA/MADI/MILWA/CALFO/...) on the party,
 // while we're in camp. Returns the result message (always non-empty).

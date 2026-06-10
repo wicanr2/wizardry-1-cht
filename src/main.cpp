@@ -1,7 +1,9 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <sys/stat.h>
 
 #include <cstdio>
+#include <ctime>
 #include <string>
 
 #include "core/character.h"
@@ -99,14 +101,31 @@ int main(int argc, char* argv[]) {
     wiz::render::UI ui(window.renderer(), &title_font, &body_font, &small_font);
 
     wiz::game::State state;
-    const std::string save_path = wiz::game::default_save_path();
-    if (wiz::save::load_game(state, save_path)) {
-        state.push_message(std::string("讀取存檔：") + save_path);
-        state.push_message("巫術繁中版 v0.3 — 歡迎回來。");
+    // Pick the newest existing save slot (mtime); fall back to slot 1 path.
+    std::string save_path = wiz::game::default_save_path();
+    int newest_slot = -1;
+    {
+        time_t newest = 0;
+        for (int i = 1; i <= wiz::game::kNumSlots; ++i) {
+            std::string p = wiz::game::save_path_for_slot(i);
+            struct stat st;
+            if (stat(p.c_str(), &st) == 0 && st.st_mtime >= newest) {
+                newest = st.st_mtime;
+                save_path = p;
+                newest_slot = i;
+            }
+        }
+    }
+    if (newest_slot > 0 && wiz::save::load_game(state, save_path)) {
+        char buf[200];
+        std::snprintf(buf, sizeof(buf),
+                      "讀取存檔 Slot %d：%s", newest_slot, save_path.c_str());
+        state.push_message(buf);
+        state.push_message("巫術繁中版 — 歡迎回來。在標題畫面按 1-5 可切換存檔槽。");
     } else {
         seed_demo_party(state);
-        state.push_message("巫術繁中版 v0.3 開機完成（新遊戲）。");
-        state.push_message("Tip: 在迷宮按 C 進營地存檔。");
+        state.push_message("巫術繁中版開機完成（新遊戲）。");
+        state.push_message("Tip: 在迷宮按 C 進營地存檔；標題畫面按 1-5 切槽。");
     }
 
     bool running = true;

@@ -1,8 +1,10 @@
 #include "game/screens.h"
 
 #include <SDL.h>
+#include <sys/stat.h>
 
 #include <cctype>
+#include <cstdio>
 #include <string>
 #include <vector>
 
@@ -23,6 +25,7 @@
 #include "render/maze_view.h"
 #include "render/sprite.h"
 #include "render/ui.h"
+#include "save/gamesave.h"
 
 namespace wiz::game {
 
@@ -255,12 +258,31 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 return true;
             }
             if (event && event->type == SDL_KEYDOWN) {
+                SDL_Keycode k = event->key.keysym.sym;
+                // 1-5 keys load that save slot directly.
+                if (k >= SDLK_1 && k <= SDLK_5) {
+                    int slot = k - SDLK_1 + 1;
+                    std::string p = save_path_for_slot(slot);
+                    if (save::load_game(state, p)) {
+                        char buf[200];
+                        std::snprintf(buf, sizeof(buf),
+                                      "讀取 Slot %d：%s", slot, p.c_str());
+                        state.push_message(buf);
+                        state.change_scene(Scene::EdgeOfTown);
+                    } else {
+                        char buf[120];
+                        std::snprintf(buf, sizeof(buf),
+                                      "Slot %d 沒有存檔。", slot);
+                        state.push_message(buf);
+                    }
+                    return true;
+                }
                 // First boot (or roster default) shows intro guide.
                 // ESC at title goes straight to EdgeOfTown.
-                if (event->key.keysym.sym == SDLK_ESCAPE) {
+                if (k == SDLK_ESCAPE) {
                     state.change_scene(Scene::EdgeOfTown);
                     state.push_message("歡迎來到瘋王的試煉場。");
-                } else if (event->key.keysym.sym == SDLK_F2 ||
+                } else if (k == SDLK_F2 ||
                            state.roster.used == 0 || true /* always show on first key */) {
                     // Show intro guide
                     start_intro();
@@ -270,11 +292,29 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
             }
             ui.clear();
             ui.draw_title_bar("巫術：瘋王的試煉場");
-            ui.draw_message_panel(260, 260, 760, 200,
-                                  {"Wizardry I: Proving Grounds of the Mad Overlord  v3.2 CHT",
-                                   "",
-                                   "任意鍵：開始新手導覽（按 F1 / F2 隨時叫出說明）",
-                                   "ESC：直接進城鎮邊緣（跳過導覽）"});
+            {
+                std::vector<std::string> lines = {
+                    "Wizardry I: Proving Grounds of the Mad Overlord  v3.2 CHT",
+                    "",
+                    "1-5：讀取對應存檔槽    ESC：直接進城鎮邊緣",
+                    "其他鍵：開始新手導覽（F1 / F2 隨時叫出說明）",
+                    "",
+                };
+                for (int i = 1; i <= kNumSlots; ++i) {
+                    std::string p = save_path_for_slot(i);
+                    struct stat st;
+                    char line[160];
+                    if (stat(p.c_str(), &st) == 0) {
+                        std::snprintf(line, sizeof(line),
+                                      "  Slot %d  [已存檔]", i);
+                    } else {
+                        std::snprintf(line, sizeof(line),
+                                      "  Slot %d  [空]", i);
+                    }
+                    lines.emplace_back(line);
+                }
+                ui.draw_message_panel(220, 220, 840, 320, lines);
+            }
             ui.draw_status_bar("");
             ui.present();
             return true;
