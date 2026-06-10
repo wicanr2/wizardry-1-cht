@@ -60,6 +60,7 @@
 | 平台 | Linux x86_64 / Windows 10+ |
 | 字型 | Noto Sans CJK TC（思源黑體繁中，OFL 1.1 開源字型授權 / SIL Open Font License，可打包） |
 | GitHub | [wicanr2/wizardry-1-cht](https://github.com/wicanr2/wizardry-1-cht) |
+| 📖 文件站 | [wicanr2.github.io/wizardry-1-cht](https://wicanr2.github.io/wizardry-1-cht/) — 怪物 / 法術 / 道具 / 攻略 / 開發史 8 篇繁中知識庫 |
 
 ---
 
