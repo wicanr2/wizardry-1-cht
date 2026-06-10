@@ -142,6 +142,13 @@ void build_floor(core::MazeLevel& m, int level_number) {
     if (level_number < kMaxFloors) {
         m.sqr_extra[MazeLevel::kSize - 2][MazeLevel::kSize - 2] = 5;  // stairs down
     }
+    // Encounter probability bytes (0-255). Original Wizardry I scales
+    // monster-spawn rate with floor depth — roughly 30 + 7*(level-1).
+    int p = 30 + 7 * (level_number - 1);
+    if (p > 110) p = 110;
+    m.enmy_calc[0] = static_cast<std::uint8_t>(p);
+    m.enmy_calc[1] = 75;   // 75% normal table / 25% special table
+    m.enmy_calc[2] = static_cast<std::uint8_t>(level_number);
 }
 
 void switch_floor(State& state, int new_level, int spawn_x, int spawn_y) {

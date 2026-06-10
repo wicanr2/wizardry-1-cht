@@ -486,6 +486,22 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     state.push_message("逃離迷宮。");
                     return true;
                 }
+                auto maybe_random_encounter = [&]() {
+                    int xx = state.camera.x, yy = state.camera.y;
+                    if (state.maze.fights[yy][xx]) {
+                        state.push_message("** 強制遭遇！**");
+                        render::play(render::Sfx::SwordHit);
+                        state.change_scene(Scene::Combat);
+                        return;
+                    }
+                    int p = state.maze.enmy_calc[0];
+                    if (p == 0) p = 30 + 7 * (state.camera.level - 1);
+                    if (core::global_rng().range(0, 255) < p) {
+                        state.push_message("** 遭遇敵人！**");
+                        render::play(render::Sfx::SwordHit);
+                        state.change_scene(Scene::Combat);
+                    }
+                };
                 if (k == SDLK_UP || k == SDLK_w) {
                     auto facing = state.camera.facing;
                     auto wall = front_wall(state.maze, state.camera.x, state.camera.y, facing);
@@ -495,6 +511,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                         poison_tick_party(state);
                         apply_trap(state, feature_at_party(state));
                         check_body_pickup(state);
+                        if (state.scene == Scene::Maze) maybe_random_encounter();
                     } else {
                         state.push_message("** 撞牆 ** WALL!");
                         render::play(render::Sfx::SwordMiss);
@@ -505,6 +522,8 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     render::play(render::Sfx::Footstep);
                     poison_tick_party(state);
                     apply_trap(state, feature_at_party(state));
+                    check_body_pickup(state);
+                    if (state.scene == Scene::Maze) maybe_random_encounter();
                 } else if (k == SDLK_LEFT || k == SDLK_a) {
                     turn_left(state.camera);
                     render::play(render::Sfx::Footstep);
