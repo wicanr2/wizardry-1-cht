@@ -39,22 +39,37 @@ mkdir -p "$OUT_DIR/bgm" "$OUT_DIR/title" "$OUT_DIR/monsters"
 
 # Step 1 — CD-DA tracks
 if command -v bchunk >/dev/null 2>&1; then
+    WORKDIR="$(mktemp -d)"
     case "$SRC" in
         *.cue)
-            echo "Splitting CD-DA tracks with bchunk..."
             cuefile="$SRC"
-            binfile="${SRC%.cue}.bin"
-            if [[ ! -f "$binfile" ]]; then
-                # bchunk auto-resolves bin path from cue; try anyway
-                binfile="$(grep -oE 'FILE "[^"]+"' "$cuefile" | head -1 | sed 's/FILE "\(.*\)"/\1/')"
-                binfile="$(dirname "$SRC")/$binfile"
-            fi
-            (cd "$(mktemp -d)" && bchunk -w "$binfile" "$cuefile" out >/dev/null)
+            ;;
+        *.ccd)
+            echo "Converting .ccd → .cue with tools/ccd_to_cue.py..."
+            cuefile="$WORKDIR/$(basename "${SRC%.ccd}.cue")"
+            python3 "$SCRIPT_DIR/ccd_to_cue.py" "$SRC" "$cuefile"
+            # Ensure the .img sits next to the cue (bchunk resolves relative).
+            ln -sf "${SRC%.ccd}.img" "$WORKDIR/$(basename "${SRC%.ccd}.img")"
+            ;;
+        *.iso)
+            echo "  ~ pure .iso (no audio tracks); skipping CD-DA"
+            cuefile=""
             ;;
         *)
-            echo "  ~ skipping CD-DA: need .cue/.bin pair"
+            echo "  ~ unknown image type; skipping CD-DA"
+            cuefile=""
             ;;
     esac
+    if [[ -n "$cuefile" && -f "$cuefile" ]]; then
+        echo "Splitting CD-DA tracks with bchunk into $WORKDIR..."
+        binfile="$(grep -oE 'FILE "[^"]+"' "$cuefile" | head -1 | sed 's/FILE "\(.*\)"/\1/')"
+        (cd "$WORKDIR" && bchunk -w "$binfile" "$(basename "$cuefile")" out_ 2>&1 | tail -3)
+        # Move WAVs to /tmp so the step-2 loop below picks them up.
+        for w in "$WORKDIR"/out_*.wav; do
+            [[ -f "$w" ]] || continue
+            mv "$w" "/tmp/$(basename "$w")"
+        done
+    fi
 else
     echo "  ~ bchunk not installed; skipping CD-DA extraction"
     echo "    install with: sudo apt-get install bchunk"
@@ -63,7 +78,7 @@ fi
 # Step 2 — encode any WAVs we found
 shopt -s nullglob
 wav_count=0
-for wav in /tmp/out*.wav; do
+for wav in /tmp/out_*.wav; do
     [[ -f "$wav" ]] || continue
     out_name="$(basename "$wav" .wav | sed 's/^out0*//')"
     if command -v oggenc >/dev/null 2>&1; then
