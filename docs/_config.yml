@@ -1,0 +1,32 @@
+title: 巫術 I — 瘋王的試煉場 (Wizardry I CHT)
+description: >-
+  Wizardry I: Proving Grounds of the Mad Overlord (1981)
+  的 C++17 / SDL2 跨平台繁體中文重寫。本站收錄怪物、法術、道具、
+  攻略、考據與開發心得。
+lang: zh-TW
+
+# Use the github-pages built-in theme (free on github.io)
+theme: jekyll-theme-cayman
+
+# Pretty repo button (cayman theme reads these)
+github:
+  repository_url: https://github.com/wicanr2/wizardry-1-cht
+  zip_url: https://github.com/wicanr2/wizardry-1-cht/archive/refs/heads/main.zip
+  tar_url: https://github.com/wicanr2/wizardry-1-cht/archive/refs/heads/main.tar.gz
+
+show_downloads: true
+
+# Render markdown with GitHub-flavored extensions (tables, fenced code, anchors).
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Build only the doc set; keep transient files out of the site.
+include:
+  - index.md
+exclude:
+  - I18N_TODO.md
+  - W6_PIC_FORMAT.md
+  - A2_TITLE_EXTRACTION.md

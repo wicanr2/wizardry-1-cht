@@ -1,3 +1,8 @@
+---
+layout: default
+title: Wizardry I 素材來源指南
+---
+
 # Wizardry I 素材來源指南
 
 整理 *Wizardry: Proving Grounds of the Mad Overlord* 各版本的視覺/音樂素材包來源，

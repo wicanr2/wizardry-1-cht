@@ -1,3 +1,8 @@
+---
+layout: default
+title: 瘋王傳奇 — Wizardry I 故事、起源與 Sir-tech 編年史
+---
+
 # 瘋王傳奇 — Wizardry I 故事、起源與 Sir-tech 編年史
 
 > **為什麼讀這篇？**
