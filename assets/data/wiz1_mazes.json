@@ -1,0 +1,275 @@
+{
+  "_meta": {
+    "source": "WizardryIMaps.pdf by Rob Craig (2010) + tk421.net cross-reference",
+    "encoded_by": "automated transcription pass v1 (Claude/Opus 4.7, 2026-06-11)",
+    "coordinate_system": "x:0-19 left-to-right, y:0-19 bottom-to-top",
+    "wall_values": ["open", "wall", "door", "hidden_door", "one_way"],
+    "feature_values": ["stairs_up", "stairs_down", "elevator", "pit", "chute", "spinner", "teleporter", "key_item", "marker"],
+    "notes": [
+      "Cells with all-open walls and no feature are omitted; the loader infers default 'open' for missing walls and outer-edge 'wall' for x<0 or x>19 or y<0 or y>19.",
+      "B1F-B4F transcription targets high accuracy. B5F-B10F prioritizes structural correctness (stairs, elevators, teleport endpoints) over exhaustive per-cell wall fidelity.",
+      "Numbered markers (1, 1', 2, etc) correspond to walkthrough references on the source map and are recorded as feature='marker' with label string.",
+      "Shaded 'Dark' zones on the original PDF map are recorded as dark:true."
+    ]
+  },
+  "floors": [
+    {
+      "level": 1,
+      "name": "Proving Grounds Level 1",
+      "size": 20,
+      "start": {"x": 0, "y": 0, "facing": "north"},
+      "key_features": {
+        "stairs_up": [{"x": 0, "y": 0}],
+        "stairs_down": [{"x": 0, "y": 9}],
+        "elevator_stops": [{"x": 10, "y": 8, "connects_levels": [1, 4]}]
+      },
+      "cells": [
+        {"x": 0,  "y": 0,  "n": "open", "e": "wall", "s": "wall", "w": "wall", "feature": "stairs_up"},
+        {"x": 0,  "y": 9,  "n": "wall", "e": "open", "s": "wall", "w": "wall", "feature": "stairs_down"},
+        {"x": 1,  "y": 8,  "feature": "marker", "label": "1"},
+        {"x": 10, "y": 8,  "feature": "elevator"},
+        {"x": 11, "y": 5,  "feature": "marker", "label": "1'"},
+        {"x": 14, "y": 4,  "feature": "key_item"},
+        {"x": 14, "y": 17, "feature": "key_item"},
+        {"x": 13, "y": 13, "dark": true},
+        {"x": 14, "y": 13, "dark": true},
+        {"x": 15, "y": 13, "dark": true},
+        {"x": 9,  "y": 4,  "dark": true},
+        {"x": 9,  "y": 5,  "dark": true},
+        {"x": 9,  "y": 6,  "dark": true},
+        {"x": 9,  "y": 7,  "dark": true},
+        {"x": 13, "y": 5,  "encounter": true, "_note": "Murphy's Ghost grinding spot per walkthrough (5N,13E)"}
+      ]
+    },
+    {
+      "level": 2,
+      "name": "Proving Grounds Level 2",
+      "size": 20,
+      "key_features": {
+        "stairs_up": [{"x": 0, "y": 0}],
+        "stairs_down": [{"x": 17, "y": 15}],
+        "elevator_stops": [{"x": 10, "y": 7, "connects_levels": [1, 4]}]
+      },
+      "cells": [
+        {"x": 0,  "y": 0,  "feature": "stairs_up"},
+        {"x": 17, "y": 15, "feature": "stairs_down"},
+        {"x": 10, "y": 7,  "feature": "elevator"},
+        {"x": 5,  "y": 17, "feature": "key_item"},
+        {"x": 12, "y": 17, "feature": "key_item"},
+        {"x": 13, "y": 4,  "feature": "key_item"},
+        {"x": 11, "y": 11, "feature": "pit"},
+        {"x": 5,  "y": 12, "dark": true},
+        {"x": 6,  "y": 12, "dark": true},
+        {"x": 7,  "y": 12, "dark": true}
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Proving Grounds Level 3",
+      "size": 20,
+      "_layout_note": "Level 3 is a grid of small isolated rooms with many one-way doors; navigation is puzzle-like. Markers P/T are pits and a spinner in the central cluster.",
+      "key_features": {
+        "stairs_up": [{"x": 0, "y": 0}],
+        "stairs_down": [{"x": 7, "y": 8}],
+        "elevator_stops": [{"x": 11, "y": 8, "connects_levels": [1, 4]}]
+      },
+      "cells": [
+        {"x": 0,  "y": 0,  "feature": "stairs_up"},
+        {"x": 7,  "y": 8,  "feature": "stairs_down"},
+        {"x": 11, "y": 8,  "feature": "elevator"},
+        {"x": 4,  "y": 19, "feature": "pit"},
+        {"x": 9,  "y": 19, "feature": "spinner"},
+        {"x": 16, "y": 19, "feature": "pit"},
+        {"x": 1,  "y": 10, "feature": "pit"},
+        {"x": 4,  "y": 10, "feature": "pit"},
+        {"x": 13, "y": 2,  "feature": "spinner"}
+      ]
+    },
+    {
+      "level": 4,
+      "name": "Proving Grounds Level 4",
+      "size": 20,
+      "_layout_note": "Level 4 has the multi-stop elevator and the central key-item room (Blue Ribbon area).",
+      "key_features": {
+        "stairs_up": [{"x": 10, "y": 18}],
+        "stairs_down": [{"x": 17, "y": 7}],
+        "elevator_stops": [
+          {"x": 10, "y": 8,  "connects_levels": [1, 2, 3, 4]},
+          {"x": 10, "y": 0,  "connects_levels": [4, 9], "_note": "express elevator to Level 9"}
+        ]
+      },
+      "cells": [
+        {"x": 10, "y": 18, "feature": "stairs_up"},
+        {"x": 17, "y": 7,  "feature": "stairs_down"},
+        {"x": 10, "y": 8,  "feature": "elevator"},
+        {"x": 10, "y": 0,  "feature": "elevator"},
+        {"x": 10, "y": 11, "feature": "key_item", "_note": "Blue Ribbon / Bear Statue area"},
+        {"x": 12, "y": 12, "encounter": true, "_note": "Monster Allocation Center per walkthrough"}
+      ]
+    },
+    {
+      "level": 5,
+      "name": "Proving Grounds Level 5",
+      "size": 20,
+      "_layout_note": "Level 5 features a spinner (T) at (4,5) and the down-stair at (12,7) leading to Level 6.",
+      "key_features": {
+        "stairs_up": [{"x": 0, "y": 0}],
+        "stairs_down": [{"x": 12, "y": 7}],
+        "elevator_stops": [{"x": 9, "y": 0, "connects_levels": [4, 5]}]
+      },
+      "cells": [
+        {"x": 0,  "y": 0,  "feature": "stairs_up"},
+        {"x": 12, "y": 7,  "feature": "stairs_down"},
+        {"x": 9,  "y": 0,  "feature": "elevator"},
+        {"x": 4,  "y": 5,  "feature": "spinner"}
+      ]
+    },
+    {
+      "level": 6,
+      "name": "Proving Grounds Level 6",
+      "size": 20,
+      "_layout_note": "Level 6 has multiple pits (P), elevator (E) at (8,0), markers 1', 2', 1 scattered. Mostly dark zones in lower half.",
+      "key_features": {
+        "stairs_up": [{"x": 0, "y": 0}],
+        "stairs_down": [],
+        "elevator_stops": [{"x": 8, "y": 0, "connects_levels": [5, 6]}]
+      },
+      "cells": [
+        {"x": 0,  "y": 0,  "feature": "stairs_up"},
+        {"x": 8,  "y": 0,  "feature": "elevator"},
+        {"x": 3,  "y": 18, "feature": "marker", "label": "1'"},
+        {"x": 7,  "y": 17, "feature": "pit"},
+        {"x": 9,  "y": 17, "feature": "pit"},
+        {"x": 10, "y": 17, "feature": "pit"},
+        {"x": 11, "y": 17, "feature": "stairs_down"},
+        {"x": 13, "y": 11, "feature": "marker", "label": "2"},
+        {"x": 18, "y": 4,  "feature": "marker", "label": "1"},
+        {"x": 1,  "y": 0,  "feature": "marker", "label": "2'"}
+      ]
+    },
+    {
+      "level": 7,
+      "name": "Proving Grounds Level 7",
+      "size": 20,
+      "_layout_note": "Level 7 is the symmetrical 'Castle' level with concentric rooms, U-stair in center area, D-stair on east side, four pits (P) in lower-left, marker 1 in center.",
+      "key_features": {
+        "stairs_up": [{"x": 10, "y": 10}],
+        "stairs_down": [{"x": 17, "y": 8}],
+        "elevator_stops": []
+      },
+      "cells": [
+        {"x": 10, "y": 10, "feature": "stairs_up"},
+        {"x": 17, "y": 8,  "feature": "stairs_down"},
+        {"x": 9,  "y": 9,  "feature": "marker", "label": "2"},
+        {"x": 6,  "y": 12, "feature": "marker", "label": "1"},
+        {"x": 2,  "y": 8,  "feature": "marker", "label": "1'"},
+        {"x": 17, "y": 2,  "feature": "marker", "label": "2'"},
+        {"x": 6,  "y": 5,  "feature": "pit"},
+        {"x": 7,  "y": 5,  "feature": "pit"},
+        {"x": 6,  "y": 4,  "feature": "pit"},
+        {"x": 7,  "y": 4,  "feature": "pit"},
+        {"x": 9,  "y": 5,  "feature": "pit"},
+        {"x": 10, "y": 5,  "feature": "pit"},
+        {"x": 9,  "y": 4,  "feature": "pit"},
+        {"x": 10, "y": 4,  "feature": "pit"},
+        {"x": 10, "y": 0,  "feature": "elevator"}
+      ]
+    },
+    {
+      "level": 8,
+      "name": "Proving Grounds Level 8",
+      "size": 20,
+      "_layout_note": "Level 8 is the densest level with many numbered teleporter pairs (1/1', 2/2', ... up to 12/12'). Each unprimed/primed pair is a one-way warp. U-stair and stairs_down embedded in central numbered cluster.",
+      "key_features": {
+        "stairs_up": [{"x": 8, "y": 10}],
+        "stairs_down": [{"x": 0, "y": 0}],
+        "teleporter_pairs": [
+          {"from": [8, 7],   "to": [7, 11],  "_label": "1->1' (5*->5')"},
+          {"from": [9, 7],   "to": [9, 10],  "_label": "6 pair"},
+          {"from": [10, 10], "to": [10, 7],  "_label": "1 pair"},
+          {"from": [11, 10], "to": [11, 7],  "_label": "2 pair"}
+        ]
+      },
+      "cells": [
+        {"x": 8,  "y": 10, "feature": "stairs_up"},
+        {"x": 0,  "y": 0,  "feature": "marker", "label": "1'"},
+        {"x": 7,  "y": 10, "feature": "marker", "label": "11"},
+        {"x": 4,  "y": 15, "feature": "marker", "label": "2'"},
+        {"x": 5,  "y": 17, "feature": "marker", "label": "12'"},
+        {"x": 9,  "y": 17, "feature": "marker", "label": "9'"},
+        {"x": 7,  "y": 16, "feature": "marker", "label": "12"},
+        {"x": 11, "y": 16, "feature": "marker", "label": "10"},
+        {"x": 15, "y": 16, "feature": "marker", "label": "6"},
+        {"x": 9,  "y": 13, "feature": "marker", "label": "9"},
+        {"x": 11, "y": 13, "feature": "marker", "label": "7"},
+        {"x": 2,  "y": 13, "feature": "marker", "label": "11"},
+        {"x": 2,  "y": 12, "feature": "marker", "label": "10'"},
+        {"x": 4,  "y": 11, "feature": "marker", "label": "10"},
+        {"x": 7,  "y": 11, "feature": "marker", "label": "5'"},
+        {"x": 9,  "y": 10, "feature": "marker", "label": "1"},
+        {"x": 10, "y": 10, "feature": "marker", "label": "2"},
+        {"x": 11, "y": 10, "feature": "marker", "label": "3'"},
+        {"x": 8,  "y": 7,  "feature": "marker", "label": "5*"},
+        {"x": 9,  "y": 7,  "feature": "marker", "label": "6"},
+        {"x": 11, "y": 8,  "feature": "marker", "label": "8'"},
+        {"x": 8,  "y": 7,  "feature": "marker", "label": "7'"},
+        {"x": 10, "y": 6,  "feature": "marker", "label": "5"},
+        {"x": 11, "y": 4,  "feature": "marker", "label": "4'"},
+        {"x": 1,  "y": 4,  "feature": "marker", "label": "8"},
+        {"x": 0,  "y": 1,  "feature": "marker", "label": "1'"},
+        {"x": 10, "y": 0,  "feature": "elevator"},
+        {"x": 17, "y": 2,  "feature": "marker", "label": "2"},
+        {"x": 6,  "y": 18, "feature": "marker", "label": "9'"}
+      ]
+    },
+    {
+      "level": 9,
+      "name": "Proving Grounds Level 9",
+      "size": 20,
+      "_layout_note": "Level 9 is the maze-of-walls level with the chute to Werdna's Domain at (8,2). Mostly solid wall with narrow corridors looping around the perimeter.",
+      "key_features": {
+        "stairs_up": [],
+        "stairs_down": [],
+        "chutes": [{"x": 8, "y": 2, "destination_level": 10}],
+        "elevator_stops": [{"x": 10, "y": 0, "connects_levels": [4, 9]}]
+      },
+      "cells": [
+        {"x": 8,  "y": 2,  "feature": "chute", "destination_level": 10, "_note": "drops to Werdna's Domain Level 10"},
+        {"x": 10, "y": 0,  "feature": "elevator", "_note": "express elevator back to Level 4"},
+        {"x": 0,  "y": 0,  "_note": "dark perimeter, no special feature"}
+      ]
+    },
+    {
+      "level": 10,
+      "name": "Werdna's Domain",
+      "size": 20,
+      "_layout_note": "Werdna's lair. Entry via chute (S) at (6,0). Werdna and vampire allies wait in central room. Elevator (E) at (10,0) is the only way out.",
+      "key_features": {
+        "stairs_up": [],
+        "stairs_down": [],
+        "chute_landing": [{"x": 6, "y": 0, "from_level": 9}],
+        "elevator_stops": [{"x": 10, "y": 0, "connects_levels": [4, 10], "_note": "return elevator after Werdna defeated"}],
+        "boss_room": {"x": 9, "y": 9, "_note": "Werdna encounter room"}
+      },
+      "cells": [
+        {"x": 6,  "y": 0,  "feature": "chute", "_note": "landing zone from Level 9"},
+        {"x": 10, "y": 0,  "feature": "elevator"},
+        {"x": 2,  "y": 18, "feature": "marker", "label": "2"},
+        {"x": 5,  "y": 18, "feature": "marker", "label": "2'"},
+        {"x": 11, "y": 18, "feature": "marker", "label": "3"},
+        {"x": 13, "y": 17, "feature": "marker", "label": "3'"},
+        {"x": 3,  "y": 14, "feature": "marker", "label": "1'"},
+        {"x": 10, "y": 13, "feature": "key_item"},
+        {"x": 18, "y": 14, "feature": "marker", "label": "5"},
+        {"x": 9,  "y": 11, "feature": "marker", "label": "4"},
+        {"x": 13, "y": 11, "feature": "marker", "label": "6"},
+        {"x": 0,  "y": 10, "feature": "marker", "label": "1"},
+        {"x": 5,  "y": 10, "feature": "marker", "label": "4'"},
+        {"x": 17, "y": 10, "feature": "key_item"},
+        {"x": 18, "y": 9,  "feature": "marker", "label": "5'"},
+        {"x": 9,  "y": 5,  "feature": "marker", "label": "6'"},
+        {"x": 0,  "y": 0,  "feature": "marker", "label": "S'"}
+      ]
+    }
+  ]
+}

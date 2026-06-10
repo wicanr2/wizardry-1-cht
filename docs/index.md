@@ -20,6 +20,7 @@ PCE-CD 怪物 sprite（CC-BY-SA 4.0）。
 | --- | --- | --- |
 | [LORE — 世界觀與背景故事](LORE.html) | 特雷波的詛咒、瘋王沃德納、十大主角 NPC | ~4,500 |
 | [WALKTHROUGH — 完整攻略](WALKTHROUGH.html) | B1F–B10F 樓層導覽、特殊格、首通建議 | ~6,200 |
+| [MAPS — 10 層全圖](MAPS.html) | 原版迷宮地圖（中文標註，SVG 可放大） | 10 張圖 |
 | [MONSTERS — 怪物圖鑑](MONSTERS.html) | 全 30 種怪物詳解，含 sprite、習性、弱點 | ~3,800 |
 | [SPELLS — 法術全書](SPELLS.html) | 51 條法術：魔法師 7×7、牧師 7×7、共通法術 | ~3,200 |
 | [ITEMS — 道具大全](ITEMS.html) | 武器、防具、消耗品、傳說裝備 | ~2,400 |

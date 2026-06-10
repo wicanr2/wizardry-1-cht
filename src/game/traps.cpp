@@ -3,6 +3,7 @@
 #include <cstdio>
 
 #include "core/rng.h"
+#include "data/maze_db.h"
 
 namespace wiz::game {
 
@@ -97,6 +98,14 @@ bool apply_trap(State& state, SquareFeature f) {
 void build_floor(core::MazeLevel& m, int level_number) {
     using core::Wall;
     using core::MazeLevel;
+    // Prefer the transcribed 1981 layout from assets/data/wiz1_mazes.json
+    // when available; fall back to the procedural placeholder.
+    const auto& bundled = data::mazes();
+    if (level_number >= 1 &&
+        static_cast<std::size_t>(level_number) <= bundled.size()) {
+        m = bundled[level_number - 1];
+        return;
+    }
     m = MazeLevel{};
     m.level_number = static_cast<std::uint8_t>(level_number);
     // All cells open inside, walls on the outer rim.

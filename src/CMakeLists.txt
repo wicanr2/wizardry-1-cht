@@ -9,6 +9,7 @@ add_library(wizcore STATIC
   core/rules.cpp
   core/combat.cpp
   data/items_db.cpp
+  data/maze_db.cpp
   save/roster.cpp
   i18n/tr.cpp
 )
