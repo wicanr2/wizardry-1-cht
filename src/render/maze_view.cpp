@@ -78,13 +78,23 @@ void turn_right(Camera& cam) noexcept {
 }
 
 void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
-                    const Camera& cam, SDL_Rect viewport, const Theme& theme) {
-    // Floor and ceiling fill
-    set_color(r, SDL_Color{8, 10, 14, 255});
-    SDL_RenderFillRect(r, &viewport);
+                    const Camera& cam, SDL_Rect viewport) {
+    const MazePalette palette = current_maze_palette();
+
+    // Ceiling fill (top half) + floor fill (bottom half) — gives the dungeon
+    // an actual horizon line so theme swaps read at a glance.
+    {
+        SDL_Rect ceiling{viewport.x, viewport.y, viewport.w, viewport.h / 2};
+        set_color(r, palette.ceiling);
+        SDL_RenderFillRect(r, &ceiling);
+        SDL_Rect floor{viewport.x, viewport.y + viewport.h / 2,
+                       viewport.w, viewport.h - viewport.h / 2};
+        set_color(r, palette.floor);
+        SDL_RenderFillRect(r, &floor);
+    }
 
     // Outer frame
-    set_color(r, theme.border);
+    set_color(r, palette.frame);
     draw_rect(r, viewport.x, viewport.y,
               viewport.x + viewport.w - 1, viewport.y + viewport.h - 1);
 
@@ -118,11 +128,11 @@ void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
         // Left wall
         core::Wall lw = get_wall(level, wx, wy, cam.facing, 2);
         if (lw == core::Wall::Wall) {
-            set_color(r, theme.text);
+            set_color(r, palette.wall);
             draw_side_wall(r, near_r.x, near_r.y, near_r.y + near_r.h,
                               far_r.x,  far_r.y,  far_r.y + far_r.h);
         } else if (lw == core::Wall::Door) {
-            set_color(r, theme.accent);
+            set_color(r, palette.door);
             draw_side_wall(r, near_r.x, near_r.y, near_r.y + near_r.h,
                               far_r.x,  far_r.y,  far_r.y + far_r.h);
         }
@@ -130,13 +140,13 @@ void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
         // Right wall
         core::Wall rw = get_wall(level, wx, wy, cam.facing, 1);
         if (rw == core::Wall::Wall) {
-            set_color(r, theme.text);
+            set_color(r, palette.wall);
             int nrx = near_r.x + near_r.w;
             int frx = far_r.x + far_r.w;
             draw_side_wall(r, nrx, near_r.y, near_r.y + near_r.h,
                               frx, far_r.y,  far_r.y + far_r.h);
         } else if (rw == core::Wall::Door) {
-            set_color(r, theme.accent);
+            set_color(r, palette.door);
             int nrx = near_r.x + near_r.w;
             int frx = far_r.x + far_r.w;
             draw_side_wall(r, nrx, near_r.y, near_r.y + near_r.h,
@@ -146,12 +156,12 @@ void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
         // Front wall — if present, draw the far rectangle and stop.
         core::Wall fw = get_wall(level, wx, wy, cam.facing, 0);
         if (fw == core::Wall::Wall) {
-            set_color(r, theme.text);
+            set_color(r, palette.far_wall);
             draw_rect(r, far_r.x, far_r.y,
                       far_r.x + far_r.w, far_r.y + far_r.h);
             break;
         } else if (fw == core::Wall::Door) {
-            set_color(r, theme.accent);
+            set_color(r, palette.door);
             int dw = far_r.w / 3;
             int dh = far_r.h * 2 / 3;
             int dx_l = far_r.x + (far_r.w - dw) / 2;

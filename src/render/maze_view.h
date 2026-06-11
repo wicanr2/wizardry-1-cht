@@ -3,6 +3,7 @@
 #include <SDL.h>
 
 #include "core/maze.h"
+#include "render/palette.h"
 #include "render/ui.h"
 
 namespace wiz::render {
@@ -19,8 +20,10 @@ struct Camera {
 // Draws a wireframe 3D view of the maze from camera position into rect.
 // Replicates RUNNER.TEXT DRAWMAZE behaviour: looks up to 4 cells ahead,
 // renders trapezoidal corridor walls + doors using SDL_RenderDrawLine.
+// Wall / door / floor colours come from the currently active visual theme
+// (F3 cycle), so the dungeon re-skins live as the player cycles themes.
 void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
-                    const Camera& cam, SDL_Rect viewport, const Theme& theme);
+                    const Camera& cam, SDL_Rect viewport);
 
 // Helper to step a camera one cell forward / strafe / turn.
 void step_forward(Camera& cam) noexcept;

@@ -3891,5 +3891,89 @@
     "ja_JP": "レベルが下がった",
     "category": "message",
     "refs": []
+  },
+  "ui_game_title": {
+    "en": "Wizardry: Proving Grounds of the Mad Overlord",
+    "zh_TW": "巫術：瘋王的試煉場",
+    "ja_JP": "ウィザードリィ：狂王の試練場",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_theme_switched_prefix": {
+    "en": "✦ Theme: ",
+    "zh_TW": "✦ 切換主題：",
+    "ja_JP": "✦ テーマ切替: ",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_lang_switched_prefix": {
+    "en": "✦ Language: ",
+    "zh_TW": "✦ 語言：",
+    "ja_JP": "✦ 言語: ",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_title_slot_keys": {
+    "en": "1-5: load that save slot    ESC: enter Edge of Town",
+    "zh_TW": "1-5：讀取對應存檔槽    ESC：直接進城鎮邊緣",
+    "ja_JP": "1-5: セーブ枠を読込   ESC: 街の端へ",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_title_func_keys": {
+    "en": "F3: cycle theme    F4: cycle language    any key: tutorial",
+    "zh_TW": "F3：切換視覺主題    F4：切換語言    其他鍵：開始新手導覽",
+    "ja_JP": "F3: テーマ切替   F4: 言語切替   他キー: チュートリアル",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_current_theme_prefix": {
+    "en": "Theme: ",
+    "zh_TW": "目前主題：",
+    "ja_JP": "テーマ: ",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_current_lang_prefix": {
+    "en": "    Language: ",
+    "zh_TW": "    語言：",
+    "ja_JP": "    言語: ",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_slot_used": {
+    "en": "[saved]",
+    "zh_TW": "[已存檔]",
+    "ja_JP": "[セーブ済]",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_slot_empty": {
+    "en": "[empty]",
+    "zh_TW": "[空]",
+    "ja_JP": "[空き]",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_status_select_enter": {
+    "en": "↑↓ select   Enter confirm   letter quick-select   ESC back",
+    "zh_TW": "↑↓ 選擇   Enter 確認   字母鍵直接選   ESC 離開",
+    "ja_JP": "↑↓ 選択   Enter 決定   文字キー直接選択   ESC 戻る",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_status_castle_back": {
+    "en": "↑↓ select   Enter confirm   ESC return to Edge of Town",
+    "zh_TW": "↑↓ 選擇   Enter 確認   ESC 回到城鎮邊緣",
+    "ja_JP": "↑↓ 選択   Enter 決定   ESC 街の端へ戻る",
+    "category": "ui_chrome",
+    "refs": []
+  },
+  "hint_status_maze_move": {
+    "en": "WASD / arrows: move   ESC: back",
+    "zh_TW": "WASD / 方向鍵 移動   ESC 返回",
+    "ja_JP": "WASD / 矢印で移動   ESC 戻る",
+    "category": "ui_chrome",
+    "refs": []
   }
 }

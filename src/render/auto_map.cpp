@@ -2,6 +2,8 @@
 
 #include <algorithm>
 
+#include "render/palette.h"
+
 namespace wiz::render {
 
 namespace {
@@ -41,7 +43,11 @@ void reveal_from(core::MazeLevel& m, const Camera& cam) noexcept {
 
 void draw_auto_map(SDL_Renderer* r, const core::MazeLevel& m,
                    const Camera& cam, SDL_Rect rect, const Theme& theme) {
-    SDL_SetRenderDrawColor(r, theme.bg.r, theme.bg.g, theme.bg.b, 255);
+    // Theme-aware map: wall / door / camera dot pull from the active visual
+    // theme so F3 also reskins the auto-map, not just the 3D view.
+    const MazePalette palette = current_maze_palette();
+
+    SDL_SetRenderDrawColor(r, palette.floor.r, palette.floor.g, palette.floor.b, 255);
     SDL_RenderFillRect(r, &rect);
 
     constexpr int N = core::MazeLevel::kSize;
@@ -75,10 +81,10 @@ void draw_auto_map(SDL_Renderer* r, const core::MazeLevel& m,
     // Walls of visited cells
     auto draw_wall_line = [&](int x1, int y1, int x2, int y2, core::Wall w) {
         if (w == core::Wall::Wall) {
-            SDL_SetRenderDrawColor(r, theme.text.r, theme.text.g, theme.text.b, 255);
+            SDL_SetRenderDrawColor(r, palette.wall.r, palette.wall.g, palette.wall.b, 255);
             SDL_RenderDrawLine(r, x1, y1, x2, y2);
         } else if (w == core::Wall::Door) {
-            SDL_SetRenderDrawColor(r, theme.accent.r, theme.accent.g, theme.accent.b, 255);
+            SDL_SetRenderDrawColor(r, palette.door.r, palette.door.g, palette.door.b, 255);
             SDL_RenderDrawLine(r, x1, y1, x2, y2);
         }
     };
@@ -97,7 +103,7 @@ void draw_auto_map(SDL_Renderer* r, const core::MazeLevel& m,
     }
 
     // Current camera position — filled diamond with facing arrow
-    SDL_SetRenderDrawColor(r, 230, 180, 60, 255);
+    SDL_SetRenderDrawColor(r, palette.door.r, palette.door.g, palette.door.b, 255);
     int px = ox + cam.x * cell + cell / 2;
     int py = oy + cam.y * cell + cell / 2;
     SDL_Rect dot{px - cell / 4, py - cell / 4, cell / 2, cell / 2};
@@ -114,7 +120,7 @@ void draw_auto_map(SDL_Renderer* r, const core::MazeLevel& m,
     SDL_RenderDrawLine(r, px, py, fx, fy);
 
     // Frame border
-    SDL_SetRenderDrawColor(r, theme.border.r, theme.border.g, theme.border.b, 255);
+    SDL_SetRenderDrawColor(r, palette.frame.r, palette.frame.g, palette.frame.b, 255);
     SDL_Rect frame{rect.x, rect.y, rect.w, rect.h};
     SDL_RenderDrawRect(r, &frame);
 }

@@ -332,7 +332,7 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
         // F4 cycles UI language (繁中 → English → 日本語).
         if (event->key.keysym.sym == SDLK_F4) {
             i18n::cycle_lang();
-            std::string msg = std::string("✦ 語言：") +
+            std::string msg = std::string(i18n::tr("hint_lang_switched_prefix")) +
                               std::string(i18n::lang_display_name(i18n::current_lang()));
             state.push_message(msg);
             return true;
@@ -347,7 +347,7 @@ bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
             // Bump the music epoch so the next switch_music_for_scene()
             // call re-evaluates the theme-resolved BGM path.
             ++g_music_theme_epoch;
-            std::string msg = std::string("✦ 切換主題：") +
+            std::string msg = std::string(i18n::tr("hint_theme_switched_prefix")) +
                               std::string(render::theme::display_name(
                                               render::theme::current()));
             state.push_message(msg);
@@ -407,45 +407,51 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 }
             }
             ui.clear();
-            // Theme-aware title background: pcecd theme has a custom
-            // 1280x720 splash; otherwise fall through to the text title bar.
+            // Theme-aware title background: prefer this theme's splash
+            // (assets/themes/<dir>/title/background.png), else fall back to
+            // the PCECD splash, else fall through to the text title bar.
             {
-                std::string bg_path = std::string(WIZ_ASSETS_DIR) +
-                                      "/themes/pcecd/title/background.png";
-                if (render::theme::current() == render::theme::Theme::PCECD) {
-                    if (SDL_Texture* tex = render::load_sprite(ui.renderer(), bg_path)) {
-                        SDL_Rect dst{0, 0, 1280, 720};
-                        SDL_RenderCopy(ui.renderer(), tex, nullptr, &dst);
-                    } else {
-                        ui.draw_title_bar("巫術：瘋王的試煉場");
-                    }
-                } else {
-                    ui.draw_title_bar("巫術：瘋王的試煉場");
+                auto try_splash = [&](const std::string& path) -> bool {
+                    SDL_Texture* tex = render::load_sprite(ui.renderer(), path);
+                    if (!tex) return false;
+                    SDL_Rect dst{0, 0, 1280, 720};
+                    SDL_RenderCopy(ui.renderer(), tex, nullptr, &dst);
+                    return true;
+                };
+                bool drew = false;
+                std::string_view dir = render::theme::dir_name(render::theme::current());
+                if (!dir.empty()) {
+                    std::string p = std::string(WIZ_ASSETS_DIR) + "/themes/" +
+                                    std::string(dir) + "/title/background.png";
+                    drew = try_splash(p);
                 }
+                if (!drew) {
+                    drew = try_splash(std::string(WIZ_ASSETS_DIR) +
+                                      "/themes/pcecd/title/background.png");
+                }
+                if (!drew) ui.draw_title_bar(std::string(i18n::tr("ui_game_title")));
             }
             {
                 std::vector<std::string> lines = {
                     "Wizardry I: Proving Grounds of the Mad Overlord  v3.2 CHT",
                     "",
-                    "1-5：讀取對應存檔槽    ESC：直接進城鎮邊緣",
-                    "F3：切換視覺主題    F4：切換語言    其他鍵：開始新手導覽",
-                    std::string("目前主題：") +
+                    std::string(i18n::tr("hint_title_slot_keys")),
+                    std::string(i18n::tr("hint_title_func_keys")),
+                    std::string(i18n::tr("hint_current_theme_prefix")) +
                         std::string(render::theme::display_name(render::theme::current())) +
-                        "    語言：" +
+                        std::string(i18n::tr("hint_current_lang_prefix")) +
                         std::string(i18n::lang_display_name(i18n::current_lang())),
                     "",
                 };
+                std::string saved_tag(i18n::tr("hint_slot_used"));
+                std::string empty_tag(i18n::tr("hint_slot_empty"));
                 for (int i = 1; i <= kNumSlots; ++i) {
                     std::string p = save_path_for_slot(i);
                     struct stat st;
                     char line[160];
-                    if (stat(p.c_str(), &st) == 0) {
-                        std::snprintf(line, sizeof(line),
-                                      "  Slot %d  [已存檔]", i);
-                    } else {
-                        std::snprintf(line, sizeof(line),
-                                      "  Slot %d  [空]", i);
-                    }
+                    bool exists = (stat(p.c_str(), &st) == 0);
+                    std::snprintf(line, sizeof(line), "  Slot %d  %s", i,
+                                  exists ? saved_tag.c_str() : empty_tag.c_str());
                     lines.emplace_back(line);
                 }
                 ui.draw_message_panel(220, 220, 840, 320, lines);
@@ -455,13 +461,13 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
             return true;
 
         case Scene::EdgeOfTown:
-            state.status_hint = "↑↓ 選擇   Enter 確認   字母鍵直接選   ESC 離開";
+            state.status_hint = std::string(i18n::tr("hint_status_select_enter"));
             return handle_menu(state, event, ui,
                                std::string(i18n::tr("edge_of_town")), kEdgeMenu);
 
         case Scene::Castle:
             if (state.prev_scene != Scene::Castle) auto_cure_poison_at_castle(state);
-            state.status_hint = "↑↓ 選擇   Enter 確認   ESC 回到城鎮邊緣";
+            state.status_hint = std::string(i18n::tr("hint_status_castle_back"));
             return handle_menu(state, event, ui,
                                std::string(i18n::tr("castle")), kCastleMenu);
 
@@ -563,7 +569,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
             // 3D viewport (slightly narrower to make room for auto-map)
             SDL_Rect view_rect{kPadX, kPadY, 540, 480};
             render::draw_maze_view(ui.renderer(), state.maze, state.camera,
-                                   view_rect, ui.theme());
+                                   view_rect);
 
             // Auto-map ("Eye of Map") — between viewport and info panel
             SDL_Rect amap{kPadX + 540 + 16, kPadY, 360, 360};
@@ -609,7 +615,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
             ui.draw_message_panel(kPadX, log_y, 1280 - 2 * kPadX, log_h,
                                   state.message_log);
 
-            ui.draw_status_bar("WASD / 方向鍵 移動   ESC 返回");
+            ui.draw_status_bar(std::string(i18n::tr("hint_status_maze_move")));
             ui.present();
             return true;
         }
