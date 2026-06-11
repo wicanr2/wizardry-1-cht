@@ -78,7 +78,7 @@ void turn_right(Camera& cam) noexcept {
 }
 
 void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
-                    const Camera& cam, SDL_Rect viewport) {
+                    const Camera& cam, SDL_Rect viewport, bool dark) {
     const MazePalette palette = current_maze_palette();
 
     // Ceiling fill (top half) + floor fill (bottom half) — gives the dungeon
@@ -101,9 +101,10 @@ void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
     const int cx = viewport.x + viewport.w / 2;
     const int cy = viewport.y + viewport.h / 2;
 
-    // Concentric "depth" rectangles — 4 cells visible into the distance.
-    constexpr int kDepth = 4;
-    std::array<float, kDepth + 1> shrink{};
+    // Concentric "depth" rectangles — normally 4 cells visible.
+    // Dark zones without an active light clamp to 1 cell.
+    const int kDepth = dark ? 1 : 4;
+    std::array<float, 5> shrink{};
     shrink[0] = 1.0f;
     float ratio = 0.55f;
     for (int i = 1; i <= kDepth; ++i) shrink[i] = shrink[i - 1] * ratio;

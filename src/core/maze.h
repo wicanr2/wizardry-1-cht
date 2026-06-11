@@ -32,6 +32,9 @@ struct MazeLevel {
     std::array<std::array<Wall, kSize>, kSize> north{};
     std::array<std::array<std::uint8_t, kSize>, kSize> fights{};      // 0/1
     std::array<std::array<std::uint8_t, kSize>, kSize> sqr_extra{};   // 4-bit index into sqre_type
+    // Dark zone (no natural light). Without an active MILWA / LOMILWA, the
+    // maze_view skips far-depth walls and the auto-map hides the cell.
+    std::array<std::array<bool, kSize>, kSize> dark_zone{};
     std::array<SquareFeature, 16> sqre_type{};
     std::array<std::int16_t, 16> aux0{};
     std::array<std::int16_t, 16> aux1{};

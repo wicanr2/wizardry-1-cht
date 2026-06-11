@@ -80,6 +80,15 @@ struct State {
     // consumes this and pre-identifies every monster group.
     bool latumapic_next_combat = false;
 
+    // F5 / M toggles the auto-map overlay in the maze view. Persisted in
+    // memory only — the user re-toggles per session.
+    bool show_auto_map = true;
+
+    // Camp light state set by MILWA (short) / LOMILWA (long). Affects the
+    // maze_view rendering tint inside dark zones — without light, walls
+    // beyond 1 cell are nearly invisible.
+    int light_steps_left = 0;  // 0 = no light; MILWA sets ~20, LOMILWA ~200
+
     // Forward-declared; full RollerState defined in game/roller.h. Stored as
     // pointer-like to avoid pulling in the roller header for every consumer.
     std::shared_ptr<void> roller;

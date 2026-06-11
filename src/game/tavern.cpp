@@ -201,6 +201,22 @@ bool tavern_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 state.push_message(state.roster.chars[ri].name + " 加入隊伍。");
             }
         }
+        // Shift + Up / Down — reorder party slots. Row 0..2 = front
+        // (melee-eligible), 3..5 = back. Moving a Mage to front-row makes
+        // them squishier; moving a Fighter back loses their melee swing.
+        bool shift_held = (event->key.keysym.mod & KMOD_SHIFT) != 0;
+        if (shift_held && s.focus == Focus::PartyList && state.party.count > 1) {
+            int pi = s.party_cursor;
+            int swap_with = -1;
+            if (k == SDLK_UP   && pi > 0)                      swap_with = pi - 1;
+            if (k == SDLK_DOWN && pi < state.party.count - 1)  swap_with = pi + 1;
+            if (swap_with >= 0) {
+                std::swap(state.party.roster_index[pi],
+                          state.party.roster_index[swap_with]);
+                s.party_cursor = swap_with;
+                state.push_message("✦ 隊形已調整。");
+            }
+        }
         if (k == SDLK_r && state.party.count > 0) {
             int pi = s.party_cursor;
             int ri = state.party.roster_index[pi];

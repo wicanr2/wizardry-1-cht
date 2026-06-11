@@ -493,6 +493,13 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     return true;
                 }
                 auto post_step_features = [&]() {
+                    // Light tick — MILWA / LOMILWA wear down per step.
+                    if (state.light_steps_left > 0) {
+                        --state.light_steps_left;
+                        if (state.light_steps_left == 0) {
+                            state.push_message("** 光芒熄滅，暗影籠罩。");
+                        }
+                    }
                     // Anti-magic flag persists only while standing on Fizzle.
                     if (feature_at_party(state) != core::SquareFeature::Fizzle) {
                         state.anti_magic_here = false;
@@ -556,6 +563,11 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     state.change_scene(Scene::Combat);
                 } else if (k == SDLK_c) {
                     state.change_scene(Scene::Camp);
+                } else if (k == SDLK_m || k == SDLK_F5) {
+                    state.show_auto_map = !state.show_auto_map;
+                    state.push_message(state.show_auto_map
+                                           ? "✦ 自動繪圖：開"
+                                           : "✦ 自動繪圖：關");
                 } else if (k == SDLK_RETURN) {
                     // Use stairs if standing on them.
                     if (feature_at_party(state) == core::SquareFeature::Stairs) {
@@ -582,16 +594,69 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
 
             // 3D viewport (slightly narrower to make room for auto-map)
             SDL_Rect view_rect{kPadX, kPadY, 540, 480};
+            // Dark-zone shading — clamp viewport depth if the party is in
+            // a dark cell with no active light spell.
+            bool dark_here = false;
+            {
+                int cx = state.camera.x, cy = state.camera.y;
+                if (cx >= 0 && cy >= 0 &&
+                    cx < core::MazeLevel::kSize && cy < core::MazeLevel::kSize) {
+                    dark_here = state.maze.dark_zone[cy][cx] &&
+                                state.light_steps_left == 0;
+                }
+            }
             render::draw_maze_view(ui.renderer(), state.maze, state.camera,
-                                   view_rect);
+                                   view_rect, dark_here);
 
-            // Auto-map ("Eye of Map") — between viewport and info panel
+            // Compass + depth overlay, top-right inside the 3D viewport.
+            {
+                int cx = view_rect.x + view_rect.w - 56;
+                int cy = view_rect.y + 56;
+                int r = 28;
+                SDL_SetRenderDrawColor(ui.renderer(),
+                                       ui.theme().panel.r, ui.theme().panel.g,
+                                       ui.theme().panel.b, 200);
+                SDL_Rect bg{cx - r - 4, cy - r - 4, 2*r + 8, 2*r + 8};
+                SDL_RenderFillRect(ui.renderer(), &bg);
+                SDL_SetRenderDrawColor(ui.renderer(),
+                                       ui.theme().accent.r, ui.theme().accent.g,
+                                       ui.theme().accent.b, 255);
+                SDL_RenderDrawRect(ui.renderer(), &bg);
+                const char* labels[4] = {"N", "E", "S", "W"};
+                int facing_idx = static_cast<int>(state.camera.facing);
+                for (int i = 0; i < 4; ++i) {
+                    int lx = cx, ly = cy;
+                    switch (i) {
+                        case 0: ly = cy - r + 4; break;
+                        case 1: lx = cx + r - 4; break;
+                        case 2: ly = cy + r - 12; break;
+                        case 3: lx = cx - r + 4; break;
+                    }
+                    SDL_Color col = (i == facing_idx) ? ui.theme().accent
+                                                     : ui.theme().dim;
+                    render::draw_text(ui.renderer(), ui.small_font(), labels[i],
+                                      lx, ly, col, render::Align::Center);
+                }
+                char dbuf[16];
+                std::snprintf(dbuf, sizeof(dbuf), "B%dF", state.camera.level);
+                render::draw_text(ui.renderer(), ui.body_font(), dbuf,
+                                  cx, cy - 8, ui.theme().text, render::Align::Center);
+            }
+
+            // Auto-map ("Eye of Map") — between viewport and info panel.
+            // Hidden when state.show_auto_map is false (M key toggles).
             SDL_Rect amap{kPadX + 540 + 16, kPadY, 360, 360};
-            render::draw_auto_map(ui.renderer(), state.maze, state.camera,
-                                  amap, ui.theme());
-            render::draw_text(ui.renderer(), ui.small_font(),
-                              "自動繪圖 (Eye of Map)",
-                              amap.x + 8, amap.y - 18, ui.theme().dim);
+            if (state.show_auto_map) {
+                render::draw_auto_map(ui.renderer(), state.maze, state.camera,
+                                      amap, ui.theme());
+                render::draw_text(ui.renderer(), ui.small_font(),
+                                  "自動繪圖 (Eye of Map) — M 鍵切換",
+                                  amap.x + 8, amap.y - 18, ui.theme().dim);
+            } else {
+                render::draw_text(ui.renderer(), ui.small_font(),
+                                  "自動繪圖隱藏中（M 鍵切換）",
+                                  amap.x + 8, amap.y - 18, ui.theme().dim);
+            }
 
             // Info panel right side
             const int info_x = amap.x;

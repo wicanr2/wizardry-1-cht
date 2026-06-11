@@ -22,7 +22,7 @@ namespace {
 constexpr int kPadX = 80;
 constexpr int kPadY = 110;
 
-enum CampOption { Save, Inspect, Reorder, CastSpell, ChangeClass, Back, ToTitle, Count };
+enum CampOption { Save, Inspect, Reorder, CastSpell, ChangeClass, Export, Back, ToTitle, Count };
 enum class SaveSlot { None = 0, Picking };  // sub-mode markers
 
 struct CampUI {
@@ -69,10 +69,83 @@ const char* option_label(int o) {
         case Reorder:   return "[R] 重排隊伍";
         case CastSpell: return "[C] 施法（治療/照明/...）";
         case ChangeClass: return "[X] 轉職";
+        case Export:    return "[E] 匯出角色卡 (txt)";
         case Back:      return "[ESC] 回到迷宮";
         case ToTitle:   return "[Q] 回到標題";
         default: return "";
     }
+}
+
+// Plain-text dump of a single character — writeable to a portable .txt
+// so the user can keep a paper-style record / share their build.
+std::string export_character_text(const core::Character& c) {
+    char buf[1500];
+    std::snprintf(buf, sizeof(buf),
+        "Wizardry I CHT — 角色卡\n"
+        "================================\n"
+        "姓名:    %s\n"
+        "種族:    %s\n"
+        "職業:    %s\n"
+        "陣營:    %s\n"
+        "等級:    %d   經驗:  %lld\n"
+        "HP:      %d / %d\n"
+        "AC:      %d\n"
+        "年齡:    %d 歲（%d 週）\n"
+        "金幣:    %lld\n"
+        "================================\n"
+        "屬性\n"
+        "  力量(STR):  %d\n"
+        "  智力(IQ):   %d\n"
+        "  虔誠(PIE):  %d\n"
+        "  體質(VIT):  %d\n"
+        "  敏捷(AGI):  %d\n"
+        "  運氣(LUC):  %d\n"
+        "================================\n"
+        "法力槽（剩餘 / 每睡眠補滿）\n"
+        "  Mage:   L1=%d L2=%d L3=%d L4=%d L5=%d L6=%d L7=%d\n"
+        "  Priest: L1=%d L2=%d L3=%d L4=%d L5=%d L6=%d L7=%d\n",
+        c.name.c_str(),
+        core::race_name(c.race), core::klass_name(c.klass),
+        core::alignment_name(c.alignment),
+        int(c.char_level), (long long)c.experience,
+        int(c.hp_left), int(c.hp_max),
+        int(c.armor_class),
+        int(c.age / 52), int(c.age),
+        (long long)c.gold,
+        int(c.attr.strength), int(c.attr.iq), int(c.attr.piety),
+        int(c.attr.vitality), int(c.attr.agility), int(c.attr.luck),
+        int(c.mage_spell_slots[0]), int(c.mage_spell_slots[1]),
+        int(c.mage_spell_slots[2]), int(c.mage_spell_slots[3]),
+        int(c.mage_spell_slots[4]), int(c.mage_spell_slots[5]),
+        int(c.mage_spell_slots[6]),
+        int(c.priest_spell_slots[0]), int(c.priest_spell_slots[1]),
+        int(c.priest_spell_slots[2]), int(c.priest_spell_slots[3]),
+        int(c.priest_spell_slots[4]), int(c.priest_spell_slots[5]),
+        int(c.priest_spell_slots[6]));
+    return buf;
+}
+
+bool write_character_export(const core::Character& c, std::string& out_path) {
+    const char* home = std::getenv("HOME");
+    std::string dir = (home && *home)
+                          ? std::string(home) + "/.config/wizardry-cht/exports"
+                          : std::string("./exports");
+    std::string cmd = "mkdir -p '" + dir + "'";
+    (void)std::system(cmd.c_str());
+    std::string safe_name;
+    for (char ch : c.name) {
+        if ((unsigned char)ch < 0x80 && (isalnum(ch) || ch == '_' || ch == '-'))
+            safe_name.push_back(ch);
+        else if ((unsigned char)ch >= 0x80) safe_name.push_back(ch);
+    }
+    if (safe_name.empty()) safe_name = "char";
+    out_path = dir + "/" + safe_name + ".txt";
+    FILE* f = std::fopen(out_path.c_str(), "w");
+    if (!f) return false;
+    std::string body = export_character_text(c);
+    std::fwrite(body.data(), 1, body.size(), f);
+    std::fclose(f);
+    return true;
 }
 
 void draw_camp(State& state, const render::UI& ui, const CampUI& s) {
@@ -395,8 +468,12 @@ std::string cast_camp_spell(State& state, std::string_view spell_name,
                 }
             }
         }
-        return spell_name == "MILWA" ? "MILWA：短時照明，已揭露鄰格"
-                                     : "LOMILWA：長時照明，已揭露鄰格";
+        // Light persistence — MILWA lasts ~20 steps, LOMILWA persists for
+        // the rest of the dungeon delve (effectively until the party leaves).
+        state.light_steps_left =
+            (spell_name == "MILWA") ? 20 : 9999;
+        return spell_name == "MILWA" ? "MILWA：短時照明，已揭露鄰格（20 步）"
+                                     : "LOMILWA：長時照明，已揭露鄰格（直到離開迷宮）";
     }
     if (spell_name == "LATUMOFIS") {
         auto* c = target_char();
@@ -635,6 +712,26 @@ bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                         }
                         break;
                     }
+                    case Export: {
+                        if (state.party.count == 0) {
+                            state.push_message("** 隊伍為空，無可匯出 **");
+                            break;
+                        }
+                        int wrote = 0;
+                        std::string last_path;
+                        for (int i = 0; i < state.party.count; ++i) {
+                            int ri = state.party.roster_index[i];
+                            if (ri < 0) continue;
+                            if (write_character_export(state.roster.chars[ri], last_path))
+                                ++wrote;
+                        }
+                        char buf[200];
+                        std::snprintf(buf, sizeof(buf),
+                                      "✦ 已匯出 %d 張角色卡到 %s（同名目錄）",
+                                      wrote, last_path.c_str());
+                        state.push_message(buf);
+                        break;
+                    }
                     case Back:
                         state.change_scene(Scene::Maze);
                         break;
@@ -651,6 +748,7 @@ bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
             else if (k == SDLK_r) run(Reorder);
             else if (k == SDLK_c) run(CastSpell);
             else if (k == SDLK_x) run(ChangeClass);
+            else if (k == SDLK_e) run(Export);
             else if (k == SDLK_q) run(ToTitle);
         }
     }

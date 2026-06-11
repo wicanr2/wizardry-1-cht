@@ -22,8 +22,11 @@ struct Camera {
 // renders trapezoidal corridor walls + doors using SDL_RenderDrawLine.
 // Wall / door / floor colours come from the currently active visual theme
 // (F3 cycle), so the dungeon re-skins live as the player cycles themes.
+// If `dark` is true and there is no active light, the renderer clamps the
+// look-ahead to 1 cell (you only see what's right in front of you).
 void draw_maze_view(SDL_Renderer* r, const core::MazeLevel& level,
-                    const Camera& cam, SDL_Rect viewport);
+                    const Camera& cam, SDL_Rect viewport,
+                    bool dark = false);
 
 // Helper to step a camera one cell forward / strafe / turn.
 void step_forward(Camera& cam) noexcept;
