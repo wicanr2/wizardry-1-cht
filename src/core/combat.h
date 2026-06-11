@@ -36,6 +36,12 @@ enum class CombatPhase {
 
 enum class CombatOutcome { Ongoing, Victory, Defeat, Fled };
 
+// First-round surprise state. Rolled in begin_combat().
+//   None         — both sides act normally
+//   PartyAhead   — monsters skip their phase on round 1 (party gets free hit)
+//   MonstersAhead — party can only Parry/Run on round 1; monsters get free swing
+enum class Surprise : std::uint8_t { None = 0, PartyAhead, MonstersAhead };
+
 struct PlayerAction {
     enum Kind : std::uint8_t { Fight, Spell, Parry, Run, UseItem } kind = Fight;
     int target_group = 0;
@@ -59,6 +65,10 @@ struct CombatState {
     long_t xp_award = 0;
     long_t gold_award = 0;
     std::vector<std::string> log;
+
+    // First-round bookkeeping for surprise / breath weapon timing.
+    Surprise surprise = Surprise::None;
+    int round = 0;  // increments at the start of each resolve_round
 };
 
 // Initiates a combat encounter — drops you into PartyAction phase.

@@ -3975,5 +3975,75 @@
     "ja_JP": "WASD / 矢印で移動   ESC 戻る",
     "category": "ui_chrome",
     "refs": []
+  },
+  "combat_surprise_party_ahead": {
+    "en": "** You catch them off-guard! Enemies skip round 1.",
+    "zh_TW": "** 你方先發制人！第一回合敵方無法行動。",
+    "ja_JP": "** 不意打ち成功！第一ラウンドは敵が行動できない。",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_surprise_monsters_ahead": {
+    "en": "** Ambush! Round 1 you may only Parry or Run.",
+    "zh_TW": "** 敵方突襲！第一回合你方只能防禦或逃跑。",
+    "ja_JP": "** 待ち伏せ！第一ラウンドは防御か逃走のみ。",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_caught_off_guard": {
+    "en": "%s is caught off-guard.",
+    "zh_TW": "%s 被打了個措手不及。",
+    "ja_JP": "%s は不意を突かれた。",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_enemies_still_dazed": {
+    "en": "** Enemies are still dazed and cannot act.",
+    "zh_TW": "** 敵方還沒回過神，未能行動。",
+    "ja_JP": "** 敵はまだ我に返らず、動けない。",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_breath_unleashed": {
+    "en": "%s unleashes a searing breath weapon!",
+    "zh_TW": "%s 噴出一道灼熱吐息！",
+    "ja_JP": "%s が灼熱の息を吐いた！",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_breath_damage": {
+    "en": "  %s takes %d damage%s.",
+    "zh_TW": "  %s 受 %d 傷害%s。",
+    "ja_JP": "  %s は %d ダメージ%s。",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_breath_half_save": {
+    "en": " (saved, half)",
+    "zh_TW": "（半傷）",
+    "ja_JP": "（半減）",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_vampire_drains": {
+    "en": "  -> %s is drained one life-level! (now level %d)",
+    "zh_TW": "  -> %s 被吸取一級生命力！（剩 %d 級）",
+    "ja_JP": "  -> %s はレベルを1吸い取られた！（残り %d ）",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_vampire_kills": {
+    "en": "  -> %s is drained to death!",
+    "zh_TW": "  -> %s 被吸乾魂魄而死！",
+    "ja_JP": "  -> %s は魂を吸い尽くされて死んだ！",
+    "category": "combat",
+    "refs": []
+  },
+  "combat_ghoul_paralyses": {
+    "en": "  -> %s is paralysed stiff!",
+    "zh_TW": "  -> %s 全身僵硬，動彈不得！",
+    "ja_JP": "  -> %s は身体が硬直して動けない！",
+    "category": "combat",
+    "refs": []
   }
 }

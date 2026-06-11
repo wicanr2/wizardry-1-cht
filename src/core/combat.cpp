@@ -5,6 +5,7 @@
 #include <cstring>
 
 #include "core/rng.h"
+#include "i18n/tr.h"
 
 namespace wiz::core {
 
@@ -43,6 +44,21 @@ bool monster_hits(const Monster& m, int target_ac) {
     auto& rng = global_rng();
     int roll = rng.range(1, 20);
     return (roll + (10 - m.armor_class)) >= (20 - target_ac);
+}
+
+// Special-attack classification — derived from monster name so we can add
+// flavour without retrofitting every JSON entry. Wizardry I's signature
+// nasties: vampires drain levels, ghouls paralyse, dragons breathe.
+enum class Special { None, Drain, Paralyze, Breath };
+
+Special special_kind(const Monster& m) {
+    const std::string& n = m.name;
+    auto has = [&](const char* s) { return n.find(s) != std::string::npos; };
+    if (has("VAMPIRE")) return Special::Drain;
+    if (has("GHOUL"))   return Special::Paralyze;
+    // Living dragons + dragon zombies + gas dragon all breathe.
+    if (has("DRAGON") || has("GAS DRAGON")) return Special::Breath;
+    return Special::None;
 }
 
 }  // namespace
@@ -464,6 +480,15 @@ void begin_combat(CombatState& s, std::vector<CombatGroup> groups) {
     s.gold_award = 0;
     s.active_party_member = 0;
     s.log.clear();
+    s.round = 0;
+
+    // Surprise roll — 1d100. Matches Apple II v3.2 approximate odds:
+    // 20% party-surprises, 20% monsters-surprise, 60% no-surprise.
+    int sroll = global_rng().range(1, 100);
+    if (sroll <= 20)       s.surprise = Surprise::PartyAhead;
+    else if (sroll <= 40)  s.surprise = Surprise::MonstersAhead;
+    else                   s.surprise = Surprise::None;
+
     char buf[160];
     std::snprintf(buf, sizeof(buf), "** 戰鬥開始 — %zu 群敵人出現！", s.groups.size());
     s.log.emplace_back(buf);
@@ -473,6 +498,11 @@ void begin_combat(CombatState& s, std::vector<CombatGroup> groups) {
                       g.identified ? g.prototype.name.c_str()
                                    : g.prototype.name_unknown.c_str());
         s.log.emplace_back(buf);
+    }
+    if (s.surprise == Surprise::PartyAhead) {
+        s.log.emplace_back(std::string(i18n::tr("combat_surprise_party_ahead")));
+    } else if (s.surprise == Surprise::MonstersAhead) {
+        s.log.emplace_back(std::string(i18n::tr("combat_surprise_monsters_ahead")));
     }
 }
 
@@ -495,11 +525,25 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
     s.phase = CombatPhase::Resolve;
     char buf[160];
 
+    const bool monsters_skip_phase =
+        (s.round == 0 && s.surprise == Surprise::PartyAhead);
+    const bool party_skip_offence =
+        (s.round == 0 && s.surprise == Surprise::MonstersAhead);
+
     // Player phase
     for (int i = 0; i < 6; ++i) {
         auto& a = s.actions[i];
         auto& c = party[i];
         if (c.name.empty() || !can_act(c)) continue;
+        // Surprised → all offensive actions (Fight/Spell/UseItem) become Parry.
+        if (party_skip_offence && a.kind != PlayerAction::Run &&
+            a.kind != PlayerAction::Parry) {
+            a.kind = PlayerAction::Parry;
+            std::snprintf(buf, sizeof(buf),
+                          std::string(i18n::tr("combat_caught_off_guard")).c_str(),
+                          c.name.c_str());
+            s.log.emplace_back(buf);
+        }
         if (a.kind == PlayerAction::Run) {
             // 50% chance to flee
             if (global_rng().range(1, 100) <= 50) {
@@ -578,7 +622,9 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
         return;
     }
 
-    for (auto& g : s.groups) {
+    if (monsters_skip_phase) {
+        s.log.emplace_back(std::string(i18n::tr("combat_enemies_still_dazed")));
+    } else for (auto& g : s.groups) {
         if (g.alive_count <= 0) continue;
         // Sleeping or paralyzed groups skip their action this round.
         if (g.asleep) {
@@ -593,6 +639,44 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
             s.log.emplace_back(buf);
             continue;
         }
+
+        const Special special = special_kind(g.prototype);
+
+        // Dragons / dragon zombies / gas dragons breathe instead of melee
+        // — cone hits the whole party. Damage = 3d8 per breathing monster,
+        // halved on a vit save (15+ avoids worst).
+        if (special == Special::Breath) {
+            int breathers = int(g.alive_count);
+            int total_dmg = 0;
+            for (int b = 0; b < breathers; ++b) total_dmg += global_rng().dice(3, 8);
+            std::snprintf(buf, sizeof(buf),
+                          std::string(i18n::tr("combat_breath_unleashed")).c_str(),
+                          g.prototype.name_unknown.c_str());
+            s.log.emplace_back(buf);
+            std::string dmg_tpl(i18n::tr("combat_breath_damage"));
+            std::string half_tag(i18n::tr("combat_breath_half_save"));
+            for (auto& victim : party) {
+                if (victim.name.empty()) continue;
+                if (victim.status == Status::Dead ||
+                    victim.status == Status::Ashes ||
+                    victim.status == Status::Lost) continue;
+                int dmg = total_dmg;
+                bool saved = (global_rng().range(1, 20) + victim.attr.vitality / 2) >= 18;
+                if (saved) dmg /= 2;
+                victim.hp_left = static_cast<std::int16_t>(victim.hp_left - dmg);
+                std::snprintf(buf, sizeof(buf), dmg_tpl.c_str(),
+                              victim.name.c_str(), dmg,
+                              saved ? half_tag.c_str() : "");
+                s.log.emplace_back(buf);
+                if (victim.hp_left <= 0) {
+                    victim.status = Status::Dead;
+                    std::snprintf(buf, sizeof(buf), "  -> %s 倒下！", victim.name.c_str());
+                    s.log.emplace_back(buf);
+                }
+            }
+            continue;  // breath replaces normal swings this round
+        }
+
         int swings = std::max(1, int(g.alive_count) / 2);
         for (int sw = 0; sw < swings; ++sw) {
             // Bias attacks to the front row (75/25 split).
@@ -620,7 +704,39 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
                               victim.name.c_str(),
                               g.prototype.name_unknown.c_str(), dmg);
                 s.log.emplace_back(buf);
-                if (victim.hp_left <= 0) {
+
+                // Vampire drain — on hit, also drop one char_level (and hp_max).
+                if (special == Special::Drain && victim.status != Status::Dead) {
+                    if (victim.char_level > 1) {
+                        int per_lvl_hp = std::max(1, int(victim.hp_max) / int(victim.char_level));
+                        --victim.char_level;
+                        victim.hp_max = static_cast<std::int16_t>(victim.hp_max - per_lvl_hp);
+                        if (victim.hp_left > victim.hp_max) victim.hp_left = victim.hp_max;
+                        std::snprintf(buf, sizeof(buf),
+                                      std::string(i18n::tr("combat_vampire_drains")).c_str(),
+                                      victim.name.c_str(), int(victim.char_level));
+                        s.log.emplace_back(buf);
+                    } else {
+                        // Level-1 drain = death.
+                        victim.hp_left = 0;
+                        victim.status = Status::Dead;
+                        std::snprintf(buf, sizeof(buf),
+                                      std::string(i18n::tr("combat_vampire_kills")).c_str(),
+                                      victim.name.c_str());
+                        s.log.emplace_back(buf);
+                    }
+                }
+                // Ghoul paralysis — 25% on hit.
+                if (special == Special::Paralyze &&
+                    victim.status == Status::Ok &&
+                    global_rng().range(1, 100) <= 25) {
+                    victim.status = Status::Paralyzed;
+                    std::snprintf(buf, sizeof(buf),
+                                  std::string(i18n::tr("combat_ghoul_paralyses")).c_str(),
+                                  victim.name.c_str());
+                    s.log.emplace_back(buf);
+                }
+                if (victim.hp_left <= 0 && victim.status != Status::Dead) {
                     victim.status = Status::Dead;
                     std::snprintf(buf, sizeof(buf), "  -> %s 倒下！", victim.name.c_str());
                     s.log.emplace_back(buf);
@@ -649,6 +765,7 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
 
     s.phase = CombatPhase::PartyAction;
     s.active_party_member = 0;
+    ++s.round;
 }
 
 }  // namespace wiz::core
