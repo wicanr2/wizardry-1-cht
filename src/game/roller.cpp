@@ -478,6 +478,7 @@ bool roller_tick(RollerState& r, State& state, const SDL_Event* event,
             out.gold = 100;
             out.armor_class = 10;
             core::recompute_derived(out);
+            core::recompute_spell_slots(out);
             out.hp_left = out.hp_max;
             return false;  // signal completion
         }

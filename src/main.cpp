@@ -37,6 +37,7 @@ void seed_demo_party(wiz::game::State& state) {
         c.attr = attr;
         c.char_level = level;
         recompute_derived(c);
+        recompute_spell_slots(c);
         c.hp_left = c.hp_max;
         c.armor_class = 8;
         c.gold = 500 + level * 100;  // demo starting purse

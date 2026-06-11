@@ -67,6 +67,19 @@ struct State {
 
     core::CombatState combat;
 
+    // Anti-magic zone effect set by Fizzle square; cleared when the party
+    // steps onto a non-Fizzle cell. cast_camp_spell + combat cast_spell
+    // check this and refuse to fire.
+    bool anti_magic_here = false;
+
+    // Encounter feature (SquareFeature::Encounter) sets this; the maze
+    // step handler in screens.cpp reads it next frame to spawn combat.
+    bool pending_force_encounter = false;
+
+    // LATUMAPIC cast in camp persists into the next combat — begin_combat()
+    // consumes this and pre-identifies every monster group.
+    bool latumapic_next_combat = false;
+
     // Forward-declared; full RollerState defined in game/roller.h. Stored as
     // pointer-like to avoid pulling in the roller header for every consumer.
     std::shared_ptr<void> roller;

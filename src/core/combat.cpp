@@ -5,6 +5,7 @@
 #include <cstring>
 
 #include "core/rng.h"
+#include "core/rules.h"
 #include "i18n/tr.h"
 
 namespace wiz::core {
@@ -44,6 +45,14 @@ bool monster_hits(const Monster& m, int target_ac) {
     auto& rng = global_rng();
     int roll = rng.range(1, 20);
     return (roll + (10 - m.armor_class)) >= (20 - target_ac);
+}
+
+// Effective AC after applying status penalties. Afraid characters are easier
+// to hit (manual: +2 AC penalty to the attacker's roll).
+int effective_target_ac(const Character& c) {
+    int ac = c.armor_class;
+    if (c.status == Status::Afraid) ac += 2;
+    return ac;
 }
 
 // Special-attack classification — derived from monster name so we can add
@@ -92,6 +101,13 @@ CombatGroup* group_at(CombatState& s, int idx) {
     return &s.groups[idx];
 }
 
+// In-combat label honours LATUMAPIC: once a group is `identified`, every
+// subsequent log line uses its true name instead of the disguise.
+const char* display_name(const CombatGroup& g) {
+    return g.identified ? g.prototype.name.c_str()
+                        : g.prototype.name_unknown.c_str();
+}
+
 void log_cast(CombatState& s, const Character& c, const char* name, const char* effect) {
     char buf[200];
     std::snprintf(buf, sizeof(buf), "%s 詠唱 %s — %s", c.name.c_str(), name, effect);
@@ -107,7 +123,7 @@ void dmg_spell(CombatState& s, const Character& c, const PlayerAction& a,
         apply_dmg_to_group(*g, dmg);
         char buf[200];
         std::snprintf(buf, sizeof(buf), "%s — %s 受 %d %s。",
-                      name, g->prototype.name_unknown.c_str(), dmg, desc);
+                      name, display_name(*g), dmg, desc);
         log_cast(s, c, name, buf + std::strlen(name) + 3);
     }
 }
@@ -122,7 +138,7 @@ void all_dmg_spell(CombatState& s, const Character& c,
         apply_dmg_to_group(g, dmg);
         char buf[200];
         std::snprintf(buf, sizeof(buf), "  %s 受 %d %s。",
-                      g.prototype.name_unknown.c_str(), dmg, desc);
+                      display_name(g), dmg, desc);
         s.log.emplace_back(buf);
     }
 }
@@ -181,7 +197,7 @@ void group_ac_debuff(CombatState& s, const Character& c, const PlayerAction& a,
     if (auto* g = group_at(s, a.target_group)) {
         g->ac_mod += delta;
         char buf[120];
-        std::snprintf(buf, sizeof(buf), "%s AC %+d", g->prototype.name_unknown.c_str(), delta);
+        std::snprintf(buf, sizeof(buf), "%s AC %+d", display_name(*g), delta);
         log_cast(s, c, name, buf);
     }
 }
@@ -203,7 +219,7 @@ void group_status(CombatState& s, const Character& c, const PlayerAction& a,
             g->*flag = true;
             char buf[120];
             std::snprintf(buf, sizeof(buf), "%s 中 %s！",
-                          g->prototype.name_unknown.c_str(), status_zh);
+                          display_name(*g), status_zh);
             log_cast(s, c, name, buf);
         } else {
             log_cast(s, c, name, "效果被抵抗。");
@@ -217,7 +233,7 @@ void instant_kill_group(CombatState& s, const Character& c, const PlayerAction& 
         if (g->prototype.monster_class <= max_level) {
             char buf[120];
             std::snprintf(buf, sizeof(buf), "%s 全滅 (%d 隻)！",
-                          g->prototype.name_unknown.c_str(), int(g->alive_count));
+                          display_name(*g), int(g->alive_count));
             log_cast(s, c, name, buf);
             g->alive_count = 0;
             g->hp_total = 0;
@@ -237,7 +253,7 @@ void single_target_kill(CombatState& s, const Character& c, const PlayerAction& 
             g->hp_total -= avg_hp;
             char buf[120];
             std::snprintf(buf, sizeof(buf), "%s 倒下 1 隻。",
-                          g->prototype.name_unknown.c_str());
+                          display_name(*g));
             log_cast(s, c, name, buf);
         } else {
             log_cast(s, c, name, "效果被抵抗。");
@@ -300,6 +316,16 @@ void cast_spell(CombatState& s, int caster_idx, Character& caster,
                 const PlayerAction& a) {
     const std::string& n = a.spell_name;
 
+    // Slot gate — pre-decrement; bail with a log line if exhausted.
+    if (!consume_spell_slot(caster, n)) {
+        char buf[160];
+        std::snprintf(buf, sizeof(buf),
+                      std::string(i18n::tr("combat_spell_no_charges")).c_str(),
+                      caster.name.c_str(), n.c_str());
+        s.log.emplace_back(buf);
+        return;
+    }
+
     // === Mage damage (single group) ===
     if (n == "HALITO")        dmg_spell(s, caster, a, "HALITO",   1, 8,  "火焰傷害");
     else if (n == "MOLITO")   dmg_spell(s, caster, a, "MOLITO",   3, 6,  "魔法飛彈");
@@ -325,7 +351,7 @@ void cast_spell(CombatState& s, int caster_idx, Character& caster,
             apply_dmg_to_group(*g, dmg);
             char buf[120];
             std::snprintf(buf, sizeof(buf), "奪命：%s 群被瞬殺！",
-                          g->prototype.name_unknown.c_str());
+                          display_name(*g));
             log_cast(s, caster, "LABADI", buf);
         }
     }
@@ -496,7 +522,7 @@ void begin_combat(CombatState& s, std::vector<CombatGroup> groups) {
         std::snprintf(buf, sizeof(buf), "  %d × %s",
                       int(g.alive_count),
                       g.identified ? g.prototype.name.c_str()
-                                   : g.prototype.name_unknown.c_str());
+                                   : display_name(g));
         s.log.emplace_back(buf);
     }
     if (s.surprise == Surprise::PartyAhead) {
@@ -571,7 +597,7 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
                 g.hp_total -= dmg;
                 std::snprintf(buf, sizeof(buf), "%s 攻擊命中 %s，造成 %d 傷害。",
                               c.name.c_str(),
-                              g.prototype.name_unknown.c_str(), dmg);
+                              display_name(g), dmg);
                 s.log.emplace_back(buf);
                 // Damage wakes a sleeping group (paralysis lingers).
                 if (g.asleep) {
@@ -629,13 +655,13 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
         // Sleeping or paralyzed groups skip their action this round.
         if (g.asleep) {
             std::snprintf(buf, sizeof(buf), "%s 仍在沉睡。",
-                          g.prototype.name_unknown.c_str());
+                          display_name(g));
             s.log.emplace_back(buf);
             continue;
         }
         if (g.paralyzed) {
             std::snprintf(buf, sizeof(buf), "%s 仍被麻痺，無法行動。",
-                          g.prototype.name_unknown.c_str());
+                          display_name(g));
             s.log.emplace_back(buf);
             continue;
         }
@@ -651,7 +677,7 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
             for (int b = 0; b < breathers; ++b) total_dmg += global_rng().dice(3, 8);
             std::snprintf(buf, sizeof(buf),
                           std::string(i18n::tr("combat_breath_unleashed")).c_str(),
-                          g.prototype.name_unknown.c_str());
+                          display_name(g));
             s.log.emplace_back(buf);
             std::string dmg_tpl(i18n::tr("combat_breath_damage"));
             std::string half_tag(i18n::tr("combat_breath_half_save"));
@@ -697,12 +723,12 @@ void resolve_round(CombatState& s, std::array<Character, 6>& party) {
             }
             if (target < 0) break;
             auto& victim = party[target];
-            if (monster_hits(g.prototype, victim.armor_class)) {
+            if (monster_hits(g.prototype, effective_target_ac(victim))) {
                 int dmg = monster_attack_dmg(g.prototype);
                 victim.hp_left -= dmg;
                 std::snprintf(buf, sizeof(buf), "%s 被 %s 擊中，受 %d 傷害。",
                               victim.name.c_str(),
-                              g.prototype.name_unknown.c_str(), dmg);
+                              display_name(g), dmg);
                 s.log.emplace_back(buf);
 
                 // Vampire drain — on hit, also drop one char_level (and hp_max).

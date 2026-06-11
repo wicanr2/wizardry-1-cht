@@ -10,6 +10,8 @@
 #include <string>
 
 #include "core/rng.h"
+#include "core/rules.h"
+#include "i18n/tr.h"
 #include "game/class_change.h"
 #include "save/gamesave.h"
 
@@ -290,6 +292,32 @@ std::string cast_camp_spell(State& state, std::string_view spell_name,
     using namespace wiz::core;
     auto& rng = global_rng();
 
+    // Anti-magic zone (Fizzle square) — even before checking slots, refuse.
+    if (state.anti_magic_here) {
+        return std::string(spell_name) + ": " +
+               std::string(i18n::tr("camp_anti_magic_zone"));
+    }
+
+    // Slot gate — camp casts always come from the currently-spotlighted
+    // member (spell_target = party slot of the caster). Charge against
+    // that character's appropriate school/level slot. If the character has
+    // none left, bail before we change game state.
+    {
+        int ri_caster = (target_member >= 0 && target_member < state.party.count)
+                            ? state.party.roster_index[target_member]
+                            : -1;
+        if (ri_caster >= 0) {
+            auto& caster = state.roster.chars[ri_caster];
+            if (!consume_spell_slot(caster, spell_name)) {
+                char buf[160];
+                std::snprintf(buf, sizeof(buf),
+                              std::string(i18n::tr("camp_spell_no_charges")).c_str(),
+                              std::string(spell_name).c_str());
+                return buf;
+            }
+        }
+    }
+
     auto target_ri = [&]() -> int {
         if (target_member < 0 || target_member >= state.party.count) return -1;
         return state.party.roster_index[target_member];
@@ -396,7 +424,45 @@ std::string cast_camp_spell(State& state, std::string_view spell_name,
         return buf;
     }
     if (spell_name == "CALFO") {
-        return "CALFO：附近無寶箱可鑑定";
+        // Lookahead-one-cell trap scan. Walks one tile in the facing
+        // direction (without moving the camera) and reports the feature
+        // sitting on that cell.
+        int dx[4] = {0, 1, 0, -1};
+        int dy[4] = {-1, 0, 1, 0};
+        int f = static_cast<int>(state.camera.facing);
+        int nx = state.camera.x + dx[f];
+        int ny = state.camera.y + dy[f];
+        if (nx < 0 || ny < 0 ||
+            nx >= core::MazeLevel::kSize ||
+            ny >= core::MazeLevel::kSize) {
+            return "CALFO：前方為迷宮邊界。";
+        }
+        std::uint8_t idx = state.maze.sqr_extra[ny][nx];
+        if (idx >= state.maze.sqre_type.size()) return "CALFO：前方乾淨。";
+        auto feat = state.maze.sqre_type[idx];
+        const char* desc = nullptr;
+        switch (feat) {
+            case core::SquareFeature::Pit:        desc = "陷阱坑"; break;
+            case core::SquareFeature::Spinner:    desc = "旋轉盤"; break;
+            case core::SquareFeature::Teleporter: desc = "傳送門"; break;
+            case core::SquareFeature::Chute:      desc = "滑梯"; break;
+            case core::SquareFeature::Fizzle:     desc = "反魔法區域"; break;
+            case core::SquareFeature::Encounter:  desc = "埋伏（強制遭遇）"; break;
+            case core::SquareFeature::Message:    desc = "石刻留言"; break;
+            case core::SquareFeature::Elevator:   desc = "電梯"; break;
+            case core::SquareFeature::Stairs:     desc = "樓梯"; break;
+            default: break;
+        }
+        if (!desc) return "CALFO：前方乾淨，無陷阱反應。";
+        std::snprintf(buf, sizeof(buf), "CALFO：偵測到前方一格為「%s」！", desc);
+        return buf;
+    }
+    if (spell_name == "LATUMAPIC") {
+        // Persist a flag for the next combat; begin_combat() will mark all
+        // groups identified before logging "X × NAME". Wears off at end-of-
+        // combat (cleared in begin_combat itself).
+        state.latumapic_next_combat = true;
+        return "LATUMAPIC：聚焦於遠方，下次遭遇將看穿真身。";
     }
     if (spell_name == "DI") {
         auto* c = target_char();

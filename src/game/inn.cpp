@@ -8,6 +8,7 @@
 
 #include "core/rng.h"
 #include "core/rules.h"
+#include "i18n/tr.h"
 
 namespace wiz::game {
 
@@ -42,6 +43,7 @@ struct TempleUI {
         Heal, CurePoison, CureParalysis, CureStone,
         Resurrect,   // DI: Dead -> Ok (chance), failure -> Ashes
         Kadorto,     // KADORTO: Ashes -> Ok (chance), failure -> Lost
+        Uncurse,     // Strip cursed flag from every equipped slot.
         Count
     } action = Heal;
 };
@@ -171,6 +173,7 @@ void draw_temple(State& state, const render::UI& ui, const TempleUI& s) {
         "[D] 解石化             500 金 / 等級",
         "[E] DI 復活 (亡→生)     250 金 / 等級（可能變灰燼）",
         "[F] KADORTO (灰燼→生)  1000 金 / 等級（可能永失）",
+        "[G] 解咒              500 金 / 件詛咒道具",
     };
     const int line_h = ui.body_font().line_height() + 12;
     for (int i = 0; i < TempleUI::Count; ++i) {
@@ -224,11 +227,18 @@ bool inn_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                     state.push_message(
                         c.name + " 投宿 " + room.name + " 一週，HP +" +
                         std::to_string(healed));
+                    // Every stay (paid or free) restores all spell slots —
+                    // matches v3.2 inn behaviour. Free Stables only refills
+                    // slots; no HP / age happens since hp_per_week=0.
+                    core::restore_spell_slots(c);
+                    state.push_message(c.name + "：" +
+                                       std::string(i18n::tr("inn_slots_restored")));
                     // Auto level up if XP threshold reached
                     auto needed = core::xp_for_level(c.klass, c.char_level + 1);
                     if (c.experience >= needed) {
                         ++c.char_level;
                         core::recompute_derived(c);
+                        core::recompute_spell_slots(c);
                         c.hp_left = c.hp_max;
                         state.push_message(c.name + " 升級！ 現在等級 " +
                                            std::to_string(c.char_level));
@@ -268,6 +278,16 @@ bool temple_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                     case TempleUI::CureStone:      cost = 500LL * c.char_level; break;
                     case TempleUI::Resurrect:      cost = 250LL * c.char_level; break;
                     case TempleUI::Kadorto:        cost = 1000LL * c.char_level; break;
+                    case TempleUI::Uncurse: {
+                        // Cost scales with how many cursed slots the priest
+                        // must purify — 500 gp per item, minimum 100.
+                        int n = 0;
+                        for (const auto& slot : c.inventory) {
+                            if (slot.item_id >= 0 && slot.cursed) ++n;
+                        }
+                        cost = (n > 0) ? 500LL * n : 100LL;
+                        break;
+                    }
                     default: break;
                 }
                 if (c.gold < cost) {
@@ -317,6 +337,27 @@ bool temple_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                                 c.status = core::Status::Ashes;
                                 state.push_message(c.name + " 復活失敗，化為灰燼。");
                             }
+                            break;
+                        }
+                        case TempleUI::Uncurse: {
+                            int cleared = 0;
+                            char buf[200];
+                            for (auto& slot : c.inventory) {
+                                if (slot.item_id >= 0 && slot.cursed) {
+                                    slot.cursed = false;
+                                    ++cleared;
+                                }
+                            }
+                            if (cleared > 0) {
+                                std::snprintf(buf, sizeof(buf),
+                                              std::string(i18n::tr("temple_uncurse_done")).c_str(),
+                                              "Cant's Temple", c.name.c_str());
+                            } else {
+                                std::snprintf(buf, sizeof(buf),
+                                              std::string(i18n::tr("temple_uncurse_nothing")).c_str(),
+                                              c.name.c_str());
+                            }
+                            state.push_message(buf);
                             break;
                         }
                         case TempleUI::Kadorto: {

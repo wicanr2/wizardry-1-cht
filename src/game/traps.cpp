@@ -67,6 +67,59 @@ static void teleporter(State& state) {
     state.push_message(buf);
 }
 
+// Anti-magic / "fizzle" zone — a single-cell dampener that blocks every
+// spell cast (combat or camp) while the party stands on it. Reset when
+// the party steps off (handled by the maze step handler clearing it).
+static void anti_magic(State& state) {
+    state.anti_magic_here = true;
+    state.push_message("** 你感到法力被空氣吸走 — 此處反魔法。");
+}
+
+// Message square — flavour text read once per visit. Multi-floor maze data
+// stores the message index in aux0 / aux1; in the absence of a per-level
+// catalogue we hash (level, idx) into a small set of plausible Wizardry I
+// vignettes from the original signs (per tk421 walk-through).
+static void message_square(State& state) {
+    static const char* kMessages[] = {
+        "牆上刻著：「BEWARE WERDNA」",
+        "你看見舊冒險者的骨骸蜷縮在角落。",
+        "石板寫著：「TRESPASSER — TURN BACK」",
+        "牆面隱約浮現 Trebor 的徽記。",
+        "黴味中飄來遠處的鐘聲，無人能說來自何方。",
+        "地上散落幾枚生鏽的硬幣。",
+    };
+    int n = static_cast<int>(sizeof(kMessages) / sizeof(kMessages[0]));
+    int idx = (state.camera.level * 17 + state.camera.x * 3 + state.camera.y * 7) % n;
+    state.push_message(std::string("** 留言：") + kMessages[idx]);
+}
+
+// Elevator — original W1 elevator at B4 between B4 and B9. Simple stop-by-
+// stop selector: each press of the trap cycles up to the next floor in the
+// range (4..9). We just take the user to the next floor up in that range.
+static void elevator(State& state) {
+    int cur = state.camera.level;
+    int next = cur + 1;
+    if (next < 4) next = 4;
+    if (next > 9) next = 4;  // wrap back to top
+    if (next == cur) {
+        state.push_message("** 電梯軋軋作響，但門開又關 — 沒移動。**");
+        return;
+    }
+    switch_floor(state, next, -1, -1);
+    char buf[120];
+    std::snprintf(buf, sizeof(buf),
+                  "** 電梯升降！到達 B%dF。**", next);
+    state.push_message(buf);
+}
+
+// Forced encounter — bumps you into a fight without rolling the per-step
+// probability. The maze step handler also reads `fights[y][x]` for the
+// classic always-encounter cell; this is the feature-slot variant.
+static void force_encounter(State& state) {
+    state.push_message("** 你踏入埋伏 — 戰鬥不可避免！");
+    state.pending_force_encounter = true;
+}
+
 static void chute(State& state) {
     int cur = state.camera.level;
     if (cur >= kMaxFloors) {
@@ -87,10 +140,14 @@ static void chute(State& state) {
 
 bool apply_trap(State& state, SquareFeature f) {
     switch (f) {
-        case SquareFeature::Pit:        pit_damage(state); return true;
-        case SquareFeature::Spinner:    spinner(state);    return true;
-        case SquareFeature::Teleporter: teleporter(state); return true;
-        case SquareFeature::Chute:      chute(state);      return true;
+        case SquareFeature::Pit:        pit_damage(state);     return true;
+        case SquareFeature::Spinner:    spinner(state);        return true;
+        case SquareFeature::Teleporter: teleporter(state);     return true;
+        case SquareFeature::Chute:      chute(state);          return true;
+        case SquareFeature::Fizzle:     anti_magic(state);     return true;
+        case SquareFeature::Message:    message_square(state); return true;
+        case SquareFeature::Elevator:   elevator(state);       return true;
+        case SquareFeature::Encounter:  force_encounter(state);return true;
         default: return false;
     }
 }

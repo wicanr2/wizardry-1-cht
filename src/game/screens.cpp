@@ -492,6 +492,18 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     state.push_message("逃離迷宮。");
                     return true;
                 }
+                auto post_step_features = [&]() {
+                    // Anti-magic flag persists only while standing on Fizzle.
+                    if (feature_at_party(state) != core::SquareFeature::Fizzle) {
+                        state.anti_magic_here = false;
+                    }
+                    // Forced-encounter feature wins over the random roll.
+                    if (state.pending_force_encounter) {
+                        state.pending_force_encounter = false;
+                        render::play(render::Sfx::SwordHit);
+                        state.change_scene(Scene::Combat);
+                    }
+                };
                 auto maybe_random_encounter = [&]() {
                     int xx = state.camera.x, yy = state.camera.y;
                     if (state.maze.fights[yy][xx]) {
@@ -516,6 +528,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                         render::play(render::Sfx::Footstep);
                         poison_tick_party(state);
                         apply_trap(state, feature_at_party(state));
+                        post_step_features();
                         check_body_pickup(state);
                         if (state.scene == Scene::Maze) maybe_random_encounter();
                     } else {
@@ -528,6 +541,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                     render::play(render::Sfx::Footstep);
                     poison_tick_party(state);
                     apply_trap(state, feature_at_party(state));
+                    post_step_features();
                     check_body_pickup(state);
                     if (state.scene == Scene::Maze) maybe_random_encounter();
                 } else if (k == SDLK_LEFT || k == SDLK_a) {
@@ -657,6 +671,11 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 core::CombatGroup g;
                 g.prototype = proto;
                 g.total_count = static_cast<std::int16_t>(core::global_rng().range(1, 4));
+                // LATUMAPIC pre-identification — consume the camp-cast flag.
+                if (state.latumapic_next_combat) {
+                    g.identified = true;
+                    state.latumapic_next_combat = false;
+                }
                 core::begin_combat(state.combat, {g});
                 state.combat.active_party_member = 0;
                 // Default each character to Parry; user will override.

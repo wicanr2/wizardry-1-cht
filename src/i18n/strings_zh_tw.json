@@ -4045,5 +4045,47 @@
     "ja_JP": "  -> %s は身体が硬直して動けない！",
     "category": "combat",
     "refs": []
+  },
+  "combat_spell_no_charges": {
+    "en": "%s tries %s — but the slot is empty.",
+    "zh_TW": "%s 試圖詠唱 %s — 法力已盡。",
+    "ja_JP": "%s は %s を唱えようとしたが — 残り回数がない。",
+    "category": "combat",
+    "refs": []
+  },
+  "camp_spell_no_charges": {
+    "en": "%s: not enough magic to cast.",
+    "zh_TW": "%s：法力不足，無法詠唱。",
+    "ja_JP": "%s：魔力が足りない。",
+    "category": "camp",
+    "refs": []
+  },
+  "inn_slots_restored": {
+    "en": "Spell slots restored.",
+    "zh_TW": "法力恢復完畢。",
+    "ja_JP": "魔法スロットが回復した。",
+    "category": "inn",
+    "refs": []
+  },
+  "temple_uncurse_done": {
+    "en": "%s — the curse on %s breaks!",
+    "zh_TW": "%s — %s 身上的詛咒解除！",
+    "ja_JP": "%s — %s にかかった呪いが解けた！",
+    "category": "temple",
+    "refs": []
+  },
+  "temple_uncurse_nothing": {
+    "en": "%s carries no cursed gear.",
+    "zh_TW": "%s 身上沒有受詛咒的裝備。",
+    "ja_JP": "%s は呪われた装備を持っていない。",
+    "category": "temple",
+    "refs": []
+  },
+  "camp_anti_magic_zone": {
+    "en": "the air swallows your magic — anti-magic zone.",
+    "zh_TW": "法力被反魔法區域吸走，無效。",
+    "ja_JP": "魔力が反魔法領域に吸い込まれた。",
+    "category": "camp",
+    "refs": []
   }
 }
