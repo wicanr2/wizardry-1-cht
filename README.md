@@ -518,6 +518,32 @@ mage_spell_slots[7]     priest_spell_slots[7]
 
 按下任意鍵 → `state.werdna_defeated = false` + `state.maze_loaded = false` → 回 Title。
 
+### 群組 L：v1.24 真實 playthrough — 從開機到 B1F 戰鬥
+
+![playthrough_montage](docs/v124_playthrough_montage.png)
+
+**這不是 mock-up、不是 Photoshop、也不是 ASCII placeholder**——上面這張 4×3 montage 是
+`tools/record_playthrough.sh` 在 **Xvfb 虛擬 X server** 裡跑 `build/src/wizardry_cht`、
+用 **xdotool** 把鍵盤事件灌進 SDL 事件迴圈、再用 ImageMagick `import -window root`
+逐張抓出來的真實 framebuffer。
+
+腳本走的路徑：
+
+| 列 | 場景 | 操作 | 印證 |
+|---|---|---|---|
+| **Row 1** | `01_title` → `02_intro_p1` → `03_intro_p3` → `04_edge_of_town` | 開機 → 任意鍵 → 任意鍵 → 任意鍵 → `ESC` | 標題畫面 → 5 頁新手教學 → 城鎮邊緣（demo 6 人小隊已就位） |
+| **Row 2** | `05_castle` → `06_tavern` → `07_shop` → `08_temple` | `C` → `G` → `ESC` `B` → `ESC` `C` | 城堡 4 個店家全部全中文 UI：吉爾伽美什酒館（6 人名冊）、波塔克貿易站、坎特神殿 |
+| **Row 3** | `09_inn` → `10_maze_b1f` → `11_maze_3d_compass` → `12_combat` | `ESC` `A` → `ESC` `E` `M` → `M`（toggle automap）→ `space`（force encounter） | 冒險者旅館 5 種房型 → B1F 3D 線框視角（含 Eye-of-Map 右側）→ 隱藏 automap 後顯示 v1.23 右上 compass overlay → PCE-CD 怪物立繪戰鬥畫面（3 × DOG-LIKE） |
+
+> **重現方式**：
+> ```bash
+> sudo apt install -y xvfb xdotool imagemagick   # 一次性
+> tools/record_playthrough.sh                    # 12 張 PNG + 1 張 montage
+> ```
+>
+> 腳本內把每個場景對應的鍵序、`sleep` 等待時間、以及 Edge of Town 那個會關掉
+> 主迴圈的 `ESC = Leave Game` 陷阱都註解清楚，要新增場景照抄就行。
+
 ---
 
 <a name="taiwan-1985"></a>
