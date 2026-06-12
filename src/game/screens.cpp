@@ -610,14 +610,18 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                                    view_rect, dark_here);
 
             // Compass + depth overlay, top-right inside the 3D viewport.
+            // r expanded so CJK glyphs don't crowd; B?F now lives in its own
+            // strip BELOW the rose instead of fighting N/E/S/W for the centre.
             {
-                int cx = view_rect.x + view_rect.w - 56;
-                int cy = view_rect.y + 56;
-                int r = 28;
+                int r = 36;
+                int cx = view_rect.x + view_rect.w - r - 14;
+                int cy = view_rect.y + r + 14;
+                int sl = 14;  // small font line height approx
                 SDL_SetRenderDrawColor(ui.renderer(),
                                        ui.theme().panel.r, ui.theme().panel.g,
-                                       ui.theme().panel.b, 200);
-                SDL_Rect bg{cx - r - 4, cy - r - 4, 2*r + 8, 2*r + 8};
+                                       ui.theme().panel.b, 220);
+                SDL_Rect bg{cx - r - 4, cy - r - 4,
+                            2*r + 8, 2*r + 8 + sl + 6};
                 SDL_RenderFillRect(ui.renderer(), &bg);
                 SDL_SetRenderDrawColor(ui.renderer(),
                                        ui.theme().accent.r, ui.theme().accent.g,
@@ -625,23 +629,27 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 SDL_RenderDrawRect(ui.renderer(), &bg);
                 const char* labels[4] = {"N", "E", "S", "W"};
                 int facing_idx = static_cast<int>(state.camera.facing);
+                int dx[4] = { 0,  r-12,  0,  -r+12};
+                int dy[4] = {-r+10,  0,  r-22,  0};
                 for (int i = 0; i < 4; ++i) {
-                    int lx = cx, ly = cy;
-                    switch (i) {
-                        case 0: ly = cy - r + 4; break;
-                        case 1: lx = cx + r - 4; break;
-                        case 2: ly = cy + r - 12; break;
-                        case 3: lx = cx - r + 4; break;
-                    }
                     SDL_Color col = (i == facing_idx) ? ui.theme().accent
                                                      : ui.theme().dim;
                     render::draw_text(ui.renderer(), ui.small_font(), labels[i],
-                                      lx, ly, col, render::Align::Center);
+                                      cx + dx[i], cy + dy[i],
+                                      col, render::Align::Center);
                 }
+                // Crosshair in middle so the rose reads even on dark themes.
+                SDL_SetRenderDrawColor(ui.renderer(),
+                                       ui.theme().dim.r, ui.theme().dim.g,
+                                       ui.theme().dim.b, 255);
+                SDL_RenderDrawLine(ui.renderer(), cx - 4, cy, cx + 4, cy);
+                SDL_RenderDrawLine(ui.renderer(), cx, cy - 4, cx, cy + 4);
+                // Depth strip below the rose.
                 char dbuf[16];
                 std::snprintf(dbuf, sizeof(dbuf), "B%dF", state.camera.level);
-                render::draw_text(ui.renderer(), ui.body_font(), dbuf,
-                                  cx, cy - 8, ui.theme().text, render::Align::Center);
+                render::draw_text(ui.renderer(), ui.small_font(), dbuf,
+                                  cx, cy + r + 2,
+                                  ui.theme().text, render::Align::Center);
             }
 
             // Auto-map ("Eye of Map") — between viewport and info panel.
@@ -659,11 +667,13 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                                   amap.x + 8, amap.y - 18, ui.theme().dim);
             }
 
-            // Info panel right side
+            // Info panel right side. Height extended so the 3-line hint
+            // strip fits inside the frame (was clipped by the status bar
+            // before — last hint "ESC 離開迷宮" used to overflow).
             const int info_x = amap.x;
             const int info_y = amap.y + amap.h + 20;
             const int info_w = 1280 - info_x - kPadX;
-            const int info_h = kPadY + 480 - info_y;
+            const int info_h = 720 - info_y - 70;  // leave 70 px for log + status bar (was 90 — gave bottom hint line no breathing room)
             ui.draw_frame(info_x, info_y, info_w, info_h);
             const char* face_name = "北";
             switch (state.camera.facing) {
@@ -678,19 +688,19 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                               info_x + 14, info_y + 14, ui.theme().text);
             std::snprintf(info, sizeof(info), "面向  %s", face_name);
             render::draw_text(ui.renderer(), ui.body_font(), info,
-                              info_x + 14, info_y + 14 + 30, ui.theme().accent);
+                              info_x + 14, info_y + 44, ui.theme().accent);
             render::draw_text(ui.renderer(), ui.small_font(),
                               "W/↑前進  S/↓後退",
-                              info_x + 14, info_y + 80, ui.theme().dim);
+                              info_x + 14, info_y + 82, ui.theme().dim);
             render::draw_text(ui.renderer(), ui.small_font(),
                               "A/←左轉  D/→右轉",
-                              info_x + 14, info_y + 100, ui.theme().dim);
+                              info_x + 14, info_y + 102, ui.theme().dim);
             render::draw_text(ui.renderer(), ui.small_font(),
-                              "ESC 離開迷宮",
-                              info_x + 14, info_y + 120, ui.theme().dim);
+                              "ESC 離開迷宮  C 營地  M 自動繪圖",
+                              info_x + 14, info_y + 122, ui.theme().dim);
 
-            // Bottom message log
-            const int log_y = info_y + info_h + 30;
+            // Bottom message log (sits inside the 90 px reserved above)
+            const int log_y = info_y + info_h + 8;
             const int log_h = 720 - log_y - 80;
             ui.draw_message_panel(kPadX, log_y, 1280 - 2 * kPadX, log_h,
                                   state.message_log);
@@ -979,65 +989,132 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
             ui.clear();
             ui.draw_title_bar("戰鬥");
 
-            // Enemy panel — top (with sprite column)
-            const int enemy_panel_h = 140;
-            ui.draw_frame(kPadX, kPadY, 1280 - 2 * kPadX, enemy_panel_h);
-            const int sprite_w = 90;
-            int xx = kPadX + 14;
-            int yy = kPadY + 14;
-            render::draw_text(ui.renderer(), ui.body_font(), "敵方", xx, yy, ui.theme().accent);
-            yy += ui.body_font().line_height() + 4;
-            for (auto& g : state.combat.groups) {
-                // Sprite (left)
-                if (!g.prototype.sprite_path.empty()) {
-                    std::string themed = render::theme::resolve(g.prototype.sprite_path);
-                    std::string full = std::string(WIZ_ASSETS_DIR) + "/" + themed;
-                    SDL_Texture* tex = render::load_sprite(ui.renderer(), full);
-                    if (tex) {
-                        SDL_Rect dst{xx, yy - 4, sprite_w, enemy_panel_h - 60};
+            // --- v1.25 LAYOUT — original Wizardry I 1981 style ---
+            //
+            // Original Apple II combat: the upper-left maze viewport stayed
+            // visible and the enemy sprite appeared inside it. The right /
+            // bottom region kept party stats + the command menu + the log.
+            //
+            // We mirror that:
+            //   Left  540x480  — maze view as backdrop + monster sprite overlay
+            //   Right 524x480  — party status panel
+            //   Bottom strip   — log + action prompt
+
+            // 1. Maze 3D backdrop (same dimensions as Scene::Maze viewport).
+            SDL_Rect cview{kPadX, kPadY, 540, 480};
+            {
+                bool dark_combat = false;
+                int cx0 = state.camera.x, cy0 = state.camera.y;
+                if (cx0 >= 0 && cy0 >= 0 &&
+                    cx0 < core::MazeLevel::kSize && cy0 < core::MazeLevel::kSize) {
+                    dark_combat = state.maze.dark_zone[cy0][cx0] &&
+                                  state.light_steps_left == 0;
+                }
+                render::draw_maze_view(ui.renderer(), state.maze, state.camera,
+                                       cview, dark_combat);
+            }
+
+            // 2. Monster sprite(s) overlaid centred in the viewport, sized
+            //    so multiple groups still fit side-by-side.
+            {
+                int n_groups = static_cast<int>(state.combat.groups.size());
+                if (n_groups > 0) {
+                    int max_total_w = cview.w - 60;
+                    int slot_w = std::min(320, max_total_w / n_groups);
+                    int slot_h = std::min(320, cview.h - 160);
+                    int total_w = slot_w * n_groups + 16 * (n_groups - 1);
+                    int start_x = cview.x + (cview.w - total_w) / 2;
+                    int sprite_y = cview.y + 50;
+                    for (int gi = 0; gi < n_groups; ++gi) {
+                        auto& g = state.combat.groups[gi];
+                        if (g.prototype.sprite_path.empty()) continue;
+                        std::string themed = render::theme::resolve(g.prototype.sprite_path);
+                        std::string full = std::string(WIZ_ASSETS_DIR) + "/" + themed;
+                        SDL_Texture* tex = render::load_sprite(ui.renderer(), full);
+                        if (!tex) continue;
+                        int sx = start_x + gi * (slot_w + 16);
+                        SDL_Rect dst{sx, sprite_y, slot_w, slot_h};
+                        if (g.alive_count == 0) SDL_SetTextureAlphaMod(tex, 60);
                         render::draw_sprite_fit(ui.renderer(), tex, dst);
+                        if (g.alive_count == 0) SDL_SetTextureAlphaMod(tex, 255);
                     }
                 }
-                char line[200];
-                std::snprintf(line, sizeof(line), "  %d × %s   (AC %d, HP約 %d)",
-                              int(g.alive_count),
-                              g.identified ? g.prototype.name.c_str() :
-                                             g.prototype.name_unknown.c_str(),
-                              int(g.prototype.armor_class),
-                              int(g.hp_total));
-                render::draw_text(ui.renderer(), ui.body_font(), line,
-                                  xx + sprite_w + 16, yy,
-                                  g.alive_count > 0 ? ui.theme().text : ui.theme().dim);
-                yy += ui.body_font().line_height() + 2;
             }
 
-            // Party panel - middle
-            int party_y = kPadY + 160;
-            ui.draw_frame(kPadX, party_y, 1280 - 2 * kPadX, 220);
-            yy = party_y + 14;
-            render::draw_text(ui.renderer(), ui.body_font(), "我方隊伍",
-                              kPadX + 14, yy, ui.theme().accent);
-            yy += ui.body_font().line_height() + 4;
-            for (int i = 0; i < state.party.count; ++i) {
-                int ri = state.party.roster_index[i];
-                if (ri < 0) continue;
-                const auto& c = state.roster.chars[ri];
-                char line[200];
-                std::snprintf(line, sizeof(line), "  %d. %-12s  HP %d/%d  AC %d  %s",
-                              i + 1, c.name.c_str(),
-                              int(c.hp_left), int(c.hp_max),
-                              int(c.armor_class),
-                              c.status == core::Status::Dead ? "[死亡]" : "");
-                render::draw_text(ui.renderer(), ui.small_font(), line,
-                                  kPadX + 14, yy,
-                                  c.status == core::Status::Ok
-                                      ? ui.theme().text
-                                      : ui.theme().dim);
-                yy += ui.small_font().line_height() + 4;
+            // 3. Enemy info strip — semi-transparent black band along the
+            //    bottom of the viewport, lists every group with AC + HP.
+            {
+                int strip_h = 22 + 18 * std::max<int>(1, state.combat.groups.size());
+                if (strip_h > 120) strip_h = 120;
+                int strip_y = cview.y + cview.h - strip_h - 2;
+                SDL_SetRenderDrawBlendMode(ui.renderer(), SDL_BLENDMODE_BLEND);
+                SDL_SetRenderDrawColor(ui.renderer(), 0, 0, 0, 190);
+                SDL_Rect strip{cview.x + 4, strip_y, cview.w - 8, strip_h};
+                SDL_RenderFillRect(ui.renderer(), &strip);
+                SDL_SetRenderDrawColor(ui.renderer(),
+                                       ui.theme().accent.r, ui.theme().accent.g,
+                                       ui.theme().accent.b, 255);
+                SDL_RenderDrawRect(ui.renderer(), &strip);
+                int label_y = strip_y + 4;
+                for (auto& g : state.combat.groups) {
+                    char line[200];
+                    std::snprintf(line, sizeof(line), "%d × %s   AC %d   HP約 %d",
+                                  int(g.alive_count),
+                                  g.identified ? g.prototype.name.c_str()
+                                               : g.prototype.name_unknown.c_str(),
+                                  int(g.prototype.armor_class),
+                                  int(g.hp_total));
+                    render::draw_text(ui.renderer(), ui.small_font(), line,
+                                      strip.x + 10, label_y,
+                                      g.alive_count > 0 ? ui.theme().text : ui.theme().dim);
+                    label_y += ui.small_font().line_height() + 2;
+                }
             }
 
-            // Log panel - bottom; hide log when picking spell to make room.
-            int log_y = party_y + 240;
+            // 4. Party status panel — right column.
+            int party_y;
+            {
+                SDL_Rect party_rect{cview.x + cview.w + 16, kPadY,
+                                    1280 - kPadX - (cview.x + cview.w + 16),
+                                    cview.h};
+                ui.draw_frame(party_rect.x, party_rect.y, party_rect.w, party_rect.h);
+                int yy = party_rect.y + 14;
+                render::draw_text(ui.renderer(), ui.body_font(), "我方隊伍",
+                                  party_rect.x + 14, yy, ui.theme().accent);
+                yy += ui.body_font().line_height() + 10;
+                for (int i = 0; i < state.party.count; ++i) {
+                    int ri = state.party.roster_index[i];
+                    if (ri < 0) continue;
+                    const auto& c = state.roster.chars[ri];
+                    const char* row_tag = (i < 3) ? "前" : "後";
+                    char line1[200];
+                    std::snprintf(line1, sizeof(line1), "[%s] %d. %s",
+                                  row_tag, i + 1, c.name.c_str());
+                    char line2[200];
+                    std::snprintf(line2, sizeof(line2),
+                                  "    HP %d/%d  AC %d  %s",
+                                  int(c.hp_left), int(c.hp_max),
+                                  int(c.armor_class),
+                                  c.status == core::Status::Ok ? "" :
+                                  c.status == core::Status::Dead ? "[死亡]" :
+                                  c.status == core::Status::Poisoned ? "[中毒]" :
+                                  c.status == core::Status::Asleep ? "[沉睡]" :
+                                  c.status == core::Status::Paralyzed ? "[麻痺]" :
+                                  c.status == core::Status::Stoned ? "[石化]" :
+                                  c.status == core::Status::Afraid ? "[恐懼]" : "[?]");
+                    SDL_Color col = c.status == core::Status::Ok ? ui.theme().text
+                                                                  : ui.theme().dim;
+                    render::draw_text(ui.renderer(), ui.small_font(), line1,
+                                      party_rect.x + 14, yy, col);
+                    render::draw_text(ui.renderer(), ui.small_font(), line2,
+                                      party_rect.x + 14, yy + 16, col);
+                    yy += 38;
+                }
+                party_y = party_rect.y + party_rect.h;
+            }
+
+            // 5. Log + action prompt — bottom strip.
+            int log_y = party_y + 16;
             int log_h = 720 - log_y - 60;
             if (cb.phase == core::CombatPhase::PickSpell) {
                 // Draw an empty frame for the spell-picker overlay area
