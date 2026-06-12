@@ -294,6 +294,7 @@ const char* music_key_for(Scene s) {
         case Scene::Maze:
         case Scene::Camp:            return "maze";
         case Scene::Combat:          return "combat";
+        case Scene::Ending:          return "ending";
         default:                     return nullptr;
     }
 }
@@ -951,9 +952,24 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 // End-of-combat continue
                 if (cb.outcome != core::CombatOutcome::Ongoing &&
                     (k == SDLK_SPACE || k == SDLK_RETURN)) {
+                    // Werdna detection — if any group's monster name contains
+                    // "WERDNA" and the party survived, this was the final
+                    // boss. Route to the ending scene instead of the maze.
+                    if (cb.outcome == core::CombatOutcome::Victory) {
+                        for (const auto& g : cb.groups) {
+                            if (g.prototype.name.find("WERDNA") != std::string::npos) {
+                                state.werdna_defeated = true;
+                                break;
+                            }
+                        }
+                    }
                     for (const auto& l : cb.log) state.push_message(l);
                     cb.groups.clear();
-                    state.change_scene(Scene::Maze);
+                    if (state.werdna_defeated) {
+                        state.change_scene(Scene::Ending);
+                    } else {
+                        state.change_scene(Scene::Maze);
+                    }
                     return true;
                 }
                 (void)active_caster;
@@ -1152,6 +1168,64 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
             return tavern_tick(state, event, ui);
         case Scene::Camp:
             return camp_tick(state, event, ui);
+
+        case Scene::Ending: {
+            // Werdna victory epilogue — splash + epilogue text, any key
+            // returns to the title screen. Theme-aware: prefers the PCE-CD
+            // composited ending art if the file exists.
+            if (event && event->type == SDL_KEYDOWN) {
+                state.werdna_defeated = false;
+                state.maze_loaded = false;
+                state.change_scene(Scene::Title);
+                return true;
+            }
+            ui.clear();
+            {
+                std::string_view dir =
+                    render::theme::dir_name(render::theme::current());
+                bool drew = false;
+                auto try_splash = [&](const std::string& path) -> bool {
+                    SDL_Texture* tex = render::load_sprite(ui.renderer(), path);
+                    if (!tex) return false;
+                    SDL_Rect dst{0, 0, 1280, 720};
+                    SDL_RenderCopy(ui.renderer(), tex, nullptr, &dst);
+                    return true;
+                };
+                if (!dir.empty()) {
+                    drew = try_splash(std::string(WIZ_ASSETS_DIR) +
+                                      "/themes/" + std::string(dir) +
+                                      "/ending/background.png");
+                }
+                if (!drew) {
+                    drew = try_splash(std::string(WIZ_ASSETS_DIR) +
+                                      "/themes/pcecd/ending/background.png");
+                }
+                if (!drew) {
+                    SDL_SetRenderDrawColor(ui.renderer(), 8, 6, 18, 255);
+                    SDL_Rect full{0, 0, 1280, 720};
+                    SDL_RenderFillRect(ui.renderer(), &full);
+                }
+            }
+            // Banner + epilogue text panel — i18n-routed.
+            render::draw_text(ui.renderer(), ui.title_font(),
+                              std::string(i18n::tr("ending_banner")),
+                              640, 90, ui.theme().accent,
+                              render::Align::Center);
+            {
+                std::vector<std::string> lines = {
+                    std::string(i18n::tr("ending_epilogue_l1")),
+                    std::string(i18n::tr("ending_epilogue_l2")),
+                    "",
+                    std::string(i18n::tr("ending_epilogue_l3")),
+                    std::string(i18n::tr("ending_epilogue_l4")),
+                    "",
+                    std::string(i18n::tr("ending_press_to_continue")),
+                };
+                ui.draw_message_panel(120, 470, 1040, 220, lines);
+            }
+            ui.present();
+            return true;
+        }
 
         case Scene::Quit:
             return false;

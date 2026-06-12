@@ -25,6 +25,7 @@ enum class Scene {
     Camp,
     Maze,
     Combat,
+    Ending,
     Quit,
 };
 
@@ -88,6 +89,10 @@ struct State {
     // maze_view rendering tint inside dark zones — without light, walls
     // beyond 1 cell are nearly invisible.
     int light_steps_left = 0;  // 0 = no light; MILWA sets ~20, LOMILWA ~200
+
+    // Set when the party defeats Werdna on B10F — screens.cpp routes the
+    // post-combat continue into Scene::Ending instead of Scene::Maze.
+    bool werdna_defeated = false;
 
     // Forward-declared; full RollerState defined in game/roller.h. Stored as
     // pointer-like to avoid pulling in the roller header for every consumer.

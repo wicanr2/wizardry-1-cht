@@ -4087,5 +4087,47 @@
     "ja_JP": "魔力が反魔法領域に吸い込まれた。",
     "category": "camp",
     "refs": []
+  },
+  "ending_banner": {
+    "en": "★ THE AMULET OF WERDNA IS YOURS ★",
+    "zh_TW": "★ 沃登納護符已歸冒險者所有 ★",
+    "ja_JP": "★ ワードナの護符を取り戻した ★",
+    "category": "ending",
+    "refs": []
+  },
+  "ending_epilogue_l1": {
+    "en": "Werdna lies broken in the deepest dark. His amulet, recovered.",
+    "zh_TW": "沃登納在地底最深處倒下。瘋王的護符重見天日。",
+    "ja_JP": "ワードナは最深の闇に倒れた。護符は再び陽の光を浴びる。",
+    "category": "ending",
+    "refs": []
+  },
+  "ending_epilogue_l2": {
+    "en": "Above, the city of Llylgamyn breathes again under a clear sky.",
+    "zh_TW": "地面上的利爾葛敏城再次仰望晴朗天空。",
+    "ja_JP": "地上のリルガミンは、再び澄んだ空の下で息をついた。",
+    "category": "ending",
+    "refs": []
+  },
+  "ending_epilogue_l3": {
+    "en": "Your benificent ruler Trebor names you Champion of the Realm.",
+    "zh_TW": "仁慈的統治者特雷博親封你為「王國勇士」。",
+    "ja_JP": "仁慈の王トレボーは汝らを「王国の勇者」と称えた。",
+    "category": "ending",
+    "refs": []
+  },
+  "ending_epilogue_l4": {
+    "en": "The amulet is now back in the hands of those who would use it justly.",
+    "zh_TW": "護符回到能正當使用它的人手中。",
+    "ja_JP": "護符は、それを正しく用いる者の手に戻った。",
+    "category": "ending",
+    "refs": []
+  },
+  "ending_press_to_continue": {
+    "en": "— Press any key to return to the title —",
+    "zh_TW": "— 按任意鍵回到標題畫面 —",
+    "ja_JP": "— 何かキーを押すとタイトルへ —",
+    "category": "ending",
+    "refs": []
   }
 }
