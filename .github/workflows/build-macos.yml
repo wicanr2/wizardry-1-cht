@@ -1,0 +1,262 @@
+name: build-macos
+
+# macOS build pipeline for Wizardry 1 CHT.
+#
+# Strategy for a universal arm64+x86_64 .app:
+#   1. Build arm64 on macos-14 (Apple Silicon) — brew SDL2 is native arm64.
+#   2. Build x86_64 on macos-13 (Intel) — brew SDL2 is native x86_64.
+#   3. Merge job: download both .app bundles, `lipo -create` the main
+#      binary and every dylib that exists in both Frameworks/ trees, then
+#      re-package as `wizardry-cht-macos-universal.dmg` + `.tar.gz`.
+#
+# If macos-13 ever vanishes from GitHub Actions, drop the x86_64 leg and
+# ship arm64-only.
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build-arch:
+    name: macOS / ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: arm64
+            runner: macos-14
+          - arch: x86_64
+            runner: macos-13
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SDL2 + bundling tools
+        run: |
+          brew update
+          brew install sdl2 sdl2_ttf sdl2_image sdl2_mixer nlohmann-json dylibbundler
+
+      - name: Configure (${{ matrix.arch }})
+        # WIZ_ASSETS_DIR / WIZ_I18N_FILE are baked at compile time as string
+        # literals (see src/CMakeLists.txt). Override them so the binary
+        # looks for assets *relative* to CWD; a launcher script inside
+        # Contents/MacOS/ cds into its own dir before exec'ing the real
+        # binary so the relative paths resolve to Contents/MacOS/assets
+        # and Contents/MacOS/i18n/strings_zh_tw.json.
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_OSX_ARCHITECTURES="${{ matrix.arch }}" \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET="11.0" \
+            -DBUILD_TESTS=OFF \
+            -DCMAKE_CXX_FLAGS="-DWIZ_ASSETS_DIR=\\\"assets\\\" -DWIZ_I18N_FILE=\\\"i18n/strings_zh_tw.json\\\""
+
+      - name: Build
+        run: cmake --build build -j --target wizardry_cht
+
+      - name: Assemble .app skeleton
+        run: |
+          APP="Wizardry 1 CHT.app"
+          mkdir -p "$APP/Contents/MacOS"
+          mkdir -p "$APP/Contents/Resources"
+          mkdir -p "$APP/Contents/Frameworks"
+          cp build/src/wizardry_cht "$APP/Contents/MacOS/wizardry_cht_bin"
+
+          # Game data lives next to the binary inside MacOS/.
+          cp -R assets "$APP/Contents/MacOS/assets"
+          mkdir -p "$APP/Contents/MacOS/i18n"
+          cp src/i18n/strings_zh_tw.json "$APP/Contents/MacOS/i18n/"
+
+          # Fetch the CJK font (the binary will fail to start without it).
+          bash tools/fetch_assets.sh || true
+          if [ -f assets/fonts/NotoSansCJK-Regular.ttc ]; then
+            cp assets/fonts/NotoSansCJK-Regular.ttc "$APP/Contents/MacOS/assets/fonts/"
+          fi
+
+      - name: Bundle dylibs (dylibbundler, ${{ matrix.arch }} dylibs)
+        run: |
+          APP="Wizardry 1 CHT.app"
+          dylibbundler -od -b \
+            -x "$APP/Contents/MacOS/wizardry_cht_bin" \
+            -d "$APP/Contents/Frameworks/" \
+            -p "@executable_path/../Frameworks/"
+          echo "--- Frameworks contents ($(uname -m)) ---"
+          ls -la "$APP/Contents/Frameworks/"
+          echo "--- Architecture of main binary ---"
+          lipo -info "$APP/Contents/MacOS/wizardry_cht_bin" || file "$APP/Contents/MacOS/wizardry_cht_bin"
+
+      - name: Tar the bundle for handoff
+        run: |
+          # Use a tar so we preserve symlinks + permissions across the
+          # artifact roundtrip (zip + actions/upload-artifact mangles them).
+          tar -czf "wizardry-cht-macos-${{ matrix.arch }}.tar.gz" "Wizardry 1 CHT.app"
+
+      - name: Upload arch bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizardry-cht-macos-${{ matrix.arch }}-bundle
+          path: wizardry-cht-macos-${{ matrix.arch }}.tar.gz
+
+  bundle-universal:
+    name: Merge into universal .app
+    needs: build-arch
+    runs-on: macos-14
+    permissions:
+      contents: write  # needed for release upload on tag push
+    steps:
+      - uses: actions/checkout@v4  # for icon source asset + tools
+
+      - name: Install packaging tools
+        run: |
+          brew update
+          brew install dylibbundler || true
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: wizardry-cht-macos-arm64-bundle
+          path: arm64-in
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: wizardry-cht-macos-x86_64-bundle
+          path: x86_64-in
+
+      - name: Unpack arch bundles
+        run: |
+          mkdir arm64 x86_64
+          tar -xzf arm64-in/wizardry-cht-macos-arm64.tar.gz -C arm64
+          tar -xzf x86_64-in/wizardry-cht-macos-x86_64.tar.gz -C x86_64
+          ls arm64 x86_64
+
+      - name: Merge into universal .app via lipo
+        # Start from the arm64 bundle (data files are arch-agnostic, so
+        # one copy is enough). Then lipo the main binary + every dylib
+        # that exists in both Frameworks/ trees.
+        run: |
+          APP="Wizardry 1 CHT.app"
+          rm -rf "$APP"
+          cp -R "arm64/$APP" "$APP"
+
+          # 1. main binary
+          lipo -create \
+            "arm64/$APP/Contents/MacOS/wizardry_cht_bin" \
+            "x86_64/$APP/Contents/MacOS/wizardry_cht_bin" \
+            -output "$APP/Contents/MacOS/wizardry_cht_bin"
+          echo "--- merged binary arches ---"
+          lipo -info "$APP/Contents/MacOS/wizardry_cht_bin"
+
+          # 2. every dylib in Frameworks that also exists on x86_64 side
+          for L in "$APP/Contents/Frameworks/"*; do
+            name="$(basename "$L")"
+            if [ -f "x86_64/$APP/Contents/Frameworks/$name" ]; then
+              lipo -create \
+                "arm64/$APP/Contents/Frameworks/$name" \
+                "x86_64/$APP/Contents/Frameworks/$name" \
+                -output "$L"
+              echo "merged: $name $(lipo -info "$L" | awk -F': ' '{print $NF}')"
+            else
+              echo "skip (arm64-only): $name"
+            fi
+          done
+
+          # 3. any dylib only on x86_64 side — copy as-is so x86_64 chain works
+          for L in "x86_64/$APP/Contents/Frameworks/"*; do
+            name="$(basename "$L")"
+            if [ ! -f "$APP/Contents/Frameworks/$name" ]; then
+              echo "copy (x86_64-only): $name"
+              cp "$L" "$APP/Contents/Frameworks/$name"
+            fi
+          done
+
+      - name: Generate AppIcon.icns
+        run: |
+          APP="Wizardry 1 CHT.app"
+          SRC="assets/themes/pcecd/title/background.png"
+          if [ ! -f "$SRC" ]; then
+            echo "title bg missing — skipping icon"; exit 0
+          fi
+          mkdir -p AppIcon.iconset
+          sips -c 512 512 "$SRC" --out _icon_src.png >/dev/null
+          for SIZE in 16 32 64 128 256 512; do
+            sips -z $SIZE $SIZE _icon_src.png --out "AppIcon.iconset/icon_${SIZE}x${SIZE}.png" >/dev/null
+            DBL=$((SIZE*2))
+            sips -z $DBL $DBL _icon_src.png --out "AppIcon.iconset/icon_${SIZE}x${SIZE}@2x.png" >/dev/null || true
+          done
+          iconutil -c icns AppIcon.iconset -o "$APP/Contents/Resources/AppIcon.icns" || \
+            cp _icon_src.png "$APP/Contents/Resources/AppIcon.png"
+
+      - name: Write Info.plist + launcher
+        run: |
+          APP="Wizardry 1 CHT.app"
+          cat > "$APP/Contents/MacOS/wizardry_cht" <<'LAUNCH'
+          #!/bin/bash
+          DIR="$(cd "$(dirname "$0")" && pwd)"
+          cd "$DIR"
+          exec ./wizardry_cht_bin "$@"
+          LAUNCH
+          chmod +x "$APP/Contents/MacOS/wizardry_cht"
+
+          cat > "$APP/Contents/Info.plist" <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>CFBundleName</key>            <string>Wizardry 1 CHT</string>
+            <key>CFBundleDisplayName</key>     <string>Wizardry 1 CHT</string>
+            <key>CFBundleIdentifier</key>      <string>com.wicanr2.wizardry-1-cht</string>
+            <key>CFBundleVersion</key>         <string>1.24</string>
+            <key>CFBundleShortVersionString</key> <string>1.24</string>
+            <key>CFBundleExecutable</key>      <string>wizardry_cht</string>
+            <key>CFBundleIconFile</key>        <string>AppIcon</string>
+            <key>CFBundlePackageType</key>     <string>APPL</string>
+            <key>LSMinimumSystemVersion</key>  <string>11.0</string>
+            <key>NSHighResolutionCapable</key> <true/>
+          </dict>
+          </plist>
+          PLIST
+
+      - name: Re-sign (ad-hoc) merged dylibs + binary
+        # lipo invalidates code signatures; ad-hoc sign so Gatekeeper at
+        # least lets the user open the app (with the usual right-click
+        # "Open" override since we don't have a Developer ID cert).
+        run: |
+          APP="Wizardry 1 CHT.app"
+          find "$APP/Contents/Frameworks" -name '*.dylib' -print0 | \
+            xargs -0 -I{} codesign --force --sign - "{}" || true
+          codesign --force --sign - "$APP/Contents/MacOS/wizardry_cht_bin" || true
+          codesign --force --sign - "$APP" || true
+
+      - name: Make DMG
+        run: |
+          APP="Wizardry 1 CHT.app"
+          mkdir -p dmg_stage
+          cp -R "$APP" dmg_stage/
+          ln -s /Applications dmg_stage/Applications
+          hdiutil create -volname "Wizardry 1 CHT" \
+            -srcfolder dmg_stage -ov -format UDZO \
+            wizardry-cht-macos-universal.dmg
+
+      - name: Tarball fallback
+        run: |
+          tar -czf wizardry-cht-macos-universal.tar.gz "Wizardry 1 CHT.app"
+
+      - name: List output sizes
+        run: ls -lh wizardry-cht-macos-universal.*
+
+      - name: Upload final artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizardry-cht-macos-universal
+          path: |
+            wizardry-cht-macos-universal.dmg
+            wizardry-cht-macos-universal.tar.gz
+
+      - name: Attach to release (on tag push only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            wizardry-cht-macos-universal.dmg
+            wizardry-cht-macos-universal.tar.gz
+          fail_on_unmatched_files: false
