@@ -378,7 +378,7 @@ B9F **西邊 1 格** 有個 **Chute** 直通 **B10F**——
 ---
 
 <a name="b10f"></a>
-## 十一、B10F — Contra Dextra Avenue 與 Werdna 戰
+## 十一、B10F — Contra Dextra Avenue 與 沃登納（Werdna）戰
 
 > **進入提示**：起始 `0N-0E`。**這是最終層**。
 > 全層被分成 **7 個獨立房間**，**只能用傳送門連接**。

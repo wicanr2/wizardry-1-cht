@@ -51,6 +51,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 泡泡黏液 (Bubbly Slime, ID 0)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Bubbly_Slime.png" width="120" alt="Bubbly Slime PCE-CD sprite" align="right" />
+
 | 屬性 | 值 |
 |---|---|
 | 中文名 | 泡泡黏液 |
@@ -71,6 +73,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 獸人 (Orc, ID 1)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Orc.png" width="120" alt="Orc PCE-CD sprite" align="right" />
+
 | AC | 7 | HP | 1d6 ≈ 3.5 | XP | 235 | 等級 | 1 |
 |---|---|---|---|---|---|---|---|
 
@@ -82,6 +86,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 狗頭人 (Kobold, ID 2)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Kobold.png" width="120" alt="Kobold PCE-CD sprite" align="right" />
+
 | AC | 7 | HP | 1d4 | XP | 415 | 等級 | 1 |
 |---|---|---|---|---|---|---|---|
 
@@ -91,6 +97,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 不死狗頭人 (Undead Kobold, ID 3)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Undead_Kobold.png" width="120" alt="Undead Kobold PCE-CD sprite" align="right" />
 
 | AC | 6 | HP | 1d8 | XP | 520 | 等級 | 1 |
 |---|---|---|---|---|---|---|---|
@@ -102,6 +110,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 惡棍 (Rogue, ID 4)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Rogue.png" width="120" alt="Rogue PCE-CD sprite" align="right" />
+
 | AC | 7 | HP | 1d6 | XP | 680 | 等級 | 2 |
 |---|---|---|---|---|---|---|---|
 
@@ -111,6 +121,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 伏擊者 (Bushwacker, ID 5)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Bushwhacker.png" width="120" alt="Bushwacker PCE-CD sprite" align="right" />
 
 | AC | 6 | HP | 2d6 ≈ 7 | XP | 960 | 等級 | 2 |
 |---|---|---|---|---|---|---|---|
@@ -123,6 +135,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 攔路強盜 (Highwayman, ID 6)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Highwayman.png" width="120" alt="Highwayman PCE-CD sprite" align="right" />
+
 | AC | 5 | HP | 2d6 | XP | 1240 | 等級 | 3 |
 |---|---|---|---|---|---|---|---|
 
@@ -131,6 +145,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 喪屍 (Zombie, ID 7)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Zombie.png" width="120" alt="Zombie PCE-CD sprite" align="right" />
 
 | AC | 7 | HP | 2d8 ≈ 9 | XP | 520 | 等級 | 2 |
 |---|---|---|---|---|---|---|---|
@@ -141,6 +157,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 郊狼 (Coyote, ID 8)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Coyote.png" width="120" alt="Coyote PCE-CD sprite" align="right" />
+
 | AC | 8 | HP | 1d6 | XP | 380 | 等級 | 2 |
 |---|---|---|---|---|---|---|---|
 
@@ -150,6 +168,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 毒氣雲 (Gas Cloud, ID 9)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Gas_Cloud.png" width="120" alt="Gas Cloud PCE-CD sprite" align="right" />
+
 | AC | 7 | HP | 2d4 | XP | 860 | 等級 | 3 |
 |---|---|---|---|---|---|---|---|
 
@@ -158,6 +178,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 爬行汙穢 (Creeping Crud, ID 10)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Creeping_Crud.png" width="120" alt="Creeping Crud PCE-CD sprite" align="right" />
 
 | AC | 6 | HP | 2d6 | XP | 1080 | 等級 | 3 |
 |---|---|---|---|---|---|---|---|
@@ -171,6 +193,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 巨蟾蜍 (Giant Toad, ID 11)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Giant_Toad.png" width="120" alt="Giant Toad PCE-CD sprite" align="right" />
+
 | AC | 7 | HP | 3d6 ≈ 10 | XP | 1240 | 等級 | 4 |
 |---|---|---|---|---|---|---|---|
 
@@ -179,6 +203,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 1 級魔法師 (Lvl 1 Mage, ID 12)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Lvl1_Mage.png" width="120" alt="Lvl 1 Mage PCE-CD sprite" align="right" />
 
 | AC | 8 | HP | 1d4 | XP | 735 | 等級 | 2 |
 |---|---|---|---|---|---|---|---|
@@ -190,6 +216,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 1 級牧師 (Lvl 1 Priest, ID 13)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Lvl1_Priest.png" width="120" alt="Lvl 1 Priest PCE-CD sprite" align="right" />
+
 | AC | 7 | HP | 1d6 | XP | 745 | 等級 | 2 |
 |---|---|---|---|---|---|---|---|
 
@@ -198,6 +226,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 1 級忍者 (Lvl 1 Ninja, ID 14)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Lvl1_Ninja.png" width="120" alt="Lvl 1 Ninja PCE-CD sprite" align="right" />
 
 | AC | 5 | HP | 1d6 | XP | 1860 | 等級 | 3 |
 |---|---|---|---|---|---|---|---|
@@ -209,6 +239,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 食人魔 (Ogre, ID 15)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Ogre.png" width="120" alt="Ogre PCE-CD sprite" align="right" />
+
 | AC | 5 | HP | 4d8 ≈ 18 | XP | 1620 | 等級 | 4 |
 |---|---|---|---|---|---|---|---|
 
@@ -217,6 +249,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 毒氣龍 (Gas Dragon, ID 16)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Gas_Dragon.png" width="120" alt="Gas Dragon PCE-CD sprite" align="right" />
 
 | AC | 4 | HP | 6d8 ≈ 27 | XP | 5200 | 等級 | 5 |
 |---|---|---|---|---|---|---|---|
@@ -227,6 +261,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 主教 (Bishop, ID 17)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Bishop.png" width="120" alt="Bishop PCE-CD sprite" align="right" />
 
 | AC | 4 | HP | 5d6 ≈ 17 | XP | 4540 | 等級 | 5 |
 |---|---|---|---|---|---|---|---|
@@ -240,6 +276,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 大魔導師 (Arch Mage, ID 28)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Arch_Mage.png" width="120" alt="Arch Mage PCE-CD sprite" align="right" />
+
 | AC | -2 | HP | 7d8 ≈ 31 | XP | 15,880（**等於 Werdna！**） | 等級 | 7 |
 |---|---|---|---|---|---|---|---|
 
@@ -251,6 +289,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 高階忍者 (High Ninja, ID 26)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_High_Ninja.png" width="120" alt="High Ninja PCE-CD sprite" align="right" />
+
 | AC | -2 | HP | 8d6 ≈ 28 | XP | 14,860 | 等級 | 7 |
 |---|---|---|---|---|---|---|---|
 
@@ -259,6 +299,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 霜巨人 (Frost Giant, ID 21)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Frost_Giant.png" width="120" alt="Frost Giant PCE-CD sprite" align="right" />
 
 | AC | 2 | HP | 10d8 ≈ 45 | XP | 4400 | 等級 | 7 |
 |---|---|---|---|---|---|---|---|
@@ -269,6 +311,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 火巨人 (Fire Giant, ID 23)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Fire_Giant.png" width="120" alt="Fire Giant PCE-CD sprite" align="right" />
+
 | AC | 3 | HP | 11d8 ≈ 50 | XP | 4800 | 等級 | 7 |
 |---|---|---|---|---|---|---|---|
 
@@ -277,6 +321,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 吸血鬼 (Vampire, ID 19) ⚠️
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Vampire.png" width="120" alt="Vampire PCE-CD sprite" align="right" />
 
 | AC | 0 | HP | 10d8 ≈ 45 | XP | 29,400 | 等級 | 8 |
 |---|---|---|---|---|---|---|---|
@@ -292,6 +338,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 龍喪屍 (Dragon Zombie, ID 22)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Dragon_Zombie.png" width="120" alt="Dragon Zombie PCE-CD sprite" align="right" />
+
 | AC | 1 | HP | 12d8 ≈ 54 | XP | 11,380 | 等級 | 8 |
 |---|---|---|---|---|---|---|---|
 
@@ -303,6 +351,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ## 五、Tier 4 噩夢 ★★★★（B9F）
 
 ### 奪命幽魂 (Lifestealer, ID 24) ⚠️⚠️
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Lifestealer.png" width="120" alt="Lifestealer PCE-CD sprite" align="right" />
 
 | AC | -1 | HP | 13d8 ≈ 58 | XP | 35,200 | 等級 | 9 |
 |---|---|---|---|---|---|---|---|
@@ -318,6 +368,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 忍者大師 (Master Ninja, ID 27)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Master_Ninja_A.png" width="120" alt="Master Ninja PCE-CD sprite" align="right" />
+
 | AC | -4 | HP | 10d6 ≈ 35 | XP | 22,480 | 等級 | 8 |
 |---|---|---|---|---|---|---|---|
 
@@ -326,6 +378,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 鬼火 (Will-o-Wisp, ID 29)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Will_o_Wisp.png" width="120" alt="Will-o-Wisp PCE-CD sprite" align="right" />
 
 | AC | -8（**全遊戲最高難命中**） | HP | 4d8 ≈ 18（**低**） | XP | 42,880（**B10F 級**） | 等級 | 9 |
 |---|---|---|---|---|---|---|---|
@@ -342,6 +396,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 
 ### 高階惡魔 (Greater Demon, ID 18)
 
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Greater_Demon.png" width="120" alt="Greater Demon PCE-CD sprite" align="right" />
+
 | AC | -3 | HP | 15d8 ≈ 68 | XP | 44,090 | 等級 | 9 |
 |---|---|---|---|---|---|---|---|
 
@@ -351,6 +407,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 吸血鬼領主 (Vampire Lord, ID 20)
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Vampire_Lord.png" width="120" alt="Vampire Lord PCE-CD sprite" align="right" />
 
 | AC | -3 | HP | 15d8 ≈ 68 | XP | 42,840 | 等級 | 9 |
 |---|---|---|---|---|---|---|---|
@@ -363,6 +421,8 @@ title: 怪物百科 — 30+ 試煉場住民完整圖鑑
 ---
 
 ### 沃登納 (Werdna, ID 25) ★★★★★
+
+<img src="https://raw.githubusercontent.com/wicanr2/wizardry-1-cht/main/assets/sprites/monsters_pcecd/PCECD_MS_Werdna.png" width="120" alt="Werdna PCE-CD sprite" align="right" />
 
 | AC | -7 | HP | 60 | XP | 15,880 | 等級 | 10 |
 |---|---|---|---|---|---|---|---|

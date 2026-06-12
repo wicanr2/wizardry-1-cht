@@ -1109,8 +1109,8 @@
   },
   "tavern_b_oltac_s_trading_post_the": {
     "en": "TAVERN, B)OLTAC'S TRADING POST, THE",
-    "zh_TW": "酒館, B)OLTAC'S TRADING POST, THE",
-    "ja_JP": "酒場, B)ボルタックの店, 寺院",
+    "zh_TW": "酒館, B) 波塔克貿易站, ",
+    "ja_JP": "酒場, B) ボルタックの店, ",
     "category": "message",
     "refs": [
       "Wiz1C.DSK/CASTLE2.TEXT.txt:529"
@@ -1253,7 +1253,7 @@
   },
   "welcome_to_the_trading_post": {
     "en": "       WELCOME TO THE TRADING POST",
-    "zh_TW": "       WELCOME 至 THE TRADING POST",
+    "zh_TW": "       歡迎光臨波塔克貿易站",
     "ja_JP": "       商店へようこそ",
     "category": "message",
     "refs": [

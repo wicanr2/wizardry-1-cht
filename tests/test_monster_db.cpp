@@ -12,7 +12,7 @@ int main() {
     auto* werdna = find_monster_by_id(25);
     WIZ_CHECK(werdna != nullptr);
     WIZ_CHECK_EQ(werdna->name_en, std::string("WERDNA"));
-    WIZ_CHECK_EQ(werdna->name_zh, std::string("沃登納（瘋王）"));
+    WIZ_CHECK_EQ(werdna->name_zh, std::string("沃登納（邪惡魔導）"));
     WIZ_CHECK(!werdna->sprite_path.empty());
     WIZ_CHECK(werdna->sprite_path.find("Werdna") != std::string::npos);
 
