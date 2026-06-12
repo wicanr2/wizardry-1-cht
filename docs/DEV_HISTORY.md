@@ -28,8 +28,9 @@ title: 開發編年史 — v0.3 到 v1.7 的設計、踩坑與抉擇
 10. [v1.1–v1.5 — Sprite 全齊與視覺驗證](#v11-v15)
 11. [v1.6–v1.7 — 音效系統與 Help overlay](#v16-v17)
 12. [踩過最痛的坑](#worst-pits)
-13. [未來方向](#future)
-14. [致謝](#thanks)
+13. [v1.8–v1.24 — 完整實作與跨平台發佈](#v18-v124)
+14. [未來方向](#future)
+15. [致謝](#thanks)
 
 ---
 
@@ -479,27 +480,78 @@ int parse_lvl(const json& j) {
 
 ---
 
+<a name="v18-v124"></a>
+## 十三、v1.8–v1.24 — 完整實作與跨平台發佈（**filled in v1.24**）
+
+> 從 v0.3「能跑」到 v1.7「能玩」，這段 16 個版本是「**從能玩到可通關 + 可下載**」。
+> 完整的 punch-list 收束在 [`MANUAL_GAP.md`](MANUAL_GAP.md)；以下是技術重點。
+
+### v1.8-v1.11 — 雙模式存檔 + GitHub Pages
+
+- **多 slot 存檔**：5 個 save slot，標題 1-5 鍵直接讀檔
+- **Camp slot 選擇器**：迷宮中按 C → 存檔 → 選 slot 1-5
+- **GitHub Pages 文件站**：Cayman theme，自動部署
+
+### v1.12-v1.18 — 視覺主題 + 規則修正 + 完整迷宮 + 完整翻譯
+
+- **v1.12 F3 視覺主題**：PCE-CD / Mono / Outline / Sepia 4 套怪物 sprite + 各 theme 可獨立 BGM
+- **v1.13 規則 gap 收束**：Poisoned 狀態（含每輪扣血 tick）、Castle 入場自動解毒、Sleeping/Paralyzed 跳過行動、前/後排 melee gating
+- **v1.14 迷宮系統**：4 種陷阱（Pit/Spinner/Teleporter/Chute）+ 轉職系統（8 職屬性 + 陣營雙重檢核）
+- **v1.15 F4 多語**：全局 `tr()` 即時切換 繁中/English/日本語
+- **v1.16 多層迷宮**：B1F-B10F 從原版 1981 PDF 轉錄 + 永久死亡（屍體留在格子，需新隊伍走回原格拾取）
+- **v1.17 神殿復活**：DI（亡→生，可能變灰燼）+ KADORTO（灰→生，可能永失）含年齡推進與失敗風險
+- **v1.18 日文化完成**：453/453 條目補上 `ja_JP` 欄位，F4 三語 100% 涵蓋
+
+### v1.19-v1.24 — 「audit 全收 + 一鍵打包」
+
+> 這六個版本是 chief-in-editor 跑了一輪 manual-gap audit 後，把 P0/P1/P2 全部 17 條 gap 翻成 ✅ 的階段。
+
+- **v1.19 遭遇率對齊原版**：per-step `enmy_calc[0]` formula `30 + 7*(L-1)` clamp 110，B1F ≈ 12% / B10F ≈ 43%（之前只有 SPACE force trigger）
+- **v1.20 主題化全面深化**：F3 切換時迷宮牆/門/地板/天花板/自動地圖/標題背景**全部跟著換色**（之前只換怪物 sprite）。UI chrome 字串 10 條改走 `tr()`（修 F4 audit BUG 2）。標題 BG 走 `assets/themes/<dir>/title/background.png` theme-aware fallback（修 F4 audit BUG 1）。
+- **v1.21 戰鬥真實感**：突襲回合（1d100 三段，20%+20%+60%）+ 吸血鬼吸等級（VAMPIRE/VAMPIRE LORD on hit -1 char_level）+ 食屍鬼麻痺（GHOUL on hit 25% Paralyzed）+ 龍類吐息（DRAGON 3d8/隻全隊 cone + vit-save 半傷）
+- **v1.22 缺口收束大爆發**：法術槽自動補滿/扣除（`recompute_spell_slots()` Mage/Priest/Bishop/Samurai/Lord 五系規則）+ Afraid +2 AC 命中懲罰 + 神殿解咒服務（500 金/件）+ 4 種陷阱補齊（Fizzle/Message/Elevator/Encounter）+ CALFO 真正偵測前方一格 SquareFeature + LATUMAPIC 真正讓戰鬥日誌顯示真名（`display_name(g)` helper）
+- **v1.23 P2 polish**：M 鍵 automap 開關 + 右上指北針 + 深度指示 + Shift+↑↓ 隊伍重排 + Camp [E] 匯出角色卡到 .txt + Dark zone（無光只見 1 格） + MILWA 20 步 / LOMILWA 9999 步 step-tick
+- **v1.24 結局 + 一鍵打包**：Werdna B10F 戰勝 → `Scene::Ending` PCE-CD 風格合成圖（OVA 城堡 + 金色「W」護符 + 倒下瘋王 + 暈影）+ 三語結局文（從原版 SHOPS2.TEXT 譯）+ Linux AppImage 單檔（72 MB，含 65 個 .so）+ Windows zip 跨編譯（86 MB，靜態鏈 gcc/stdc++/winpthread）
+
+### 測試覆蓋
+
+- v0.3 → v1.7：9 個 ctest
+- v1.13：+ test_v13_mechanics（poison tick / row gating / sleep waking）
+- v1.14：+ test_camp_spells + test_class_change
+- v1.19：+ test_b1f_walk（10 層 size、enmy_calc 公式、stairs 存在）
+- v1.21：+ test_special_attacks（4 種特攻、種子掃描證明命中）
+- v1.22：+ test_spell_slots（Mage L1/L7、Bishop 雙系延遲、Fighter 零、cap 9）
+- **v1.24 終態：14/14 ctest 全綠**
+
+### 一鍵打包技術細節
+
+- **Linux AppImage**：`linuxdeploy` bundle 65 個 .so 進 squashfs，AppRun wrapper 設 `WIZ_ASSETS_DIR=$HERE/assets`
+- **Windows zip**：mingw-w64 cross from Linux，libsdl-org 官方 prebuilt MinGW SDL2 tarballs，`-static-libgcc -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread` 把 gcc/stdc++/winpthread 全靜態鏈，免額外 DLL
+- **整合測試**：`tools/record_playthrough.sh` 用 Xvfb + xdotool + ImageMagick `import` 抓 12 張 1280x720 真實 framebuffer，證明遊戲從 title → tavern → maze → combat 走完不 crash
+
+---
+
 <a name="future"></a>
-## 十三、未來方向
+## 十四、未來方向
 
-### 短期（v1.8–v2.0）
+### 短期（v1.25+）
 
-- [ ] **B2F–B10F 迷宮資料**——目前只有 B1F；其他 9 層需要從原版 byte-level rip
-- [ ] **完整 100 怪物**——目前 30 隻；剩 70 隻需要 PCE-CD 立繪或自繪
-- [ ] **完整道具庫**（含 Werdna's Amulet 詛咒鎖定機制）
-- [ ] **macOS build**——CI matrix 還沒加 macOS
+- [ ] **macOS 通用版**——已寫 GitHub Actions workflow（v1.24 in-flight），arm64 + x86_64 universal binary + .dmg
+- [ ] **bundled BGM**——目前 4 軌 Kevin MacLeod CC-BY 由 `tools/fetch_music.sh` 抓，下版直接 bundle 進 release
+- [ ] **整合測試 CI 鎖死**——把 `record_playthrough.sh` 改成 GitHub Actions job，回退即 fail
 
 ### 中期（v2.x）
 
-- [ ] **盜賊寶箱小遊戲**——目前自動成功；應該加上機率 + 失敗陷阱觸發
-- [ ] **酒館點餐 + 角色互動**——手冊 p16 有提到，未實作
-- [ ] **NPC 對話系統**——B4F 之後可能有 Trebor 傳令使者
+- [ ] **W2 Knight of Diamonds 接續**——同樣 engine，加 W2 資產（maze + monster + 新 boss Davalpus）
+- [ ] **W3 Legacy of Llylgamyn**——同 series
+- [ ] **盜賊寶箱小遊戲**——CALFO 已偵測迷宮陷阱（v1.22），需要再加戰後寶箱 + DISARM 機率
+- [ ] **酒館點餐 + 角色互動**——手冊 p16 提到的細節
 
 ### 長期（v3.x+）
 
-- [ ] **W2 Knight of Diamonds 接續**——同樣的 engine，加 W2 資產
-- [ ] **W3 Legacy of Llylgamyn**
 - [ ] **網頁版（emscripten 編譯）**——讓不會編譯的人也能玩
+- [ ] **Steam Deck gamepad 支援**——SDL_GameController 接 controller-mapping
+- [ ] **4K 解析度** —— 從 1280×720 fixed 改成 scale-aware
 
 ### 不會做
 
@@ -510,7 +562,7 @@ int parse_lvl(const json& j) {
 ---
 
 <a name="thanks"></a>
-## 十四、致謝
+## 十五、致謝
 
 - **snafaru** — Wizardry.Code v3.2 修正版的 45 年累積
 - **Thomas William Ewers** — Wizardry I Pascal/Assembly 原始反組譯

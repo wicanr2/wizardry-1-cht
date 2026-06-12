@@ -509,6 +509,10 @@ snafaru v3.2 修了 4 個原版的咒語 bug：
 | ZILWAN | 對非不死也生效 | **僅對 undead** |
 
 本專案 v0.6 沿用所有 v3.2 修正。
+v1.22 後 **LATUMAPIC 真正讓戰鬥日誌全程顯示真名**（`display_name(g)` helper），
+**MONTINO 靜默機制** 全戰鬥週期阻止敵方施法，**CALFO** 改為偵測迷宮陷阱（看前方一格 SquareFeature 並命名）。
+v1.22 同時引入**法術槽自動補滿/扣除**（`recompute_spell_slots()` Mage/Priest/Bishop/Samurai/Lord 五系規則 + cap 9），
+詠唱前 slot gate；沒槽就「**法力已盡**」、不消狀態、不發效果。投宿任何房型即補滿。
 
 ---
 
