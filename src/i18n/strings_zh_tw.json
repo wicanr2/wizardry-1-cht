@@ -3900,16 +3900,16 @@
     "refs": []
   },
   "hint_theme_switched_prefix": {
-    "en": "✦ Theme: ",
-    "zh_TW": "✦ 切換主題：",
-    "ja_JP": "✦ テーマ切替: ",
+    "en": "» Theme: ",
+    "zh_TW": "» 切換主題：",
+    "ja_JP": "» テーマ切替: ",
     "category": "ui_chrome",
     "refs": []
   },
   "hint_lang_switched_prefix": {
-    "en": "✦ Language: ",
-    "zh_TW": "✦ 語言：",
-    "ja_JP": "✦ 言語: ",
+    "en": "» Language: ",
+    "zh_TW": "» 語言：",
+    "ja_JP": "» 言語: ",
     "category": "ui_chrome",
     "refs": []
   },

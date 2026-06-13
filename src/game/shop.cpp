@@ -109,7 +109,7 @@ void draw_shop(State& state, const render::UI& ui, const ShopUI& s) {
                           kPadX + 8, kPadY + 540, ui.theme().accent);
     }
 
-    ui.draw_status_bar("Tab 顧客  ↑↓ 選物  B 購買  ESC 離開");
+    ui.draw_status_bar("Tab 顧客  ↑↓ 選物  B 買  S 賣  I 鑑定  ESC 離開");
     ui.present();
 }
 
@@ -146,14 +146,95 @@ bool shop_tick(State& state, const SDL_Event* event, const render::UI& ui) {
             int ri = state.party.roster_index[s.active_member];
             if (ri >= 0) {
                 auto& c = state.roster.chars[ri];
-                if (c.gold >= it.price) {
+                // v1.25.2 — Buy must actually add the item to the buyer's
+                // inventory. Find first empty slot. Items bought from
+                // Boltac arrive identified and uncursed.
+                int empty_slot = -1;
+                for (int j = 0; j < int(c.inventory.size()); ++j) {
+                    if (c.inventory[j].item_id < 0) { empty_slot = j; break; }
+                }
+                if (empty_slot < 0) {
+                    state.push_message("** 背包已滿 **");
+                } else if (c.gold < it.price) {
+                    state.push_message("** 金幣不足 **");
+                } else {
                     c.gold -= it.price;
+                    c.inventory[empty_slot].item_id = static_cast<std::int16_t>(it.id);
+                    c.inventory[empty_slot].identified = true;
+                    c.inventory[empty_slot].cursed = false;
+                    c.inventory[empty_slot].equipped = false;
                     state.push_message(
                         c.name + " 購買：" +
                         (it.name_zh.empty() ? it.name_en : it.name_zh) +
                         "（-" + std::to_string(it.price) + " 金）");
+                }
+            }
+        }
+        // v1.25.2 — Sell: half-price for first non-empty, non-cursed slot.
+        // Boltac refuses to take cursed gear (player must use temple Uncurse).
+        if (k == SDLK_s) {
+            int ri = state.party.roster_index[s.active_member];
+            if (ri >= 0) {
+                auto& c = state.roster.chars[ri];
+                int sold = -1;
+                for (int j = 0; j < int(c.inventory.size()); ++j) {
+                    auto& slot = c.inventory[j];
+                    if (slot.item_id >= 0 && !slot.cursed) {
+                        sold = j;
+                        break;
+                    }
+                }
+                if (sold < 0) {
+                    state.push_message("** 沒有可賣的道具（詛咒物先去神殿解咒）**");
                 } else {
-                    state.push_message("** 金幣不足 **");
+                    int item_id = c.inventory[sold].item_id;
+                    long long price = 0;
+                    std::string name_show = "(?)";
+                    for (const auto& it : items) {
+                        if (it.id == item_id) {
+                            price = it.price / 2;
+                            name_show = it.name_zh.empty() ? it.name_en : it.name_zh;
+                            break;
+                        }
+                    }
+                    c.gold += price;
+                    c.inventory[sold] = core::ItemSlot{};  // clear
+                    state.push_message(
+                        c.name + " 賣出：" + name_show +
+                        "（+" + std::to_string(price) + " 金，半價）");
+                }
+            }
+        }
+        // v1.25.2 — Identify: first unidentified slot, 100 gp/item.
+        if (k == SDLK_i) {
+            int ri = state.party.roster_index[s.active_member];
+            if (ri >= 0) {
+                auto& c = state.roster.chars[ri];
+                int unidx = -1;
+                for (int j = 0; j < int(c.inventory.size()); ++j) {
+                    if (c.inventory[j].item_id >= 0 &&
+                        !c.inventory[j].identified) {
+                        unidx = j; break;
+                    }
+                }
+                const long long cost = 100;
+                if (unidx < 0) {
+                    state.push_message("** 沒有未鑑定道具 **");
+                } else if (c.gold < cost) {
+                    state.push_message("** 金幣不足 100 **");
+                } else {
+                    c.gold -= cost;
+                    c.inventory[unidx].identified = true;
+                    std::string name_show = "(?)";
+                    for (const auto& it : items) {
+                        if (it.id == c.inventory[unidx].item_id) {
+                            name_show = it.name_zh.empty() ? it.name_en : it.name_zh;
+                            break;
+                        }
+                    }
+                    state.push_message(
+                        c.name + " 鑑定：" + name_show +
+                        "（-" + std::to_string(cost) + " 金）");
                 }
             }
         }

@@ -166,8 +166,16 @@ bool handle_menu(State& state, const SDL_Event* ev, const render::UI& ui,
             hovered = 0;
             consumed = true;
         } else if (k == SDLK_ESCAPE) {
-            if (state.scene == Scene::EdgeOfTown) return false;
-            state.change_scene(Scene::EdgeOfTown);
+            // EdgeOfTown is the outermost menu — ESC there used to `return
+            // false`, quitting the main loop immediately and losing all
+            // progress. v1.25.2: bounce back to Title instead. To leave
+            // the game you must select L)eave Game explicitly.
+            if (state.scene == Scene::EdgeOfTown) {
+                state.change_scene(Scene::Title);
+                state.maze_loaded = false;
+            } else {
+                state.change_scene(Scene::EdgeOfTown);
+            }
             hovered = 0;
             consumed = true;
         } else {
@@ -254,7 +262,7 @@ void check_body_pickup(State& state) {
         if (it->level == state.camera.level &&
             it->x == state.camera.x && it->y == state.camera.y) {
             const auto& c = state.roster.chars[it->roster_idx];
-            state.push_message(std::string("✦ 拾起 ") + c.name +
+            state.push_message(std::string("» 拾起 ") + c.name +
                                " 的屍體。請帶回神殿復活。");
             it = state.dead_bodies.erase(it);
         } else {
@@ -276,7 +284,7 @@ void auto_cure_poison_at_castle(State& state) {
     }
     if (cured > 0) {
         char buf[80];
-        std::snprintf(buf, sizeof(buf), "✦ 城堡治癒了 %d 名中毒者。", cured);
+        std::snprintf(buf, sizeof(buf), "» 城堡治癒了 %d 名中毒者。", cured);
         state.push_message(buf);
     }
 }
@@ -567,8 +575,8 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 } else if (k == SDLK_m || k == SDLK_F5) {
                     state.show_auto_map = !state.show_auto_map;
                     state.push_message(state.show_auto_map
-                                           ? "✦ 自動繪圖：開"
-                                           : "✦ 自動繪圖：關");
+                                           ? "» 自動繪圖：開"
+                                           : "» 自動繪圖：關");
                 } else if (k == SDLK_RETURN) {
                     // Use stairs if standing on them.
                     if (feature_at_party(state) == core::SquareFeature::Stairs) {
@@ -1222,7 +1230,7 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
                 // Save into roster
                 if (state.roster.used < save::Roster::kMaxChars) {
                     state.roster.chars[state.roster.used++] = new_char;
-                    state.push_message(std::string("✦ 新角色：") + new_char.name +
+                    state.push_message(std::string("» 新角色：") + new_char.name +
                                        "  Lv1  HP " + std::to_string(new_char.hp_max));
                 }
                 SDL_StopTextInput();

@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+#include "i18n/tr.h"
+
 namespace wiz::game {
 
 namespace {
@@ -87,10 +89,11 @@ void draw_tavern(const State& state, const render::UI& ui, const TavernUI& s) {
         if (joined) col = ui.theme().dim;
 
         char buf[200];
+        std::string klass_zh(i18n::tr(core::klass_name(c.klass)));
         std::snprintf(buf, sizeof(buf), "%2d. %-14s Lv%d %-6s HP %d/%d %s",
                       i + 1, c.name.c_str(),
                       int(c.char_level),
-                      core::klass_name(c.klass),
+                      klass_zh.c_str(),
                       int(c.hp_left), int(c.hp_max),
                       joined ? "(已在隊)" : "");
         render::draw_text(ui.renderer(), ui.body_font(), buf,
@@ -130,9 +133,10 @@ void draw_tavern(const State& state, const render::UI& ui, const TavernUI& s) {
             col = SDL_Color{255, 255, 255, 255};
         }
         char buf[160];
+        std::string klass_zh(i18n::tr(core::klass_name(c.klass)));
         std::snprintf(buf, sizeof(buf), "%d. %-12s %-6s HP %d/%d",
                       i + 1, c.name.c_str(),
-                      core::klass_name(c.klass),
+                      klass_zh.c_str(),
                       int(c.hp_left), int(c.hp_max));
         render::draw_text(ui.renderer(), ui.body_font(), buf,
                           right_x + 14, yy, col);
@@ -172,7 +176,14 @@ bool tavern_tick(State& state, const SDL_Event* event, const render::UI& ui) {
         if (k == SDLK_TAB) {
             s.focus = (s.focus == Focus::RosterList) ? Focus::PartyList : Focus::RosterList;
         }
-        if (k == SDLK_UP) {
+        // v1.25.2 — guard cursor-move against Shift held. Without this guard,
+        // pressing Shift+Up would FIRST move party_cursor up one slot here,
+        // then the Shift block below would swap the moved cursor with its
+        // upper neighbour — net effect: swap pi with pi-2. QA caught this
+        // as "Tavern Shift swap off by one".
+        const bool reorder_mode = (event->key.keysym.mod & KMOD_SHIFT) != 0
+                                  && s.focus == Focus::PartyList;
+        if (k == SDLK_UP && !reorder_mode) {
             if (s.focus == Focus::RosterList && roster_used > 0) {
                 s.roster_cursor = (s.roster_cursor - 1 + roster_used) % roster_used;
                 if (s.roster_cursor < s.roster_scroll) s.roster_scroll = s.roster_cursor;
@@ -180,7 +191,7 @@ bool tavern_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 s.party_cursor = (s.party_cursor - 1 + state.party.count) % state.party.count;
             }
         }
-        if (k == SDLK_DOWN) {
+        if (k == SDLK_DOWN && !reorder_mode) {
             if (s.focus == Focus::RosterList && roster_used > 0) {
                 s.roster_cursor = (s.roster_cursor + 1) % roster_used;
                 const int rows = (520 - 60) / (ui.body_font().line_height() + 8);
@@ -214,7 +225,7 @@ bool tavern_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 std::swap(state.party.roster_index[pi],
                           state.party.roster_index[swap_with]);
                 s.party_cursor = swap_with;
-                state.push_message("✦ 隊形已調整。");
+                state.push_message("» 隊形已調整。");
             }
         }
         if (k == SDLK_r && state.party.count > 0) {

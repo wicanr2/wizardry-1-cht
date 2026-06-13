@@ -602,7 +602,7 @@ bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                 if (save::save_game(state, p)) {
                     char buf[200];
                     std::snprintf(buf, sizeof(buf),
-                                  "✦ 已存到 Slot %d：%s",
+                                  "» 已存到 Slot %d：%s",
                                   s.save_slot_cursor + 1, p.c_str());
                     state.push_message(buf);
                 } else {
@@ -654,7 +654,7 @@ bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                         auto new_name = apply_class_change(c, target);
                         char buf[200];
                         std::snprintf(buf, sizeof(buf),
-                                      "✦ %s 轉職為 %s（等級重置為 1，HP %d）",
+                                      "» %s 轉職為 %s（等級重置為 1，HP %d）",
                                       c.name.c_str(), std::string(new_name).c_str(),
                                       int(c.hp_max));
                         state.push_message(buf);
@@ -727,7 +727,7 @@ bool camp_tick(State& state, const SDL_Event* event, const render::UI& ui) {
                         }
                         char buf[200];
                         std::snprintf(buf, sizeof(buf),
-                                      "✦ 已匯出 %d 張角色卡到 %s（同名目錄）",
+                                      "» 已匯出 %d 張角色卡到 %s（同名目錄）",
                                       wrote, last_path.c_str());
                         state.push_message(buf);
                         break;
