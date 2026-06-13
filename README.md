@@ -11,20 +11,21 @@
 ## 目錄
 
 1. [一句話說清楚](#hero)
-2. [🏆 五個第一次 — 這份 fork 做了什麼別人沒做的](#five-firsts)
-3. [快速開始](#quick-start)
-4. [為何要漢化 Wizardry？](#why)
-5. [八紀變遷 — Wizardry 系列大歷史](#eight-eras)
-6. [八職代數美 — 4 基職 + 4 進階職的代數結構](#class-algebra)
-7. [Lingua Magica — 巫術四音節咒語體系](#lingua-magica)
-8. [瘋王試煉場 — B1F〜B10F 地下迷宮](#dungeon)
-9. [實機截圖展示](#screenshots)
-10. [台灣 Apple II 老玩家的記憶](#taiwan-1985)
-11. [snafaru v3.2 — 45 年後的 100 項修正](#v32-fixes)
-12. [1991 OVA 動畫致敬](#ova)
-13. [Technical Deep Dive](#technical-deep-dive)
-14. [📚 中文百科](#knowledge-base)
-15. [License & Credits](#credits)
+2. [✉️ 致還來得及懷念的人 — 卷頭獻詞](#dedication)
+3. [🏆 五個第一次 — 這份 fork 做了什麼別人沒做的](#five-firsts)
+4. [快速開始](#quick-start)
+5. [為何要漢化 Wizardry？](#why)
+6. [八紀變遷 — Wizardry 系列大歷史](#eight-eras)
+7. [八職代數美 — 4 基職 + 4 進階職的代數結構](#class-algebra)
+8. [Lingua Magica — 巫術四音節咒語體系](#lingua-magica)
+9. [瘋王試煉場 — B1F〜B10F 地下迷宮](#dungeon)
+10. [實機截圖展示](#screenshots)
+11. [台灣 Apple II 老玩家的記憶](#taiwan-1985)
+12. [snafaru v3.2 — 45 年後的 100 項修正](#v32-fixes)
+13. [1991 OVA 動畫致敬](#ova)
+14. [Technical Deep Dive](#technical-deep-dive)
+15. [📚 中文百科](#knowledge-base)
+16. [License & Credits](#credits)
 
 ---
 
@@ -47,6 +48,30 @@
 
 > 完整 22 個版本的 changelog 見 [`docs/CHANGELOG.md`](docs/CHANGELOG.md)。
 > 開發踩坑紀錄見 [`docs/DEV_HISTORY.md`](docs/DEV_HISTORY.md)。
+
+---
+
+<a name="dedication"></a>
+## ✉️ 致還來得及懷念的人 — 卷頭獻詞
+
+獻給**聽過《巫術》、卻來不及趕上那個時代的老玩家**。
+前輩口中的經典，學長手抄筆記裡寫滿叉叉的方格地圖，
+**光華商場二樓**那些木櫃旁、**新世界軟體**那本兩百一十元、附四片 5.25 吋磁片的《魔幻英雄傳》，
+和後來第三波代理、《軟體世界》專題連載的厚手冊——
+那些印刷油墨還沒乾、就在教室抽屜裡傳閱到頁角發黑的攻略本。
+畫面真的不怎麼樣，14 吋 CRT 上只有四十行字加幾條 HGR 綠色線條；
+但**那是一個會永久死亡的小隊**——Murphy's Ghost 一拳下去、磁片上的角色就**真的灰飛煙滅**，
+ATTRIB 鎖檔來不及，B10F 沃登納 TILTOWAIT 一招還是整隊團滅，重開一次又是十幾個小時。
+
+Steam 上 Digital Eclipse 2024 把它**美術重畫**端上桌，
+日本《Wizardry Variants Daphne》拿手遊抽卡把永久死亡再玩一次——
+**那是他們的路。我們走的是另一條**：不重畫、不抽卡，從 UCSD Pascal 源碼**一行一行翻成 C++**，
+PCE-CD 與 Apple II 的色盤、規則、bug 都還原，再把當年沒得救的設計失誤悄悄修平。
+做給那群「聽說過、沒玩過、想知道前輩當年到底在迷什麼」的人——也證明 2026 年的 AI，
+能讓一個人扛起 1990s 一整間工作室的活。
+
+**還想再懷念一次嗎？**
+👉 **[Linux / Windows / macOS 下載 v1.25.3](https://github.com/wicanr2/wizardry-1-cht/releases/latest)**
 
 ---
 
