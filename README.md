@@ -781,7 +781,8 @@ if (name == "TILTOWAIT") {
 | 文件 | 內容 | 適合誰看 |
 |------|------|----------|
 | [`docs/LORE.md`](docs/LORE.md) | 故事與起源 — Trebor 與 Werdna 的關係、護身符傳說、Sir-tech 公司歷史、Greenberg/Woodhead 訪談、為何叫 Mad Overlord | 想了解**為什麼有這個遊戲**的人 |
-| [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md) | 10 層迷宮中文攻略 — B1F〜B10F 路線、Murphy's Ghost 經驗農場、Blue Ribbon、Contra Dextra Avenue、Werdna 戰術 | **卡關**或想**少走冤枉路**的人 |
+| [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md) | 10 層迷宮中文攻略 — B1F〜B10F 路線、嵌入地圖 SVG、推薦等級速查、Murphy's Ghost 經驗農場、Blue Ribbon、Contra Dextra Avenue、Werdna 戰術 | **卡關**或想**少走冤枉路**的人 |
+| [`docs/STRATEGY.md`](docs/STRATEGY.md) | 完整攻略指南（v1.25 新加）— 從 roller 開角到 Werdna 通關。職業搭配、咒語優先級、戰術組合、五大不要踩的坑、本專案實作差異速查。雜誌風 + 1985 台灣老玩家視角 | 想**戰術深練**的人，與 WALKTHROUGH 互補 |
 | [`docs/MONSTERS.md`](docs/MONSTERS.md) | 30+ 怪物百科 — 中文名 + HP/AC/XP、特殊能力（吸等級、麻痺、群攻）、應對戰術、PCE-CD 立繪歷史 | 想知道**誰可以打、誰要逃跑**的人 |
 | [`docs/SPELLS.md`](docs/SPELLS.md) | 51 法術完整解說 — HA-/MA-/LA-/DA-/DI-/BA- 前綴語法、傷害公式、戰術組合、v3.2 修正 | 想搞懂**為什麼 TILTOWAIT 叫等等！**的人 |
 | [`docs/ITEMS.md`](docs/ITEMS.md) | 道具圖鑑 — 武器/防具/藥水/卷軸/戒指/護符，含 Werdna's Amulet 詛咒機制、Boltac 鑑定價格 | 想避免**穿到詛咒裝備脫不下來**的人 |
@@ -789,7 +790,7 @@ if (name == "TILTOWAIT") {
 | [`docs/MANUAL_GAP.md`](docs/MANUAL_GAP.md) | Sir-tech 原版手冊 vs Digital Eclipse 2024 重製版的規則差異對照 — v3.2 修正落點 | 想了解**本專案規則決策依據**的人 |
 | [`docs/DEV_HISTORY.md`](docs/DEV_HISTORY.md) | 中文化開發史 — v0.3→v1.18 各版本設計決策、踩過的坑（vcpkg pkgconf 404 / xdotool focus / Apple II HGR 詭異設計）、未來方向 | 想做**類似 retro 重寫專案**的開發者 |
 
-> **總計約 25,000 中文字**——是 Wizardry I 史上**最完整的繁體中文百科**。
+> **總計約 35,000 中文字**（v1.25 加入 STRATEGY.md +716 行 + WALKTHROUGH 地圖嵌入 + LORE Cant/Boltac 兩章）——是 Wizardry I 史上**最完整的繁體中文百科**。
 > 全部 CC-BY 4.0 授權，歡迎引用、轉載、改寫。
 
 ---
