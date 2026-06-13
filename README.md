@@ -11,19 +11,20 @@
 ## 目錄
 
 1. [一句話說清楚](#hero)
-2. [快速開始](#quick-start)
-3. [為何要漢化 Wizardry？](#why)
-4. [八紀變遷 — Wizardry 系列大歷史](#eight-eras)
-5. [八職代數美 — 4 基職 + 4 進階職的代數結構](#class-algebra)
-6. [Lingua Magica — 巫術四音節咒語體系](#lingua-magica)
-7. [瘋王試煉場 — B1F〜B10F 地下迷宮](#dungeon)
-8. [實機截圖展示](#screenshots)
-9. [台灣 Apple II 老玩家的記憶](#taiwan-1985)
-10. [snafaru v3.2 — 45 年後的 100 項修正](#v32-fixes)
-11. [1991 OVA 動畫致敬](#ova)
-12. [Technical Deep Dive](#technical-deep-dive)
-13. [📚 中文百科](#knowledge-base)
-14. [License & Credits](#credits)
+2. [🏆 五個第一次 — 這份 fork 做了什麼別人沒做的](#five-firsts)
+3. [快速開始](#quick-start)
+4. [為何要漢化 Wizardry？](#why)
+5. [八紀變遷 — Wizardry 系列大歷史](#eight-eras)
+6. [八職代數美 — 4 基職 + 4 進階職的代數結構](#class-algebra)
+7. [Lingua Magica — 巫術四音節咒語體系](#lingua-magica)
+8. [瘋王試煉場 — B1F〜B10F 地下迷宮](#dungeon)
+9. [實機截圖展示](#screenshots)
+10. [台灣 Apple II 老玩家的記憶](#taiwan-1985)
+11. [snafaru v3.2 — 45 年後的 100 項修正](#v32-fixes)
+12. [1991 OVA 動畫致敬](#ova)
+13. [Technical Deep Dive](#technical-deep-dive)
+14. [📚 中文百科](#knowledge-base)
+15. [License & Credits](#credits)
 
 ---
 
@@ -33,52 +34,52 @@
 ![title](docs/final_01_title.png)
 *1981 年 RPG 之祖，2026 年以中文重新開機。*
 
-這是 **Wizardry: Proving Grounds of the Mad Overlord (1981)** 的完整繁體中文化版本——
-不是 emulator + patch，而是用 C++ 從 snafaru 的 UCSD Pascal 源碼**重寫**，跨 Linux / Windows，
-保留 v3.2 全部 100+ 規則修正，並把 UI 從 Apple II 的 40 column ASCII 升級到 1280×720 全中文 TTF 介面。
+**35 年了**。《巫術 I》（1981）終於有了一份**不是磁片盜版**、**不是模擬器補丁**、**不是商業 nostalgia 包**的繁體中文版——
+而是從 [snafaru](https://github.com/snafaru/Wizardry.Code) 的 UCSD Pascal 源碼用 **C++17 整個重寫**，
+**三平台原生跑**（Linux / Windows / macOS arm64）、
+**453 條 i18n 三語齊備**（繁中 / English / 日本語 F4 即時切換）、
+**51 法術全接 effect**（含 v3.2 全部 100+ 修正）、
+**35,000 字繁中百科**隨附（怪物 / 法術 / 道具 / 攻略 / 譯名考古 / 開發史）。
 
-| 項目 | 狀態 |
-|------|------|
-| 全部里程碑 (M1~M8) | **8 / 8 完成** |
-| v0.2 城鎮系統 | 訓練場 / 商店 / 旅館 / 神殿 全部 done |
-| v0.3 進階功能 | 酒館編隊 / 戰鬥法術 / **Eye-of-Map** / Camp 存檔 done |
-| v0.4 美術升級 | **55 個 PCE-CD 怪物立繪** (CC-BY-SA from wizardry.wiki.gg) |
-| v0.5 手冊對校 | Roller lore tooltip + Inn 房型對齊 Sir-tech 手冊 |
-| **v0.6 法術完整** | **全 51 咒語接 effect**（HALITO ~ TILTOWAIT，含 v3.2 修正） |
-| v0.7 W6 .pic 研究 | docs/W6_PIC_FORMAT.md 格式分析筆記 |
-| v0.8 Apple II LZ（Lempel-Ziv 1977 字典式壓縮，原版用來壓 title 畫面） | LZDECOMP + HGR（Apple II 高解析繪圖緩衝區）→PNG Python toolchain |
-| **v0.9 翻譯** | **100% 中文化**（453/453 keys，含原版版權聲明逐條中譯） |
-| **v1.0 CI** | **GitHub Actions Linux + Windows matrix，自動 release** |
-| **v1.1 Sprite 對應** | **60 個 PCE-CD sprite bundled，29/30 怪物有專屬立繪** |
-| **v1.2 Camp 法術** | **11 個 out-of-combat 咒語**（DIOS/MADI/DUMAPIC/MILWA/DI...） |
-| **v1.3 BGM** | **SDL_mixer + Kevin MacLeod CC-BY 4 軌**（title/town/maze/combat） |
-| **v1.4 Sprite 全齊** | **30/30 怪物有 PCE-CD 立繪** + snapshot 視覺驗證工具 |
-| v1.5 視覺驗證 | docs/v15_all_30_sprites.png — 全 30 隻 in-game 拼貼 |
-| **v1.6 SFX** | **11 個程序生成音效**（攻擊/法術/腳步/選單/開門...） |
-| **v1.11 多 slot 存檔** | **5 槽位**，標題畫面 1–5 鍵直接讀檔 + Camp 槽位選擇器 |
-| **v1.11 GitHub Pages** | [文件站上線](https://wicanr2.github.io/wizardry-1-cht/)，Cayman theme |
-| **v1.12 F3 主題切換** | **PCE-CD / Mono / Outline / Sepia** + 各 theme 可獨立 BGM |
-| **v1.13 規則 gap fix** | Poisoned 狀態（tick 扣血/Castle 解毒）+ 沉睡/麻痺 gating + 前/後排陣型 |
-| **v1.14 迷宮陷阱** | **4 種陷阱**：Pit / Spinner / Teleporter / Chute 全部生效 |
-| **v1.14 轉職系統** | Camp [X] 鍵 — 8 職業屬性 + 陣營雙重檢核 |
-| **v1.15 F4 多語** | **繁中 / English / 日本語** 全局即時切換 |
-| **v1.16 多層迷宮** | **10 層 B1F-B10F**，[原版地圖](https://wicanr2.github.io/wizardry-1-cht/MAPS.html)轉錄完成 |
-| **v1.16 永久死亡** | 戰死屍體留在迷宮，需新隊伍走回原格拾取 |
-| **v1.17 神殿復活** | DI（亡→生）+ KADORTO（灰→生）含失敗風險與 Status::Lost 終局 |
-| **v1.18 日文化完成** | **453/453 UI 條目全部補上 ja_JP 欄位**（F4 三語切換 100% 涵蓋） |
-| **v1.19 遭遇率對齊** | per-step `enmy_calc[0]` formula `30 + 7*(L-1)` clamp 110 — B1F ~12% / B10F ~43%，B1F 走完 smoke test |
-| **v1.20 主題深化** | F3 切換時迷宮牆/門/地板/天花板/自動地圖**全部跟著換色**；標題背景也走 theme-aware fallback；UI chrome 字串改走 tr() |
-| **v1.21 戰鬥真實感** | 突襲回合（先發/被突襲）+ 吸血鬼吸等級 + 食屍鬼麻痺 + 龍類吐息（vit-save 半傷）|
-| **v1.22 缺口收束** | 法術槽自動補滿/扣除（Mage/Priest/Bishop 延遲）+ Afraid +2 AC + 神殿解咒 + 完整 8 種陷阱 + CALFO/LATUMAPIC 真正生效 |
-| **v1.23 P2 polish** | M 鍵自動地圖開關 + 北/東/南/西 + 深度指北針 + Shift+↑↓ 隊伍重排 + Camp 匯出角色卡 + Dark zone（無光僅見 1 格） |
-| **v1.24 結局畫面** | 沃登納 B10F 戰勝 → `Scene::Ending` PCE-CD 風格合成圖（OVA 城堡 + 金色護符 + 倒下的瘋王 + 暗角暈影）+ 三語結局文 |
-| **v1.24 一鍵打包** | Linux `wizardry-cht-x86_64.AppImage` 單檔執行 + Windows `wizardry-cht-windows-x64.zip` 含全 DLL + `.bat` launcher |
-| 法術 / 怪物 / 道具表 | 51 法術 + 30 怪物 + 30 道具，含中文名 |
-| 單元測試 | **14 / 14 ctest 全綠**（含 v13 mechanics + class_change + special_attacks + spell_slots） |
-| 平台 | Linux x86_64 / Windows 10+ |
-| 字型 | Noto Sans CJK TC（思源黑體繁中，OFL 1.1 開源字型授權 / SIL Open Font License，可打包） |
-| GitHub | [wicanr2/wizardry-1-cht](https://github.com/wicanr2/wizardry-1-cht) |
-| 📖 文件站 | [wicanr2.github.io/wizardry-1-cht](https://wicanr2.github.io/wizardry-1-cht/) — 怪物 / 法術 / 道具 / 攻略 / 開發史 8 篇繁中知識庫 |
+| 目前版本 | 含什麼 | 完成度 |
+|---|---|---|
+| **[v1.25.3](https://github.com/wicanr2/wizardry-1-cht/releases/latest)** — 完整可通關 | 10 層原版迷宮 / 51 法術 / 30 怪物 / 沃登納 B10F 終戰 + 結局畫面 / 三語切換 / 四主題切換 / 神殿復活鏈 / 永久死亡 + 屍體回收 / F10 quit + 自動存檔 | **8 / 8 milestone 全綠 · 14 / 14 ctest** |
+
+> 完整 22 個版本的 changelog 見 [`docs/CHANGELOG.md`](docs/CHANGELOG.md)。
+> 開發踩坑紀錄見 [`docs/DEV_HISTORY.md`](docs/DEV_HISTORY.md)。
+
+---
+
+<a name="five-firsts"></a>
+## 🏆 五個第一次 — 這份 fork 做了什麼別人沒做的
+
+Wizardry I 的開源 / 中文化 / 重製有四條既有支線：**商業重製**（Digital Eclipse 2024）、**日系外傳**（XTH / Online）、**模擬器 + patch**（Apple II 原 .dsk）、**1990s 第三波 / 維京手冊翻譯**。本作走第五條——**繁中為一等公民的整套重寫**。以下五件事，是這條路線**業界第一次**做到的。
+
+### 1. 第一次 51 咒語 effect 全接的繁中 Wizardry I
+
+1990s 第三波《軟體世界》翻過 Wizardry I 手冊，但只翻**字**——咒語 effect 還是英文 .dsk 跑的。本作 51 咒語**全部接好 C++ effect handler**：HALITO 火焰 1d8、KATINO 群睡（含 v3.2 修的抗性公式）、TILTOWAIT 10d15 滅世、LATUMAPIC 真正讓戰鬥日誌顯示真名（不是只 log 一行就算了）、CALFO 真正掃前方一格 SquareFeature——全部有 `combat.cpp::cast_spell()` / `camp.cpp::cast_camp_spell()` 可追溯。
+
+### 2. 第一次 453 / 453 i18n 三語齊備 + F4 即時切換
+
+任何老玩家都記得 1985 年磁片中文化的傷痛：「**這條字串放不下中文，被截斷**」。本作從 v0.9 起把 Apple II disk 上每一條 `WRITE('...')` 的字串都 dump 出來、配三語表（zh-TW / en / ja-JP），F4 鍵在**任何場景**即時切換。453 條全齊，包括戰鬥日誌、結局文、神殿菜單、F3 toast——**沒有一條 hardcoded English string**。對照 [`I18N_TODO.md`](docs/I18N_TODO.md) 看完整覆蓋率。
+
+### 3. 第一次 F3 七主題切換 — 連迷宮牆都跟著換色
+
+F3 鍵：**PCE-CD（彩色原版）/ Mono（Apple II 黑白致敬）/ Outline（線稿）/ Sepia（CGA 風）** 四套全 bundled，外加 **PC-98 / WonderSwan Color / Macintosh** 三套 ROM-extracted 本機 only。v1.20 之後 F3 不只換怪物 sprite——**迷宮牆 / 門 / 地板 / 天花板 / 自動地圖 / 標題背景全部跟著換色**。看 `src/render/palette.cpp::current_maze_palette()` 與 [群組 B-2 截圖](#screenshots)。
+
+### 4. 第一次 game-tester agent 做 Xvfb 真實 playthrough QA
+
+本作的 [`tools/record_playthrough.sh`](tools/record_playthrough.sh) 用 **Xvfb 虛擬 X server + xdotool 鍵盤注入 + ImageMagick `import` 抓 framebuffer**，從新角到 B1F 戰鬥全程跑一輪、抓 12 張真 1280×720 截圖。v1.25.2 跑了一輪 60 分鐘 QA 抓出 14 個 issue 寫成 [`TEST_REPORT.md`](docs/TEST_REPORT.md)——**這不是 mockup、不是 Photoshop、不是 ASCII placeholder**。截圖在 [群組 L](#screenshots)。
+
+### 5. 第一次 35,000 字繁中 Wizardry I 百科
+
+[`docs/`](docs/) 11 篇繁中知識庫總長 **35,000 字**——超過《電腦玩家》1989 年那期 Wizardry 攻略專題的 5 倍。涵蓋：
+- [LORE.md](docs/LORE.md) — Trebor / Werdna / Boltac / Cant **譯名考古**（為什麼 1985 台灣手冊把 Cant 翻成「康托神廟」是錯的）
+- [STRATEGY.md](docs/STRATEGY.md) — 雜誌風攻略指南（716 行）
+- [WALKTHROUGH.md](docs/WALKTHROUGH.md) — 10 層走法 + 嵌入地圖 SVG
+- [MONSTERS.md](docs/MONSTERS.md) — 30 怪物 + 4-up 主題 sprite 對照
+- [SPELLS.md](docs/SPELLS.md) — 51 咒語完整解說
+- [MANUAL_GAP.md](docs/MANUAL_GAP.md) — 1981 手冊 vs 本實作的差異對照
 
 ---
 
