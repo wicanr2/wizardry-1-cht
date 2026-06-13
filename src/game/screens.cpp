@@ -159,17 +159,22 @@ bool handle_menu(State& state, const SDL_Event* ev, const render::UI& ui,
             consumed = true;
         } else if (k == SDLK_RETURN || k == SDLK_SPACE) {
             auto target = menu[hovered].target;
-            if (target == Scene::Quit) return false;
+            // L)eave Game now goes through the quit dialog (auto-save +
+            // confirm) rather than killing the main loop immediately.
+            if (target == Scene::Quit) {
+                state.quit_dialog_active = true;
+                state.dirty = true;
+                return true;
+            }
             state.change_scene(target);
             state.push_message(std::string("→ ") +
                                std::string(i18n::tr(menu[hovered].i18n_key)));
             hovered = 0;
             consumed = true;
         } else if (k == SDLK_ESCAPE) {
-            // EdgeOfTown is the outermost menu — ESC there used to `return
-            // false`, quitting the main loop immediately and losing all
-            // progress. v1.25.2: bounce back to Title instead. To leave
-            // the game you must select L)eave Game explicitly.
+            // ESC iron law: cancel/back, never quit. EdgeOfTown bounces
+            // to Title; everywhere else falls back one scene. The only
+            // explicit exit gestures are F10 (global) and L)eave Game.
             if (state.scene == Scene::EdgeOfTown) {
                 state.change_scene(Scene::Title);
                 state.maze_loaded = false;
@@ -185,7 +190,12 @@ bool handle_menu(State& state, const SDL_Event* ev, const render::UI& ui,
             int idx = hotkey_to_index(menu, c);
             if (idx >= 0) {
                 auto target = menu[idx].target;
-                if (target == Scene::Quit) return false;
+                // L)eave Game also routed through quit dialog.
+                if (target == Scene::Quit) {
+                    state.quit_dialog_active = true;
+                    state.dirty = true;
+                    return true;
+                }
                 state.change_scene(target);
                 state.push_message(std::string("→ ") +
                                    std::string(i18n::tr(menu[idx].i18n_key)));
@@ -324,6 +334,41 @@ void switch_music_for_scene(Scene s) {
     render::play_music(render::theme::resolve_bgm(key));
 }
 
+// Draw the F10 quit-confirmation overlay. Centred modal that asks
+// "確定離開遊戲？Y → 自動存檔退出 / N → 取消".
+static void draw_quit_dialog(const render::UI& ui) {
+    int win_w = 0, win_h = 0;
+    SDL_GetRendererOutputSize(ui.renderer(), &win_w, &win_h);
+    // Dim the whole screen first.
+    SDL_SetRenderDrawBlendMode(ui.renderer(), SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(ui.renderer(), 0, 0, 0, 180);
+    SDL_Rect dim{0, 0, win_w, win_h};
+    SDL_RenderFillRect(ui.renderer(), &dim);
+
+    // Modal box.
+    int box_w = 560, box_h = 220;
+    int bx = (win_w - box_w) / 2;
+    int by = (win_h - box_h) / 2;
+    ui.draw_frame(bx, by, box_w, box_h);
+    render::draw_text(ui.renderer(), ui.title_font(),
+                      "確定離開遊戲？",
+                      bx + box_w / 2, by + 30,
+                      ui.theme().accent, render::Align::Center);
+    render::draw_text(ui.renderer(), ui.body_font(),
+                      "離開前會自動存檔到 Slot 1。",
+                      bx + box_w / 2, by + 80,
+                      ui.theme().text, render::Align::Center);
+    render::draw_text(ui.renderer(), ui.body_font(),
+                      "Y / Enter — 存檔退出     N / ESC — 取消",
+                      bx + box_w / 2, by + 130,
+                      ui.theme().accent, render::Align::Center);
+    render::draw_text(ui.renderer(), ui.small_font(),
+                      "（ESC 在其他場景只 cancel/back，不會結束遊戲）",
+                      bx + box_w / 2, by + 175,
+                      ui.theme().dim, render::Align::Center);
+    ui.present();
+}
+
 }  // namespace
 
 static bool scene_tick_dispatch(State& state, const SDL_Event* event,
@@ -332,8 +377,42 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
 bool tick(State& state, const SDL_Event* event, const render::UI& ui) {
     switch_music_for_scene(state.scene);
 
+    // Quit-dialog overlay — when active, eat keyboard input here and
+    // hand Yes/No back. Scene below is not ticked.
+    if (state.quit_dialog_active) {
+        if (event && event->type == SDL_KEYDOWN) {
+            auto k = event->key.keysym.sym;
+            if (k == SDLK_y || k == SDLK_RETURN || k == SDLK_SPACE) {
+                // Auto-save to Slot 1 then exit main loop.
+                std::string p = default_save_path();
+                auto slash = p.find_last_of('/');
+                if (slash != std::string::npos) {
+                    std::string cmd = "mkdir -p '" + p.substr(0, slash) + "'";
+                    (void)std::system(cmd.c_str());
+                }
+                save::save_game(state, p);
+                return false;  // exit main loop
+            }
+            if (k == SDLK_n || k == SDLK_ESCAPE) {
+                state.quit_dialog_active = false;
+                state.dirty = true;
+                return true;
+            }
+        }
+        draw_quit_dialog(ui);
+        return true;
+    }
+
     // F1 toggles help overlay; any key while overlay shown closes it.
     if (event && event->type == SDL_KEYDOWN) {
+        // F10 = open quit confirmation dialog (global hotkey). Replaces the
+        // old ESC-quits-the-game behaviour. ESC at every scene now only
+        // cancels back one level; F10 is the explicit exit gesture.
+        if (event->key.keysym.sym == SDLK_F10) {
+            state.quit_dialog_active = true;
+            state.dirty = true;
+            return true;
+        }
         if (event->key.keysym.sym == SDLK_F1) {
             toggle_help();
             return true;
@@ -1313,7 +1392,12 @@ static bool scene_tick_dispatch(State& state, const SDL_Event* event,
         }
 
         case Scene::Quit:
-            return false;
+            // Should never reach here — L)eave Game now routes through the
+            // quit dialog in handle_menu(). Defensive: open the dialog if
+            // somehow we land here, don't kill the loop.
+            state.quit_dialog_active = true;
+            state.change_scene(Scene::EdgeOfTown);
+            return true;
     }
     return true;
 }

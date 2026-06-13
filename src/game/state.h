@@ -94,6 +94,12 @@ struct State {
     // post-combat continue into Scene::Ending instead of Scene::Maze.
     bool werdna_defeated = false;
 
+    // F10 pressed OR L)eave Game selected from the EdgeOfTown menu —
+    // a Yes/No dialog overlays on the next tick. Yes auto-saves and
+    // returns false to exit the main loop; No clears this flag and
+    // resumes the prior scene.
+    bool quit_dialog_active = false;
+
     // Forward-declared; full RollerState defined in game/roller.h. Stored as
     // pointer-like to avoid pulling in the roller header for every consumer.
     std::shared_ptr<void> roller;
